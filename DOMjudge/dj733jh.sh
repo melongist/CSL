@@ -37,6 +37,9 @@ sudo apt -y install default-jdk-headless
 sudo apt -y install ghc
 #pascal
 sudo apt -y install fp-compiler
+#JavaScript
+sudo apt -y install nodejs
+sudo apt -y install npm
 #R
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
@@ -90,8 +93,8 @@ sudo update-grub
 #default
 #sudo /opt/domjudge/judgehost/bin/dj_make_chroot
 
-#default(C,C++,Python,...)+R,swift
-echo 'y' | sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i r-base,swift
+#default(C,C++,Python,...)+JavaScript,R,swift
+echo 'y' | sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base,swift
 
 
 sudo apt -y autoremove
