@@ -177,10 +177,10 @@ check and edit ~/dcm/config.js
   ; + do not start spotboard npm
 1. Find submission id number after freeze time.    
   - Login to admin page.
-  - Find the 'ID' number just after 'Scoreboard freeze time' at admin's Submissions page.    
+  - Find the 'ID' number just after 'Scoreboard freeze time' at admin Submissions page.    
   ; ex) 563 <- s563   
 2. Set freeze time to end time temporarily.    
-  - Set 'Scoreboard freeze time' to 'End time' temporarily, and save contest at admin's Contest edit page.   
+  - Set 'Scoreboard freeze time' to 'End time' temporarily, and save contest at admin Contest edit page.   
   ; ex) 2021-10-16 12:00:00 Asia/Seoul -> 2021-10-16 12:30:00 Asia/Seoul    
 3. Run npm start once.    
   - At spotboard domjudge-converter directory, run npm start.
@@ -190,7 +190,7 @@ check and edit ~/dcm/config.js
   ; ctrl+x (just wait... 1 or more refresh cycle time would be OK!)    
   (This makes contest.json & runs.json files to .../spotboard/dist/ directory.)    
 4. Set freeze time to original freeze time.    
-  - Set 'Scoreboard freeze time' to original freeze time at admin's Contest edit page.   
+  - Set 'Scoreboard freeze time' to original freeze time at admin Contest edit page.   
   ; ex) 2021-10-16 12:30:00 Asia/Seoul -> 2021-10-16 12:00:00 Asia/Seoul   
   (This makes DOMjudge scoreboard freezing)
 5. Copy award_slide.json sample file.
@@ -199,7 +199,15 @@ check and edit ~/dcm/config.js
   ; cd /var/www/html/spotboard/
   ; sudo cp award_slide.json ../award_slide.json
 6. Edit award_slide.json file to the contest.    
-  ; ex)    
+  ; meaning)
+  ; "id"    : team ID at admin's Teams page
+  ; "rank"  : prize name to display
+  ; "icon"  : ... not working?????
+  ; "group" : teamname to show
+  ; "name"  : member names to show
+  
+  
+  ; ex)
 
 [
     {
