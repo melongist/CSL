@@ -165,18 +165,87 @@ check and edit ~/dcm/config.js
 ---   
 
 #2021.10.18   
-#How to make spotboard's Awards Ceremony    
+#How to make spotboard's Awards Ceremony data    
     
 <pre>
 0. Stop spotboard npm    
-  - After Contest's 'End time', stop npm. ; Just DOMjudge reboot? OK!    
+  - After Contest's 'End time', stop npm.    
+  ; Just DOMjudge server reboot? OK!    
+  ; ex)
+  ; sudo reboot
+  ; + do not start DOMjudge judgehosts
+  ; + do not start spotboard npm
 1. Find submission id number after freeze time.    
-  - Find the 'ID' number just after 'Scoreboard freeze time' at admin's Submissions page. ; ex) 563 <- s563   
-2. 
+  - Login to admin page.
+  - Find the 'ID' number just after 'Scoreboard freeze time' at admin's Submissions page.    
+  ; ex) 563 <- s563   
+2. Set freeze time to end time temporarily.    
   - Set 'Scoreboard freeze time' to 'End time' temporarily, and save contest at admin's Contest edit page.   
-3. At spotboard domjudge-converter directory, run npm start, and make contest.json & runs.json to spotboard directory(.../dist/)
-4. Set Freeze time to original Freeze time, and save contest. It makes freezing scoreboard of domjudge.   
-5. Copy award_slide.json to .../dist/  from .../dist/sample  and edit award_slide.json to contest   
+  ; ex) 2021-10-16 12:00:00 Asia/Seoul -> 2021-10-16 12:30:00 Asia/Seoul    
+3. Run npm start once.    
+  - At spotboard domjudge-converter directory, run npm start.
+  ; ex)
+  ; cd dcm    
+  ; npm start   
+  ; ctrl+x (just wait... 1 or more refresh cycle time would be OK!)    
+  (This makes contest.json & runs.json files to .../spotboard/dist/ directory.)    
+4. Set freeze time to original freeze time.    
+  - Set 'Scoreboard freeze time' to original freeze time at admin's Contest edit page.   
+  ; ex) 2021-10-16 12:30:00 Asia/Seoul -> 2021-10-16 12:00:00 Asia/Seoul   
+  (This makes DOMjudge scoreboard freezing)
+5. Copy award_slide.json sample file.
+  - Copy sample award_slide.json file from .../spotboard/dist/sample/ to .../spotboard/dist/  
+  ; ex)
+  ; cd /var/www/html/spotboard/
+  ; sudo cp award_slide.json ../award_slide.json
+6. Edit award_slide.json file to the contest.    
+  ; ex)    
+
+[
+    {
+        "id": 21,
+        "rank": "456억 상",
+        "icon": "crown_gold",
+        "group": "쑥쑥코딩",
+        "name": "정00 박00"
+    },
+    {
+        "id": 25,
+        "rank": "오징어게임 상",
+        "icon": "crown_silver.png",
+        "group": "밤마니",
+        "name": "임00 정00"
+    },
+    {
+        "id": 33,
+        "rank": "무궁화꽃이 피었습니다 상",
+        "icon": "crown_bronze.png",
+        "group": "꼴찌-1",
+        "name": "이00 강00 장00"
+    },
+    {
+        "id": 15,
+        "rank": "달고나 상",
+        "icon": "crown_gold",
+        "group": "Sheep_Coding",
+        "name": "성00 이00"
+    },
+    {
+        "id": 23,
+        "rank": "구슬치기 상",
+        "icon": "award_star_gold_green",
+        "group": "벌써3년",
+        "name": "문00 송00 김00"
+    },
+    {
+        "id": 9,
+        "rank": "줄다리기 상",
+        "icon": "draw_star",
+        "group": "team-yul",
+        "name": "박00 신00"
+    }
+]
+
 6. From web browser ... .../spotboard/dist/?r=#1&award=true  and use "enter" & "esc" key to Ceremony   
 7. After Awards Ceremony ...   
 </pre>
