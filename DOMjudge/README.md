@@ -148,7 +148,7 @@ bash sbc070.sh
 domjudge-converter for domjudge installed!!
 Ver 2020.10.19
 
------- run npm start every reboot ------
+------ npm start every reboot ------
 run : cd dcm
 run : setsid npm start &
 Check spotboard!
@@ -166,10 +166,14 @@ check and edit ~/dcm/config.js
 
 #2021.10.18   
 #How to make spotboard's Awards Ceremony    
+    
 <pre>
-0. After 'End Time', stop npm. ; Just system reboot? OK!    
-1. Find the ID number just after 'Scoreboard freeze time' from admin's Submissions page. ; ex) 563 <- s563   
-2. Set Scoreboard freeze time to 'End time' temporarily, and save contest????????   
+0. Stop spotboard npm    
+  - After Contest's 'End time', stop npm. ; Just DOMjudge reboot? OK!    
+1. Find submission id number after freeze time.    
+  - Find the 'ID' number just after 'Scoreboard freeze time' at admin's Submissions page. ; ex) 563 <- s563   
+2. 
+  - Set 'Scoreboard freeze time' to 'End time' temporarily, and save contest at admin's Contest edit page.   
 3. At spotboard domjudge-converter directory, run npm start, and make contest.json & runs.json to spotboard directory(.../dist/)
 4. Set Freeze time to original Freeze time, and save contest. It makes freezing scoreboard of domjudge.   
 5. Copy award_slide.json to .../dist/  from .../dist/sample  and edit award_slide.json to contest   
