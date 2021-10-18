@@ -164,12 +164,12 @@ check and edit ~/dcm/config.js
 
 ---   
 
-#2020.11.16   
+#2021.10.18   
 #How to make spotboard's Awards Ceremony    
 <pre>
-0. After contest's End Time, stop "npm start" process   
-1. Find the submission ID number(#1) just after Freeze time, from admin's submissions menu    
-2. Set Freeze time to End time temporarily, and save contest   
+0. After contest's End Time, stop "npm start" process. ; Just system reboot? OK!    
+1. Find the ID number just after Scoreboard freeze time from admin's Submissions page. ; ex) 563 <- s563   
+2. Set Scoreboard freeze time to End time temporarily, and save contest????????   
 3. At spotboard domjudge-converter directory, run npm start, and make contest.json & runs.json to spotboard directory(.../dist/)
 4. Set Freeze time to original Freeze time, and save contest. It makes freezing scoreboard of domjudge.   
 5. Copy award_slide.json to .../dist/  from .../dist/sample  and edit award_slide.json to contest   
