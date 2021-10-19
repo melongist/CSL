@@ -208,11 +208,11 @@ check and edit ~/dcm/config.js
   ; meaning)
   ; "id"    : team ID at admin's Teams page
   ; "rank"  : prize name to display
-  ; "icon"  : ... not working?????
+  ; "icon"  : ... not working... but now I don't know why..  icon(*.png) path : .../spotboard/dist/img/award/
   ; "group" : teamname to show
   ; "name"  : member names to show
      
-  ; ex)
+  ; award_slide editing ex)
 
 [
     {
@@ -225,14 +225,14 @@ check and edit ~/dcm/config.js
     {
         "id": 25,
         "rank": "오징어게임 상",
-        "icon": "crown_silver.png",
+        "icon": "crown_silver",
         "group": "밤마니",
         "name": "임00 정00"
     },
     {
         "id": 33,
         "rank": "무궁화꽃이 피었습니다 상",
-        "icon": "crown_bronze.png",
+        "icon": "crown_bronze",
         "group": "꼴찌-1",
         "name": "이00 강00 장00"
     },
@@ -258,10 +258,6 @@ check and edit ~/dcm/config.js
         "name": "박00 신00"
     }
 ]
-     
-6. From web browser ... .../spotboard/dist/?r=#1&award=true  and use "enter" & "esc" key to Ceremony   
-
-7. After Awards Ceremony ...   
 </pre>
     
 #2021.10.19   
@@ -286,3 +282,8 @@ Options & variations
 ../spotboard/dist/?q                      <- query ??
 ../spotboard/dist/?t=4                    <— follow team number 4   
 </pre>
+     
+     
+     
+     
+     
