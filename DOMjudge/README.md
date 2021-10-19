@@ -1,4 +1,4 @@
-#21.09.24   
+#21.10.20   
 
 ---
 #DOMjudge 7.3.3 stable installation   
@@ -164,7 +164,7 @@ check and edit ~/dcm/config.js
 
 ---   
 
-#2021.10.19   
+#2021.10.20   
 #How to make spotboard's Awards Ceremony data    
     
 <pre>
@@ -260,7 +260,7 @@ check and edit ~/dcm/config.js
 ]
 </pre>
     
-#2021.10.19   
+#2021.10.20   
 #How to make spotboard's Awards Ceremony    
 <pre>
 0. Open web browser and clear spotboard's cache
@@ -275,21 +275,25 @@ check and edit ~/dcm/config.js
   ;    (When awarded screen passed by mistake, just click the teamname at leftside of spotboard.)
   
 
-Options & variations
+X. Spotboard scoreboard options & variations
+- usage
+../spotboard/dist/?q                              <- query
 
-../spotboard/dist/?q                      <- query ??
+- visual effect
+../spotboard/dist/?animation=false                <— flip/move animation off   
 
-../spotboard/dist/?animation=true         <— animation enable   
+- award ceremony
+../spotboard/dist/?award=true                     <— Awards Ceremony start   
+../spotboard/dist/?award=true&award_rank_begin=3  <— Awards Ceremony start from top rank 3, use with award=true   
 
-../spotboard/dist/?award=true             <— start Awards Ceremony mode   
-../spotboard/dist/?award_rank_begin=3     <— start Awards Ceremony mode from rank 3, use with award=true   
+- contest simulation
+../spotboard/dist/?r=1                            <— Contest simulation start from 1(first) submission     
+../spotboard/dist/?time=91                        <— Contest simulation start from 91 minutes after contest start time   
 
-../spotboard/dist/?r=1                    <— Contest simulation from 1(first) submission     
-../spotboard/dist/?time=91                <— Contest simulation from 91 minutes    
-    
-../spotboard/dist/?t=21                   <— follow #21 team   
-../spotboard/dist/?t=21&r=1               <— follow #21 team from submission 1   
-../spotboard/dist/?t=21&time=91           <— follow #21 team from 91 minutes   
+- one team trace
+../spotboard/dist/?t=21                           <— trace #21 team   
+../spotboard/dist/?t=21&r=1                       <— trace #21 team from submission 1 in simulation   
+../spotboard/dist/?t=21&time=91                   <— trace #21 team from 91 minutes in sumulation
 
 
 </pre>
