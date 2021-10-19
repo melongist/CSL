@@ -285,11 +285,11 @@ Options & variations
 ../spotboard/dist/?award_rank_begin=3     <— start Awards Ceremony mode from rank 3, use with award=true   
 
 ../spotboard/dist/?r=1                    <— Contest simulation from 1(first) submission     
-../spotboard/dist/?time=60                <— Contest simulation from 60 minutes    
+../spotboard/dist/?time=91                <— Contest simulation from 91 minutes    
     
 ../spotboard/dist/?t=21                   <— follow #21 team   
 ../spotboard/dist/?t=21&r=1               <— follow #21 team from submission 1   
-../spotboard/dist/?t=21&time=60           <— follow #21 team from 60 minutes   
+../spotboard/dist/?t=21&time=91           <— follow #21 team from 91 minutes   
 
 
 </pre>
