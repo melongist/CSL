@@ -274,14 +274,24 @@ check and edit ~/dcm/config.js
   ; Use 'ESC' key to escape award screen.
   ;    (When awarded screen passed by mistake, just click the teamname at leftside of spotboard.)
   
+
 Options & variations
-../spotboard/dist/?r=1                    <— start from 1(first) submission     
-../spotboard/dist/?time=2                 <— start from 2 minutes after contest start.    
+
+../spotboard/dist/?q                      <- query ??
+
+../spotboard/dist/?animation=true         <— animation enable   
+
 ../spotboard/dist/?award=true             <— start Awards Ceremony mode   
 ../spotboard/dist/?award_rank_begin=3     <— start Awards Ceremony mode from rank 3, use with award=true   
-../spotboard/dist/?animation=true         <— animation enabled   
-../spotboard/dist/?q                      <- query ??
-../spotboard/dist/?t=4                    <— follow team number 4   
+
+../spotboard/dist/?r=1                    <— Contest simulation from 1(first) submission     
+../spotboard/dist/?time=60                <— Contest simulation from 60 minutes    
+    
+../spotboard/dist/?t=21                   <— follow #21 team   
+../spotboard/dist/?t=21&r=1               <— follow #21 team from submission 1   
+../spotboard/dist/?t=21&time=60           <— follow #21 team from 60 minutes   
+
+
 </pre>
      
      
