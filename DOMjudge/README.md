@@ -270,7 +270,7 @@ check and edit ~/dcm/config.js
   ; http://gtpc.kr/spotboard/dist/?r=563&award=true
 
 2. Use enter & ESC key
-  ; Use 'enter' key to next team opening.
+  ; Use 'enter' or ';' or '→' key to next team opening.
   ; Use 'ESC' key to escape award screen.
   
 Options & variations
