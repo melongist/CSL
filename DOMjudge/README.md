@@ -164,7 +164,7 @@ check and edit ~/dcm/config.js
 
 ---   
 
-#2021.10.18   
+#2021.10.19   
 #How to make spotboard's Awards Ceremony data    
     
 <pre>
@@ -175,13 +175,16 @@ check and edit ~/dcm/config.js
   ; sudo reboot
   ; + do not start DOMjudge judgehosts
   ; + do not start spotboard npm
+     
 1. Find submission id number after freeze time.    
   - Login to admin page.
   - Find the 'ID' number just after 'Scoreboard freeze time' at admin Submissions page.    
   ; ex) 563 <- s563   
+     
 2. Set freeze time to end time temporarily.    
   - Set 'Scoreboard freeze time' to 'End time' temporarily, and save contest at admin Contest edit page.   
   ; ex) 2021-10-16 12:00:00 Asia/Seoul -> 2021-10-16 12:30:00 Asia/Seoul    
+     
 3. Run npm start once.    
   - At spotboard domjudge-converter directory, run npm start.
   ; ex)
@@ -189,15 +192,18 @@ check and edit ~/dcm/config.js
   ; npm start   
   ; ctrl+x (just wait... 1 or more refresh cycle time would be OK!)    
   (This makes contest.json & runs.json files to .../spotboard/dist/ directory.)    
+     
 4. Set freeze time to original freeze time.    
   - Set 'Scoreboard freeze time' to original freeze time at admin Contest edit page.   
   ; ex) 2021-10-16 12:30:00 Asia/Seoul -> 2021-10-16 12:00:00 Asia/Seoul   
   (This makes DOMjudge scoreboard freezing)
+     
 5. Copy award_slide.json sample file.
   - Copy sample award_slide.json file from .../spotboard/dist/sample/ to .../spotboard/dist/  
   ; ex)
   ; cd /var/www/html/spotboard/
   ; sudo cp award_slide.json ../award_slide.json
+     
 6. Edit award_slide.json file to the contest.    
   ; meaning)
   ; "id"    : team ID at admin's Teams page
@@ -205,8 +211,7 @@ check and edit ~/dcm/config.js
   ; "icon"  : ... not working?????
   ; "group" : teamname to show
   ; "name"  : member names to show
-  
-  
+     
   ; ex)
 
 [
@@ -253,19 +258,31 @@ check and edit ~/dcm/config.js
         "name": "박00 신00"
     }
 ]
-
+     
 6. From web browser ... .../spotboard/dist/?r=#1&award=true  and use "enter" & "esc" key to Ceremony   
+
 7. After Awards Ceremony ...   
 </pre>
-
-#spotboard index.html addon options    
-You need to clear web browser's cache to see it properly   
+    
+#2021.10.19   
+#How to make spotboard's Awards Ceremony    
 <pre>
-../spotboard/dist/?r=#1            <— start from #1 submission     
-../spotboard/dist/?time=#2         <— start after #2 time(minutes)     
-../spotboard/dist/?award=true      <— start Awards Ceremony mode   
-../spotboard/dist/?award_rank_begin=#3     <— start Awards Ceremony mode from rank #3, must use with award=true   
-../spotboard/dist/?animation=true  <— animation enable   
-../spotboard/dist/?q               <- query ??
-../spotboard/dist/?t=#4            <— follow team number #4   
+0. Open web browser and clear spotboard's cache
+    
+1. Open spotboard's Awards Ceremony URL
+  ; ex)
+  ; http://gptc.kr/spotboard/dist/?r=563&award=true
+
+2. Use enter & ESC key
+  ; Use 'enter' key to next team opening.
+  ; Use 'ESC' key to escape award screen.
+  
+Options & variations
+../spotboard/dist/?r=1                    <— start from 1(first) submission     
+../spotboard/dist/?time=2                 <— start from 2 minutes after contest start.    
+../spotboard/dist/?award=true             <— start Awards Ceremony mode   
+../spotboard/dist/?award_rank_begin=3     <— start Awards Ceremony mode from rank 3, use with award=true   
+../spotboard/dist/?animation=true         <— animation enabled   
+../spotboard/dist/?q                      <- query ??
+../spotboard/dist/?t=4                    <— follow team number 4   
 </pre>
