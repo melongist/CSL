@@ -272,6 +272,7 @@ check and edit ~/dcm/config.js
 2. Use enter & ESC key
   ; Use 'enter' or ';' or '→' key to next team opening.
   ; Use 'ESC' key to escape award screen.
+  ;    (When awarded screen passed by mistake, just click the teamname at leftside of spotboard.)
   
 Options & variations
 ../spotboard/dist/?r=1                    <— start from 1(first) submission     
