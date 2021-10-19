@@ -208,7 +208,7 @@ check and edit ~/dcm/config.js
   ; meaning)
   ; "id"    : team ID at admin's Teams page
   ; "rank"  : prize name to display
-  ; "icon"  : ... not working... but now I don't know why..  icon(*.png) path : .../spotboard/dist/img/award/
+  ; "icon"  : ... not working... but I don't know why now.  icon(*.png) path : .../spotboard/dist/img/award/
   ; "group" : teamname to show
   ; "name"  : member names to show
      
