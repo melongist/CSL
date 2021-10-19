@@ -271,7 +271,7 @@ check and edit ~/dcm/config.js
     
 1. Open spotboard's Awards Ceremony URL
   ; ex)
-  ; http://gptc.kr/spotboard/dist/?r=563&award=true
+  ; http://gtpc.kr/spotboard/dist/?r=563&award=true
 
 2. Use enter & ESC key
   ; Use 'enter' key to next team opening.
