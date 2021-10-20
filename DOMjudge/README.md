@@ -299,6 +299,13 @@ X. Spotboard scoreboard options & variations
 </pre>
      
      
-     
+---   
+
+#2021.10.20   
+#nodejs & npm update commands   
+<pre><code>
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/nnupdate.sh
+bash nnupdate.sh
+</code></pre>
      
      
