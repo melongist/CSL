@@ -4,7 +4,7 @@
 #https://github.com/spotboard/domjudge-converter
 
 
-#domjudge converter for spotboard 0.6.0 for domjudge7.4.0.dev + Ubuntu 20.04 LTS Server
+#domjudge converter for spotboard 0.6.0 for domjudge7.3.3 + Ubuntu 20.04 LTS Server
 
 #terminal commands to install domjudge converter
 #wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/sbc.sh
