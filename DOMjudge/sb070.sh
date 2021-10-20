@@ -4,7 +4,7 @@
 #https://github.com/spotboard/spotboard
 
 
-#spotboard 0.7.0 for domjudge7.4.0.dev + Ubuntu 20.04 LTS Server
+#spotboard 0.7.0 for domjudge7.3.3 + Ubuntu 20.04 LTS Server
 
 #terminal commands to install spotboard webapp
 #wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/sb070.sh
