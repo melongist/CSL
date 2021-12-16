@@ -35,6 +35,7 @@ sudo sed -i "s/Jury/대회운영/" /opt/domjudge/domserver/webapp/templates/publ
 
 #login
 sudo sed -i "s/Please sign in/로그인하세요./" /opt/domjudge/domserver/webapp/templates/security/login.html.twig
+sudo sed -i "s/\"submit\">Sign in/\"submit\">로그인/" /opt/domjudge/domserver/webapp/templates/security/login.html.twig
 
 #login/logout button
 sudo sed -i "s/i> Logout/i> 로그아웃/" /opt/domjudge/domserver/webapp/templates/partials/menu_login_logout_button.html.twig
@@ -101,6 +102,11 @@ sudo sed -i "s/Submit/채점 제출/" /opt/domjudge/domserver/webapp/templates/t
 sudo sed -i "s/Contest has not yet started - cannot submit./대회가 아직 시작되지 않았습니다. - 채점을 제출할 수 없습니다./" /opt/domjudge/domserver/webapp/templates/team/submit_modal.html.twig
 sudo sed -i "s/>Close/>취소/" /opt/domjudge/domserver/webapp/templates/team/submit_modal.html.twig
 sudo sed -i "s/>Cancel/>취소/" /opt/domjudge/domserver/webapp/templates/team/submit_modal.html.twig
+
+#team clarification add modal
+sudo sed -i "s/Send clarification request/질문 또는 요청하기/" /opt/domjudge/domserver/webapp/templates/team/clarification_add_modal.html.twig
+sudo sed -i "s/Cancel/취소/" /opt/domjudge/domserver/webapp/templates/team/clarification_add_modal.html.twig
+sudo sed -i "s/> Send/> 보내기/" /opt/domjudge/domserver/webapp/templates/team/clarification_add_modal.html.twig
 
 #team partials index_content
 sudo sed -i "s/Welcome team/환영합니다./" /opt/domjudge/domserver/webapp/templates/team/partials/index_content.html.twig
