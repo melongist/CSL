@@ -24,11 +24,11 @@ echo ""
 #CPU(s)
 echo "CPU(s)"
 lscpu | grep "^CPU(s)"
-CPUS = $(lscpu | grep "^CPU(s)"|awk  '{print $2}')
+CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 
 #Thread(s) per core
 lscpu | grep "Thread(s) per core"
-CORES = $(lscpu | grep "Thread(s) per core"|awk  '{print $4}')
+CORES=$(lscpu | grep "Thread(s) per core"|awk  '{print $4}')
 
 echo ""
 echo "Starting create cgroups..."
@@ -42,7 +42,7 @@ echo "start judgedaemon-run..."
 sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
 echo "judgedaemon-run started!"
 #multiple judgedaemons
-for i in {0..(CPUS-1)}
+for ((i=0; i<$CPUS; i++));
 do
   echo "start judgedaemon-run-$i..."
   sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n $i &

@@ -21,10 +21,6 @@ fi
 
 cd
 
-#change your timezone
-#for South Korea's timezone
-sudo timedatectl set-timezone 'Asia/Seoul'
-
 sudo apt update
 sudo apt -y upgrade
 
@@ -65,8 +61,8 @@ sudo make install-judgehost
 #judgehosts
 #defaul judgedaemons
 sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
-#multiple judgedaemons
-for i in {0..63}
+#multiple judgedaemons, max 64
+for ((i=0; i<64; i++));
 do
   sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-$i
 done
@@ -84,17 +80,18 @@ if [ -f /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
   sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295\"#GRUB_CMDLINE_LINUX_DEFAULT=\"quiet cgroup_enable=memory swapaccount=1 isolcpus=2\"#" /etc/default/grub.d/50-cloudimg-settings.cfg
 fi
 
-#make docs?
+#make docs
 sudo apt -y install python3-sphinx python3-sphinx-rtd-theme rst2pdf fontconfig python3-yaml
 make docs
 sudo make install-docs
 
 sudo update-grub
 
+#make chroot
 #default
 #sudo /opt/domjudge/judgehost/bin/dj_make_chroot
 
-#default(C,C++,Python,...)+JavaScript,R,swift
+#default + JavaScript,R,swift
 echo 'y' | sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base,swift
 
 
@@ -107,12 +104,15 @@ echo "" | tee -a domjudge.txt
 echo "DOMjudge 7.3.4 stable 21.11.22" | tee -a domjudge.txt
 echo "judgehosts installed!!" | tee -a domjudge.txt
 echo "" | tee -a domjudge.txt
-echo "------ Run judgedamons after every reboot ------" | tee -a domjudge.txt
-echo "sudo /opt/domjudge/judgehost/bin/create_cgroups" | tee -a domjudge.txt
-#added for R    ... DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1
-echo "sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &" | tee -a domjudge.txt
-echo "sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n 0 &" | tee -a domjudge.txt
-echo "sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n 1 &" | tee -a domjudge.txt
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/djstart.sh
+echo "------ Run judgehosts script after every reboot ------" | tee -a domjudge.txt
+echo "bash djstart.sh" | tee -a domjudge.txt
+echo "" | tee -a domjudge.txt
+echo "" | tee -a domjudge.txt
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/djclear.sh
+echo "------ Run DOMjudge cache clearing script when needed ------" | tee -a domjudge.txt
+echo "bash djclear.sh" | tee -a domjudge.txt
+echo "" | tee -a domjudge.txt
 echo "" | tee -a domjudge.txt
 echo "------ etc ------" | tee -a domjudge.txt
 echo "How to kill some judgedaemon processe?" | tee -a domjudge.txt
@@ -131,4 +131,5 @@ echo "---- system reboot needed! ----"
 echo "After rebooted, read domjudge.txt"
 echo "use 'sudo reboot'"
 sudo sleep 10
+echo "system rebooted!"
 sudo reboot
