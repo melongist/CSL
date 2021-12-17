@@ -62,11 +62,14 @@ cd domjudge-7.3.4
 make judgehost
 sudo make install-judgehost
 
-#default judgehost
-#more judgehost... you can add more judgehosts by .... domjudge-run-X
+#judgehosts
+#defaul judgedaemons
 sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
-sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-0
-sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-1
+#multiple judgedaemons
+for i in {0..63}
+do
+  sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-$i
+done
 
 sudo cp /opt/domjudge/judgehost/etc/sudoers-domjudge /etc/sudoers.d/
 sudo chmod 0440 /etc/sudoers.d/sudoers-domjudge
@@ -124,11 +127,8 @@ echo "" | tee -a domjudge.txt
 chmod 660 domjudge.txt
 echo "Saved as domjudge.txt"
 echo ""
-echo "---- system reboot ----"
-echo ""
-echo "Waiting 5 seconds..."
+echo "---- system reboot needed! ----"
 echo "After rebooted, read domjudge.txt"
-echo "cat comjudge.txt"
-sleep 5
-echo "system rebooted"
-reboot
+echo "use 'sudo reboot'"
+sudo sleep 10
+sudo reboot
