@@ -52,5 +52,8 @@ done
 echo ""
 echo ""
 
-echo "DOMjudge judgedamons started!"
+echo "CPU(s)"
+lscpu | grep "^CPU(s)"
+lscpu | grep "Thread(s) per core"
+echo "$CPUS judgedamons started!"
 echo ""
