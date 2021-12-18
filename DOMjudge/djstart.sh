@@ -22,7 +22,6 @@ echo "DOMjudge webserver cache cleared!"
 
 echo ""
 #CPU(s)
-echo "CPU(s)"
 lscpu | grep "^CPU(s)"
 CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 
@@ -38,10 +37,10 @@ echo "create cgroups started!"
 echo ""
 echo "Starting judgedaemon..."
 #default judgedaemon
-echo "start judgedaemon-run..."
-sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
-echo "judgedaemon-run started!"
-#multiple judgedaemons
+#echo "start judgedaemon-run..."
+#sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
+#echo "judgedaemon-run started!"
+#multiple judgedaemons, bound to a core, max 64
 for ((i=0; i<$CPUS; i++));
 do
   echo "start judgedaemon-run-$i..."
@@ -52,7 +51,7 @@ done
 echo ""
 echo ""
 
-echo "CPU(s)"
+echo "CPU information"
 lscpu | grep "^CPU(s)"
 lscpu | grep "Thread(s) per core"
 echo "$CPUS judgedamons started!"

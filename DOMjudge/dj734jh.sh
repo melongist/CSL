@@ -60,8 +60,8 @@ sudo make install-judgehost
 
 #judgehosts
 #defaul judgedaemons
-sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
-#multiple judgedaemons, max 64
+#sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
+#multiple judgedaemons, bound to a core, max 64
 for ((i=0; i<64; i++));
 do
   sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-$i
@@ -97,6 +97,9 @@ echo 'y' | sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base,swif
 
 sudo apt -y autoremove
 
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/djstart.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/djclear.sh
+
 clear
 
 cd
@@ -104,15 +107,11 @@ echo "" | tee -a domjudge.txt
 echo "DOMjudge 7.3.4 stable 21.11.22" | tee -a domjudge.txt
 echo "judgehosts installed!!" | tee -a domjudge.txt
 echo "" | tee -a domjudge.txt
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/djstart.sh
 echo "------ Run judgehosts script after every reboot ------" | tee -a domjudge.txt
 echo "bash djstart.sh" | tee -a domjudge.txt
 echo "" | tee -a domjudge.txt
-echo "" | tee -a domjudge.txt
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/djclear.sh
 echo "------ Run DOMjudge cache clearing script when needed ------" | tee -a domjudge.txt
 echo "bash djclear.sh" | tee -a domjudge.txt
-echo "" | tee -a domjudge.txt
 echo "" | tee -a domjudge.txt
 echo "------ etc ------" | tee -a domjudge.txt
 echo "How to kill some judgedaemon processe?" | tee -a domjudge.txt
