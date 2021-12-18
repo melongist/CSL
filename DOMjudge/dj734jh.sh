@@ -60,7 +60,7 @@ sudo make install-judgehost
 
 #judgehosts
 #defaul judgedaemons
-#sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
+sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
 #multiple judgedaemons, bound to a core, max 64
 for ((i=0; i<64; i++));
 do
@@ -96,9 +96,6 @@ echo 'y' | sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base,swif
 
 
 sudo apt -y autoremove
-
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/djstart.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/djclear.sh
 
 clear
 
