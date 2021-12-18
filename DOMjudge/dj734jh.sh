@@ -59,8 +59,8 @@ make judgehost
 sudo make install-judgehost
 
 #judgehosts
-#defaul judgedaemons
-#sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
+#defaul judgedaemon
+sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
 #multiple judgedaemons, bound to a core, max 64
 for ((i=0; i<64; i++));
 do
@@ -122,10 +122,5 @@ echo "sudo /opt/domjudge/domserver/webapp/bin/console cache:clear" | tee -a domj
 echo "" | tee -a domjudge.txt
 chmod 660 domjudge.txt
 echo "Saved as domjudge.txt"
-echo ""
-echo "---- system reboot needed! ----"
-echo "After rebooted, read domjudge.txt"
-echo "use 'sudo reboot'"
-sudo sleep 10
-echo "system rebooted!"
-sudo reboot
+
+

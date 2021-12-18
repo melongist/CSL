@@ -145,7 +145,16 @@ echo "admin ID : admin" | tee -a domjudge.txt
 echo "admin PW : $PASSWORD" | tee -a domjudge.txt
 echo ""
 echo "admin PW saved as domjudge.txt"
-echo "Next step : installing judgehosts"
+echo "Next step : judgehosts installing"
 echo ""
 echo ""
 
+bash dj734jh.sh
+
+echo ""
+echo "---- system reboot needed! ----"
+echo "After rebooted, read domjudge.txt"
+echo "use 'sudo reboot'"
+sudo sleep 10
+echo "system rebooted!"
+sudo reboot
