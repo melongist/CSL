@@ -62,6 +62,14 @@ sudo apt -y install libcgroup-dev
 sudo apt -y install libcurl4-openssl-dev
 sudo apt -y install libjsoncpp-dev
 
+
+#scripts set download
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734jh.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734kr.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734start.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734clear.sh
+
+
 #DOMjudge 7.3.4 stable
 #wget https://www.domjudge.org/releases/domjudge-7.3.4.tar.gz
 #tar xvf domjudge-7.3.4.tar.gz
