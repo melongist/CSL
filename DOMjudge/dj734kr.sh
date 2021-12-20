@@ -88,6 +88,12 @@ sudo sed -i "s/Tried, pending/채점 대기중/" /opt/domjudge/domserver/webapp/
 sudo sed -i "s/Untried/미제출/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/Cell colours/색상별 의미/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 
+sudo sed -i "s/>Categories/>구분/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
+sudo sed -i "s/>\'Observers/>'연습 참가/" /opt/domjudge/domserver/webapp/src/DataFixtures/TeamCategoryFixture.php
+sudo sed -i "s/>\'Participants/>'정식 참가/" /opt/domjudge/domserver/webapp/src/DataFixtures/TeamCategoryFixture.php
+sudo sed -i "s/>\'Organisation/>'조직 및 기관/" /opt/domjudge/domserver/webapp/src/DataFixtures/TeamCategoryFixture.php
+
+
 #team menu
 sudo sed -i "s/DOMjudge/${OJNAME}/" /opt/domjudge/domserver/webapp/templates/team/menu.html.twig
 sudo sed -i "s/> Home/> 처음화면/" /opt/domjudge/domserver/webapp/templates/team/menu.html.twig
@@ -138,6 +144,14 @@ sudo sed -i "s/Main source file:/소스 파일:/" /opt/domjudge/domserver/webapp
 sudo sed -i "s/Problem:/문제:/" /opt/domjudge/domserver/webapp/templates/team/partials/submit_scripts.html.twig
 sudo sed -i "s/Language:/프로그래밍언어:/" /opt/domjudge/domserver/webapp/templates/team/partials/submit_scripts.html.twig
 sudo sed -i "s/Make submission?/제출하시겠습니까?/" /opt/domjudge/domserver/webapp/templates/team/partials/submit_scripts.html.twig
+
+#etc scripts
+sudo sed -i "s/Submission done\! Watch for the verdict in the list below./채점이 제출되었습니다\! 화면 새로 고침 후, 채점 결과를 확인해주세요./" /opt/domjudge/domserver/webapp/src/Controller/Team/SubmissionController.php
+sudo sed -i "s/No file selected/파일 선택/" /opt/domjudge/domserver/webapp/templates/form_theme.html.twig
+sudo sed -i "s/Select a problem/문제 선택/" /opt/domjudge/domserver/webapp/src/Form/Type/SubmitProblemType.php
+sudo sed -i "s/Select a language/프로그래밍언어 선택/" /opt/domjudge/domserver/webapp/src/Form/Type/SubmitProblemType.php
+
+
 
 #clearing DOMjudge webserver cache
 sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
