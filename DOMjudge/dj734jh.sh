@@ -105,10 +105,10 @@ echo "DOMjudge 7.3.4 stable 21.11.22" | tee -a domjudge.txt
 echo "judgehosts installed!!" | tee -a domjudge.txt
 echo "" | tee -a domjudge.txt
 echo "------ Run judgehosts script after every reboot ------" | tee -a domjudge.txt
-echo "bash djstart.sh" | tee -a domjudge.txt
+echo "bash dj734start.sh" | tee -a domjudge.txt
 echo "" | tee -a domjudge.txt
 echo "------ Run DOMjudge cache clearing script when needed ------" | tee -a domjudge.txt
-echo "bash djclear.sh" | tee -a domjudge.txt
+echo "bash dj734clear.sh" | tee -a domjudge.txt
 echo "" | tee -a domjudge.txt
 echo "------ etc ------" | tee -a domjudge.txt
 echo "How to kill some judgedaemon processe?" | tee -a domjudge.txt
