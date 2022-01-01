@@ -62,7 +62,7 @@ sudo make install-judgehost
 #defaul judgedaemon
 sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
 #multiple judgedaemons, bound to a core, max 64
-for ((i=0; i<64; i++));
+for ((i=0; i<128; i++));
 do
   sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-$i
 done
