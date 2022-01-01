@@ -62,14 +62,6 @@ sudo apt -y install libcgroup-dev
 sudo apt -y install libcurl4-openssl-dev
 sudo apt -y install libjsoncpp-dev
 
-
-#scripts set download
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734jh.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734kr.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734start.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734clear.sh
-
-
 #DOMjudge 7.3.4 stable
 #wget https://www.domjudge.org/releases/domjudge-7.3.4.tar.gz
 #tar xvf domjudge-7.3.4.tar.gz
@@ -130,12 +122,12 @@ sudo mv index.html /var/www/html/
 
 sudo apt -y autoremove
 
-#clear
 
 PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
 
 echo "" | tee -a domjudge.txt
 echo "DOMjudge 7.3.4 stable 21.11.22" | tee -a domjudge.txt
+echo "" | tee -a domjudge.txt
 echo "DOMserver installed!!" | tee -a domjudge.txt
 echo "" | tee -a domjudge.txt
 echo "Check below to access DOMserver's web interface!" | tee -a domjudge.txt
@@ -144,17 +136,48 @@ echo "http://localhost/domjudge/" | tee -a domjudge.txt
 echo "admin ID : admin" | tee -a domjudge.txt
 echo "admin PW : $PASSWORD" | tee -a domjudge.txt
 echo ""
-echo "admin PW saved as domjudge.txt"
-echo "Next step : judgehosts installing"
-echo ""
-echo ""
+
+#scripts set download
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734jh.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734kr.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734start.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734clear.sh
 
 bash dj734jh.sh
 
-echo ""
-echo "---- system reboot needed! ----"
-echo "After rebooted, read domjudge.txt"
-echo "use 'sudo reboot'"
-sudo sleep 10
-echo "system rebooted!"
+echo "" | tee -a domjudge.txt
+echo "judgehosts installed!!" | tee -a domjudge.txt
+echo "" | tee -a domjudge.txt
+echo "" | tee -a domjudge.txt
+echo "------ Run judgehosts script after every reboot ------" | tee -a domjudge.txt
+echo "bash dj734start.sh" | tee -a domjudge.txt
+echo "" | tee -a domjudge.txt
+echo "------ Run DOMjudge cache clearing script when needed ------" | tee -a domjudge.txt
+echo "bash dj734clear.sh" | tee -a domjudge.txt
+echo "" | tee -a domjudge.txt
+echo "------ etc ------" | tee -a domjudge.txt
+echo "How to kill some judgedaemon processe?" | tee -a domjudge.txt
+echo "ps -ef, and find PID# of judgedaemon, run : sudo kill -15 PID#" | tee -a domjudge.txt
+echo "" | tee -a domjudge.txt
+echo "How to clear domserver web cache?" | tee -a domjudge.txt
+echo "sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*" | tee -a domjudge.txt
+echo "" | tee -a domjudge.txt
+echo "How to clear DOMjudge cache??" | tee -a domjudge.txt
+echo "sudo /opt/domjudge/domserver/webapp/bin/console cache:clear" | tee -a domjudge.txt
+echo "" | tee -a domjudge.txt
+chmod 660 domjudge.txt
+echo "Saved as domjudge.txt"
+
+echo ''
+echo 'System will be rebooted in 20 seconds!'
+echo ''
+COUNT=20
+while [ $COUNT -ge 0 ]
+do
+  echo $COUNT
+  ((COUNT--))
+  sleep 1
+done
+echo 'rebooted!'
+sleep 5
 sudo reboot

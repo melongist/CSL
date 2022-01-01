@@ -96,31 +96,3 @@ echo 'y' | sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base,swif
 
 
 sudo apt -y autoremove
-
-clear
-
-cd
-echo "" | tee -a domjudge.txt
-echo "DOMjudge 7.3.4 stable 21.11.22" | tee -a domjudge.txt
-echo "judgehosts installed!!" | tee -a domjudge.txt
-echo "" | tee -a domjudge.txt
-echo "------ Run judgehosts script after every reboot ------" | tee -a domjudge.txt
-echo "bash dj734start.sh" | tee -a domjudge.txt
-echo "" | tee -a domjudge.txt
-echo "------ Run DOMjudge cache clearing script when needed ------" | tee -a domjudge.txt
-echo "bash dj734clear.sh" | tee -a domjudge.txt
-echo "" | tee -a domjudge.txt
-echo "------ etc ------" | tee -a domjudge.txt
-echo "How to kill some judgedaemon processe?" | tee -a domjudge.txt
-echo "ps -ef, and find PID# of judgedaemon, run : sudo kill -15 PID#" | tee -a domjudge.txt
-echo "" | tee -a domjudge.txt
-echo "How to clear domserver web cache?" | tee -a domjudge.txt
-echo "sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*" | tee -a domjudge.txt
-echo "" | tee -a domjudge.txt
-echo "How to clear DOMjudge cache??" | tee -a domjudge.txt
-echo "sudo /opt/domjudge/domserver/webapp/bin/console cache:clear" | tee -a domjudge.txt
-echo "" | tee -a domjudge.txt
-chmod 660 domjudge.txt
-echo "Saved as domjudge.txt"
-
-
