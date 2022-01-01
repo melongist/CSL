@@ -1,16 +1,16 @@
-#21.10.20   
+#21.01.02   
 
 ---
-#DOMjudge 7.3.3 stable installation   
+#DOMjudge 7.3.4 stable auto installation   
 <https://www.domjudge.org/>   
 
 #Prerequisite
 - Ubuntu 20.04 LTS Server/Desktop installed (AWS OK)   
 
-#Installation commands
+#Auto installation commands and steps...
 <pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj733dj.sh
-bash dj733dj.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734dj.sh
+bash dj734dj.sh
 </code></pre>
 #While installing...   
 <pre><code>
@@ -19,7 +19,7 @@ Enter current password for root (enter for none) :    // <- Enter
 ...   
 Switch to unix_socket autentication [Y/n] :           // <- n   
 ...   
-Change the root password? [Y/n] :                     // <- y      //You must change mariaDB's root password!    
+Change the root password? [Y/n] :                     // <- y      //You must! change mariaDB's root password!    
 New password:                                         // <- ????   //Enter new password!!    <- #1    
 RE-enter new password:                                // <-        //Repeat new password!!    
 ...   
@@ -32,69 +32,77 @@ Remove test database and access to it? [Y/n] :        // <- y
 Reload privilege tables now? [Y/n] :                  // <- y   
 ...   
 Database credentials read from '/opt/domjudge/domserver/etc/dbpasswords.secret'.   
-Enter password:                                       // <- ????   //Enter your new (#1) password!!    
+Enter password:                                       // <- ????   //Enter new (#1) password!!    
 DOMjudge database and user(s) created.   
-Enter password:                                       // <- ????   //Enter your new (#1) password!!    
+Enter password:                                       // <- ????   //Enter new (#1) password!!    
 ...   
+Sytem will be rebooted in 20 seconds!    
+20    
+19   
+.     
+.    
 </code></pre>
-#After DOMserver installed.
-<pre><code>
-DOMjudge 7.3.3 stable 21.04.05    
-DOMserver installed!!    
     
-Check below to access DOMserver's web interface!    
-------    
+#After rebooted    
+#To start judgehosts...
+<pre><code>
+bash dj734start.sh    
+</code></pre>
+A number of judgehosts will be automatically started by CPU cores...   
+    
+#To check DOMjudge admin password...
+<pre><code>
+cat domjudge.txt    
+</code></pre>
+DOMjudge admin password saved as domjudge.txt   
+    
+...    
 http://localhost/domjudge/    
 admin ID : admin    
 admin PW : ????????????????    
+...    
     
-admin PW saved as domjudge.txt.   
-Next step : installing judgehosts    
-    
-</code></pre>
----
-#DOMjudge judgehosts installation   
-<https://www.domjudge.org/>   
 
-#Prerequisite
-- DOMjudge(server) installed   
-
-#Installation commands to install judgehosts at the same DOMserver   
-#with default 1 judgehost + 2 more judgehosts
-<pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj733jh.sh
-bash dj733jh.sh
-</code></pre>
-
-#After judgehosts installed    
-<pre><code>
-    
-DOMjudge 7.3.3 stable 21.04.05    
-judgehosts installed!!    
-    
------- Run judgedamons after every reboot ------    
-sudo /opt/domjudge/judgehost/bin/create_cgroups    
-sudo -u ubuntu DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &    
-sudo -u ubuntu DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n 0 &    
-sudo -u ubuntu DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n 1 &    
-    
------- etc ------    
-For swift! Check/Edit comple script below at Admin page    
+#For swiftc!    
+Check/Edit complie script at Admin page    
 Admin page - Languages - swift - "Compile script  swift" - "View file contents" - Edit    
 ...    
 swiftc -O -module-cache-path "./" -static-executable -static-stdlib -o "$DEST" $SOURCES"    
 ...    
     
-How to kill some judgedaemon processe?    
-ps -ef, and find pid# of judgedaemon, run : kill -15 pid#    
     
-How to domserver http web cache reset?    
-sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*    
-
-Saved as domjudge.txt    
-reboot and read domjudge.txt    
+    
+#Korean patch for korean middle & high students    
+#Korean language for participants...    
+<pre><code>
+bash dj734kr.sh
+</code></pre>
+    
      
-</code></pre>    
+
+#To domserver http web cache clearing    
+<pre><code>
+bash dj734clear.sh
+</code></pre>
+    
+    
+#To kill some judgedaemon processe    
+<pre><code>
+ps -ef, and find pid# of judgedaemon, run : kill -15 pid#    
+</code></pre>
+    
+#To clear domserver web cache    
+<pre><code>
+sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
+</code></pre>
+    
+#To clear DOMjudge cache    
+<pre><code>
+sudo /opt/domjudge/domserver/webapp/bin/console cache:clear    
+</code></pre>
+        
+     
+        
 ---
 #spotboard for domjudge   
 <https://github.com/spotboard/spotboard>
