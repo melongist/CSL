@@ -12,7 +12,7 @@
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734dj.sh
 bash dj734dj.sh
 </code></pre>
-#While installing...   
+   
 <pre><code>
 ...   
 Enter current password for root (enter for none) :    // <- Enter   
