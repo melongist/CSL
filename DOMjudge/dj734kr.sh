@@ -17,10 +17,12 @@ if [[ $SUDO_USER ]] ; then
   exit 1
 fi
 
+clear
 
 INPUTS="n"
 echo -n "Rename DOMjudge logo name? [y/n]: "
 read INPUTS
+echo ""
 if [ ${INPUTS} == "y" ] ; then
   OJNAME="o"
   INPUTS="x"
@@ -163,7 +165,9 @@ sudo sed -i "s/Select a language/프로그래밍언어 선택/" /opt/domjudge/do
 sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
 
 echo "DOMjudge 7.3.4 stable 21.11.22"
-echo "DOMjudge korean patch for beginner installed!(but not for admin)"
+echo "DOMjudge participants' korean interface installed!"
+echo "For korean middle & high students."
+echo ""
 echo "Check DOMserver's web interface!"
 echo "------"
 echo "http://localhost/domjudge/"
