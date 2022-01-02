@@ -34,6 +34,8 @@ if [ ${INPUTS} == "y" ] ; then
   done
 fi
 
+echo ""
+
 #menu
 sudo sed -i "s/DOMjudge/${OJNAME}/" /opt/domjudge/domserver/webapp/templates/public/menu.html.twig
 sudo sed -i "s/Scoreboard/점수/" /opt/domjudge/domserver/webapp/templates/public/menu.html.twig
