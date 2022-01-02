@@ -53,7 +53,46 @@ bash dj734start.sh
 </code></pre>
 A number of judgehosts will be automatically started by CPU cores...    
     
+<pre><code>
+
+ // Clearing the cache for the prod environment with debug                      
+ // false                                                                       
+
+                                                                                
+ [OK] Cache for the "prod" environment (debug=false) was successfully cleared.  
+                                                                                
+
+DOMjudge cache cleared!
+DOMjudge webserver cache cleared!
+
+CPU(s):                          ?
+Thread(s) per core:              ?
+
+Starting create cgroups...
+create cgroups started!
+
+Starting judgedaemon...
+start judgedaemon-run-0...
+judgedaemon-run-0 started!
+start judgedaemon-run-1...
+...
+CPU information
+CPU(s):                          ?
+Thread(s) per core:              ?
+? judgedamons started!
+...
+[??? ?? ??:??:??.???] judgedaemon[????]: Judge started on ubuntu-0 [DOMjudge/7.3.4]
+[??? ?? ??:??:??.???] judgedaemon[????]: Judge started on ubuntu-1 [DOMjudge/7.3.4]
+...
+[??? ?? ??:??:??.???] judgedaemon[????]: executing chroot script: 'chroot-startstop.sh check'
+[??? ?? ??:??:??.???] judgedaemon[????]: executing chroot script: 'chroot-startstop.sh check'
+...
+[??? ?? ??:??:??.???] judgedaemon[????]: Registering judgehost on endpoint default: http://localhost/domjudge/api
+[??? ?? ??:??:??.???] judgedaemon[????]: Registering judgehost on endpoint default: http://localhost/domjudge/api
+...
     
+</code></pre>
+
 ---
 #To login DOMjudge as admin, admin password needed.    
 #To check DOMjudge admin password...    
