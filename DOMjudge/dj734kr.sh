@@ -20,6 +20,7 @@ fi
 
 INPUTS="n"
 echo -n "Rename DOMjudge logo name? [y/n]: "
+read INPUTS
 if [ ${INPUTS} == "y" ] ; then
   OJNAME="o"
   INPUTS="x"
