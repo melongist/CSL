@@ -46,8 +46,7 @@ Sytem will be rebooted in 20 seconds!
     
     
 ---    
-#After rebooted    
-#judgehosts must be started for judging!    
+#After rebooted, judgehosts must be started for judging!    
 #To start judgehosts...
 <pre><code>
 bash dj734start.sh    
