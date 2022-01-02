@@ -3,7 +3,7 @@
 #DOMjudge judgehost starting script
 #DOMjudge7.3.4 stable + Ubuntu 20.04 LTS
 #Made by 
-#2021.12.17 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.01.02 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 
 if [[ $SUDO_USER ]] ; then
@@ -40,7 +40,7 @@ echo "Starting judgedaemon..."
 #echo "start judgedaemon-run..."
 #sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
 #echo "judgedaemon-run started!"
-#multiple judgedaemons, bound to a core, max 64
+#multiple judgedaemons, bound to a core, max 128
 for ((i=0; i<$CPUS; i++));
 do
   echo "start judgedaemon-run-$i..."
