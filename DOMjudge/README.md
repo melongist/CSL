@@ -99,6 +99,17 @@ http://localhost/domjudge/
 bash dj734clear.sh
 </code></pre>
     
+<pre><code>
+ // Clearing the cache for the prod environment with debug                      
+ // false                                                                       
+
+                                                                                
+ [OK] Cache for the "prod" environment (debug=false) was successfully cleared.  
+                                                                                
+
+DOMjudge cache cleared!
+DOMjudge webserver cache cleared!
+</code></pre>
     
 ---
 #To kill some judgedaemon processe    
