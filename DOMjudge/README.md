@@ -100,13 +100,14 @@ Thread(s) per core:              ?
 cat domjudge.txt    
 </code></pre>
 DOMjudge admin password saved in domjudge.txt   
-    
+
+<pre><code>
 ...    
 http://localhost/domjudge/    
 admin ID : admin    
 admin PW : ????????????????    
 ...    
-    
+</code></pre>    
     
 ---
 #To use korean interface for korean middle & high students participants    
