@@ -1,4 +1,4 @@
-#21.01.02   
+#22.01.02   
 
 ---
 #DOMjudge 7.3.4 stable auto installation   
@@ -74,6 +74,22 @@ admin PW : ????????????????
 #To replace participants interface, english to korean...    
 <pre><code>
 bash dj734kr.sh
+</code></pre>
+    
+<pre><code>
+...
+Rename DOMjudge logo name? [y/n]:      // <- y/n    //If you want to change DOMjudge logo name, enter y.
+...
+Enter  DOMjudge NAME : ????            // <- ????   //Enter  new logo name!!
+Repeat DOMjudge NAME : ????            // <-        //Repeat new logo name!!
+...
+DOMjudge 7.3.4 stable 21.11.22
+DOMjudge participants' korean interface installed!
+For korean middle & high students.
+
+Check DOMserver's web interface!
+------
+http://localhost/domjudge/
 </code></pre>
     
     
