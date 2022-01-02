@@ -52,11 +52,11 @@ Sytem will be rebooted in 20 seconds!
 <pre><code>
 bash dj734start.sh    
 </code></pre>
-A number of judgehosts will be automatically started by CPU cores...   
+A number of judgehosts will be automatically started by CPU cores...    
     
     
-#To login DOMjudge as admin    
-#admin password needed.    
+---
+#To login DOMjudge as admin, admin password needed.    
 #To check DOMjudge admin password...    
 <pre><code>
 cat domjudge.txt    
@@ -70,25 +70,29 @@ admin PW : ????????????????
 ...    
     
     
+---
 #To use korean interface for korean middle & high students participants    
 #To replace participants interface, english to korean...    
 <pre><code>
 bash dj734kr.sh
 </code></pre>
     
-     
-
+    
+---
 #To domserver http web cache clearing    
 <pre><code>
 bash dj734clear.sh
 </code></pre>
     
     
+---
 #To kill some judgedaemon processe    
 <pre><code>
 ps -ef, and find pid# of judgedaemon, run : kill -15 pid#    
 </code></pre>
     
+    
+---
 #To clear domserver web cache    
 <pre><code>
 sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
@@ -98,7 +102,6 @@ sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
 <pre><code>
 sudo /opt/domjudge/domserver/webapp/bin/console cache:clear    
 </code></pre>
-    
     
     
 ---
