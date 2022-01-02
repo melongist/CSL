@@ -57,22 +57,13 @@ A number of judgehosts will be automatically started by CPU cores...
 <pre><code>
 cat domjudge.txt    
 </code></pre>
-DOMjudge admin password saved as domjudge.txt   
+DOMjudge admin password saved in domjudge.txt   
     
 ...    
 http://localhost/domjudge/    
 admin ID : admin    
 admin PW : ????????????????    
 ...    
-    
-
-#For swiftc!    
-Check/Edit complie script at Admin page    
-Admin page - Languages - swift - "Compile script  swift" - "View file contents" - Edit    
-...    
-swiftc -O -module-cache-path "./" -static-executable -static-stdlib -o "$DEST" $SOURCES"    
-...    
-    
     
     
 #Korean patch for korean middle & high students    
