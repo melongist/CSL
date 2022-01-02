@@ -47,7 +47,7 @@ Sytem will be rebooted in 20 seconds!
     
 ---    
 #After rebooted    
-#judgehosts must be started for judging!
+#judgehosts must be started for judging!    
 #To start judgehosts...
 <pre><code>
 bash dj734start.sh    
@@ -55,9 +55,9 @@ bash dj734start.sh
 A number of judgehosts will be automatically started by CPU cores...   
     
     
-#To login DOMjudge as admin
-#admin password needed.
-#To check DOMjudge admin password...
+#To login DOMjudge as admin    
+#admin password needed.    
+#To check DOMjudge admin password...    
 <pre><code>
 cat domjudge.txt    
 </code></pre>
