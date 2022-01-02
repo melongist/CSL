@@ -3,7 +3,7 @@
 #DOMjudge server Korean language patch script
 #DOMjudge7.3.4 stable + Ubuntu 20.04 LTS
 #Made by 
-#2021.09.21 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.01.02 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 
 #terminal commands to install Korean patch 
@@ -17,14 +17,19 @@ if [[ $SUDO_USER ]] ; then
   exit 1
 fi
 
-OJNAME="o"
-INPUTS="x"
-while [ ${OJNAME} != ${INPUTS} ]; do
-  echo -n "Enter  DOMjudge NAME : "
-  read OJNAME
-  echo -n "Repeat DOMjudge NAME : "
-  read INPUTS
-done
+
+INPUTS="n"
+echo -n "Rename DOMjudge logo name? [y/n]: "
+if [ ${INPUTS} == "y" ] ; then
+  OJNAME="o"
+  INPUTS="x"
+  while [ ${OJNAME} != ${INPUTS} ]; do
+    echo -n "Enter  DOMjudge NAME : "
+    read OJNAME
+    echo -n "Repeat DOMjudge NAME : "
+    read INPUTS
+  done
+fi
 
 #menu
 sudo sed -i "s/DOMjudge/${OJNAME}/" /opt/domjudge/domserver/webapp/templates/public/menu.html.twig
@@ -89,9 +94,9 @@ sudo sed -i "s/Untried/미제출/" /opt/domjudge/domserver/webapp/templates/part
 sudo sed -i "s/Cell colours/색상별 의미/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 
 sudo sed -i "s/>Categories/>구분/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
-sudo sed -i "s/>\'Observers/>'연습 참가/" /opt/domjudge/domserver/webapp/src/DataFixtures/TeamCategoryFixture.php
-sudo sed -i "s/>\'Participants/>'정식 참가/" /opt/domjudge/domserver/webapp/src/DataFixtures/TeamCategoryFixture.php
-sudo sed -i "s/>\'Organisation/>'조직 및 기관/" /opt/domjudge/domserver/webapp/src/DataFixtures/TeamCategoryFixture.php
+#? sudo sed -i "s/>'Observers/>'연습 참가/" /opt/domjudge/domserver/webapp/src/DataFixtures/TeamCategoryFixture.php
+#? sudo sed -i "s/>'Participants/>'정식 참가/" /opt/domjudge/domserver/webapp/src/DataFixtures/TeamCategoryFixture.php
+#? sudo sed -i "s/>'Organisation/>'조직 및 기관/" /opt/domjudge/domserver/webapp/src/DataFixtures/TeamCategoryFixture.php
 
 
 #team menu
