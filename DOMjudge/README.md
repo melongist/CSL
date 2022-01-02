@@ -47,12 +47,16 @@ Sytem will be rebooted in 20 seconds!
     
 ---    
 #After rebooted    
+#judgehosts must be started for judging!
 #To start judgehosts...
 <pre><code>
 bash dj734start.sh    
 </code></pre>
 A number of judgehosts will be automatically started by CPU cores...   
     
+    
+#To login DOMjudge as admin
+#admin password needed.
 #To check DOMjudge admin password...
 <pre><code>
 cat domjudge.txt    
@@ -66,8 +70,8 @@ admin PW : ????????????????
 ...    
     
     
-#Korean patch for korean middle & high students    
-#Korean language for participants...    
+#To use korean interface for korean middle & high students participants    
+#To replace participants interface, english to korean...    
 <pre><code>
 bash dj734kr.sh
 </code></pre>
@@ -94,23 +98,24 @@ sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
 <pre><code>
 sudo /opt/domjudge/domserver/webapp/bin/console cache:clear    
 </code></pre>
-        
-     
-        
+    
+    
+    
 ---
-#spotboard for domjudge   
+#spotboard for DOMjudge   
 <https://github.com/spotboard/spotboard>
 
 #Prerequisite   
 - DOMjudge(server + judgehost) installed   
 
-#Installation commands to install spotboard for domjudge   
+#Installation commands to install spotboard for DOMjudge   
 
 <pre><code>
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/sb070.sh
 bash sb070.sh
 </code></pre>
-
+    
+    
 #After judgehosts installed.
 <pre><code>
 Check spotboard!
@@ -123,8 +128,8 @@ check & edit /var/www/html/spotboard/dist/config.js
 Next step : install spotboard-converter
 
 </code></pre>
-
-
+    
+    
 ---
 #spotboard-converter for spotboard   
 <https://github.com/spotboard/domjudge-converter>
