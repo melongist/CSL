@@ -1,8 +1,11 @@
 # CSL(Computer Science teachers' Love) at South Korea
 
+#2022.01.01     
+- Happy new year~~ all CS teachers!
+
 #2021.10.13     
-- Restored to new melongist     
-- Stuffed to https://github.com/melongist-zz/CSL         
+- Restored to this new melongist from backups.     
+- Originals stuffed to https://github.com/melongist-zz/CSL         
 
 #2021.10.11     
 - Urgently backuped to melongist2!     
