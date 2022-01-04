@@ -118,10 +118,10 @@ bash dj734kr.sh
     
 <pre><code>
 ...
-Rename DOMjudge logo name? [y/n]:      // <- y/n    //If you want to change DOMjudge logo name, enter y.
+Rename DOMjudge logo name? [y/n]:      // <- y/n    //If you want to change DOMjudge name, enter y.
 ...
-Enter  DOMjudge NAME : ????            // <- ????   //Enter  new logo name!!
-Repeat DOMjudge NAME : ????            // <-        //Repeat new logo name!!
+Enter  DOMjudge NAME : ????            // <- ????   //Enter  new contest short name!!
+Repeat DOMjudge NAME : ????            // <-        //Repeat
 ...
 DOMjudge 7.3.4 stable 21.11.22
 DOMjudge participants' korean interface installed!
