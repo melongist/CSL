@@ -35,6 +35,7 @@ mv spotboard-webapp-0.7.0 spotboard
 sudo mv spotboard /var/www/html/
 cd /var/www/html/spotboard/
 
+sudo apt install -y curl
 
 curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
 sudo apt-get install -y nodejs
