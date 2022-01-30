@@ -266,7 +266,7 @@ check and edit ~/dcm/config.js
   ; ex)
   ; cd dcm    
   ; npm start   
-  ; ctrl+x (just wait... 1 or more refresh cycle time would be OK!)    
+  ; ctrl+c (just wait... 1 or more refresh cycle time would be OK!)    
   (This makes contest.json & runs.json files to .../spotboard/dist/ directory.)    
      
 4. Set freeze time to original freeze time.    
