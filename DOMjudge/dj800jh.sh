@@ -6,7 +6,7 @@
 
 #DOMjudge server installation script
 #DOMjudge8.0.0 stable + Ubuntu 20.04 LTS
-#Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.01.31 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 #terminal commands to install DOMjudge judgehosts
 #------
@@ -43,10 +43,10 @@ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-
 sudo apt -y install r-base
 #swift
 sudo apt -y install clang libicu-dev
-wget https://swift.org/builds/swift-5.5.1-release/ubuntu2004/swift-5.5.1-RELEASE/swift-5.5.1-RELEASE-ubuntu20.04.tar.gz
-tar -zxvf swift-5.5.1-RELEASE-ubuntu20.04.tar.gz
-rm swift-5.5.1-RELEASE-ubuntu20.04.tar.gz
-sudo mv ~/swift-5.5.1-RELEASE-ubuntu20.04 ~/swift
+wget https://download.swift.org/swift-5.5.2-release/ubuntu2004/swift-5.5.2-RELEASE/swift-5.5.2-RELEASE-ubuntu20.04.tar.gz
+tar -zxvf swift-5.5.2-RELEASE-ubuntu20.04.tar.gz
+rm swift-5.5.2-RELEASE-ubuntu20.04.tar.gz
+sudo mv ~/swift-5.5.2-RELEASE-ubuntu20.04 ~/swift
 sudo ln -s ~/swift/usr/bin/swiftc /usr/bin/swiftc
 
 
