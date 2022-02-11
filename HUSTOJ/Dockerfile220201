@@ -48,7 +48,7 @@ RUN     cd /home/judge/src/core/ && bash make.sh
 
 # make Korean Character works in Docker
 RUN apt-get install -y locales locales-all
-RUN locale-gen C.UTF-8 && dpkg-reconfigure locales && /usr/sbin/update-locale LANG=C.UTF-8 LC_MESSAGES=POSIX
-ENV LANG C.UTF-8  
-ENV LC_ALL C.UTF-8 
+RUN locale-gen ko_KR.UTF-8 && dpkg-reconfigure locales && /usr/sbin/update-locale LANG=ko_KR.UTF-8 LC_MESSAGES=POSIX
+ENV LANG ko_KR.UTF-8  
+ENV LC_ALL ko_KR.UTF-8 
 
