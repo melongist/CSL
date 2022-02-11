@@ -220,19 +220,19 @@ sed -i "s/OJ_LANG=\"en\"/OJ_LANG=\"ko\"/" /home/judge/src/web/include/db_info.in
 sed -i "s/zh_CN.js/ko.js/" /home/judge/src/web/admin/kindeditor.php
 
 #Removing QR codes + CSL
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/js220201.php
-mv -f ./js210705.php /home/judge/src/web/template/bs3/js.php
-chown www-data:${SUDO_USER} /home/judge/src/web/template/bs3/js.php
-chmod 664 /home/judge/src/web/template/bs3/js.php
-sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/template/bs3/js.php
+#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/js220201.php
+#mv -f ./js210705.php /home/judge/src/web/template/bs3/js.php
+#chown www-data:${SUDO_USER} /home/judge/src/web/template/bs3/js.php
+#chmod 664 /home/judge/src/web/template/bs3/js.php
+#sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/template/bs3/js.php
 
 
 #Replacing msg.txt
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/msg1.txt
-mv -f ./msg1.txt /home/judge/src/web/admin/msg.txt
-chown www-data:${SUDO_USER} /home/judge/src/web/admin/msg.txt
-chmod 664 /home/judge/src/web/admin/msg.txt
-sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg.txt
+#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/msg1.txt
+#mv -f ./msg1.txt /home/judge/src/web/admin/msg.txt
+#chown www-data:${SUDO_USER} /home/judge/src/web/admin/msg.txt
+#chmod 664 /home/judge/src/web/admin/msg.txt
+#sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg.txt
 
 
 #Identifing AWS Ubuntu 20.04 LTS
