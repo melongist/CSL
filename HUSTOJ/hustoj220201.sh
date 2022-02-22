@@ -241,9 +241,9 @@ fi
 
 #temporary fix until next release
 #...
-mkdir /home/judge/src/web/admin/msg
-chown www-data:root /home/judge/src/web/admin/msg
-chmod 744 /home/judge/src/web/admin/msg
+#mkdir /home/judge/src/web/admin/msg
+#chown www-data:root /home/judge/src/web/admin/msg
+#chmod 744 /home/judge/src/web/admin/msg
 
 #Replacing msg.txt
 wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/msg220201.txt
