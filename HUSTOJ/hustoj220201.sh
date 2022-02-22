@@ -210,29 +210,28 @@ cd
 sed -i "s/OJ_USE_MAX_TIME=0/OJ_USE_MAX_TIME=1/" /home/judge/etc/judge.conf
 
 #db_info.inc.php edit
-#sed -i "s/OJ_NAME=\"HUSTOJ\"/OJ_NAME=\"${OJNAME}\"/" /home/judge/src/web/include/db_info.inc.php
-#for south korea timezone
-#sed -i "s#//date_default_timezone_set(\"PRC\")#date_default_timezone_set(\"Asia\/Seoul\")#" /home/judge/src/web/include/db_info.inc.php
-#sed -i "s#//pdo_query(\"SET time_zone ='+8:00'\")#pdo_query(\"SET time_zone ='+9:00'\")#" /home/judge/src/web/include/db_info.inc.php
+#for OJ name
+sed -i "s/OJ_NAME=\"HUSTOJ\"/OJ_NAME=\"${OJNAME}\"/" /home/judge/src/web/include/db_info.inc.php
+#for bs3 template
+sed -i "s/OJ_TEMPLATE=\"syzoj\"/OJ_TEMPLATE=\"bs3\"/" /home/judge/src/web/include/db_info.inc.php
 
 #for korean kindeditor
 sed -i "s/OJ_LANG=\"en\"/OJ_LANG=\"ko\"/" /home/judge/src/web/include/db_info.inc.php
 sed -i "s/zh_CN.js/ko.js/" /home/judge/src/web/admin/kindeditor.php
 
 #Removing QR codes + CSL
-#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/js220201.php
-#mv -f ./js210705.php /home/judge/src/web/template/bs3/js.php
-#chown www-data:${SUDO_USER} /home/judge/src/web/template/bs3/js.php
-#chmod 664 /home/judge/src/web/template/bs3/js.php
-#sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/template/bs3/js.php
-
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/js220201.php
+mv -f ./js220201.php /home/judge/src/web/template/bs3/js.php
+chown www-data:${SUDO_USER} /home/judge/src/web/template/bs3/js.php
+chmod 664 /home/judge/src/web/template/bs3/js.php
+sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/template/bs3/js.php
 
 #Replacing msg.txt
-#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/msg1.txt
-#mv -f ./msg1.txt /home/judge/src/web/admin/msg.txt
-#chown www-data:${SUDO_USER} /home/judge/src/web/admin/msg.txt
-#chmod 664 /home/judge/src/web/admin/msg.txt
-#sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg.txt
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/msg220201.txt
+mv -f ./msg220201.txt /home/judge/src/web/admin/msg.txt
+chown www-data:${SUDO_USER} /home/judge/src/web/admin/msg.txt
+chmod 664 /home/judge/src/web/admin/msg.txt
+sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg.txt
 
 
 #Identifing AWS Ubuntu 20.04 LTS
