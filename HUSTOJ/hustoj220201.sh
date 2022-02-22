@@ -226,13 +226,6 @@ chown www-data:${SUDO_USER} /home/judge/src/web/template/bs3/js.php
 chmod 664 /home/judge/src/web/template/bs3/js.php
 sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/template/bs3/js.php
 
-#Replacing msg.txt
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/msg220201.txt
-mv -f ./msg220201.txt /home/judge/src/web/admin/msg.txt
-chown www-data:${SUDO_USER} /home/judge/src/web/admin/msg.txt
-chmod 664 /home/judge/src/web/admin/msg.txt
-sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg.txt
-
 
 #Identifing AWS Ubuntu 20.04 LTS
 if [ -f /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
@@ -245,10 +238,19 @@ else
   IPADDRESS=($(hostname -I))
 fi
 
+
 #temporary fix until next release
 #...
+mkdir /home/judge/src/web/admin/msg
+chown www-data:root /home/judge/src/web/admin/msg
+chmod 744 /home/judge/src/web/admin/msg
 
-
+#Replacing msg.txt
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/msg220201.txt
+mv -f ./msg220201.txt /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
+chown www-data:${SUDO_USER} /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
+chmod 644 /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
+sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
 
 
 #clear
