@@ -241,6 +241,8 @@ fi
 
 #temporary fix until next release
 #...
+sed -i "s/<img src=\"refresh/<\!--<img src=\"refresh/" /home/judge/src/web/template/bs3/error.php
+sed -i "s/on error\" >/on error\" >-->/" /home/judge/src/web/template/bs3/error.php
 mkdir /home/judge/src/web/admin/msg
 chown www-data:root /home/judge/src/web/admin/msg
 chmod 744 /home/judge/src/web/admin/msg
