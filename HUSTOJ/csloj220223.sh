@@ -9,6 +9,7 @@ VER_DATE="22.02.23"
 
 THISFILE="csloj220223.sh"
 SRCZIP="hustoj220223.zip"
+DOCKERFILE="Dockerfile220223"
 
 SQLFILE="csl100v07jol.sql"
 UPLOADFILE="csl100v02uploads.tar.gz"
