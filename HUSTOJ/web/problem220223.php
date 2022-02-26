@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
 	//require("oj-header.php");
 	
 	//* by CSL
-	$sql="SELECT c.contest_id,c.title FROM contest c INNER JOIN contest_problem cp ON c.contest_id=cp.contest_id AND cp.problem_id=?  WHERE ( c.`start_time`<='$now' AND '$now'<c.`end_time`)";
+	$sql="SELECT c.contest_id,c.title FROM contest c INNER JOIN contest_problem cp ON c.contest_id=cp.contest_id AND cp.problem_id=?  WHERE ('$now'<c.`end_time`)";
 	$used_in_contests=pdo_query($sql,$id);
 
 	if (isset($_SESSION[$OJ_NAME.'_'.'administrator']) || isset($_SESSION[$OJ_NAME.'_'.'contest_creator']) || isset($_SESSION[$OJ_NAME.'_'.'problem_editor']))
