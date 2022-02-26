@@ -27,7 +27,7 @@ if (isset($_GET['id'])) {
 	//require("oj-header.php");
 	
 	//* by CSL
-	$sql="SELECT c.contest_id,c.title FROM contest c INNER JOIN contest_problem cp ON c.contest_id=cp.contest_id AND cp.problem_id=?  WHERE ('$now'<c.`end_time`)";
+	$sql="SELECT c.contest_id,c.title FROM contest c INNER JOIN contest_problem cp ON c.contest_id=cp.contest_id AND cp.problem_id=?  WHERE ( '$now'<c.`end_time` AND c.defunct='N' )";
 	$used_in_contests=pdo_query($sql,$id);
 
 	if (isset($_SESSION[$OJ_NAME.'_'.'administrator']) || isset($_SESSION[$OJ_NAME.'_'.'contest_creator']) || isset($_SESSION[$OJ_NAME.'_'.'problem_editor']))
@@ -37,12 +37,10 @@ if (isset($_GET['id'])) {
 	else //* by CSL
 		$sql = "SELECT * FROM `problem` WHERE `problem_id`=? AND `defunct`='N' AND `problem_id` NOT IN (
 				SELECT `problem_id` FROM `contest_problem` WHERE `contest_id` IN (
-					SELECT `contest_id` FROM `contest` WHERE ( '$now'<`end_time` ))
-			)";        //////////  people should not see the problem used in contest before they end by modifying url in browser address bar
-				   /////////   if you give students opportunities to test their result out side the contest ,they can bypass the penalty time of 20 mins for
-	                           /////////   each non-AC sumbission in contest. if you give them opportunities to view problems before exam ,they will ask classmates to write
-	                           /////////   code for them in advance, if you want to share private contest problem to practice you should modify the contest into public
-
+					SELECT `contest_id` FROM `contest` WHERE ( '$now'<`end_time` AND defunct='N' )
+				)
+			)";
+		
 	$pr_flag = true;
 	$result = pdo_query($sql,$id);
 }
