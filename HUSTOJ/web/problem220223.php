@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
 	else //* by CSL
 		$sql = "SELECT * FROM `problem` WHERE `problem_id`=? AND `defunct`='N' AND `problem_id` NOT IN (
 				SELECT `problem_id` FROM `contest_problem` WHERE `contest_id` IN (
-					SELECT `contest_id` FROM `contest` WHERE ( `start_time`<='$now' AND '$now'<`end_time` ))
+					SELECT `contest_id` FROM `contest` WHERE ( '$now'<`end_time` ))
 			)";        //////////  people should not see the problem used in contest before they end by modifying url in browser address bar
 				   /////////   if you give students opportunities to test their result out side the contest ,they can bypass the penalty time of 20 mins for
 	                           /////////   each non-AC sumbission in contest. if you give them opportunities to view problems before exam ,they will ask classmates to write
