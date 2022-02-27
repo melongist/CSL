@@ -599,18 +599,6 @@ chown www-data:root /home/judge/src/web/template/bs3/contestset.php
 chmod 644 /home/judge/src/web/template/bs3/contestset.php
 
 
-#small fix for status.php
-#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/status220223.php
-#mv -f ./status220223.php /home/judge/src/web/status.php
-#chmod 644 /home/judge/src/web/status.php
-#chown www-data:root /home/judge/src/web/status.php
-
-#for SHOW_DIFF=true error fix in reinfo.php
-#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/reinfo.php
-#mv -f ./reinfo.php /home/judge/src/web/reinfo.php
-#chown www-data:root /home/judge/src/web/reinfo.php
-#chmod 664 /home/judge/src/web/reinfo.php
-
 #for cslojmaintenance
 wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/${MAINTENANCEFILE} -O /home/${SUDO_USER}/${MAINTENANCEFILE}
 chown ${SUDO_USER}:${SUDO_USER} /home/${SUDO_USER}/${MAINTENANCEFILE}
