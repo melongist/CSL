@@ -234,7 +234,7 @@ if (isset($_GET['cid'])) {
 			else  //after contest/exam time
 			{
 				$view_problemset[$cnt][1] = "<a href='problem.php?id=".$row['problem_id']."'>".$PID[$cnt]."</a>";
-				$view_problemset[$cnt][2] = $row['title'];
+				$view_problemset[$cnt][2] = "<a href='problem.php?id=".$row['problem_id']."'>".$row['title']."</a>";
 				$view_problemset[$cnt][3] = $row['source'];
 				if (!$noip)
 					$view_problemset[$cnt][4] = $row['accepted'];
