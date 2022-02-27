@@ -582,9 +582,7 @@ sed -i "s#call to action -->#call to action -->\n\t\t<div> <?php echo \$view_faq
 sed -i "s#<?php echo \$MSG_HELP_ADD_FAQS?>#<?php echo \$MSG_HELP_ADD_FAQS?><br>\n- <?php echo '\"home.ko\"를 제목으로 공지사항을 등록하면 첫 페이지의 위 쪽에 배너처럼 나타납니다.'?>#" /home/judge/src/web/admin/news_list.php
 
 
-
 #for contest concerned errors fix
-#sed -i "s#\`end_time\`>'\$now' or \`private\`='1'#\`start_time\`<'\$now' AND \`end_time\`>'\$now'#" /home/judge/src/web/problem.php
 wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/problem220223.php
 mv -f ./problem220223.php /home/judge/src/web/problem.php
 chown www-data:root /home/judge/src/web/problem.php
@@ -595,22 +593,17 @@ mv -f ./contest220223.php /home/judge/src/web/contest.php
 chown www-data:root /home/judge/src/web/contest.php
 chmod 644 /home/judge/src/web/contest.php
 
-
-
-
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/contestset220223.php
+mv -f ./contestset220223.php /home/judge/src/web/template/bs3/contestset.php
+chown www-data:root /home/judge/src/web/template/bs3/contestset.php
+chmod 644 /home/judge/src/web/template/bs3/contestset.php
 
 
 #small fix for status.php
-#sed -i "s#KB</div># KB</div>#" /home/judge/src/web/status.php
-#sed -i "s#ms</div># ms</div>#" /home/judge/src/web/status.php
 #wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/status220223.php
 #mv -f ./status220223.php /home/judge/src/web/status.php
 #chmod 644 /home/judge/src/web/status.php
 #chown www-data:root /home/judge/src/web/status.php
-
-#for python judging error patch
-#sed -i "s/OJ_RUNNING=1/OJ_RUNNING=4/" /home/judge/etc/judge.conf
-#sed -i "s/OJ_PYTHON_FREE=0/OJ_PYTHON_FREE=1/" /home/judge/etc/judge.conf
 
 #for SHOW_DIFF=true error fix in reinfo.php
 #wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/reinfo.php
