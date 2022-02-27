@@ -583,12 +583,17 @@ sed -i "s#<?php echo \$MSG_HELP_ADD_FAQS?>#<?php echo \$MSG_HELP_ADD_FAQS?><br>\
 
 
 
-#for contest problem view fix
+#for contest concerned errors fix
 #sed -i "s#\`end_time\`>'\$now' or \`private\`='1'#\`start_time\`<'\$now' AND \`end_time\`>'\$now'#" /home/judge/src/web/problem.php
 wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/problem220223.php
 mv -f ./problem220223.php /home/judge/src/web/problem.php
 chown www-data:root /home/judge/src/web/problem.php
 chmod 644 /home/judge/src/web/problem.php
+
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/contest220223.php
+mv -f ./contest220223.php /home/judge/src/web/contest.php
+chown www-data:root /home/judge/src/web/contest.php
+chmod 644 /home/judge/src/web/contest.php
 
 
 
