@@ -213,11 +213,24 @@ if (isset($_GET['cid'])) {
 		//* by CSL
 		if (intval($tresult) != 0 )
 		{
+			if($now < $end_time) { //during contest/exam time
+				$view_problemset[$cnt][1] = "<a href='problem.php?cid=$cid&pid=$cnt'>".$PID[$cnt]."</a>";
+				$view_problemset[$cnt][2] = "<a href='problem.php?cid=$cid&pid=$cnt'>".$row['title']."</a>"; 
+				$view_problemset[$cnt][3] = $row['source'];
+				if (!$noip)
+					$view_problemset[$cnt][4] = $row['accepted'];
+				else
+					$view_problemset[$cnt][4] = "";
+		    $view_problemset[$cnt][5] = $row['submit'];
+		  }
+		  else
+		  {
 				$view_problemset[$cnt][1] = $PID[$cnt]; //after contest
 				$view_problemset[$cnt][2] = '----';
 				$view_problemset[$cnt][3] = '----';
 				$view_problemset[$cnt][4] = '-';
 		    $view_problemset[$cnt][5] = '-';
+		  }
 		}
 		else
 		{
