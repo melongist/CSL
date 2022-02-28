@@ -440,7 +440,7 @@ then
   tar -xzvpf /home/${SUDO_USER}/olddata.tar.gz -C /
   rm /home/${SUDO_USER}/olddata.tar.gz
 else
-  wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/${DATAFILE}
+  wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/upload/${DATAFILE}
   tar -xzvpf /home/${SUDO_USER}/${DATAFILE} -C /
   rm ${DATAFILE}
 fi
