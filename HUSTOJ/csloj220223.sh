@@ -395,7 +395,7 @@ then
   mysql -u ${DBUSER} -p${PASSWORD} jol < /home/${SUDO_USER}/oldjol.sql
   rm /home/${SUDO_USER}/oldjol.sql
 else
-  wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/${SQLFILE}
+  wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/sql/${SQLFILE}
   mysql -u ${DBUSER} -p${PASSWORD} jol < ${SQLFILE}
   rm ${SQLFILE}
   #add source_browser privilege to admin
@@ -416,8 +416,8 @@ then
   rm /home/${SUDO_USER}/olduploads.tar.gz
 else
   wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/upload/${UPLOADFILE}
-  tar -xzvpf /home/${SUDO_USER}/${UPLOADFILE} -C /
-  rm /home/${SUDO_USER}/${UPLOADFILE}
+  tar -xzvpf ./${UPLOADFILE} -C /
+  rm ./${UPLOADFILE}
 fi
 chown www-data:www-data -R /home/judge/src/web/upload/*
 chmod 755 /home/judge/src/web/upload/*
@@ -440,9 +440,9 @@ then
   tar -xzvpf /home/${SUDO_USER}/olddata.tar.gz -C /
   rm /home/${SUDO_USER}/olddata.tar.gz
 else
-  wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/upload/${DATAFILE}
-  tar -xzvpf /home/${SUDO_USER}/${DATAFILE} -C /
-  rm /home/${SUDO_USER}/${DATAFILE}
+  wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/data/${DATAFILE}
+  tar -xzvpf ./${DATAFILE} -C /
+  rm ./${DATAFILE}
 fi
 chmod 644 -R /home/judge/data
 chown www-data:www-data -R /home/judge/data
