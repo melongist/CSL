@@ -442,7 +442,7 @@ then
 else
   wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/upload/${DATAFILE}
   tar -xzvpf /home/${SUDO_USER}/${DATAFILE} -C /
-  rm ${DATAFILE}
+  rm /home/${SUDO_USER}/${DATAFILE}
 fi
 chmod 644 -R /home/judge/data
 chown www-data:www-data -R /home/judge/data
