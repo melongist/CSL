@@ -11,9 +11,9 @@ THISFILE="csloj220223.sh"
 SRCZIP="hustoj220223.zip"
 DOCKERFILE="Dockerfile220223"
 
-SQLFILE="csl100v07jol.sql"
-UPLOADFILE="csl100v02uploads.tar.gz"
-DATAFILE="csl100v07data.zip"
+SQLFILE="csl220223jol.sql"
+UPLOADFILE="csl220223uploads.tar.gz"
+DATAFILE="csl220223data.zip"
 
 MAINTENANCEFILE="cslojmaintenance00.sh"
 BACKUPFILE="cslojbackup00.sh"
