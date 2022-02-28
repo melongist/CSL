@@ -386,6 +386,7 @@ sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg/$
 #jol database overwriting
 #current mysql backup
 #how to backup from HUSTOJ for CSL :> mysqldump -u debian-sys-maint -p jol > jol.sql
+#command   : mysqldump -u debian-sys-maint -p jol > /home/${SUDO_USER}/oldjol.sql
 #overwriting
 DBUSER=$(grep user /etc/mysql/debian.cnf|head -1|awk  '{print $3}')
 PASSWORD=$(grep password /etc/mysql/debian.cnf|head -1|awk  '{print $3}')
@@ -406,7 +407,7 @@ fi
 #current uploads backup
 #how to backup uploads from CSL HUSTOJ
 #directory : /home/judge/src/wb/upload/
-#command   : sudo tar -czvpf ./${BACKUPS}/upload/olduploads.tar.gz /home/judge/src/web/upload
+#command   : sudo tar -czvpf /home/${SUDO_USER}/olduploads.tar.gz /home/judge/src/web/upload
 rm -rf /home/judge/src/web/upload/*
 #overwriting
 if [ ${UPGRADETYPE} = "1" ]
@@ -430,8 +431,7 @@ chmod 664 /home/judge/src/web/upload/index.html
 #current data backup
 #how to backup test in/out files from CSL HUSTOJ
 #directory : /home/judge/
-#command   : sudo zip -r data.zip ./data
-#zip -r ./${BACKUPS}/data.zip /home/judge/data
+#command   : sudo tar -czvpf /home/${SUDO_USER}/olddata.tar.gz /home/judge/data
 rm -rf /home/judge/data
 #overwriting
 if [ ${UPGRADETYPE} = "1" ]
