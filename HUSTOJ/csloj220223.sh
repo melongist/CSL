@@ -13,7 +13,7 @@ DOCKERFILE="Dockerfile220223"
 
 SQLFILE="csl220223jol.sql"
 UPLOADFILE="csl220223uploads.tar.gz"
-DATAFILE="csl220223data.zip"
+DATAFILE="csl220223data.tar.gz"
 
 MAINTENANCEFILE="cslojmaintenance00.sh"
 BACKUPFILE="cslojbackup00.sh"
@@ -420,7 +420,7 @@ else
   rm ${UPLOADFILE}
 fi
 chown www-data:www-data -R /home/judge/src/web/upload/*
-chmod 644 /home/judge/src/web/upload/*
+chmod 755 /home/judge/src/web/upload/*
 chmod 755 /home/judge/src/web/upload/file
 chmod 755 /home/judge/src/web/upload/image
 chown www-data:root -R /home/judge/src/web/upload/index.html
@@ -441,7 +441,7 @@ then
   rm /home/${SUDO_USER}/olddata.tar.gz
 else
   wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/${DATAFILE}
-  unzip ${DATAFILE} -d /home/judge/
+  tar -xzvpf /home/${SUDO_USER}/${DATAFILE} -C /
   rm ${DATAFILE}
 fi
 chmod 644 -R /home/judge/data
