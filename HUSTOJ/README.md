@@ -1,5 +1,5 @@
 ## Ver   
-#### - 최종 갱신 : Ver 21.05.15   
+#### - 최종 갱신 : Ver 22.03.23   
    
 ***   
    
@@ -37,9 +37,9 @@
 #아래 명령을 실행하면, 한글 환경과 한국 시간으로 맞추어 HUSTOJ 를 설치합니다.   
 
 <pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj210505.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220323.sh
 
-sudo bash hustoj210505.sh
+sudo bash hustoj220323.sh
 </code></pre>
   
 ***   
@@ -95,14 +95,14 @@ sudo bash hustoj210505.sh
 #### - 다음 설치 스크립트를 사용해서 CSL 버전의 HUSTOJ 와 기초100제 시리즈 문제 일체와 수업용 기능들을 한 번에 모두 설치할 수 있습니다.   
 
 #우분투 20.04LTS 에서 터미널을 실행한 후, 아래 설치 스크립트 명령을 순서대로 입력하고 실행하면 됩니다.   
-#csloj210505.sh 파일이 있는 경우, 먼저 삭제(rm hustoj210505.sh) 후 다음 명령어를 실행해주세요.     
+#csloj220323.sh 파일이 있는 경우, 먼저 삭제(rm hustoj220323.sh) 후 다음 명령어를 실행해주세요.     
 
 #아래 명령을 실행하면, 한글 환경과 한국 시간으로 맞추어 CSL HUSTOJ 를 설치합니다.   
    
 <pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj210505.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj220323.sh
    
-sudo bash csloj210505.sh
+sudo bash csloj220323.sh
 </code></pre>
    
 ***   
