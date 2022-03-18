@@ -23,6 +23,8 @@ mv -f ./problem_export220223.php /home/judge/src/web/admin/problem_export.php
 chown www-data:root /home/judge/src/web/admin/problem_export.php
 chmod 664 /home/judge/src/web/admin/problem_export.php
 
+sed -i "s/release 22.02.23/release 22.02.23p1/" /home/judge/src/web/template/bs3/js.php
+
 echo ""
 echo "---- CSL HUSTOJ xml image download error patched ----"
 echo ""
