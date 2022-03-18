@@ -5,13 +5,13 @@
 
 clear
 
-VER_DATE="22.02.23"
+VER_DATE="22.02.23p1"
 
 THISFILE="csloj220223.sh"
 SRCZIP="hustoj220223.zip"
 DOCKERFILE="Dockerfile220223"
 
-SQLFILE="csl220223jol.sql"
+SQLFILE="csl220223jolp1.sql"
 UPLOADFILE="csl220223uploads.tar.gz"
 DATAFILE="csl220223data.tar.gz"
 
