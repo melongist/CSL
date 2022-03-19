@@ -122,22 +122,17 @@ function getSolution($pid,$lang) {
 }
 
 function fixurl($img_url) {
-  if(substr($img_url,0,4)=="data") return $img_url;
+  //- by CSL
+  //if(substr($img_url,0,4)=="data") return $img_url;
   $img_url = html_entity_decode($img_url,ENT_QUOTES,"UTF-8");
 
   if (substr($img_url,0,4)!="http") {
     if (substr($img_url,0,1)=="/") {
-      //- by CSL
-      //$ret = 'http://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$img_url;
-      //+ by CSL
-      $ret = $img_url;      
+      $ret = 'http://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$img_url;
     }
     else {
       $path = dirname($_SERVER['PHP_SELF']);
-      //- by CSL
-      //$ret = 'http://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$path."/../".$img_url;
-      //+ by CSL
-      $ret = $img_url;
+      $ret = 'http://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$path."/../".$img_url;
     }
 
   }
@@ -176,7 +171,8 @@ function fixImageURL(&$html,&$did) {
   $imgs = array_unique($images[1]);
 
   foreach ($imgs as $img) {
-    if(substr($img,0,4)=="data") continue;                      // skip image from paste clips
+    //- by CSL
+    //if(substr($img,0,4)=="data") continue;                      // skip image from paste clips
     $html = str_replace($img,fixurl($img),$html); 
     //print_r($did);
 
@@ -265,7 +261,7 @@ else {
   "-//CSL free-problemset//XML standard for CSL HUSTOJ//"
   "" >
 
-<CSLfps version="1.0" url="https://github.com/melongist/CSL/tree/master/HUSTOJ">
+<CSLfps version="1.1" url="https://github.com/melongist/CSL/tree/master/HUSTOJ">
   <generator name="CSL" url="https://github.com/melongist/CSL/tree/master/HUSTOJ"/>
   <?php
   foreach ($result as  $row) {
@@ -351,4 +347,3 @@ else {
 }
 ?>
 <!-- * by CSL -->
-

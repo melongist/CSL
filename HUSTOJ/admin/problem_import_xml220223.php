@@ -17,13 +17,14 @@ require_once ("../include/const.inc.php");
 <?php
 
 function image_save_file($filepath ,$base64_encoded_img) {
-	$dirpath=dirname($filepath);
-	if (!file_exists($dirpath)) {
-		 mkdir($dirpath,0755,true);
-	}
-	  $fp = fopen($filepath ,"wb");
-	  fwrite($fp,base64_decode($base64_encoded_img));
-	  fclose($fp);
+  //- by CSL
+  //$dirpath=dirname($filepath);
+  //if (!file_exists($dirpath)) {
+  //   mkdir($dirpath,0755,true);
+  //}
+    $fp = fopen($filepath ,"wb");
+    fwrite($fp,base64_decode($base64_encoded_img));
+    fclose($fp);
 }
 
 require_once ("../include/problem.php");
@@ -92,12 +93,12 @@ function getAttribute($Node, $TagName,$attribute) {
 }
 
 function hasProblem($title) {
-  //return false;	
+  //return false; 
   $md5 = md5($title);
   $sql = "SELECT 1 FROM problem WHERE md5(title)=?";  
   $result = pdo_query($sql, $md5);
-  $rows_cnt = count($result);		
-  //echo "row->$rows_cnt";			
+  $rows_cnt = count($result);   
+  //echo "row->$rows_cnt";      
   return ($rows_cnt>0);
 }
 
@@ -157,7 +158,7 @@ function import_fps($tempfile) {
     //$test_input = getValue($searchNode,'test_input');
     //$test_output = getValue($searchNode,'test_output');
     $hint = getValue ($searchNode,'hint');
-    $source = getValue ($searchNode,'source');				
+    $source = getValue ($searchNode,'source');        
 
 
     //+ by CSL
@@ -179,7 +180,7 @@ function import_fps($tempfile) {
       $pid = addproblem($title, $time_limit, $memory_limit, $description, $input, $output, $sample_input, $sample_output, $hint, $source, $spj, $front, $rear, $bann, $credits, $OJ_DATA);
 
       if ($spid==0)
-      	$spid = $pid;
+        $spid = $pid;
 
       $basedir = "$OJ_DATA/$pid";
       mkdir($basedir);
@@ -193,14 +194,14 @@ function import_fps($tempfile) {
 
       foreach ($testinputs as $testNode) {
         //if($testNode->nodeValue)
-	$name=$testNode['name'];
-	if($name != ""){
-        		mkdata($pid,$name.".in",$testNode,$OJ_DATA);
+  $name=$testNode['name'];
+  if($name != ""){
+            mkdata($pid,$name.".in",$testNode,$OJ_DATA);
 
-	}else{
-        		mkdata($pid,"test".$testno.".in",$testNode,$OJ_DATA);
-	}
-	$testno++;
+  }else{
+            mkdata($pid,"test".$testno.".in",$testNode,$OJ_DATA);
+  }
+  $testno++;
       }
 
       unset($testinputs);
@@ -209,14 +210,14 @@ function import_fps($tempfile) {
   
       foreach ($testinputs as $testNode) {
         //if($testNode->nodeValue)
-	$name=$testNode['name'];
-	if($name != ""){
-        		mkdata($pid,$name.".out",$testNode,$OJ_DATA);
+  $name=$testNode['name'];
+  if($name != ""){
+            mkdata($pid,$name.".out",$testNode,$OJ_DATA);
 
-	}else{
-        		mkdata($pid,"test".$testno.".out",$testNode,$OJ_DATA);
-	}
-	$testno++;
+  }else{
+            mkdata($pid,"test".$testno.".out",$testNode,$OJ_DATA);
+  }
+  $testno++;
       }
 
       unset($testinputs);
@@ -227,7 +228,7 @@ function import_fps($tempfile) {
       $testno = 0;
 
       foreach ($images as $img) {
-      //	
+      //  
         $src = getValue($img,"src");
 
         if (!in_array($src,$did)) {
@@ -241,17 +242,27 @@ function import_fps($tempfile) {
           }
 
         $testno++;
- 	$ymd =$domain."/". date("Ymd");
-	$save_path = $ymd . "/";
-	//新文件名
-	$new_file_name = date("YmdHis") . '_' . rand(10000, 99999) . '.' . $ext;
-	$newpath = $save_path."/$pid"."_".$testno."_".$new_file_name;
-         if ($OJ_SAE)
-            $newpath = "saestor://web/upload/".$newpath;
-	 else
-            $newpath="../upload/".$newpath;
-		
+        //- by CSL
+  //$ymd =$domain."/". date("Ymd");
+  //$save_path = $ymd . "/";
+  ////新文件名
+  //$new_file_name = date("YmdHis") . '_' . rand(10000, 99999) . '.' . $ext;
+  //$newpath = $save_path."/$pid"."_".$testno."_".$new_file_name;
+        // if ($OJ_SAE)
+        //    $newpath = "saestor://web/upload/".$newpath;
+  // else
+        //    $newpath="../upload/".$newpath;
+  //  
+
+        //+ by CSL
+        $newpath = "../upload/pimg".$pid."_".$testno.".".$ext;
+
           image_save_file($newpath,$base64);
+                
+        //+ by CSL
+        $newpath = dirname($_SERVER['REQUEST_URI'] )."/../upload/pimg".$pid."_".$testno.".".$ext;
+        
+        
           $sql = "UPDATE problem SET description=replace(description,?,?) WHERE problem_id=?";  
           pdo_query($sql,$src,$newpath,$pid);
 
@@ -269,49 +280,49 @@ function import_fps($tempfile) {
 
       if (!isset($OJ_SAE) || !$OJ_SAE) {
         if ($spj) {
-		if($spjcode){
-		  if($spjlang=="C++"){
-			  $basedir = "$OJ_DATA/$pid";
-			  $fp = fopen("$basedir/spj.cc","w");
-			  fputs($fp, $spjcode);
-			  fclose($fp);
-			  ////system( " g++ -o $basedir/spj $basedir/spj.cc  ");
-		  }else{
-			    $fp = fopen("$basedir/spj.c","w");
-			    fputs($fp, $spjcode);
-			    fclose($fp);
-			    ////system( " gcc -o $basedir/spj $basedir/spj.c  ");
+    if($spjcode){
+      if($spjlang=="C++"){
+        $basedir = "$OJ_DATA/$pid";
+        $fp = fopen("$basedir/spj.cc","w");
+        fputs($fp, $spjcode);
+        fclose($fp);
+        ////system( " g++ -o $basedir/spj $basedir/spj.cc  ");
+      }else{
+          $fp = fopen("$basedir/spj.c","w");
+          fputs($fp, $spjcode);
+          fclose($fp);
+          ////system( " gcc -o $basedir/spj $basedir/spj.c  ");
 
-		  }
-		    if (!file_exists("$basedir/spj")) {
-		      echo "you need to compile $basedir/spj.cc for spj[  g++ -o $basedir/spj $basedir/spj.cc   ]<br> and rejudge $pid";
-		    }
-		    else {
-		      //unlink("$basedir/spj.cc");
-		    }
+      }
+        if (!file_exists("$basedir/spj")) {
+          echo "you need to compile $basedir/spj.cc for spj[  g++ -o $basedir/spj $basedir/spj.cc   ]<br> and rejudge $pid";
+        }
+        else {
+          //unlink("$basedir/spj.cc");
+        }
   
-		}
+    }
           $basedir = "$OJ_DATA/$pid";
-	  if($tpjcode){
-		  if($tpjlang=="C++"){
-			  $fp = fopen("$basedir/tpj.cc","w");
-			  fputs($fp, $tpjcode);
-			  fclose($fp);
-			  ////system( " g++ -o $basedir/spj $basedir/spj.cc  ");
-		  }else{
-			    $fp = fopen("$basedir/tpj.c","w");
-			    fputs($fp, $spjcode);
-			    fclose($fp);
-			    ////system( " gcc -o $basedir/spj $basedir/spj.c  ");
-		  }
-	    if (!file_exists("$basedir/tpj")) {
-	      echo "you need to compile $basedir/tpj.cc for tpj[  g++ -o $basedir/tpj $basedir/tpj.cc   ]<br> and rejudge $pid";
-	    }
-	    else {
-	      //unlink("$basedir/spj.cc");
-	    }
-		  
-	  }
+    if($tpjcode){
+      if($tpjlang=="C++"){
+        $fp = fopen("$basedir/tpj.cc","w");
+        fputs($fp, $tpjcode);
+        fclose($fp);
+        ////system( " g++ -o $basedir/spj $basedir/spj.cc  ");
+      }else{
+          $fp = fopen("$basedir/tpj.c","w");
+          fputs($fp, $spjcode);
+          fclose($fp);
+          ////system( " gcc -o $basedir/spj $basedir/spj.c  ");
+      }
+      if (!file_exists("$basedir/tpj")) {
+        echo "you need to compile $basedir/tpj.cc for tpj[  g++ -o $basedir/tpj $basedir/tpj.cc   ]<br> and rejudge $pid";
+      }
+      else {
+        //unlink("$basedir/spj.cc");
+      }
+      
+    }
         }
       }
 
@@ -337,7 +348,7 @@ function import_fps($tempfile) {
       mkpta($pid,$prepends,"append");
     }
     else {
-      echo "<br>&nbsp;&nbsp;- <span class=red>$title is already in this OJ</span>";		
+      echo "<br>&nbsp;&nbsp;- <span class=red>$title is already in this OJ</span>";   
     }
   }
 
@@ -396,10 +407,10 @@ else {
   else {
   import_fps($tempfile);
   }
-  //	echo "Upload: " . $_FILES ["fps"] ["name"] . "<br />";
-  //	echo "Type: " . $_FILES ["fps"] ["type"] . "<br />";
-  //	echo "Size: " . ($_FILES ["fps"] ["size"] / 1024) . " Kb<br />";
-  //	echo "Stored in: " . $tempfile;
+  //  echo "Upload: " . $_FILES ["fps"] ["name"] . "<br />";
+  //  echo "Type: " . $_FILES ["fps"] ["type"] . "<br />";
+  //  echo "Size: " . ($_FILES ["fps"] ["size"] / 1024) . " Kb<br />";
+  //  echo "Stored in: " . $tempfile;
 
   //$xmlDoc = new DOMDocument ();
   //$xmlDoc->load ( $tempfile );
@@ -418,9 +429,9 @@ if (isset($OJ_UDP) && $OJ_UDP) {
     $OJ_UDPPORT = $JUDGE_SERVERS[1];
   }
   if(isset($OJ_JUDGE_HUB_PATH))
-	send_udp_message($JUDGE_HOST, $OJ_UDPPORT, $OJ_JUDGE_HUB_PATH);
+  send_udp_message($JUDGE_HOST, $OJ_UDPPORT, $OJ_JUDGE_HUB_PATH);
   else
-  	send_udp_message($JUDGE_HOST, $OJ_UDPPORT, 0);
+    send_udp_message($JUDGE_HOST, $OJ_UDPPORT, 0);
 }
 
 ?>
