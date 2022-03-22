@@ -30,7 +30,8 @@ RUN	wget raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220223.zip
 RUN	unzip hustoj220223.zip -d /home/judge/
 RUN	rm hustoj220223.zip
 
-RUN	sed -i 's#OJ_USE_MAX_TIME=0#OJ_USE_MAX_TIME=1#' /home/judge/etc/judge.conf
+#Using the longest case of test as final time 
+RUN	sed -i 's#OJ_USE_MAX_TIME=0#OJ_USE_MAX_TIME=1#' /home/judge/install/judge.conf
 
 #Github update
 #RUN	svn up /home/judge/src 
