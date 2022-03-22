@@ -30,6 +30,8 @@ RUN	wget raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220223.zip
 RUN	unzip hustoj220223.zip -d /home/judge/
 RUN	rm hustoj220223.zip
 
+RUN	sed -i 's#OJ_USE_MAX_TIME=0#OJ_USE_MAX_TIME=1#' /home/judge/etc/judge.conf
+
 #Github update
 #RUN	svn up /home/judge/src 
 RUN     cd /home/judge/src/core/ && bash make.sh 
@@ -54,4 +56,3 @@ ENV LANG zh_CN.UTF-8
 ENV LANGUAGE zh_CN:zh
 ENV LC_ALL zh_CN.UTF-8 
 
-RUN sed -i "s/OJ_USE_MAX_TIME=0/OJ_USE_MAX_TIME=1/" /home/judge/etc/judge.conf
