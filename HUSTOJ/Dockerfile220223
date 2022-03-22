@@ -1,4 +1,5 @@
 #Edited by Hyun-seok Jeon for Korean HUSTOJ 22.02.23
+#Last edit 22.03.22
 
 FROM ubuntu:20.04
 
@@ -28,6 +29,7 @@ RUN     cd /home/judge/
 RUN	wget raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220223.zip 
 RUN	unzip hustoj220223.zip -d /home/judge/
 RUN	rm hustoj220223.zip
+RUN sed -i "s/OJ_USE_MAX_TIME=0/OJ_USE_MAX_TIME=1/" /home/judge/etc/judge.conf
 
 #Github update
 #RUN	svn up /home/judge/src 
