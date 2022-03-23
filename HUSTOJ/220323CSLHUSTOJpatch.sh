@@ -29,6 +29,9 @@ mv -f ./problem_import_xml220223.php /home/judge/src/web/admin/problem_import_xm
 chown www-data:root /home/judge/src/web/admin/problem_import_xml.php
 chmod 664 /home/judge/src/web/admin/problem_import_xml.php
 
+#judge.conf edit
+#time result fix ... for use_max_time : to record the max time of all results, not sum of...
+sed -i "s/OJ_TIME_LIMIT_TO_TOTAL=1/OJ_TIME_LIMIT_TO_TOTAL=0/" /home/judge/etc/judge.conf
 
 sed -i "s/release 22.02.23 /release 22.02.23p1/" /home/judge/src/web/template/bs3/js.php
 

@@ -34,7 +34,7 @@ apt update
 apt -y upgrade
 apt -y autoremove
 
-apt -y install subversion zip unzip
+apt -y install subversion zip unzip curl
 
 /usr/sbin/useradd -m -u 1536 judge
 cd /home/judge/ || exit
@@ -208,6 +208,7 @@ cd
 #judge.conf edit
 #time result fix ... for use_max_time : to record the max time of all results, not sum of...
 sed -i "s/OJ_USE_MAX_TIME=0/OJ_USE_MAX_TIME=1/" /home/judge/etc/judge.conf
+sed -i "s/OJ_TIME_LIMIT_TO_TOTAL=1/OJ_TIME_LIMIT_TO_TOTAL=0/" /home/judge/etc/judge.conf
 
 #db_info.inc.php edit
 #for OJ name
