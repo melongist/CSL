@@ -37,7 +37,7 @@ sed -i "s/OJ_TIME_LIMIT_TO_TOTAL=1/OJ_TIME_LIMIT_TO_TOTAL=0/" /home/judge/etc/ju
 DBUSER=$(grep user /etc/mysql/debian.cnf|head -1|awk  '{print $3}')
 PASSWORD=$(grep password /etc/mysql/debian.cnf|head -1|awk  '{print $3}')
 
-echo "DELETE FROM \`problem\` WHERE \`problem\`.\`problem_id\` >=1301 AND \`problem\`.\`problem_id\` <= 1321);" | mysql -u${DBUSER} -p${PASSWORD} -D jol 
+echo "DELETE FROM \`problem\` WHERE (\`problem\`.\`problem_id\`>=1301 AND \`problem\`.\`problem_id\`<=1321);"|mysql -u${DBUSER} -p${PASSWORD} -D jol
 
 rm -rf /home/judge/data/1301
 rm -rf /home/judge/data/1302
