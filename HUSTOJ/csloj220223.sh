@@ -547,15 +547,12 @@ sed -i "s/OJ_VCODE=false/OJ_VCODE=true/" /home/judge/src/web/include/db_info.inc
 sed -i "s/$OJ_LANGMASK=1637684/$OJ_LANGMASK=2097085/" /home/judge/src/web/include/db_info.inc.php
 
 
-#judge.conf edit
-#time result fix ... for use_max_time : to record the max time of all results, not sum of...
-sed -i "s/OJ_USE_MAX_TIME=0/OJ_USE_MAX_TIME=1/" /home/judge/etc/judge.conf
-
-
 #php.ini edit
 #file upload size more up
 sed -i "s/post_max_size = 80M/post_max_size = 512M/g" /etc/php/7.4/fpm/php.ini
 sed -i "s/upload_max_filesize = 80M/upload_max_filesize = 512M/g" /etc/php/7.4/fpm/php.ini
+sed -i "s/max_execution_time = 30/max_execution_time = 60/g" /etc/php/7.4/fpm/php.ini
+sed -i "s/memory_limit = 128M/memory_limit = 512M/g" /etc/php/7.4/fpm/php.ini
 sed -i "s:client_max_body_size    80m:client_max_body_size    512m:g" /etc/nginx/nginx.conf
 
 

@@ -5,7 +5,7 @@
 
 clear
 
-THISFILE="220319CSLHUSTOJpatch.sh"
+THISFILE="cslojpatch.sh"
 
 if [[ -z $SUDO_USER ]]
 then
@@ -32,6 +32,12 @@ chmod 664 /home/judge/src/web/admin/problem_import_xml.php
 #judge.conf edit
 #time result fix ... for use_max_time : to record the max time of all results, not sum of...
 sed -i "s/OJ_TIME_LIMIT_TO_TOTAL=1/OJ_TIME_LIMIT_TO_TOTAL=0/" /home/judge/etc/judge.conf
+
+
+#php.ini edit
+#file upload size more up
+sed -i "s/max_execution_time = 30/max_execution_time = 60/g" /etc/php/7.4/fpm/php.ini
+sed -i "s/memory_limit = 128M/memory_limit = 512M/g" /etc/php/7.4/fpm/php.ini
 
 
 DBUSER=$(grep user /etc/mysql/debian.cnf|head -1|awk  '{print $3}')
