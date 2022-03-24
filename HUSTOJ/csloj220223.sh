@@ -551,7 +551,7 @@ sed -i "s/$OJ_LANGMASK=1637684/$OJ_LANGMASK=2097085/" /home/judge/src/web/includ
 #file upload size more up
 sed -i "s/post_max_size = 80M/post_max_size = 512M/g" /etc/php/7.4/fpm/php.ini
 sed -i "s/upload_max_filesize = 80M/upload_max_filesize = 512M/g" /etc/php/7.4/fpm/php.ini
-sed -i "s/max_execution_time = 30/max_execution_time = 60/g" /etc/php/7.4/fpm/php.ini
+sed -i "s/max_execution_time = 30/max_execution_time = 120/g" /etc/php/7.4/fpm/php.ini
 sed -i "s/memory_limit = 128M/memory_limit = 512M/g" /etc/php/7.4/fpm/php.ini
 sed -i "s:client_max_body_size    80m:client_max_body_size    512m:g" /etc/nginx/nginx.conf
 

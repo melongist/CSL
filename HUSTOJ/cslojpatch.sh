@@ -36,7 +36,7 @@ sed -i "s/OJ_TIME_LIMIT_TO_TOTAL=1/OJ_TIME_LIMIT_TO_TOTAL=0/" /home/judge/etc/ju
 
 #php.ini edit
 #file upload size more up
-sed -i "s/max_execution_time = 30/max_execution_time = 60/g" /etc/php/7.4/fpm/php.ini
+sed -i "s/max_execution_time = 30/max_execution_time = 120/g" /etc/php/7.4/fpm/php.ini
 sed -i "s/memory_limit = 128M/memory_limit = 512M/g" /etc/php/7.4/fpm/php.ini
 
 
