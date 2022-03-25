@@ -72,3 +72,9 @@ sed -i "s/release 22.02.23 /release 22.02.23p1/" /home/judge/src/web/template/bs
 echo ""
 echo "---- CSL HUSTOJ xml image download error patched ----"
 echo ""
+echo "---- system reboot ----"
+echo ""
+echo "Waiting 10 seconds..."
+sleep 10
+echo "Rebooted"
+reboot
