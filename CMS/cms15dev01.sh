@@ -106,7 +106,16 @@ echo ""
 echo "CMS1.5.dev0 prerequisites installation completed!!" | tee -a cms.txt
 echo "------ system reboot ------" | tee -a cms.txt
 echo ""
-echo "Waiting 10 seconds..."
-sleep 10
-echo "Rebooted"
-reboot
+echo "System will be rebooted in 10 seconds!"
+echo ""
+COUNT=10
+while [ $COUNT -ge 0 ]
+do
+  echo $COUNT
+  ((COUNT--))
+  sleep 1
+done
+echo "rebooted!"
+sleep 5
+sudo reboot
+
