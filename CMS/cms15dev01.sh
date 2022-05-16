@@ -32,6 +32,7 @@ sudo apt -y install fp-compiler
 sudo apt -y install postgresql
 sudo apt -y install postgresql-contrib
 sudo apt -y install postgresql-client
+sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt -y install python3.10
 sudo apt -y install pypy
 sudo apt -y install cppreference-doc-en-html
