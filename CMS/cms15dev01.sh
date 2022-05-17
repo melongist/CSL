@@ -5,6 +5,7 @@
 
 #CMS1.5.dev0 + Ubuntu 20.04 LTS Server
 #prerequisites installation
+#+ PyPy3
 
 #terminal commands
 #------
@@ -32,9 +33,14 @@ sudo apt -y install fp-compiler
 sudo apt -y install postgresql
 sudo apt -y install postgresql-contrib
 sudo apt -y install postgresql-client
+
 sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt -y update
 sudo apt -y install python3.10
-sudo apt -y install pypy
+sudo add-apt-repository ppa:pypy/ppa -y
+sudo apt -y update
+sudo apt -y install pypy3
+
 sudo apt -y install cppreference-doc-en-html
 sudo apt -y install cgroup-lite
 sudo apt -y install libcap-dev
@@ -48,7 +54,7 @@ sudo apt -y install libffi-dev
 sudo apt -y install python3-pip
 
 sudo apt -y install nginx-full
-#sudo apt -y install python2.7
+sudo apt -y install python2.7
 sudo apt -y install php7.4-cli
 sudo apt -y install php7.4-fpm
 sudo apt -y install phppgadmin

@@ -46,7 +46,7 @@ cmsInitDB
 cmsAddAdmin admin -p $USERPW
 
 echo "cms1.5.dev0 installation completed!!" | tee -a cms.txt
-echo "Ver 2022.05.16 CSL" | tee -a cms.txt
+echo "Ver 2022.05.18 CSL" | tee -a cms.txt
 echo "" | tee -a cms.txt
 echo "------ After every reboot ------" | tee -a cms.txt
 echo "For CMS admin page" | tee -a cms.txt
@@ -67,5 +67,11 @@ echo "" | tee -a cms.txt
 
 cmsAdminWebServer
 
+#for admin page
 #setsid cmsAdminWebServer &
-#setsid cmsResourceService -a &
+
+#for ranking page
+#setsid cmsRankingWebServer &
+
+#for selecting contest
+#cmsResourceService -a
