@@ -54,7 +54,7 @@ sudo apt -y install php7.4-fpm
 sudo apt -y install phppgadmin
 sudo apt -y install texlive-latex-base
 sudo apt -y install a2ps
-sudo apt -y install gcj-jdk
+#sudo apt -y install gcj-jdk
 sudo apt -y install haskell-platform
 sudo apt -y install rustc
 sudo apt -y install mono-mcs
@@ -84,8 +84,6 @@ sudo apt install -y patool
 sudo apt install -y python3-babel
 sudo apt install -y python3-xdg
 sudo apt install -y python3-jinja2
-
-sudo apt install -y python3-yaml
 sudo apt install -y python3-sphinx
 sudo apt install -y python3-cups
 sudo apt install -y python3-pypdf2
@@ -95,6 +93,7 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/CMS/cms-master-20220
 
 tar xvf cms-master-20220516CSL.tar
 mv cms-master-20220516CSL cms
+rm -rf cms-master-20220516CSL.tar
 
 cd cms
 #select 'Y' at the end...  
