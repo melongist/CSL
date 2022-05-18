@@ -1,44 +1,16 @@
-#2022.05.18   
-
-#With Ubuntu 20.04 LTS Desktop...    
-
-#AWS OK!  + PyPy3 supported!    
+#2022.05.18  
+  
+#CMS 1.5.dev0  batch installation  
+  
+#Ubuntu 20.04 LTS + CMS 1.5.dev0 + PyPy3 supported!  
+  
+#AWS works well OK!  
+#AWS : Ubuntu Server 20.04 LTS  
+#AWS : Security Groups? open SSH, HTTP, HTTPS, TCP 8888, TCP 8889, TCP 8890 and your needs~    
     
-#AWS firewall? open SSH, HTTP, HTTPS, TCP 8888, TCP 8889, TCP 8890 and needed~    
     
-    
-    
-#2020.12.10   
-
-#IOI style CMS   
-#With Ubuntu 20.04 LTS Desktop... at PC   
-
-#I finally got it!!!!!! after hundreds of challenges  
-
-
-#Official CMS http://cms-dev.github.io/   
-#Official CMS GitHub https://github.com/cms-dev/cms   
-#Official CMS DOCS https://cms.readthedocs.io/en/latest/index.html   
-
-
-
-#I finally got it!!!!!! after hundreds of challenges  
-
-#With great help of one of our great students(https://github.com/junukwon7)   
-
-
-#2020.11.28 korean translation updated   
-   
-
-
-
-
-
-
-
+***
 #for CMS install    
-   
-
 #Prerequisites batch installation terminal command  
 <pre>
 wget https://raw.githubusercontent.com/melongist/CSL/master/CMS/cms15dev01.sh   
@@ -52,7 +24,7 @@ bash cms15dev02.sh
 </pre>
    
     
-    
+***    
 #How to make/manage contest! (last update 2022.05.18)    
 (It takes about 1 hour and more ... with full problem data ... )    
    
@@ -105,5 +77,31 @@ bash cms15dev02.sh
   4.1 start cmsRankingWebServer service ?? run with other terminal ...   
     - run cmsRankingWebServer with terminal    
     - PC terminal?  : `cmsRankingWebServer`    
-    - AWS terminal? : `setsid cmsRankingWebServer &`       
-    
+    - AWS terminal? : `setsid cmsRankingWebServer &`  
+  
+  
+  
+  
+  
+  
+***  
+#2020.12.10   
+
+#IOI style CMS   
+#With Ubuntu 20.04 LTS Desktop... at PC   
+
+#I finally got it!!!!!! after hundreds of challenges  
+
+
+#Official CMS http://cms-dev.github.io/   
+#Official CMS GitHub https://github.com/cms-dev/cms   
+#Official CMS DOCS https://cms.readthedocs.io/en/latest/index.html   
+
+
+
+#I finally got it!!!!!! after hundreds of challenges  
+
+#With great help of one of our great students(https://github.com/junukwon7)   
+
+
+#2020.11.28 korean translation updated
