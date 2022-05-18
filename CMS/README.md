@@ -86,10 +86,13 @@ bash cms15dev02.sh
     - run cmsRankingWebServer with terminal    
     - PC terminal?  : `cmsRankingWebServer`    
     - AWS terminal? : `setsid cmsRankingWebServer &`  
+    - default RankingWebServer page & port : http://localhost:8890    
   
   
-  
-  
+<br>
+<br>
+<br>
+<br>
   
   
 ***  
