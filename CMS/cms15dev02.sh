@@ -82,8 +82,8 @@ echo "  PC terminal?  : cmsResourceService -a" | tee -a cms.txt
 echo "  AWS terminal? : cmsResourceService -a" | tee -a cms.txt
 echo "  and   select # to start contest!" | tee -a cms.txt
 echo "" | tee -a cms.txt
-echo "check : contest, user ... with user menu" | tee -a cms.txt
-echo "      http://localhost:8888" | tee -a cms.txt
+echo "  check : contest, user ... with user menu" | tee -a cms.txt
+echo "  http://localhost:8888" | tee -a cms.txt
 echo "  how to change port number : sudo nano /usr/local/etc/cms.conf" | tee -a cms.txt
 echo "" | tee -a cms.txt
 echo "------ CMS Ranking Web Server ------" | tee -a cms.txt
