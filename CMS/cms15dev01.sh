@@ -34,9 +34,11 @@ sudo apt -y install postgresql
 sudo apt -y install postgresql-contrib
 sudo apt -y install postgresql-client
 
+#for python3.10
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt -y update
 sudo apt -y install python3.10
+#for PyPy3
 sudo add-apt-repository ppa:pypy/ppa -y
 sudo apt -y update
 sudo apt -y install pypy3

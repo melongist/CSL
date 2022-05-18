@@ -63,15 +63,18 @@ echo "and   select # to start contest!" | tee -a cms.txt
 echo "" | tee -a cms.txt
 echo "check : contest, user ... with user menu" | tee -a cms.txt
 echo "      http://localhost:8888" | tee -a cms.txt
+echo "  how to change port number : sudo nano /usr/local/etc/cms.conf" | tee -a cms.txt
 echo "" | tee -a cms.txt
 
 cmsAdminWebServer
 
-#for admin page
+
+#for admin page service
 #setsid cmsAdminWebServer &
 
-#for ranking page
+#for ranking page service
 #setsid cmsRankingWebServer &
 
-#for selecting contest
+#for run contest
 #cmsResourceService -a
+#and select contest number
