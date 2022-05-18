@@ -1,7 +1,10 @@
 #2022.05.18   
 
-#With Ubuntu 20.04 LTS Desktop... AWS OK!  + PyPy3 supported!    
-#AWS firewall? open TCP 8888, TCP 8889, TCP 8890.   
+#With Ubuntu 20.04 LTS Desktop...    
+
+#AWS OK!  + PyPy3 supported!    
+    
+#AWS firewall? open SSH, HTTP, HTTPS, TCP 8888, TCP 8889, TCP 8890 and needed~    
     
     
     
