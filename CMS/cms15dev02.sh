@@ -94,7 +94,7 @@ echo "" | tee -a cms.txt
 echo "" | tee -a cms.txt
 
 
-clear
+#clear
 echo "------ CMS 1.5.dev0 ready!! ------"
 echo ""
 cat cms.txt
