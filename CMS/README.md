@@ -1,5 +1,3 @@
-#2022.05.18  
-  
 #Official site       http://cms-dev.github.io/  
 #Official GitHub     https://github.com/cms-dev/cms  
 #Official DOCS       https://cms.readthedocs.io/en/latest/index.html  
@@ -7,6 +5,8 @@
   
   
 ***
+#2022.05.18  
+  
 #CMS 1.5.dev0  batch installation  
   
 #Ubuntu 20.04 LTS + CMS 1.5.dev0 + PyPy3 supported!  
