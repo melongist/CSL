@@ -1,5 +1,12 @@
 #2022.05.18  
   
+#Official site       http://cms-dev.github.io/  
+#Official GitHub     https://github.com/cms-dev/cms  
+#Official DOCS       https://cms.readthedocs.io/en/latest/index.html  
+#Official Chat       https://gitter.im/cms-dev/cms  
+  
+  
+***
 #CMS 1.5.dev0  batch installation  
   
 #Ubuntu 20.04 LTS + CMS 1.5.dev0 + PyPy3 supported!  
@@ -10,7 +17,8 @@
     
     
 ***
-#for CMS install    
+#CMS batch installation commands  
+  
 #Prerequisites batch installation terminal command  
 <pre>
 wget https://raw.githubusercontent.com/melongist/CSL/master/CMS/cms15dev01.sh   
