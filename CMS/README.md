@@ -76,7 +76,7 @@ bash cms15dev02.sh
   3.2 select contest number ...    
 
   3.3 user login with PW at web browser ...    
-    - default admin page & port : http://localhost:8888    
+    - default user page & port : http://localhost:8888    
     - port number can be configured at /usr/local/etc/cms.conf    
     - how to edit port number(reboot needed) : `sudo nano /usr/local/etc/cms.conf`    
 
