@@ -61,7 +61,7 @@ echo "cms1.5.dev0 installation completed!!" | tee -a cms.txt
 echo "Last update : 2022.05.18" | tee -a cms.txt
 echo "" | tee -a cms.txt
 echo "------ CMS admin server ------" | tee -a cms.txt
-echo "Start CMS admin server" | tee -a cms.txt
+echo "  Start CMS admin server" | tee -a cms.txt
 echo "  PC terminal?  : cmsAdminWebServer" | tee -a cms.txt
 echo "  AWS terminal? : setsid cmsAdminWebServer &" | tee -a cms.txt
 echo "" | tee -a cms.txt
@@ -70,8 +70,8 @@ echo "      pw : $USERPW" | tee -a cms.txt
 echo "" | tee -a cms.txt
 echo "" | tee -a cms.txt
 echo "------ Making contest ------" | tee -a cms.txt
-echo "At admin page" | tee -a cms.txt
-echo "http://localhost:8889" | tee -a cms.txt
+echo "  At admin page" | tee -a cms.txt
+echo "  http://localhost:8889" | tee -a cms.txt
 echo "  upload tasks ... attachments ... in/out files ..." | tee -a cms.txt
 echo "  select/make scoring method ... etc" | tee -a cms.txt
 echo "  make user accounts ... etc ..." | tee -a cms.txt
@@ -87,7 +87,7 @@ echo "  http://localhost:8888" | tee -a cms.txt
 echo "  how to change port number : sudo nano /usr/local/etc/cms.conf" | tee -a cms.txt
 echo "" | tee -a cms.txt
 echo "------ CMS Ranking Web Server ------" | tee -a cms.txt
-echo "Start CMS Ranking Web Server" | tee -a cms.txt
+echo "  Start CMS Ranking Web Server" | tee -a cms.txt
 echo "  PC terminal?  : cmsRankingWebServer" | tee -a cms.txt
 echo "  AWS terminal? : setsid cmsRankingWebServer &" | tee -a cms.txt
 echo "" | tee -a cms.txt
