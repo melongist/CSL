@@ -1,5 +1,3 @@
-#2022.05.18  
-  
 #Official site       http://cms-dev.github.io/  
 #Official GitHub     https://github.com/cms-dev/cms  
 #Official DOCS       https://cms.readthedocs.io/en/latest/index.html  
@@ -7,6 +5,8 @@
   
   
 ***
+#2022.05.18  
+  
 #CMS 1.5.dev0  batch installation  
   
 #Ubuntu 20.04 LTS + CMS 1.5.dev0 + PyPy3 supported!  
@@ -76,7 +76,7 @@ bash cms15dev02.sh
   3.2 select contest number ...    
 
   3.3 user login with PW at web browser ...    
-    - default admin page & port : http://localhost:8888    
+    - default user page & port : http://localhost:8888    
     - port number can be configured at /usr/local/etc/cms.conf    
     - how to edit port number(reboot needed) : `sudo nano /usr/local/etc/cms.conf`    
 
