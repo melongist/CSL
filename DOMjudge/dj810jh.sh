@@ -103,7 +103,7 @@ fi
 
 
 #make docs
-sudo apt -y install python3-sphinx python3-sphinx-rtd-theme rst2pdf fontconfig python3-yaml
+sudo apt -y install python3-sphinx python3-sphinx-rtd-theme rst2pdf fontconfig python3-yaml latexmk
 cd ~/domjudge-8.1.0/doc/
 make docs
 sudo make install-docs
