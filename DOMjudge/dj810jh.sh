@@ -57,10 +57,10 @@ sudo apt -y install npm
 #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
 #sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
-sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+echo 'y' | sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 sudo apt -y update
 sudo apt -y install r-base
-#swift
+#swift not supported yet!
 sudo apt -y install clang libicu-dev
 #wget https://download.swift.org/swift-5.6.1-release/ubuntu2004/swift-5.6.1-RELEASE/swift-5.6.1-RELEASE-ubuntu22.04.tar.gz
 wget https://download.swift.org/development/ubuntu2204/swift-DEVELOPMENT-SNAPSHOT-2022-06-02-a/swift-DEVELOPMENT-SNAPSHOT-2022-06-02-a-ubuntu22.04.tar.gz
@@ -113,7 +113,7 @@ sudo update-grub
 #default
 #sudo /opt/domjudge/judgehost/bin/dj_make_chroot
 
-#default + JavaScript,R,swift
+#default + JavaScript,R,swift,pypy3
 echo 'y' | sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base,swift,pypy3
 
 
