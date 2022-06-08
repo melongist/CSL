@@ -407,6 +407,9 @@ else
 fi
 
 
+mysql -u ${DBUSER} -p${PASSWORD} jol -e "ALTER TABLE `news` ADD COLUMN `menu` int(11) NOT NULL DEFAULT 0 AFTER `importance`; "
+
+
 #Coping all uploads to server
 #current uploads backup
 #how to backup uploads from CSL HUSTOJ
