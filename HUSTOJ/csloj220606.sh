@@ -11,7 +11,7 @@ THISFILE="csloj220606.sh"
 SRCZIP="hustoj220606.zip"
 DOCKERFILE="Dockerfile220606"
 
-SQLFILE="csl220223jolp1.sql"
+SQLFILE="csl220606jol.sql"
 UPLOADFILE="csl220223uploads.tar.gz"
 DATAFILE="csl220223data.tar.gz"
 
@@ -405,9 +405,6 @@ else
   #add source_browser privilege to admin
   echo "insert into jol.privilege values('admin','source_browser','true','N');"|mysql -h localhost -u"$USER" -p"$PASSWORD"
 fi
-
-
-mysql -u ${DBUSER} -p${PASSWORD} jol -e "ALTER TABLE `news` ADD COLUMN `menu` int(11) NOT NULL DEFAULT 0 AFTER `importance`; "
 
 
 #Coping all uploads to server
