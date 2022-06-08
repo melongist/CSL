@@ -250,9 +250,11 @@ mkdir /home/judge/src/web/admin/msg
 chown www-data:root /home/judge/src/web/admin/msg
 chmod 744 /home/judge/src/web/admin/msg
 
+sed -i "s/style=\"position:fixed;z-index:9999;width:100%;margin-bottom:50px\"//" /home/judge/src/web/template/bs3/nav.php
+
 #Replacing msg.txt
 wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/msg220606.txt
-mv -f ./msg220223.txt /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
+mv -f ./msg220606.txt /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
 chown www-data:${SUDO_USER} /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
 chmod 644 /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
 sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
