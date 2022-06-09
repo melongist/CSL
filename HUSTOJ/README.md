@@ -112,7 +112,7 @@ sudo bash csloj220606.sh
 #기존 CSL HUSTOJ 22.02.23 무한채점 증상은 아래 명령어로 패치한 후, 해당 무한 채점번호를 수동으로 재채점 시키면 됩니다.   
    
 <pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj220223pathc2.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj220223patch2.sh
    
 sudo bash csloj220223patch2.sh
 </code></pre>
