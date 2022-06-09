@@ -628,6 +628,11 @@ rm -f temp
 #temporary fix until next release
 #...
 
+#AWS 20.04 docker error?
+if [ -f /etc/default/grub.d/50-cloudimg-settings.cfg ]
+   sed -i "s/OJ_USE_DOCKER=1/OJ_USE_DOCKER=0/g" /home/judge/etc/judge.conf
+   sed -i "s/OJ_INTERNAL_CLIENT=1/OJ_INTERNAL_CLIENT=0/g" /home/judge/etc/judge.conf
+fi
 
 
 
