@@ -1,13 +1,14 @@
 ## Ver   
-#### - 최종 갱신일 : 22.03.25   
-#### - 버전: 22.02.23   
+#### - 최종 갱신일 : 22.06.09   
+#### - 버전: 22.06.06   
 
 ***   
    
 ## Prerequisite   
 #### - 설치 전 필요 조건   
 #Ubuntu 20.04 LTS 운영체제가 AWS 나 PC 에 먼저 설치되어 있어야 합니다.   
-   
+#Ubuntu 22.04 LTS 에서는 공식 깃허브의 설치 스크립트를 사용해야합니다만, 현재 AWS 웹 터미널 접속에 문제가 있습니다.
+
 #Ubuntu 20.04 LTS Server  에서는 english 환경으로 설치해서 그대로 사용!   
 #Ubuntu 20.04 LTS Desktop 에서는 english 환경으로 설치하고 필요한 경우 한글 환경으로 바꾸되, 기본 폴더명(바탕화면 등)들은 영문! 그대로 유지!   
    
@@ -37,9 +38,9 @@
 #아래 명령을 실행하면, 한글 환경과 한국 시간으로 맞추어 HUSTOJ 를 설치합니다.   
 
 <pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220223.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220606.sh
 
-sudo bash hustoj220223.sh
+sudo bash hustoj220606.sh
 </code></pre>
   
 ***   
@@ -95,14 +96,29 @@ sudo bash hustoj220223.sh
 #### - 다음 설치 스크립트를 사용해서 CSL 버전의 HUSTOJ 와 기초100제 시리즈 문제 일체와 수업용 기능들을 한 번에 모두 설치할 수 있습니다.   
 
 #우분투 20.04LTS 에서 터미널을 실행한 후, 아래 설치 스크립트 명령을 순서대로 입력하고 실행하면 됩니다.   
-#csloj220223.sh 파일이 있는 경우, 먼저 삭제(rm csloj220223.sh) 후 다음 명령어를 실행해주세요.     
+#csloj220606.sh 파일이 있는 경우, 먼저 삭제(rm csloj220606.sh) 후 다음 명령어를 실행해주세요.     
 
 #아래 명령을 실행하면, 한글 환경과 한국 시간으로 맞추어 CSL HUSTOJ 를 설치합니다.   
    
 <pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj220223.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj220606.sh
    
-sudo bash csloj220223.sh
+sudo bash csloj220606.sh
 </code></pre>
    
 ***   
+
+
+#기존 CSL HUSTOJ 22.02.23 무한채점 증상은 아래 명령어로 패치한 후, 해당 무한 채점번호를 수동으로 재채점 시키면 됩니다.   
+   
+<pre><code>
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj220223pathc2.sh
+   
+sudo bash csloj220223patch2.sh
+</code></pre>
+   
+***   
+
+
+
+
