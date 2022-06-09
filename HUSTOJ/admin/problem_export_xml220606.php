@@ -128,11 +128,19 @@ function fixurl($img_url) {
 
   if (substr($img_url,0,4)!="http") {
     if (substr($img_url,0,1)=="/") {
-      $ret = 'http://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$img_url;
+      //* by CSL
+      if($_SERVER['SERVER_PORT'] == 443)
+        $ret = 'https://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$img_url;
+      else
+        $ret = 'http://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$img_url;
     }
     else {
       $path = dirname($_SERVER['PHP_SELF']);
-      $ret = 'http://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$path."/../".$img_url;
+      //* by CSL
+      if($_SERVER['SERVER_PORT'] == 443)
+        $ret = 'https://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$path."/../".$img_url;
+      else
+        $ret = 'http://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$path."/../".$img_url;
     }
 
   }
