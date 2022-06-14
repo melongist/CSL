@@ -63,11 +63,11 @@ sudo apt -y install r-base
 #swift not supported yet!
 sudo apt -y install clang libicu-dev
 #wget https://download.swift.org/swift-5.6.1-release/ubuntu2004/swift-5.6.1-RELEASE/swift-5.6.1-RELEASE-ubuntu22.04.tar.gz
-wget https://download.swift.org/development/ubuntu2204/swift-DEVELOPMENT-SNAPSHOT-2022-06-02-a/swift-DEVELOPMENT-SNAPSHOT-2022-06-02-a-ubuntu22.04.tar.gz
+wget https://download.swift.org/development/ubuntu2204/swift-DEVELOPMENT-SNAPSHOT-2022-06-13-a/swift-DEVELOPMENT-SNAPSHOT-2022-06-13-a-ubuntu22.04.tar.gz
 
-tar -zxvf swift-DEVELOPMENT-SNAPSHOT-2022-06-02-a-ubuntu22.04.tar.gz
-rm swift-DEVELOPMENT-SNAPSHOT-2022-06-02-a-ubuntu22.04.tar.gz
-sudo mv ~/swift-DEVELOPMENT-SNAPSHOT-2022-06-02-a-ubuntu22.04 ~/swift
+tar -zxvf swift-DEVELOPMENT-SNAPSHOT-2022-06-13-a-ubuntu22.04.tar.gz
+rm swift-DEVELOPMENT-SNAPSHOT-2022-06-13-a-ubuntu22.04.tar.gz
+sudo mv ~/swift-DEVELOPMENT-SNAPSHOT-2022-06-13-a-ubuntu22.04 ~/swift
 sudo ln -s ~/swift/usr/bin/swiftc /usr/bin/swiftc
 
 
