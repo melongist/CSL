@@ -19,9 +19,11 @@ fi
 
 clear
 
-INPUTS="n"
-echo -n "Rename DOMjudge logo name? [y/n]: "
-read INPUTS
+INPUTS="x"
+while [ ${INPUTS} != "y" && ${INPUTS} != "n" ]; do
+  echo -n "Rename DOMjudge logo name? [y/n]: "
+  read INPUTS
+done
 echo ""
 if [ ${INPUTS} == "y" ] ; then
   OJNAME="o"
@@ -32,6 +34,8 @@ if [ ${INPUTS} == "y" ] ; then
     echo -n "Repeat DOMjudge NAME : "
     read INPUTS
   done
+else
+  OJNAME="DOMjudge"
 fi
 
 echo ""
