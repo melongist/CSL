@@ -133,15 +133,16 @@ sudo service apache2 reload
 #For DOMjudge configuration check
 #apache2
 #MariaDB Max connections to 10000
-sudo sed -i "s/\#max_connections        = 100/max_connections        = 10000/" /etc/mysql/mariadb.conf.d/50-server.cnf
+##sudo sed -i "s/\#max_connections        = 100/max_connections        = 20000/" /etc/mysql/mariadb.conf.d/50-server.cnf
 #PHP upload_max_filesize to 512M
-sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 512M/" /etc/php/8.1/apache2/php.ini
+##sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 512M/" /etc/php/8.1/apache2/php.ini
 #PHP max_file_uploads to 512
-sudo sed -i "s/max_file_uploads = 20/max_file_uploads = 512/" /etc/php/8.1/apache2/php.ini
+##sudo sed -i "s/max_file_uploads = 100/max_file_uploads = 200/" /etc/php/8.1/apache2/php.ini
+##sudo sed -i "s/max_file_uploads = 100/max_file_uploads = 200/" /etc/php/8.1/fpm/php.ini
 #PHP post_max_size to 512M
-sudo sed -i "s/post_max_size = 8M/post_max_size = 512M/" /etc/php/8.1/apache2/php.ini
+##sudo sed -i "s/post_max_size = 8M/post_max_size = 512M/" /etc/php/8.1/apache2/php.ini
 #PHP memory_limit to 2048M
-sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/apache2/php.ini
+##sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/apache2/php.ini
 
 
 
