@@ -266,10 +266,8 @@ fi
 
 
 #temporary fix until next release
-#for python judging
-sed -i "s/137,158,202,218,231,257,273,/137,158,202,218,231,257,262,273,334,/" /home/judge/src/web/core/judge_client/okcalls64.h
-cd /home/judgesrc/core || exit 
-./make.sh
+#...
+
 
 
 #Replacing msg.txt
