@@ -266,16 +266,16 @@ fi
 
 
 #temporary fix until next release
-#...
-#sed -i "s/<img src=\"refresh/<\!--<img src=\"refresh/" /home/judge/src/web/template/bs3/error.php
-#sed -i "s/on error\" >/on error\" >-->/" /home/judge/src/web/template/bs3/error.php
+#for python judging
+sed -i "s/137,158,202,218,231,257,273,/137,158,202,218,231,257,262,273,334,/" /home/judge/src/web/core/judge_client/okcalls64.h
+cd /home/judgesrc/core || exit 
+./make.sh
+
+
+#Replacing msg.txt
 mkdir /home/judge/src/web/admin/msg
 chown www-data:root /home/judge/src/web/admin/msg
 chmod 744 /home/judge/src/web/admin/msg
-
-#sed -i "s/style=\"position:fixed;z-index:9999;width:100%;margin-bottom:50px\"//" /home/judge/src/web/template/bs3/nav.php
-
-#Replacing msg.txt
 wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/msg220621.txt
 mv -f ./msg220621.txt /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
 chown www-data:${SUDO_USER} /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
@@ -295,5 +295,5 @@ echo "http://${IPADDRESS[0]}"
 echo ""
 echo ""
 echo "Check & Edit HUSTOJ configurations"
-echo "sudo vi /home/judge/src/web/include/db_info.inc.php"
+echo "sudo nano /home/judge/src/web/include/db_info.inc.php"
 echo ""
