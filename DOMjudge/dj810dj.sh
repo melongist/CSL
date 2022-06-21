@@ -19,6 +19,17 @@ if [[ $SUDO_USER ]] ; then
   exit 1
 fi
 
+OSVER=$(grep "Ubuntu" /etc/issue|head -1|awk  '{print $2}')
+
+if [ ${OSVER} != "22.04" ] ; then
+  echo ""
+  echo "This is not Ubuntu 22.04 LTS!!"
+  echo ""
+  echo "Ubuntu 22.04 LTS needed!!'"
+  echo ""
+  exit 1
+fi
+
 cd
 
 #change your timezone
