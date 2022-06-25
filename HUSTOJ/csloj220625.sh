@@ -513,7 +513,7 @@ sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/template/bs
 #Add homebanner(home.ko)
 sed -i "s/'faqs.\$OJ_LANG'/'faqs.\$OJ_LANG' AND \`title\`!='home.ko'/" /home/judge/src/web/index.php
 sed -i "s#/////////////////////////Template#/////////////////////////Template\n\$homebanner=\"home.ko\";\n\$sql=\"select title,content from news where title=? and defunct='N' order by news_id limit 1\";\n\$result=pdo_query(\$sql,\$homebanner);\nif(count(\$result)>0) \$view_homebanner=\$result[0][1];\nelse \$view_homebanner=\"\";\n#" /home/judge/src/web/index.php
-sed -i "s#call to action -->#call to action -->\n\t\t<div> <?php echo \$view_faqs?> </div>\n\t\t<?php if(\$view_homebanner != \"\") { echo \"<div class>\"; echo \$view_homebanner; echo \"</div>\";}?>#" /home/judge/src/web/template/bs3/index.php
+sed -i "s#call to action -->#call to action -->\n\t\t<div> <?php echo \$view_faqs?> </div>\n\t\t<?php if(\$view_homebanner != \"\") { echo \"<div><br><br><br>\"; echo \$view_homebanner; echo \"</div>\";}?>#" /home/judge/src/web/template/bs3/index.php
 sed -i "s#<?php echo \$MSG_HELP_ADD_FAQS?>#<?php echo \$MSG_HELP_ADD_FAQS?><br>\n- <?php echo '\"home.ko\"를 제목으로 공지사항을 등록하면 첫 페이지의 위 쪽에 배너처럼 나타납니다.'?>#" /home/judge/src/web/admin/news_list.php
 
 
