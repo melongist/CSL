@@ -169,7 +169,7 @@ CREATE TABLE `loginlog` (
 
 LOCK TABLES `loginlog` WRITE;
 /*!40000 ALTER TABLE `loginlog` DISABLE KEYS */;
-INSERT INTO `loginlog` VALUES ('admin','login ok','10.211.55.2','2022-06-26 15:12:49');
+INSERT INTO `loginlog` VALUES ('admin','login ok','10.211.55.2','2022-06-26 15:12:49'),('admin','login ok','10.211.55.2','2022-06-26 18:43:13'),('admin','login ok','10.211.55.2','2022-06-26 18:43:58');
 /*!40000 ALTER TABLE `loginlog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +313,7 @@ CREATE TABLE `privilege` (
 
 LOCK TABLES `privilege` WRITE;
 /*!40000 ALTER TABLE `privilege` DISABLE KEYS */;
-INSERT INTO `privilege` VALUES ('admin','administrator','true','N'),('admin','source_browser','true','N');
+INSERT INTO `privilege` VALUES ('admin','administrator','true','N'),('admin','source_browser','true','N'),('admin','source_browser','true','N');
 /*!40000 ALTER TABLE `privilege` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -637,7 +637,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('admin','',0,0,'N','127.0.0.1','2022-06-26 15:12:49',4,1,'jz3WCTwaFXE8rbGJcCqJ0nvgHfExZDRj','2020-09-11 09:09:37','admin','admin');
+INSERT INTO `users` VALUES ('admin','',0,0,'N','127.0.0.1','2022-06-26 18:43:58',4,1,'c60MKeL6sgWSh8aiTEKRkZzBjjhkMTIy','2020-09-11 09:09:37','admin','admin');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -650,4 +650,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-26 15:16:35
+-- Dump completed on 2022-06-26 18:48:00
