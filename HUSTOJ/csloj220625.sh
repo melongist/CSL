@@ -12,7 +12,7 @@ THISFILE="csloj220625.sh"
 SRCZIP="hustoj220625.zip"
 DOCKERFILE="Dockerfile220625"
 
-SQLFILE="csl220606jol.sql"
+SQLFILE="csl220625jol.sql"
 UPLOADFILE="csl220223uploads.tar.gz"
 DATAFILE="csl220223data.tar.gz"
 
