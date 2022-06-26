@@ -269,9 +269,6 @@ fi
 #temporary fix until next release
 #...
 
-#add upper margin for nav.php at problem.php
-sed -i "s/nav.php\");?>/nav.php\");?><br><br><br>/" /home/judge/src/web/template/bs3/problem.php
-
 
 #Replacing msg.txt
 mkdir /home/judge/src/web/admin/msg
