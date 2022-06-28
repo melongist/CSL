@@ -37,7 +37,7 @@
 #아래 명령을 실행하면, 한글 환경과 한국 시간으로 맞추어 HUSTOJ 를 설치합니다.   
 
 <pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220606.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220625.sh
 
 sudo bash hustoj220625.sh
 </code></pre>
