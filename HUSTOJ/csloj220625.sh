@@ -486,11 +486,11 @@ sed -i "s/$OJ_LANGMASK=4194224/$OJ_LANGMASK=4194237/" /home/judge/src/web/includ
 
 #php.ini edit
 #file upload size more up
-sed -i "s/post_max_size = 80M/post_max_size = 128M/g" /etc/php/$PHP_VER/fpm/php.ini
-sed -i "s/upload_max_filesize = 80M/upload_max_filesize = 128M/g" /etc/php/$PHP_VER/fpm/php.ini
+sed -i "s/post_max_size = 80M/post_max_size = 256M/g" /etc/php/$PHP_VER/fpm/php.ini
+sed -i "s/upload_max_filesize = 80M/upload_max_filesize = 256M/g" /etc/php/$PHP_VER/fpm/php.ini
 sed -i "s/max_execution_time = 30/max_execution_time = 120/g" /etc/php/$PHP_VER/fpm/php.ini
 #sed -i "s/memory_limit = 128M/memory_limit = 512M/g" /etc/php/$PHP_VER/fpm/php.ini
-sed -i "s:client_max_body_size    80m:client_max_body_size    128m:g" /etc/nginx/nginx.conf
+sed -i "s:client_max_body_size    80m:client_max_body_size    256m:g" /etc/nginx/nginx.conf
 
 
 #Identifing AWS Ubuntu 22.04 LTS
