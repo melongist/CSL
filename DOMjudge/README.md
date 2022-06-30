@@ -15,7 +15,7 @@ bash dj810dj.sh
    
 <pre><code>
 ...   
-Enter current password for root (enter for none) :    // <- Enter   
+Enter current password for root (enter for none) :    // <- enter   
 ...   
 Switch to unix_socket autentication [Y/n] :           // <- n   
 ...   
@@ -49,19 +49,16 @@ Sytem will be rebooted in 20 seconds!
 #After rebooted, judgehosts must be started for judging!    
 #To start judgehosts...
 <pre><code>
-bash dj734start.sh    
+bash dj810start.sh    
 </code></pre>
 A number of judgehosts will be automatically started by CPU cores...    
     
 <pre><code>
 
- // Clearing the cache for the prod environment with debug                      
- // false                                                                       
-
+ // Clearing the cache for the prod environment with debug false                     
                                                                                 
  [OK] Cache for the "prod" environment (debug=false) was successfully cleared.  
                                                                                 
-
 DOMjudge cache cleared!
 DOMjudge webserver cache cleared!
 
@@ -74,32 +71,22 @@ create cgroups started!
 Starting judgedaemon...
 start judgedaemon-run-0...
 judgedaemon-run-0 started!
-start judgedaemon-run-1...
-...
+    
+    
 CPU information
 CPU(s):                          ?
 Thread(s) per core:              ?
 ? judgedamons started!
-...
-[??? ?? ??:??:??.???] judgedaemon[????]: Judge started on ubuntu-0 [DOMjudge/7.3.4]
-[??? ?? ??:??:??.???] judgedaemon[????]: Judge started on ubuntu-1 [DOMjudge/7.3.4]
-...
-[??? ?? ??:??:??.???] judgedaemon[????]: executing chroot script: 'chroot-startstop.sh check'
-[??? ?? ??:??:??.???] judgedaemon[????]: executing chroot script: 'chroot-startstop.sh check'
-...
-[??? ?? ??:??:??.???] judgedaemon[????]: Registering judgehost on endpoint default: http://localhost/domjudge/api
-[??? ?? ??:??:??.???] judgedaemon[????]: Registering judgehost on endpoint default: http://localhost/domjudge/api
-...
     
 </code></pre>
 
 ---
-#To login DOMjudge as admin, admin password needed.    
+#To login DOMjudge as admin, admin password needed.
+#DOMjudge admin password saved in domjudge.txt    
 #To check DOMjudge admin password...    
 <pre><code>
 cat domjudge.txt    
 </code></pre>
-DOMjudge admin password saved in domjudge.txt   
 
 <pre><code>
 ...    
@@ -113,7 +100,7 @@ admin PW : ????????????????
 #To use korean interface for korean middle & high students participants    
 #To replace participants interface, english to korean...    
 <pre><code>
-bash dj734kr.sh
+bash dj810kr.sh
 </code></pre>
     
 <pre><code>
@@ -123,9 +110,9 @@ Rename DOMjudge logo name? [y/n]:      // <- y/n    //If you want to change DOMj
 Enter  DOMjudge NAME : ????            // <- ????   //Enter  new contest short name!!
 Repeat DOMjudge NAME : ????            // <-        //Repeat
 ...
-DOMjudge 7.3.4 stable 21.11.22
+DOMjudge 8.1.0 stable 22.06.06
 DOMjudge participants' korean interface installed!
-For korean middle & high students.
+For korean middle & high school students.
 
 Check DOMserver's web interface!
 ------
@@ -136,17 +123,14 @@ http://localhost/domjudge/
 ---
 #To domserver http web cache clearing    
 <pre><code>
-bash dj734clear.sh
+bash dj810clear.sh
 </code></pre>
     
 <pre><code>
- // Clearing the cache for the prod environment with debug                      
- // false                                                                       
-
+ // Clearing the cache for the prod environment with debug false    
                                                                                 
  [OK] Cache for the "prod" environment (debug=false) was successfully cleared.  
-                                                                                
-
+    
 DOMjudge cache cleared!
 DOMjudge webserver cache cleared!
 </code></pre>
@@ -154,7 +138,7 @@ DOMjudge webserver cache cleared!
 ---
 #To kill some judgedaemon processe    
 <pre><code>
-ps -ef, and find pid# of judgedaemon, run : kill -15 pid#    
+ps -ef, and find pid# of judgedaemon, run : kill -9 pid#    
 </code></pre>
     
     
