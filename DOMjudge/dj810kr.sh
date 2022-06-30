@@ -3,7 +3,7 @@
 #DOMjudge server Korean language patch script
 #DOMjudge8.1.0 stable + Ubuntu 22.04 LTS
 #Made by 
-#2022.06.06 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.07.01 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 
 #terminal commands to install Korean patch 
@@ -168,7 +168,7 @@ sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
 
 echo "DOMjudge 8.1.0 stable 22.06.06"
 echo "DOMjudge participants' korean interface installed!"
-echo "For korean middle & high students."
+echo "For korean middle & high school students."
 echo ""
 echo "Check DOMserver's web interface!"
 echo "------"

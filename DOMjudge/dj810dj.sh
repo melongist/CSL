@@ -205,7 +205,7 @@ echo "bash dj810clear.sh" | tee -a domjudge.txt
 echo "" | tee -a domjudge.txt
 echo "------ etc ------" | tee -a domjudge.txt
 echo "How to kill some judgedaemon processe?" | tee -a domjudge.txt
-echo "ps -ef, and find PID# of judgedaemon, run : sudo kill -15 PID#" | tee -a domjudge.txt
+echo "ps -ef, and find PID# of judgedaemon, run : sudo kill -9 PID#" | tee -a domjudge.txt
 echo "" | tee -a domjudge.txt
 echo "How to clear domserver web cache?" | tee -a domjudge.txt
 echo "sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*" | tee -a domjudge.txt
