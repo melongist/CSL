@@ -1,16 +1,16 @@
-#22.01.02   
+#22.07.01   
 
 ---
-#DOMjudge 7.3.4 stable auto installation   
+#DOMjudge 8.1.0 stable auto installation   
 <https://www.domjudge.org/>   
 
 #Prerequisite
-- Ubuntu 20.04 LTS Server/Desktop installed (AWS OK)   
+- Ubuntu 22.04 LTS Server/Desktop installed (AWS OK)   
 
 #Auto installation commands and steps...
 <pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj734dj.sh
-bash dj734dj.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj810dj.sh
+bash dj810dj.sh
 </code></pre>
    
 <pre><code>
