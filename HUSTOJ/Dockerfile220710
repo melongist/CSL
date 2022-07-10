@@ -1,0 +1,60 @@
+#Edited by Hyun-seok Jeon for Korean HUSTOJ 22.07.10
+
+FROM ubuntu:20.04
+ENV DEBIAN_FRONTEND noninteractive
+
+ENV     TZ=Asia/Seoul
+
+#RUN     sed -i 's/archive.ubuntu/mirrors.163/g' /etc/apt/sources.list
+
+RUN	apt-get update && apt-get -y upgrade
+
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        apt-utils 	
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        libmariadb-dev 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        libmysqlclient-dev 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        libmysql++-dev 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        build-essential 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        flex 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends       g++ 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends       python 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        python3 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends	fp-compiler 
+#RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends	mono-devel 
+#RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends	busybox 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends	dos2unix
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends        openjdk-16-jdk
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends	subversion 
+RUN    	DEBIAN_FRONTEND=noninteractive  apt-get -y install --no-install-recommends	wget
+RUN     apt-get -y install sqlite3
+RUN     useradd -m -u 1536 judge
+RUN     cd /home/judge/
+
+RUN     apt-get -y install zip unzip
+RUN     wget raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220710.zip 
+RUN     unzip hustoj220710.zip -d /home/judge/
+RUN     rm hustoj220710.zip
+
+#Github update
+#RUN	svn up /home/judge/src 
+RUN     cd /home/judge/src/core/ && bash make.sh 
+
+# for more compilers, VMs and runtimes , remove # and run "docker build -t hustoj ."
+
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends ruby
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends gobjc
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends clang
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends guile-3.0
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends lua5.3
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends nodejs
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends golang
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends sqlite3
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends gfortran
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends octave
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends gnucobol
+
+# make Chinese Character works in Docker
+RUN apt-get install -y locales locales-all
+RUN locale-gen zh_CN.UTF-8 && dpkg-reconfigure locales && /usr/sbin/update-locale LANG=zh_CN.UTF-8
+ENV LANG zh_CN.UTF-8  
+ENV LANGUAGE zh_CN:zh  
+ENV LC_ALL zh_CN.UTF-8 
