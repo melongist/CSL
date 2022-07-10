@@ -1,6 +1,6 @@
 ## Ver   
-#### - 최종 갱신일 : 22.06.26   
-#### - 버전: 22.06.25   
+#### - 최종 갱신일 : 22.07.10   
+#### - 버전: 22.07.10   
 
 ***   
    
@@ -37,9 +37,9 @@
 #아래 명령을 실행하면, 한글 환경과 한국 시간으로 맞추어 HUSTOJ 를 설치합니다.   
 
 <pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220625.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220710.sh
 
-sudo bash hustoj220625.sh
+sudo bash hustoj220710.sh
 </code></pre>
   
 ***   
@@ -95,29 +95,13 @@ sudo bash hustoj220625.sh
 #### - 다음 설치 스크립트를 사용해서 CSL 버전의 HUSTOJ 와 기초100제 시리즈 문제 일체와 수업용 기능들을 한 번에 모두 설치할 수 있습니다.   
 
 #우분투 22.04LTS 에서 터미널을 실행한 후, 아래 설치 스크립트 명령을 순서대로 입력하고 실행하면 됩니다.   
-#csloj220625.sh 파일이 있는 경우, 먼저 삭제(rm csloj220625.sh) 후 다음 명령어를 실행해주세요.     
+#csloj220710.sh 파일이 있는 경우, 먼저 삭제(rm csloj220710.sh) 후 다음 명령어를 실행해주세요.     
 
 #아래 명령을 실행하면, 한글 환경과 한국 시간으로 맞추어 CSL HUSTOJ 를 설치합니다.   
    
 <pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj220625.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj220710.sh
    
-sudo bash csloj220625.sh
+sudo bash csloj220710.sh
 </code></pre>
    
-***   
-
-
-#기존 CSL HUSTOJ 22.02.23 무한채점 증상은 아래 명령어로 패치한 후, 해당 무한 채점번호를 수동으로 재채점 시키면 됩니다.   
-   
-<pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj220223patch2.sh
-   
-sudo bash csloj220223patch2.sh
-</code></pre>
-   
-***   
-
-
-
-
