@@ -78,7 +78,7 @@ clear
 
 echo "" | tee -a ./domjudge.txt
 echo "spotboard for domjudge installed!" | tee -a ./domjudge.txt
-echo "Ver 2022.01.18" | tee -a ./domjudge.txt
+echo "Ver 2022.07.30" | tee -a ./domjudge.txt
 echo "" | tee -a ./domjudge.txt
 echo "Check spotboard!" | tee -a ./domjudge.txt
 echo "------" | tee -a ./domjudge.txt
