@@ -6,7 +6,7 @@
 #DOMjudge judgehost starting script
 #DOMjudge8.1.0 stable + Ubuntu 22.04 LTS
 #Made by 
-#2022.07.29 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.07.30 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 
 #spotboard 0.7.0 for domjudge8.1.0 + Ubuntu 22.04 LTS Server
@@ -40,13 +40,27 @@ sudo apt install -y curl
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
+
+
+
 #sudo apt -y install nodejs
-#sudo apt -y install npm
+sudo apt -y install npm
+
+#nodejs stable update
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+node -v
 
 
 sudo npm install -g npm
 sudo npm install -g grunt-cli
+
+
+#npm install & update
 npm install
+sudo npm i -g npm
+npm -v
 npm run build
 
 
@@ -55,22 +69,15 @@ sed -i "s#'award_slide.json' :'./sample/award_slide.json'#'award_slide.json' :'.
 sed -i "s#animation          : false#animation          : true#" /var/www/html/spotboard/dist/config.js
 
 
-#nodejs stable update
-sudo npm cache clean -f
-sudo npm install -g n
-sudo n stable
-node -v
-
-#npm update
-sudo npm i -g npm
-npm -v
 
 
+
+cd
 
 clear
 
 echo "" | tee -a ./domjudge.txt
-echo "spotboard for domjudge installed!!" | tee -a ./domjudge.txt
+echo "spotboard for domjudge installed!" | tee -a ./domjudge.txt
 echo "Ver 2022.01.18" | tee -a ./domjudge.txt
 echo "" | tee -a ./domjudge.txt
 echo "Check spotboard!" | tee -a ./domjudge.txt
