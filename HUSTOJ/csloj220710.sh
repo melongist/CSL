@@ -1,8 +1,8 @@
 #!/bin/bash
 #CSL HUSTOJ
-#Made by melongist(what_is_computer@msn.com)
+#Made by melongist(melongist@gmail.com, what_is_computer@msn.com)
 #for CSL Computer Science teachers
-#Last edits 22.07.10
+#Last edits 22.08.03
 
 clear
 
@@ -29,7 +29,7 @@ fi
 
 OSVER=$(grep "Ubuntu" /etc/issue|head -1|awk  '{print $2}')
 
-if [ ${OSVER} != "22.04" ] ; then
+if [ ${OSVER:0:5} != "22.04" ] ; then
   echo ""
   echo "This is not Ubuntu 22.04 LTS!!"
   echo ""
