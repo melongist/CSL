@@ -6,7 +6,7 @@
 
 #DOMjudge server installation script
 #DOMjudge8.1.0 stable + Ubuntu 22.04 LTS
-#2022.07.30 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.08.04 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 #terminal commands to install DOMjudge judgehosts
 #------
@@ -60,13 +60,14 @@ wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sud
 echo 'y' | sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 sudo apt -y update
 sudo apt -y install r-base
+#swift not supported yet!
 sudo apt -y install clang libicu-dev
 #wget https://download.swift.org/swift-5.6.1-release/ubuntu2004/swift-5.6.1-RELEASE/swift-5.6.1-RELEASE-ubuntu22.04.tar.gz
-wget https://download.swift.org/development/ubuntu2204/swift-DEVELOPMENT-SNAPSHOT-2022-07-25-a/swift-DEVELOPMENT-SNAPSHOT-2022-07-25-a-ubuntu22.04.tar.gz
+wget https://download.swift.org/development/ubuntu2204/swift-DEVELOPMENT-SNAPSHOT-2022-08-01-a/swift-DEVELOPMENT-SNAPSHOT-2022-08-01-a-ubuntu22.04.tar.gz
 
-tar -zxvf swift-DEVELOPMENT-SNAPSHOT-2022-07-25-a-ubuntu22.04.tar.gz
-rm swift-DEVELOPMENT-SNAPSHOT-2022-07-25-a-ubuntu22.04.tar.gz
-sudo mv ~/swift-DEVELOPMENT-SNAPSHOT-2022-06-26-a-ubuntu22.04 ~/swift
+tar -zxvf swift-DEVELOPMENT-SNAPSHOT-2022-08-01-a-ubuntu22.04.tar.gz
+rm swift-DEVELOPMENT-SNAPSHOT-2022-08-01-a-ubuntu22.04.tar.gz
+sudo mv ~/swift-DEVELOPMENT-SNAPSHOT-2022-08-01-a-ubuntu22.04 ~/swift
 sudo ln -s ~/swift/usr/bin/swiftc /usr/bin/swiftc
 
 
