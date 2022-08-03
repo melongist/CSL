@@ -261,8 +261,8 @@ check and edit ~/dcm/config.js
 5. Copy award_slide.json sample file.
   - Copy sample award_slide.json file from .../spotboard/dist/sample/ to .../spotboard/dist/  
   ; ex)
-  ; cd /var/www/html/spotboard/
-  ; sudo cp award_slide.json ../award_slide.json
+  ; cd /var/www/html/spotboard/dist/sample    
+  ; sudo cp award_slide.json ../award_slide.json.   
      
 6. Edit award_slide.json file to the contest.    
   ; meaning)
