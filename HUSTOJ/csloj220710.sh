@@ -46,9 +46,9 @@ if [ -d /mnt/c ]; then
 fi
 
 
-echo ""
-echo "---- CSL HUSTOJ release ${VER_DATE} ----"
-echo ""
+echo "" | tee -a ~/csloj.txt
+echo "---- CSL HUSTOJ release ${VER_DATE} ----" | tee -a ~/csloj.txt
+echo "" | tee -a ~/csloj.txt
 
 INPUTS="n"
 echo -n "Do you want to install the CSL HUSTOJ release ${VER_DATE}? [y/n] : "
@@ -57,7 +57,7 @@ if [ ${INPUTS} = "y" ]
 then
   echo ""
   echo ""
-  echo "---- CSL HUSTOJ release ${VER_DATE} installation started..."
+  echo "---- CSL HUSTOJ release ${VER_DATE} installation started..." | tee -a ~/csloj.txt
   echo ""
 else
   echo ""
@@ -570,9 +570,9 @@ sed -i "s/\${SUDO_USER}/${SUDO_USER}/g" /home/${SUDO_USER}/${BACKUPFILE}
 bash /home/${SUDO_USER}/${BACKUPFILE} -${VER_DATE}
 
 
-echo ""
-echo "---- ${OJNAME}(CSL HUSTOJ release ${VER_DATE}) installed! ----"
-echo ""
+echo "" | tee -a ~/csloj.txt
+echo "---- ${OJNAME}(CSL HUSTOJ release ${VER_DATE}) installed! ----" | tee -a ~/csloj.txt
+echo "" | tee -a ~/csloj.txt
 
 echo "First of all! Change the default CSL HUSTOJ admin password!"
 echo ""
@@ -580,10 +580,10 @@ echo "$SERVERTYPES"
 echo "http://${IPADDRESS[0]}"
 echo ""
 echo ""
-echo ""
-echo "---- system reboot ----"
-echo ""
+echo "" | tee -a ~/csloj.txt
+echo "---- system reboot ----" | tee -a ~/csloj.txt
+echo "" | tee -a ~/csloj.txt
 echo "Waiting 10 seconds..."
 sleep 10
-echo "Rebooted"
+echo "Rebooted" | tee -a ~/csloj.txt
 reboot
