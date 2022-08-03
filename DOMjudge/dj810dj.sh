@@ -6,7 +6,7 @@
 
 #DOMjudge server installation script
 #DOMjudge8.1.0 stable + Ubuntu 22.04 LTS
-#2022.07.30 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.08.03 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 #terminal commands to install DOMjudge server
 #------
@@ -21,7 +21,7 @@ fi
 
 OSVER=$(grep "Ubuntu" /etc/issue|head -1|awk  '{print $2}')
 
-if [ ${OSVER} != "22.04" ] ; then
+if [ ${OSVER:0:5} != "22.04" ] ; then
   echo ""
   echo "This is not Ubuntu 22.04 LTS!!"
   echo ""
@@ -226,6 +226,6 @@ do
   ((COUNT--))
   sleep 1
 done
-echo 'rebooted!'
+echo 'rebooted!' | tee -a domjudge.txt
 sleep 5
 sudo reboot
