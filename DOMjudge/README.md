@@ -1,7 +1,7 @@
-#22.07.01   
+#22.08.04   
 
 ---
-#DOMjudge 8.1.0 stable auto installation   
+#DOMjudge 8.1.2 stable auto installation   
 <https://www.domjudge.org/>   
 
 #Prerequisite
@@ -9,8 +9,8 @@
 
 #Auto installation commands and steps...
 <pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj810dj.sh
-bash dj810dj.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj812dj.sh
+bash dj812dj.sh
 </code></pre>
    
 <pre><code>
@@ -49,7 +49,7 @@ Sytem will be rebooted in 20 seconds!
 #After rebooted, judgehosts must be started for judging!    
 #To start judgehosts...
 <pre><code>
-bash dj810start.sh    
+bash dj812start.sh    
 </code></pre>
 A number of judgehosts will be automatically started by CPU cores...    
     
@@ -100,7 +100,7 @@ admin PW : ????????????????
 #To use korean interface for korean middle & high students participants    
 #To replace participants interface, english to korean...    
 <pre><code>
-bash dj810kr.sh
+bash dj812kr.sh
 </code></pre>
     
 <pre><code>
@@ -110,7 +110,7 @@ Rename DOMjudge logo name? [y/n]:      // <- y/n    //If you want to change DOMj
 Enter  DOMjudge NAME : ????            // <- ????   //Enter  new contest short name!!
 Repeat DOMjudge NAME : ????            // <-        //Repeat
 ...
-DOMjudge 8.1.0 stable 22.06.06
+DOMjudge 8.1.2 stable 22.07.23
 DOMjudge participants' korean interface installed!
 For korean middle & high school students.
 
@@ -123,7 +123,7 @@ http://localhost/domjudge/
 ---
 #To domserver http web cache clearing    
 <pre><code>
-bash dj810clear.sh
+bash dj812clear.sh
 </code></pre>
     
 <pre><code>
@@ -360,12 +360,5 @@ X. Spotboard scoreboard options & variations
      
      
 ---   
-
-#2021.10.20   
-#nodejs & npm update commands   
-<pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/nnupdate.sh
-bash nnupdate.sh
-</code></pre>
      
      
