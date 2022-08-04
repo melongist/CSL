@@ -4,7 +4,7 @@
 #https://github.com/spotboard/domjudge-converter
 
 
-#domjudge converter for spotboard 0.7.0 for domjudge8.1.0 + Ubuntu 22.04 LTS Server
+#domjudge converter for spotboard 0.7.0 for domjudge8.1.2 + Ubuntu 22.04 LTS Server
 
 #terminal commands to install domjudge converter
 #wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/sbc070.sh
@@ -73,20 +73,20 @@ clear
 
 cd
 
-echo "" | tee -a ./domjudge.txt
-echo "domjudge-converter for domjudge installed!!" | tee -a ./domjudge.txt
-echo "Ver 2022.07.31" | tee -a ./domjudge.txt
-echo "" | tee -a ./domjudge.txt
+echo "" | tee -a ~/domjudge.txt
+echo "domjudge-converter for domjudge installed!!" | tee -a ~/domjudge.txt
+echo "Ver 2022.08.04" | tee -a ~/domjudge.txt
+echo "" | tee -a ~/domjudge.txt
 echo "Next step : npm start"
-echo "" | tee -a ./domjudge.txt
-echo "------ run npm start every reboot ------" | tee -a ./domjudge.txt
-echo "run : cd dcm" | tee -a ./domjudge.txt
-echo "run : setsid npm start &" | tee -a ./domjudge.txt
-echo "Check spotboard!" | tee -a ./domjudge.txt
-echo "" | tee -a ./domjudge.txt
-echo "------" | tee -a ./domjudge.txt
-echo "http://localhost/spotboard/dist/" | tee -a ./domjudge.txt
-echo "" | tee -a ./domjudge.txt
-echo "configuration for domjudge-converter" | tee -a ./domjudge.txt
-echo "check and edit ~/dcm/config.js" | tee -a ./domjudge.txt
-echo ""
+echo "" | tee -a ~/domjudge.txt
+echo "------ run npm start every reboot ------" | tee -a ~/domjudge.txt
+echo "run : cd dcm" | tee -a ~/domjudge.txt
+echo "run : setsid npm start &" | tee -a ~/domjudge.txt
+echo "Check spotboard!" | tee -a ~/domjudge.txt
+echo "" | tee -a ~/domjudge.txt
+echo "------" | tee -a ~/domjudge.txt
+echo "http://localhost/spotboard/dist/" | tee -a ~/domjudge.txt
+echo "" | tee -a ~/domjudge.txt
+echo "configuration for domjudge-converter" | tee -a ~/domjudge.txt
+echo "check and edit ~/dcm/config.js" | tee -a ~/domjudge.txt
+echo "" | tee -a ~/domjudge.txt

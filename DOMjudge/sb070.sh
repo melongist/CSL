@@ -4,12 +4,12 @@
 #https://github.com/spotboard/spotboard
 
 #DOMjudge judgehost starting script
-#DOMjudge8.1.0 stable + Ubuntu 22.04 LTS
+#DOMjudge8.1.2 stable + Ubuntu 22.04 LTS
 #Made by 
-#2022.07.30 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.08.04 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 
-#spotboard 0.7.0 for domjudge8.1.0 + Ubuntu 22.04 LTS Server
+#spotboard 0.7.0 for domjudge8.1.2 + Ubuntu 22.04 LTS Server
 
 #terminal commands to install spotboard webapp
 #wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/sb070.sh
@@ -76,19 +76,19 @@ cd
 
 clear
 
-echo "" | tee -a ./domjudge.txt
-echo "spotboard for domjudge installed!" | tee -a ./domjudge.txt
-echo "Ver 2022.07.30" | tee -a ./domjudge.txt
-echo "" | tee -a ./domjudge.txt
-echo "Check spotboard!" | tee -a ./domjudge.txt
-echo "------" | tee -a ./domjudge.txt
-echo "http://localhost/spotboard/dist/" | tee -a ./domjudge.txt
-echo "" | tee -a ./domjudge.txt
-echo "configuration for spotboard" | tee -a ./domjudge.txt
-echo "check /var/www/html/spotboard/dist/config.js" | tee -a ./domjudge.txt
-echo "" | tee -a ./domjudge.txt
-echo "Next step : install domjudge-converter" | tee -a ./domjudge.txt
-echo "" | tee -a ./domjudge.txt
-echo "" | tee -a ./domjudge.txt
+echo "" | tee -a ~/domjudge.txt
+echo "spotboard for domjudge installed!" | tee -a ~/domjudge.txt
+echo "Ver 2022.08.04" | tee -a ~/domjudge.txt
+echo "" | tee -a ~/domjudge.txt
+echo "Check spotboard!" | tee -a ~/domjudge.txt
+echo "------" | tee -a ~/domjudge.txt
+echo "http://localhost/spotboard/dist/" | tee -a ~/domjudge.txt
+echo "" | tee -a ~/domjudge.txt
+echo "configuration for spotboard" | tee -a ~/domjudge.txt
+echo "check /var/www/html/spotboard/dist/config.js" | tee -a ~/domjudge.txt
+echo "" | tee -a ~/domjudge.txt
+echo "Next step : install domjudge-converter" | tee -a ~/domjudge.txt
+echo "" | tee -a ~/domjudge.txt
+echo "" | tee -a ~/domjudge.txt
 
 
