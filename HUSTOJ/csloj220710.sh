@@ -570,9 +570,9 @@ sed -i "s/\${SUDO_USER}/${SUDO_USER}/g" /home/${SUDO_USER}/${BACKUPFILE}
 bash /home/${SUDO_USER}/${BACKUPFILE} -${VER_DATE}
 
 
-echo "" | tee -a ~/csloj.txt
-echo "---- ${OJNAME}(CSL HUSTOJ release ${VER_DATE}) installed! ----" | tee -a ~/csloj.txt
-echo "" | tee -a ~/csloj.txt
+echo "" | tee -a /home/${SUDO_USER}/csloj.txt
+echo "---- ${OJNAME}(CSL HUSTOJ release ${VER_DATE}) installed! ----" | tee -a /home/${SUDO_USER}/csloj.txt
+echo "" | tee -a /home/${SUDO_USER}/csloj.txt
 
 echo "First of all! Change the default CSL HUSTOJ admin password!"
 echo ""
@@ -580,10 +580,10 @@ echo "$SERVERTYPES"
 echo "http://${IPADDRESS[0]}"
 echo ""
 echo ""
-echo "" | tee -a ~/csloj.txt
-echo "---- system reboot ----" | tee -a ~/csloj.txt
-echo "" | tee -a ~/csloj.txt
+echo ""
+echo "---- system reboot ----"
+echo ""
 echo "Waiting 10 seconds..."
 sleep 10
-echo "Rebooted" | tee -a ~/csloj.txt
+echo "System rebooted" | tee -a /home/${SUDO_USER}/csloj.txt
 reboot
