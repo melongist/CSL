@@ -582,8 +582,15 @@ echo ""
 echo ""
 echo ""
 echo "---- system reboot ----"
+echo "System will be rebooted in 20 seconds!"
 echo ""
-echo "Waiting 10 seconds..."
-sleep 10
+COUNT=20
+while [ $COUNT -ge 0 ]
+do
+  echo $COUNT
+  ((COUNT--))
+  sleep 1
+done
 echo "System rebooted" | tee -a /home/${SUDO_USER}/csloj.txt
+sleep 5
 reboot
