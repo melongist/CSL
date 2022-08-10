@@ -5,7 +5,7 @@
 
 clear
 
-VER_DATE="21.04.13"
+VER_DATE="22.08.10"
 
 THISFILE="cslojbackup00.sh"
 RESTOREFILE="restore.sh"
@@ -86,7 +86,10 @@ echo "mysql -u \${DBUSER} -p\${PASSWORD} jol < jol.sql" >> /home/${SUDO_USER}/cs
 #current /home/judge/src/ directory backup
 #how to backup /home/judge/src/ directory : sudo tar -czvpf ~/cslojsrc.tar.gz /home/judge/src/
 sed -i "s/$DB_PASS=\"${PASSWORD}\"/$DB_PASS=\"HUSTOJPASSWORD\"/" /home/judge/src/web/include/db_info.inc.php
-tar -czvpf /home/${SUDO_USER}/cslojbackups/${BACKUPS}/cslojsrc.tar.gz /home/judge/src
+#tar -czvpf /home/${SUDO_USER}/cslojbackups/${BACKUPS}/cslojsrc.tar.gz /home/judge/src
+cd /
+tar -czpf /home/${SUDO_USER}/cslojbackups/${BACKUPS}/cslojsrc.tar.gz home/judge/src
+cd
 sed -i "s/$DB_PASS=\"HUSTOJPASSWORD\"/$DB_PASS=\"${PASSWORD}\"/" /home/judge/src/web/include/db_info.inc.php
 #for restoring
 echo "rm -rf /home/judge/src/*" >> /home/${SUDO_USER}/cslojbackups/${BACKUPS}/${RESTOREFILE}
@@ -95,7 +98,10 @@ echo "sed -i \"s/\$DB_PASS=\\\"HUSTOJPASSWORD\\\"/\$DB_PASS=\\\"\${PASSWORD}\\\"
 
 #current /home/judge/data/ directory backup
 #how to backup /home/judge/src/ directory : sudo tar -czvpf ~/cslojdata.tar.gz /home/judge/data/
-tar -czvpf /home/${SUDO_USER}/cslojbackups/${BACKUPS}/cslojdata.tar.gz /home/judge/data
+#tar -czvpf /home/${SUDO_USER}/cslojbackups/${BACKUPS}/cslojdata.tar.gz /home/judge/data
+cd /
+tar -czpf /home/${SUDO_USER}/cslojbackups/${BACKUPS}/cslojdata.tar.gz home/judge/data
+cd
 #for restoring
 echo "rm -rf /home/judge/data/*" >> /home/${SUDO_USER}/cslojbackups/${BACKUPS}/${RESTOREFILE}
 echo "tar -xzvpf ./cslojdata.tar.gz -C /" >> /home/${SUDO_USER}/cslojbackups/${BACKUPS}/${RESTOREFILE}
