@@ -2,7 +2,7 @@
 #CSL HUSTOJ
 #Made by melongist(melongist@gmail.com, what_is_computer@msn.com)
 #for CSL Computer Science teachers
-#Last edits 22.08.03
+#Last edits 22.08.10
 
 clear
 
@@ -46,9 +46,9 @@ if [ -d /mnt/c ]; then
 fi
 
 
-echo "" | tee -a ~/csloj.txt
-echo "---- CSL HUSTOJ release ${VER_DATE} ----" | tee -a ~/csloj.txt
-echo "" | tee -a ~/csloj.txt
+echo ""
+echo "---- CSL HUSTOJ release ${VER_DATE} ----"
+echo ""
 
 INPUTS="n"
 echo -n "Do you want to install the CSL HUSTOJ release ${VER_DATE}? [y/n] : "
@@ -57,7 +57,7 @@ if [ ${INPUTS} = "y" ]
 then
   echo ""
   echo ""
-  echo "---- CSL HUSTOJ release ${VER_DATE} installation started..." | tee -a ~/csloj.txt
+  echo "---- CSL HUSTOJ release ${VER_DATE} installation started..." | tee -a /home/${SUDO_USER}/cslojlog.txt
   echo ""
 else
   echo ""
@@ -277,9 +277,6 @@ fi
 #reset
 
 #------ original intallation scripts end
-
-
-
 
 cd 
 
@@ -570,9 +567,9 @@ sed -i "s/\${SUDO_USER}/${SUDO_USER}/g" /home/${SUDO_USER}/${BACKUPFILE}
 bash /home/${SUDO_USER}/${BACKUPFILE} -${VER_DATE}
 
 
-echo "" | tee -a /home/${SUDO_USER}/csloj.txt
-echo "---- ${OJNAME}(CSL HUSTOJ release ${VER_DATE}) installed! ----" | tee -a /home/${SUDO_USER}/csloj.txt
-echo "" | tee -a /home/${SUDO_USER}/csloj.txt
+echo "" | tee -a /home/${SUDO_USER}/cslojlog.txt
+echo "---- ${OJNAME}(CSL HUSTOJ release ${VER_DATE}) installed! ----" | tee -a /home/${SUDO_USER}/cslojlog.txt
+echo "" | tee -a /home/${SUDO_USER}/cslojlog.txt
 
 echo "First of all! Change the default CSL HUSTOJ admin password!"
 echo ""
@@ -591,6 +588,6 @@ do
   ((COUNT--))
   sleep 1
 done
-echo "System rebooted" | tee -a /home/${SUDO_USER}/csloj.txt
+echo "System rebooted" | tee -a /home/${SUDO_USER}/cslojlog.txt
 sleep 5
 reboot
