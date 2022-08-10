@@ -16,8 +16,8 @@ SQLFILE="csl220625jol.sql"
 UPLOADFILE="csl220223uploads.tar.gz"
 DATAFILE="csl220223data.tar.gz"
 
-MAINTENANCEFILE="cslojmaintenance00.sh"
-BACKUPFILE="cslojbackup00.sh"
+MAINTENANCEFILE="cslojmaintenance.sh"
+BACKUPFILE="cslojbackup.sh"
 
 
 if [[ -z $SUDO_USER ]]

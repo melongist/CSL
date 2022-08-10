@@ -5,9 +5,9 @@
 
 clear
 
-VER_DATE="21.04.13"
+VER_DATE="22.08.10"
 
-THISFILE="cslojmaintenance00.sh"
+THISFILE="cslojmaintenance.sh"
 
 
 
@@ -38,12 +38,13 @@ find /var/log/nginx -mtime +1 -type f -prune -exec rm -rf {} \;
 find /home/${SUDO_USER}/cslojbackups -type d -name "*-auto" -mtime +10 -prune -exec rm -rf {} \;
 
 #auto backup
-bash /home/${SUDO_USER}/cslojbackup00.sh -auto
+bash /home/${SUDO_USER}/cslojbackup.sh -auto
 
 
 #for maintenance
 apt update
 apt -y upgrade
+apt -y autoremove
 
 echo "---- system reboot ----"
 echo ""
