@@ -558,6 +558,7 @@ rm -f temp
 
 #temporary fix until next release
 #...
+sed -i "s/if(count(\$used_in_contests)>0){/if(\$cid==0 \&\& count(\$used_in_contests)>0){/g" /home/judge/src/web/template/bs3/problem.php
 
 
 #for backup
