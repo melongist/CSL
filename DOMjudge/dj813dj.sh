@@ -10,7 +10,7 @@
 
 #terminal commands to install DOMjudge server
 #------
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj812dj.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj813dj.sh
 #bash dj813dj.sh
 
 
@@ -195,10 +195,10 @@ echo "judgehosts installed!!" | tee -a ~/domjudge.txt
 echo "" | tee -a ~/domjudge.txt
 echo "" | tee -a ~/domjudge.txt
 echo "------ Run judgehosts script after every reboot ------" | tee -a ~/domjudge.txt
-echo "bash dj810start.sh" | tee -a ~/domjudge.txt
+echo "bash dj813start.sh" | tee -a ~/domjudge.txt
 echo "" | tee -a ~/domjudge.txt
 echo "------ Run DOMjudge cache clearing script when needed ------" | tee -a ~/domjudge.txt
-echo "bash dj810clear.sh" | tee -a ~/domjudge.txt
+echo "bash dj813clear.sh" | tee -a ~/domjudge.txt
 echo "" | tee -a ~/domjudge.txt
 echo "------ etc ------" | tee -a ~/domjudge.txt
 echo "How to kill some judgedaemon processe?" | tee -a ~/domjudge.txt
