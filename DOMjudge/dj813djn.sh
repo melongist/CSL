@@ -260,7 +260,7 @@ echo "DOMserver installed!!" | tee -a ~/domjudge.txt
 echo "" | tee -a ~/domjudge.txt
 echo "Check below to access DOMserver's web interface!" | tee -a ~/domjudge.txt
 echo "------" | tee -a ~/domjudge.txt
-echo "http://localhost/domjudge/" | tee -a ~/domjudge.txt
+echo "http://${DOMAINNAME}/domjudge/" | tee -a ~/domjudge.txt
 echo "admin ID : admin" | tee -a ~/domjudge.txt
 echo "admin PW : $PASSWORD" | tee -a ~/domjudge.txt
 echo ""
