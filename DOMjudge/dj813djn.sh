@@ -204,7 +204,7 @@ sudo service php8.1-fpm reload
 
 
 
-#For DOMjudge configuration check for nginx
+#For DOMjudge configuration check
 #php8.1 for DOMjudge
 sudo ln -s -f /opt/domjudge/domserver/etc/domjudge-fpm.conf /etc/php/8.1/fpm/pool.d/domjudge.conf
 #40 per GiB of memory ... 4GiB ? 160
