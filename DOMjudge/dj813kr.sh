@@ -3,7 +3,7 @@
 #DOMjudge server Korean language patch script
 #DOMjudge8.1.3 stable + Ubuntu 22.04 LTS
 #Made by 
-#2022.10.02 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.11.13 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 
 #terminal commands to install Korean patch 

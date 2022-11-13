@@ -3,7 +3,7 @@
 #DOMjudge judgehost starting script
 #DOMjudge8.1.3 stable + Ubuntu 22.04 LTS
 #Made by 
-#2022.10.02 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.11.13 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 
 if [[ $SUDO_USER ]] ; then
@@ -36,10 +36,7 @@ echo "create cgroups started!"
 
 echo ""
 echo "Starting judgedaemon..."
-#default judgedaemon
-#echo "start judgedaemon-run..."
-#sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
-#echo "judgedaemon-run started!"
+
 #multiple judgedaemons, bound to a core, max 128
 for ((i=0; i<$CPUS; i++));
 do

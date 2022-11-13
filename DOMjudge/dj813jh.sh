@@ -6,7 +6,7 @@
 
 #DOMjudge server installation script
 #DOMjudge8.1.3 stable + Ubuntu 22.04 LTS
-#2022.10.02 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.11.13 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 #terminal commands to install DOMjudge judgehosts
 #------
@@ -53,20 +53,13 @@ sudo apt -y install fp-compiler
 sudo apt -y install nodejs
 sudo apt -y install npm
 #R
-#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-#wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-#sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
-#echo 'y' | sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
-#sudo apt -y update
 sudo apt -y install r-base
 #swift
 sudo apt -y install clang libicu-dev
-#wget https://download.swift.org/swift-5.6.1-release/ubuntu2004/swift-5.6.1-RELEASE/swift-5.6.1-RELEASE-ubuntu22.04.tar.gz
-#wget https://download.swift.org/swift-5.7-release/ubuntu2204/swift-5.7-RELEASE/swift-5.7-RELEASE-ubuntu22.04.tar.gz
-wget https://download.swift.org/swift-5.7-release/ubuntu2204/swift-5.7-RELEASE/swift-5.7-RELEASE-ubuntu22.04.tar.gz
-tar -zxvf swift-5.7-RELEASE-ubuntu22.04.tar.gz
-rm swift-5.7-RELEASE-ubuntu22.04.tar.gz
-sudo mv ~/swift-5.7-RELEASE-ubuntu22.04 ~/swift
+wget https://download.swift.org/swift-5.7.1-release/ubuntu2204/swift-5.7.1-RELEASE/swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
+tar -zxvf swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
+rm swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
+sudo mv ~/swift-5.7.1-RELEASE-ubuntu22.04 ~/swift
 sudo ln -s ~/swift/usr/bin/swiftc /usr/bin/swiftc
 
 
