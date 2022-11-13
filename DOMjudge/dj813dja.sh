@@ -142,7 +142,6 @@ sudo apt install -y libjsoncpp-dev
 
 
 
-
 #DOMjudge 8.1.3 stable
 #wget https://www.domjudge.org/releases/domjudge-8.1.3.tar.gz
 #tar xvf domjudge-8.1.3.tar.gz
@@ -161,26 +160,6 @@ cd /opt/domjudge/domserver/bin
 
 #Use mariaDB's root password above #1
 sudo ./dj_setup_database -u root -r install
-
-
-
-
-#php8.1 for DOMjudge
-sudo ln -s -f /opt/domjudge/domserver/etc/domjudge-fpm.conf /etc/php/8.1/fpm/pool.d/domjudge.conf
-#40 per GiB of memory ... 4GiB ? 160
-sudo sed -i "s:pm.max_children = 40:pm.max_children = 160:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
-#number of requests before respawning
-sudo sed -i "s:pm.max_requests = 5000:pm.max_requests = 4096:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
-#memory_limit
-sudo sed -i "s:php_admin_value\[memory_limit\] = 512M:php_admin_value\[memory_limit\] = 2048M:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
-#upload_max_filesize
-sudo sed -i "s:php_admin_value\[upload_max_filesize\] = 256M:php_admin_value\[upload_max_filesize\] = 512M:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
-#post_max_size
-sudo sed -i "s:php_admin_value\[post_max_size\] = 256M:php_admin_value\[post_max_size\] = 512M:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
-#max_file_uploads
-sudo sed -i "s:php_admin_value\[max_file_uploads\] = 101:php_admin_value\[max_file_uploads\] = 256:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
-#php reload
-sudo service php8.1-fpm reload
 
 
 
@@ -217,6 +196,20 @@ sudo sed -i "s/post_max_size = 8M/post_max_size = 512M/" /etc/php/8.1/apache2/ph
 sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/apache2/php.ini
 
 #For DOMjudge configuration check for nginx
+#php8.1 for DOMjudge
+#sudo ln -s -f /opt/domjudge/domserver/etc/domjudge-fpm.conf /etc/php/8.1/fpm/pool.d/domjudge.conf
+#40 per GiB of memory ... 4GiB ? 160
+#sudo sed -i "s:pm.max_children = 40:pm.max_children = 160:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+#number of requests before respawning
+#sudo sed -i "s:pm.max_requests = 5000:pm.max_requests = 4096:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+#memory_limit
+#sudo sed -i "s:php_admin_value\[memory_limit\] = 512M:php_admin_value\[memory_limit\] = 2048M:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+#upload_max_filesize
+#sudo sed -i "s:php_admin_value\[upload_max_filesize\] = 256M:php_admin_value\[upload_max_filesize\] = 512M:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+#post_max_size
+#sudo sed -i "s:php_admin_value\[post_max_size\] = 256M:php_admin_value\[post_max_size\] = 512M:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+#max_file_uploads
+#sudo sed -i "s:php_admin_value\[max_file_uploads\] = 101:php_admin_value\[max_file_uploads\] = 256:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 #sudo sed -i "s:pm.max_children = 5:pm.max_children = 128:g" /etc/php/8.1/fpm/pool.d/www.conf
 #sudo sed -i "s:pm.min_spare_servers = 1:pm.min_spare_servers = 1:g" /etc/php/8.1/fpm/pool.d/www.conf
 #sudo sed -i "s:pm.max_spare_servers = 3:pm.max_spare_servers = 127:g" /etc/php/8.1/fpm/pool.d/www.conf
@@ -229,6 +222,8 @@ sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/apache2/p
 #sudo sed -i "s/post_max_size = 8M/post_max_size = 512M/" /etc/php/8.1/fpm/php.ini
 #PHP memory_limit to 2048M
 #sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/fpm/php.ini
+#php reload
+#sudo service php8.1-fpm reload
 
 
 
