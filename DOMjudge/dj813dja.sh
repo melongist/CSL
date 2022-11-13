@@ -185,15 +185,24 @@ sudo service apache2 reload
 
 
 
-#For DOMjudge configuration check for apache2
+#For DOMjudge configuration check
 #PHP upload_max_filesize to 512M
 sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 512M/" /etc/php/8.1/apache2/php.ini
+sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 512M/" /etc/php/8.1/fpm/php.ini
 #PHP max_file_uploads to 256
 sudo sed -i "s/max_file_uploads = 20/max_file_uploads = 256/" /etc/php/8.1/apache2/php.ini
+sudo sed -i "s/max_file_uploads = 20/max_file_uploads = 256/" /etc/php/8.1/fpm/php.ini
 #PHP post_max_size to 512M
 sudo sed -i "s/post_max_size = 8M/post_max_size = 512M/" /etc/php/8.1/apache2/php.ini
+sudo sed -i "s/post_max_size = 8M/post_max_size = 512M/" /etc/php/8.1/fpm/php.ini
 #PHP memory_limit to 2048M
 sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/apache2/php.ini
+sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/fpm/php.ini
+#php reload
+sudo service php8.1-fpm reload
+
+
+
 
 #For DOMjudge configuration check for nginx
 #php8.1 for DOMjudge
@@ -214,16 +223,6 @@ sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/apache2/p
 #sudo sed -i "s:pm.min_spare_servers = 1:pm.min_spare_servers = 1:g" /etc/php/8.1/fpm/pool.d/www.conf
 #sudo sed -i "s:pm.max_spare_servers = 3:pm.max_spare_servers = 127:g" /etc/php/8.1/fpm/pool.d/www.conf
 #sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.1/fpm/pool.d/www.conf
-#PHP upload_max_filesize to 512M
-#sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 512M/" /etc/php/8.1/fpm/php.ini
-#PHP max_file_uploads to 256
-#sudo sed -i "s/max_file_uploads = 20/max_file_uploads = 256/" /etc/php/8.1/fpm/php.ini
-#PHP post_max_size to 512M
-#sudo sed -i "s/post_max_size = 8M/post_max_size = 512M/" /etc/php/8.1/fpm/php.ini
-#PHP memory_limit to 2048M
-#sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/fpm/php.ini
-#php reload
-#sudo service php8.1-fpm reload
 
 
 
