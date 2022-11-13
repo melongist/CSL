@@ -118,34 +118,6 @@ sudo apt install -y php8.1-curl
 sudo apt install -y php8.1-xml
 sudo apt install -y php8.1-zip
 
-sudo sed -i "s:pm.max_children = 5:pm.max_children = 128:g" /etc/php/8.1/fpm/pool.d/www.conf
-sudo sed -i "s:pm.min_spare_servers = 1:pm.min_spare_servers = 1:g" /etc/php/8.1/fpm/pool.d/www.conf
-sudo sed -i "s:pm.max_spare_servers = 3:pm.max_spare_servers = 127:g" /etc/php/8.1/fpm/pool.d/www.conf
-sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.1/fpm/pool.d/www.conf
-
-
-
-
-#For DOMjudge configuration check for apache2
-#PHP upload_max_filesize to 512M
-#sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 512M/" /etc/php/8.1/apache2/php.ini
-#PHP max_file_uploads to 256
-#sudo sed -i "s/max_file_uploads = 20/max_file_uploads = 256/" /etc/php/8.1/apache2/php.ini
-#PHP post_max_size to 512M
-#sudo sed -i "s/post_max_size = 8M/post_max_size = 512M/" /etc/php/8.1/apache2/php.ini
-#PHP memory_limit to 2048M
-#sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/apache2/php.ini
-
-#For DOMjudge configuration check for nginx
-#PHP upload_max_filesize to 512M
-sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 512M/" /etc/php/8.1/fpm/php.ini
-#PHP max_file_uploads to 256
-sudo sed -i "s/max_file_uploads = 20/max_file_uploads = 256/" /etc/php/8.1/fpm/php.ini
-#PHP post_max_size to 512M
-sudo sed -i "s/post_max_size = 8M/post_max_size = 512M/" /etc/php/8.1/fpm/php.ini
-#PHP memory_limit to 2048M
-sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/fpm/php.ini
-
 
 
 
@@ -234,14 +206,53 @@ sudo service nginx reload
 
 
 
-#option
+#For DOMjudge configuration check for apache2
+#PHP upload_max_filesize to 512M
+#sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 512M/" /etc/php/8.1/apache2/php.ini
+#PHP max_file_uploads to 256
+#sudo sed -i "s/max_file_uploads = 20/max_file_uploads = 256/" /etc/php/8.1/apache2/php.ini
+#PHP post_max_size to 512M
+#sudo sed -i "s/post_max_size = 8M/post_max_size = 512M/" /etc/php/8.1/apache2/php.ini
+#PHP memory_limit to 2048M
+#sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/apache2/php.ini
+
+#For DOMjudge configuration check for nginx
+sudo sed -i "s:pm.max_children = 5:pm.max_children = 128:g" /etc/php/8.1/fpm/pool.d/www.conf
+sudo sed -i "s:pm.min_spare_servers = 1:pm.min_spare_servers = 1:g" /etc/php/8.1/fpm/pool.d/www.conf
+sudo sed -i "s:pm.max_spare_servers = 3:pm.max_spare_servers = 127:g" /etc/php/8.1/fpm/pool.d/www.conf
+sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.1/fpm/pool.d/www.conf
+#PHP upload_max_filesize to 512M
+sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 512M/" /etc/php/8.1/fpm/php.ini
+#PHP max_file_uploads to 256
+sudo sed -i "s/max_file_uploads = 20/max_file_uploads = 256/" /etc/php/8.1/fpm/php.ini
+#PHP post_max_size to 512M
+sudo sed -i "s/post_max_size = 8M/post_max_size = 512M/" /etc/php/8.1/fpm/php.ini
+#PHP memory_limit to 2048M
+sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/fpm/php.ini
+
+
+
+
+#option for apache2. not work for nginx!!
+#echo "" | tee -a ~/domjudge.txt
+#echo "DOMjugde(+apache2) installed!!" | tee -a ~/domjudge.txt
+#echo "" | tee -a ~/domjudge.txt
 #making auto direction to /domjudge
-cd
-sudo rm -f /var/www/html/index.html
-echo "<script>document.location=\"./domjudge/\";</script>" > index.html
-sudo chmod 644 index.html
-sudo chown root:root index.html
-sudo mv index.html /var/www/html/
+#cd
+#sudo rm -f /var/www/html/index.html
+#echo "<script>document.location=\"./domjudge/\";</script>" > index.html
+#sudo chmod 644 index.html
+#sudo chown root:root index.html
+#sudo mv index.html /var/www/html/
+
+#option for nginx
+echo "" | tee -a ~/domjudge.txt
+echo "DOMjugde(+nginx) installed!!" | tee -a ~/domjudge.txt
+echo "${DOMAINNAME} must be binded with IP address!!" | tee -a ~/domjudge.txt
+echo "" | tee -a ~/domjudge.txt
+
+
+
 
 sudo apt autoremove -y
 
@@ -290,6 +301,10 @@ echo "sudo /opt/domjudge/domserver/webapp/bin/console cache:clear" | tee -a ~/do
 echo "" | tee -a ~/domjudge.txt
 chmod 660 ~/domjudge.txt
 echo "Saved as domjudge.txt"
+
+
+
+
 
 echo ''
 echo 'System will be rebooted in 20 seconds!'
