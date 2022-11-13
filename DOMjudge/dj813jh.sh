@@ -60,7 +60,7 @@ wget https://download.swift.org/swift-5.7.1-release/ubuntu2204/swift-5.7.1-RELEA
 tar -zxvf swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
 rm swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
 sudo mv ~/swift-5.7.1-RELEASE-ubuntu22.04 ~/swift
-sudo ln -s ~/swift/usr/bin/swiftc /usr/bin/swiftc
+sudo ln -s -f ~/swift/usr/bin/swiftc /usr/bin/swiftc
 
 
 #DOMjudge 8.1.3 stable
