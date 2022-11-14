@@ -62,7 +62,6 @@ rm swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
 sudo mv ~/swift-5.7.1-RELEASE-ubuntu22.04 ~/swift
 sudo ln -s -f ~/swift/usr/bin/swiftc /usr/bin/swiftc
 
-
 #DOMjudge 8.1.3 stable
 cd domjudge-8.1.3
 ./configure --prefix=/opt/domjudge --with-baseurl=BASEURL
