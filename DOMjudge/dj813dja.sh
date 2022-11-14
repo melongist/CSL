@@ -82,8 +82,8 @@ sudo mysql_secure_installation
 
 
 #For DOMjudge configuration check
-#MariaDB Max connections to 16384
-sudo sed -i "s/\#max_connections        = 100/max_connections        = 16384/" /etc/mysql/mariadb.conf.d/50-server.cnf
+#MariaDB Max connections to 32768
+sudo sed -i "s/\#max_connections        = 100/max_connections        = 32768/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 
 
@@ -101,14 +101,13 @@ sudo apt install -y apache2
 
 #php 8.1 for apache2
 sudo apt install -y php8.1
-sudo apt install -y php8.1-fpm
 
 #php 8.1 for nginx
-#sudo apt install -y php8.1-fpm
 
 
 
 
+sudo apt install -y php8.1-fpm
 sudo apt install -y php8.1-gd
 sudo apt install -y php8.1-cli
 sudo apt install -y php8.1-intl
@@ -187,16 +186,12 @@ sudo service apache2 reload
 
 #For DOMjudge configuration check
 #PHP upload_max_filesize to 512M
-sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 512M/" /etc/php/8.1/apache2/php.ini
 sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 512M/" /etc/php/8.1/fpm/php.ini
 #PHP max_file_uploads to 256
-sudo sed -i "s/max_file_uploads = 20/max_file_uploads = 256/" /etc/php/8.1/apache2/php.ini
 sudo sed -i "s/max_file_uploads = 20/max_file_uploads = 256/" /etc/php/8.1/fpm/php.ini
 #PHP post_max_size to 512M
-sudo sed -i "s/post_max_size = 8M/post_max_size = 512M/" /etc/php/8.1/apache2/php.ini
 sudo sed -i "s/post_max_size = 8M/post_max_size = 512M/" /etc/php/8.1/fpm/php.ini
 #PHP memory_limit to 2048M
-sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/apache2/php.ini
 sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.1/fpm/php.ini
 #php reload
 sudo service php8.1-fpm reload
@@ -204,6 +199,7 @@ sudo service php8.1-fpm reload
 
 
 
+#Customizing needed for actual DOMjudge H/W!!
 #For DOMjudge configuration check
 #php8.1 for DOMjudge
 sudo ln -s -f /opt/domjudge/domserver/etc/domjudge-fpm.conf /etc/php/8.1/fpm/pool.d/domjudge.conf
@@ -231,7 +227,7 @@ sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.1/fpm/po
 echo "" | tee -a ~/domjudge.txt
 echo "DOMjugde(+apache2) installed!!" | tee -a ~/domjudge.txt
 echo "" | tee -a ~/domjudge.txt
-#making auto direction to /domjudge
+#option for apache2. making auto direction to /domjudge. now work for nginx!!
 cd
 sudo rm -f /var/www/html/index.html
 echo "<script>document.location=\"./domjudge/\";</script>" > index.html
