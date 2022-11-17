@@ -82,8 +82,8 @@ sudo mysql_secure_installation
 
 
 #For DOMjudge configuration check
-#MariaDB Max connections to 16384
-sudo sed -i "s/\#max_connections        = 100/max_connections        = 16384/" /etc/mysql/mariadb.conf.d/50-server.cnf
+#MariaDB Max connections to 32768
+sudo sed -i "s/\#max_connections        = 100/max_connections        = 32768/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 
 

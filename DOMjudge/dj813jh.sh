@@ -40,25 +40,29 @@ sudo apt -y install procps
 sudo apt -y remove apport
 
 
+
+
+
+
 #pypy3
-sudo apt -y install pypy3
+#sudo apt -y install pypy3
 #java
-sudo apt -y install default-jre-headless
-sudo apt -y install default-jdk-headless
+#sudo apt -y install default-jre-headless
+#sudo apt -y install default-jdk-headless
 #haskell
-sudo apt -y install ghc
+#sudo apt -y install ghc
 #pascal
-sudo apt -y install fp-compiler
+#sudo apt -y install fp-compiler
 #JavaScript
-sudo apt -y install nodejs
-sudo apt -y install npm
+#sudo apt -y install nodejs
+#sudo apt -y install npm
 #R
-sudo apt -y install r-base
-#swift
+#sudo apt -y install r-base
+#swift not working... 2022.11.17
 sudo apt -y install clang libicu-dev
-wget https://download.swift.org/swift-5.7.1-release/ubuntu2204/swift-5.7.1-RELEASE/swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
-tar -zxvf swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
-rm swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
+sudo wget https://download.swift.org/swift-5.7.1-release/ubuntu2204/swift-5.7.1-RELEASE/swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
+sudo tar -zxvf swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
+sudo rm swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
 sudo mv ~/swift-5.7.1-RELEASE-ubuntu22.04 ~/swift
 sudo ln -s -f ~/swift/usr/bin/swiftc /usr/bin/swiftc
 
@@ -114,8 +118,8 @@ sudo update-grub
 #default
 #sudo /opt/domjudge/judgehost/bin/dj_make_chroot
 
-#default + JavaScript,R,swift,pypy3
-echo 'y' | sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base,swift,pypy3
+#default + JavaScript,R
+echo 'y' | sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base
 
 
 sudo apt -y autoremove
