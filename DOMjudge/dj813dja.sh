@@ -244,9 +244,6 @@ sudo mv index.html /var/www/html/
 
 
 
-sudo apt autoremove -y
-
-
 PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
 
 echo "" | tee -a ~/domjudge.txt
@@ -260,6 +257,8 @@ echo "http://localhost/domjudge/" | tee -a ~/domjudge.txt
 echo "admin ID : admin" | tee -a ~/domjudge.txt
 echo "admin PW : $PASSWORD" | tee -a ~/domjudge.txt
 echo ""
+
+sudo apt autoremove -y
 
 #scripts set download
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj813jh.sh
