@@ -58,13 +58,7 @@ sudo apt -y remove apport
 #sudo apt -y install npm
 #R
 #sudo apt -y install r-base
-#swift not working... 2022.11.17
-sudo apt -y install clang libicu-dev
-sudo wget https://download.swift.org/swift-5.7.1-release/ubuntu2204/swift-5.7.1-RELEASE/swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
-sudo tar -zxvf swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
-sudo rm swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
-sudo mv ~/swift-5.7.1-RELEASE-ubuntu22.04 ~/swift
-sudo ln -s -f ~/swift/usr/bin/swiftc /usr/bin/swiftc
+
 
 #DOMjudge 8.1.3 stable
 cd domjudge-8.1.3
@@ -96,6 +90,8 @@ if [ -f /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
   sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295\"#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295 quiet cgroup_enable=memory swapaccount=1 isolcpus=2 systemd.unified_cgroup_hierarchy=0\"#" /etc/default/grub.d/50-cloudimg-settings.cfg
 fi
 
+sudo 
+
 
 #make docs
 sudo apt -y install python3-sphinx python3-sphinx-rtd-theme rst2pdf fontconfig python3-yaml texlive-latex-extra latexmk
@@ -115,11 +111,20 @@ sudo make install-docs
 sudo update-grub
 
 #make chroot
+#add nodejs, r-base
+sudo sed -i "s#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 locales\"#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 nodejs r-base locales\"#" /opt/domjudge/judgehost/bin/dj_make_chroot
 #default
-#sudo /opt/domjudge/judgehost/bin/dj_make_chroot
+sudo /opt/domjudge/judgehost/bin/dj_make_chroot
 
-#default + JavaScript,R
-echo 'y' | sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base
+
+#swift not working... 2022.11.17
+#sudo apt -y install clang libicu-dev
+#sudo wget https://download.swift.org/swift-5.7.1-release/ubuntu2204/swift-5.7.1-RELEASE/swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
+#sudo tar -zxvf swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
+#sudo rm swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
+#sudo mv ~/swift-5.7.1-RELEASE-ubuntu22.04 ~/swift
+
+#sudo ln -s -f ~/swift/usr/bin/swiftc /usr/bin/swiftc
 
 
 sudo apt -y autoremove
