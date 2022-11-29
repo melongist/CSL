@@ -222,13 +222,16 @@ sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.1/fpm/po
 
 
 
+cd
+
+
+
 
 #option for apache2. not work for nginx!!
 echo "" | tee -a ~/domjudge.txt
 echo "DOMjugde(+apache2) installed!!" | tee -a ~/domjudge.txt
 echo "" | tee -a ~/domjudge.txt
 #option for apache2. making auto direction to /domjudge. now work for nginx!!
-cd
 sudo rm -f /var/www/html/index.html
 echo "<script>document.location=\"./domjudge/\";</script>" > index.html
 sudo chmod 644 index.html
@@ -258,7 +261,7 @@ echo "admin ID : admin" | tee -a ~/domjudge.txt
 echo "admin PW : $PASSWORD" | tee -a ~/domjudge.txt
 echo ""
 
-sudo apt autoremove -y
+#sudo apt autoremove -y
 
 #scripts set download
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj813jh.sh

@@ -31,7 +31,7 @@ if [ ${INPUTS} == "y" ] ; then
   while [ ${DOMAINNAME} != ${INPUTS} ]; do
     echo -n "Enter  domain name : "
     read DOMAINNAME
-    echo -n "Repeat domian name : "
+    echo -n "Repeat domain name : "
     read INPUTS
   done
 else
@@ -68,12 +68,12 @@ cd
 sudo timedatectl set-timezone 'Asia/Seoul'
 
 sudo apt update
-sudo apt upgrade -y
+sudo apt -y upgrade
 
-sudo apt install -y software-properties-common dirmngr apt-transport-https
-sudo apt install -y acl
-sudo apt install -y zip unzip
-sudo apt install -y mariadb-server mariadb-client
+sudo apt -y install software-properties-common dirmngr apt-transport-https
+sudo apt -y install acl
+sudo apt -y install zip unzip
+sudo apt -y install mariadb-server mariadb-client
 
 #You must input mariaDB's root account password! #1
 sudo mysql_secure_installation
@@ -175,8 +175,10 @@ sudo ./dj_setup_database -u root -r install
 #nginx for DOMjudge
 sudo apt -y install apache2-utils
 sudo ln -s -f /opt/domjudge/domserver/etc/nginx-conf /etc/nginx/sites-enabled/domjudge
-sudo sed -i "s:_default_:${DOMAINNAME}:g" /opt/domjudge/domserver/etc/nginx-conf-inner
 sudo sed -i "s:# server_names_hash_bucket_size 64;:server_names_hash_bucket_size 64;:g" /etc/nginx/nginx.conf
+sudo sed -i "s:_default_:${DOMAINNAME}:g" /opt/domjudge/domserver/etc/nginx-conf-inner
+sudo sed -i "s:localhost:${DOMAINNAME}:g" /opt/domjudge/domserver/etc/restapi.secret
+sudo sed -i "s:localhost:${DOMAINNAME}:g" /opt/domjudge/judgehost/etc/restapi.secret
 sudo nginx -t
 sudo systemctl restart nginx
 sudo service nginx reload
@@ -222,11 +224,14 @@ sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.1/fpm/po
 
 
 
+cd
+
+
+
 
 #option for apache2. not work for nginx!!
 #echo "" | tee -a ~/domjudge.txt
 #echo "DOMjugde(+apache2) installed!!" | tee -a ~/domjudge.txt
-#echo "" | tee -a ~/domjudge.txt
 #option for apache2. making auto direction to /domjudge. now work for nginx!!
 #cd
 #sudo rm -f /var/www/html/index.html
@@ -240,6 +245,8 @@ echo "" | tee -a ~/domjudge.txt
 echo "DOMjugde(+nginx) installed!!" | tee -a ~/domjudge.txt
 echo "${DOMAINNAME} must be binded with IP address!!" | tee -a ~/domjudge.txt
 echo "" | tee -a ~/domjudge.txt
+
+
 
 
 
