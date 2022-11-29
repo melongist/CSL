@@ -21,13 +21,17 @@ sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
 echo "DOMjudge webserver cache cleared!"
 
 echo ""
-#CPU(s)
+#check the number of CPU(s)
 lscpu | grep "^CPU(s)"
 CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 
 #Thread(s) per core
 lscpu | grep "Thread(s) per core"
 CORES=$(lscpu | grep "Thread(s) per core"|awk  '{print $4}')
+
+#check the H/W memory size
+sudo dmidecode -t memory | grep "Maximum Capacity"
+MEMS==$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
 
 echo ""
 echo "Starting create cgroups..."
