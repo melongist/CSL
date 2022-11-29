@@ -69,7 +69,8 @@ make judgehost
 sudo make install-judgehost
 
 #for nginx domain name
-if [ ${DOMAINNAME} != "" ] ; then
+if [ -e domainname.txt ] ; then
+  DOMAINNAME=$(<domainname.txt)
   sudo sed -i "s:localhost:${DOMAINNAME}:g" /opt/domjudge/judgehost/etc/restapi.secret
 fi
 

@@ -41,7 +41,7 @@ fi
 
 echo ""
 
-
+echo ${DOMAINNAME} > domainname.txt
 
 
 if [[ $SUDO_USER ]] ; then
