@@ -154,6 +154,10 @@ cd domjudge-8.1.3
 make domserver
 sudo make install-domserver
 
+#for nginx domain name
+sudo sed -i "s:_default_:${DOMAINNAME}:g" /opt/domjudge/domserver/etc/nginx-conf-inner
+sudo sed -i "s:localhost:${DOMAINNAME}:g" /opt/domjudge/domserver/etc/restapi.secret
+
 cd /opt/domjudge/domserver/bin
 #./dj_setup_database genpass # it's not required..
 
@@ -176,9 +180,6 @@ sudo ./dj_setup_database -u root -r install
 sudo apt -y install apache2-utils
 sudo ln -s -f /opt/domjudge/domserver/etc/nginx-conf /etc/nginx/sites-enabled/domjudge
 sudo sed -i "s:# server_names_hash_bucket_size 64;:server_names_hash_bucket_size 64;:g" /etc/nginx/nginx.conf
-sudo sed -i "s:_default_:${DOMAINNAME}:g" /opt/domjudge/domserver/etc/nginx-conf-inner
-sudo sed -i "s:localhost:${DOMAINNAME}:g" /opt/domjudge/domserver/etc/restapi.secret
-sudo sed -i "s:localhost:${DOMAINNAME}:g" /opt/domjudge/judgehost/etc/restapi.secret
 sudo nginx -t
 sudo systemctl restart nginx
 sudo service nginx reload

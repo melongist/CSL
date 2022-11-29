@@ -68,6 +68,11 @@ cd domjudge-8.1.3
 make judgehost
 sudo make install-judgehost
 
+#for nginx domain name
+if [ ${DOMAINNAME} != "" ] ; then
+  sudo sed -i "s:localhost:${DOMAINNAME}:g" /opt/domjudge/judgehost/etc/restapi.secret
+fi
+
 #judgehosts
 #default judgedaemon
 sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
