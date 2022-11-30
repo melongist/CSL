@@ -31,7 +31,7 @@ CORES=$(lscpu | grep "Thread(s) per core"|awk  '{print $4}')
 
 #check the H/W memory size GiB
 sudo dmidecode -t memory | grep "Maximum Capacity"
-MEMS==$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
+MEMS=$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
 
 echo ""
 echo "Starting create cgroups..."

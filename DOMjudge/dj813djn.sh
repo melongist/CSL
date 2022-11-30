@@ -205,7 +205,7 @@ sudo service php8.1-fpm reload
 sudo ln -s -f /opt/domjudge/domserver/etc/domjudge-fpm.conf /etc/php/8.1/fpm/pool.d/domjudge.conf
 #check the H/W memory size GiB
 sudo dmidecode -t memory | grep "Maximum Capacity"
-MEMS==$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
+MEMS=$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
 MEMS=$(($MEMS*40));
 #40 per GiB of memory ... 4GiB -> 160
 sudo sed -i "s:pm.max_children = 40:pm.max_children = ${MEMS}:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
