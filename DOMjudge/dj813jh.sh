@@ -68,11 +68,16 @@ cd domjudge-8.1.3
 make judgehost
 sudo make install-judgehost
 
+echo ""
+#check the number of CPU(s)
+lscpu | grep "^CPU(s)"
+CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
+
 #judgehosts
 #default judgedaemon
 sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
-#multi judgedaemons, limited to the number of cores, max 128
-for ((i=0; i<32; i++));
+#multi judgedaemons, limited to the number of CPUS, max 128
+for ((i=0; i<$CPUS; i++));
 do
   sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-$i
 done

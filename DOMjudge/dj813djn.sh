@@ -19,7 +19,7 @@
 INPUTS="x"
 
 while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
-  echo    "DOMjudge(+nginx) needs domain name!"
+  echo    "DOMjudge(+nginx) must have domain name!"
   echo -n "Do you have domain name? [y/n]: "
   read INPUTS
 done
@@ -203,8 +203,12 @@ sudo service php8.1-fpm reload
 #For DOMjudge configuration check
 #php8.1 for DOMjudge
 sudo ln -s -f /opt/domjudge/domserver/etc/domjudge-fpm.conf /etc/php/8.1/fpm/pool.d/domjudge.conf
+#check the H/W memory size GiB
+sudo dmidecode -t memory | grep "Maximum Capacity"
+MEMS==$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
+MEMS=$(($MEMS*40));
 #40 per GiB of memory ... 4GiB -> 160
-sudo sed -i "s:pm.max_children = 40:pm.max_children = 40:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+sudo sed -i "s:pm.max_children = 40:pm.max_children = ${MEMS}:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 #number of requests before respawning
 sudo sed -i "s:pm.max_requests = 5000:pm.max_requests = 4096:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 #memory_limit
@@ -230,8 +234,8 @@ cd
 #option for apache2. not work for nginx!!
 #echo "" | tee -a ~/domjudge.txt
 #echo "DOMjugde(+apache2) installed!!" | tee -a ~/domjudge.txt
+#echo "" | tee -a ~/domjudge.txt
 #option for apache2. making auto direction to /domjudge. now work for nginx!!
-#cd
 #sudo rm -f /var/www/html/index.html
 #echo "<script>document.location=\"./domjudge/\";</script>" > index.html
 #sudo chmod 644 index.html
@@ -243,7 +247,11 @@ echo "" | tee -a ~/domjudge.txt
 echo "DOMjugde(+nginx) installed!!" | tee -a ~/domjudge.txt
 echo "${DOMAINNAME} must be binded with IP address!!" | tee -a ~/domjudge.txt
 echo "" | tee -a ~/domjudge.txt
-
+sudo rm -f /usr/share/nginx/html/index.html
+echo "<script>document.location=\"http://${DOMAINNAME}/domjudge/\";</script>" > index.html
+sudo chmod 644 index.html
+sudo chown root:root index.html
+sudo mv index.html /usr/share/nginx/html/
 
 
 
