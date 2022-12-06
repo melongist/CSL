@@ -6,7 +6,7 @@
 
 #DOMjudge server installation script
 #DOMjudge8.1.3 stable + Ubuntu 22.04 LTS
-#2022.11.13 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.12.07 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 #terminal commands to install DOMjudge judgehosts
 #------
@@ -77,7 +77,8 @@ CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 #default judgedaemon
 sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
 #multi judgedaemons, limited to the number of CPUS, max 128
-for ((i=0; i<${CPUS}; i++));
+#for ((i=0; i<${CPUS}; i++));
+for ((i=0; i<128; i++));
 do
   sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-$i
 done
@@ -122,7 +123,7 @@ sudo sed -i "s#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headl
 sudo /opt/domjudge/judgehost/bin/dj_make_chroot
 
 
-#swift not working... 2022.11.17
+#swift not working... temporary removed. 2022.11.17
 #sudo apt -y install clang libicu-dev
 #sudo wget https://download.swift.org/swift-5.7.1-release/ubuntu2204/swift-5.7.1-RELEASE/swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
 #sudo tar -zxvf swift-5.7.1-RELEASE-ubuntu22.04.tar.gz

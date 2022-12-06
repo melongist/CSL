@@ -6,7 +6,7 @@
 
 #DOMjudge server installation script
 #DOMjudge8.1.3 stable + Ubuntu 22.04.01 LTS + nginx 1.18.0
-#2022.11.13 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.12.07 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 #terminal commands to install DOMjudge server
 #------
@@ -82,8 +82,8 @@ sudo mysql_secure_installation
 
 
 #For DOMjudge configuration check
-#MariaDB Max connections to 3000
-sudo sed -i "s/\#max_connections        = 100/max_connections        = 3000/" /etc/mysql/mariadb.conf.d/50-server.cnf
+#MariaDB Max connections to 16384
+sudo sed -i "s/\#max_connections        = 100/max_connections        = 16384/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 
 
@@ -210,7 +210,7 @@ MEMS=$(($MEMS*40));
 #40 per GiB of memory ... 4GiB -> 160
 sudo sed -i "s:pm.max_children = 40:pm.max_children = ${MEMS}:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 #number of requests before respawning
-sudo sed -i "s:pm.max_requests = 5000:pm.max_requests = 4096:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+#sudo sed -i "s:pm.max_requests = 5000:pm.max_requests = 4096:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 #memory_limit
 sudo sed -i "s:php_admin_value\[memory_limit\] = 512M:php_admin_value\[memory_limit\] = 2048M:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 #upload_max_filesize
@@ -221,8 +221,8 @@ sudo sed -i "s:php_admin_value\[memory_limit\] = 512M:php_admin_value\[memory_li
 sudo sed -i "s:php_admin_value\[max_file_uploads\] = 101:php_admin_value\[max_file_uploads\] = 256:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 sudo sed -i "s:pm.max_children = 5:pm.max_children = 128:g" /etc/php/8.1/fpm/pool.d/www.conf
 sudo sed -i "s:pm.min_spare_servers = 1:pm.min_spare_servers = 1:g" /etc/php/8.1/fpm/pool.d/www.conf
-sudo sed -i "s:pm.max_spare_servers = 3:pm.max_spare_servers = 127:g" /etc/php/8.1/fpm/pool.d/www.conf
-sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.1/fpm/pool.d/www.conf
+sudo sed -i "s:pm.max_spare_servers = 3:pm.max_spare_servers = 256:g" /etc/php/8.1/fpm/pool.d/www.conf
+sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 32:g" /etc/php/8.1/fpm/pool.d/www.conf
 
 
 

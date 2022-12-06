@@ -3,7 +3,7 @@
 #DOMjudge judgehost starting script
 #DOMjudge8.1.3 stable + Ubuntu 22.04 LTS
 #Made by 
-#2022.11.13 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.12.07 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 
 if [[ $SUDO_USER ]] ; then
@@ -33,6 +33,8 @@ CORES=$(lscpu | grep "Thread(s) per core"|awk  '{print $4}')
 sudo dmidecode -t memory | grep "Maximum Capacity"
 MEMS=$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
 
+
+
 echo ""
 echo "Starting create cgroups..."
 sudo /opt/domjudge/judgehost/bin/create_cgroups
@@ -44,7 +46,7 @@ echo "Starting judgedaemon..."
 sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
 echo "judgedaemon-run started!"
 #multi judgedaemons, limited to the number of cores, max 128
-for ((i=0; i<$CPUS; i++));
+for ((i=0; i<${CPUS}; i++));
 do
   echo "start judgedaemon-run-$i..."
   sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n $i &
