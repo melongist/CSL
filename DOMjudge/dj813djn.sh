@@ -6,7 +6,7 @@
 
 #DOMjudge server installation script
 #DOMjudge8.1.3 stable + Ubuntu 22.04.01 LTS + nginx 1.18.0
-#2022.12.07 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.12.08 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 #terminal commands to install DOMjudge server
 #------

@@ -6,7 +6,7 @@
 
 #DOMjudge server installation script
 #DOMjudge8.1.3 stable + Ubuntu 22.04 LTS
-#2022.12.07 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2022.12.08 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 #terminal commands to install DOMjudge judgehosts
 #------
@@ -75,9 +75,9 @@ CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 
 #judgehosts
 #default judgedaemon
-#sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
-#multi judgedaemons, max 128
-for ((i=1; i<=128; i++));
+sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
+#multi judgedaemons, max 127
+for ((i=1; i<=127; i++));
 do
   sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-$i
 done
