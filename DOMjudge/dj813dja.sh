@@ -221,8 +221,8 @@ sudo sed -i "s:php_admin_value\[memory_limit\] = 512M:php_admin_value\[memory_li
 sudo sed -i "s:php_admin_value\[max_file_uploads\] = 101:php_admin_value\[max_file_uploads\] = 256:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 sudo sed -i "s:pm.max_children = 5:pm.max_children = 128:g" /etc/php/8.1/fpm/pool.d/www.conf
 sudo sed -i "s:pm.min_spare_servers = 1:pm.min_spare_servers = 1:g" /etc/php/8.1/fpm/pool.d/www.conf
-sudo sed -i "s:pm.max_spare_servers = 3:pm.max_spare_servers = 128:g" /etc/php/8.1/fpm/pool.d/www.conf
-sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 16:g" /etc/php/8.1/fpm/pool.d/www.conf
+sudo sed -i "s:pm.max_spare_servers = 3:pm.max_spare_servers = 127:g" /etc/php/8.1/fpm/pool.d/www.conf
+sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.1/fpm/pool.d/www.conf
 
 
 
