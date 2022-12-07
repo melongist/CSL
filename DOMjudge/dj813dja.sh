@@ -205,8 +205,8 @@ sudo service php8.1-fpm reload
 sudo ln -s -f /opt/domjudge/domserver/etc/domjudge-fpm.conf /etc/php/8.1/fpm/pool.d/domjudge.conf
 #check the H/W memory size GiB
 sudo dmidecode -t memory | grep "Maximum Capacity"
-MEMS==$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
-MEMS=$(($MEMS*40));
+MEMS=$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
+MEMS=$(($MEMS*40))
 #40 per GiB of memory ... 4GiB -> 160
 sudo sed -i "s:pm.max_children = 40:pm.max_children = ${MEMS}:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 #number of requests before respawning
@@ -221,7 +221,7 @@ sudo sed -i "s:php_admin_value\[memory_limit\] = 512M:php_admin_value\[memory_li
 sudo sed -i "s:php_admin_value\[max_file_uploads\] = 101:php_admin_value\[max_file_uploads\] = 256:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 sudo sed -i "s:pm.max_children = 5:pm.max_children = 128:g" /etc/php/8.1/fpm/pool.d/www.conf
 sudo sed -i "s:pm.min_spare_servers = 1:pm.min_spare_servers = 1:g" /etc/php/8.1/fpm/pool.d/www.conf
-sudo sed -i "s:pm.max_spare_servers = 3:pm.max_spare_servers = 127:g" /etc/php/8.1/fpm/pool.d/www.conf
+sudo sed -i "s:pm.max_spare_servers = 3:pm.max_spare_servers = 128:g" /etc/php/8.1/fpm/pool.d/www.conf
 sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.1/fpm/pool.d/www.conf
 
 
