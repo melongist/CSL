@@ -187,8 +187,8 @@ sudo service nginx reload
 #For DOMjudge configuration check
 #PHP upload_max_filesize to 256M
 sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 256M/" /etc/php/8.1/fpm/php.ini
-#PHP max_file_uploads to 256
-sudo sed -i "s/max_file_uploads = 20/max_file_uploads = 256/" /etc/php/8.1/fpm/php.ini
+#PHP max_file_uploads to 512
+sudo sed -i "s/max_file_uploads = 20/max_file_uploads = 512/" /etc/php/8.1/fpm/php.ini
 #PHP post_max_size to 256M
 sudo sed -i "s/post_max_size = 8M/post_max_size = 256M/" /etc/php/8.1/fpm/php.ini
 #PHP memory_limit to 2048M
@@ -218,7 +218,7 @@ sudo sed -i "s:php_admin_value\[memory_limit\] = 512M:php_admin_value\[memory_li
 #post_max_size
 #sudo sed -i "s:php_admin_value\[post_max_size\] = 256M:php_admin_value\[post_max_size\] = 512M:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 #max_file_uploads
-sudo sed -i "s:php_admin_value\[max_file_uploads\] = 101:php_admin_value\[max_file_uploads\] = 256:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+sudo sed -i "s:php_admin_value\[max_file_uploads\] = 101:php_admin_value\[max_file_uploads\] = 512:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 sudo sed -i "s:pm.max_children = 5:pm.max_children = 128:g" /etc/php/8.1/fpm/pool.d/www.conf
 sudo sed -i "s:pm.min_spare_servers = 1:pm.min_spare_servers = 1:g" /etc/php/8.1/fpm/pool.d/www.conf
 sudo sed -i "s:pm.max_spare_servers = 3:pm.max_spare_servers = 128:g" /etc/php/8.1/fpm/pool.d/www.conf

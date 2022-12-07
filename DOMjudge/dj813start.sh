@@ -43,10 +43,10 @@ echo "create cgroups started!"
 echo ""
 echo "Starting judgedaemon..."
 #default judgedaemon
-sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
-echo "judgedaemon-run started!"
+#sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
+#echo "judgedaemon-run started!"
 #multi judgedaemons, limited to the number of cores, max 128
-for ((i=0; i<${CPUS}; i++));
+for ((i=1; i<=${CPUS}; i++));
 do
   echo "start judgedaemon-run-$i..."
   sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n $i &

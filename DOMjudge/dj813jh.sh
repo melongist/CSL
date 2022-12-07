@@ -75,9 +75,9 @@ CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 
 #judgehosts
 #default judgedaemon
-sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
+#sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
 #multi judgedaemons, max 128
-for ((i=0; i<128; i++));
+for ((i=1; i<=128; i++));
 do
   sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-$i
 done
