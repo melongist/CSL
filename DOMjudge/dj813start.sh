@@ -44,6 +44,7 @@ if [[ $MEMSSET -ne $MEMSNOW ]] ; then
   sudo sed -i "s:${MEMSTRING}:${NEWSTRING}:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
   echo "pm.max_children value changed to ${MEMSNOW}"
   echo ""
+  sudo service php8.1-fpm reload
 fi
 
 echo ""
