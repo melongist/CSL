@@ -44,24 +44,24 @@ if [[ $MEMSSET -ne $MEMSNOW ]] ; then
   sudo sed -i "s:${MEMSTRING}:${NEWSTRING}:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
   echo "pm.max_children value changed to ${MEMSNOW}"
   echo ""
+fi
 
-  echo "restarting php..."
-  sudo service php8.1-fpm restart
-  sudo service php8.1-fpm reload
-  echo "restarting mariadb..."
-  sudo systemctl restart mariadb
+echo "Restarting php..."
+sudo service php8.1-fpm restart
+sudo service php8.1-fpm reload
+echo "Restarting mariadb..."
+sudo systemctl restart mariadb
 
-  WEBSERVER=$(curl -i localhost | grep "Server" | awk '{sub(/\/*/, ""); print $2}')
-  if [[ "$WEBSERVER" == "Apache*" ]] ; then
-    echo "restarting apache2..."
-    sudo systemctl restart apache2
-    sudo systemctl reload apache2
-  fi
-  if [[ "$WEBSERVER" == "nginx" ]] ; then
-    echo "restarting nginx..."
-    sudo systemctl restart nginx
-    sudo systemctl reload nginx
-  fi
+WEBSERVER=$(curl -i localhost | grep "Server" | awk '{sub(/\/*/, ""); print $2}')
+if [[ "$WEBSERVER" == "Apache*" ]] ; then
+  echo "Restarting apache2..."
+  sudo systemctl restart apache2
+  sudo systemctl reload apache2
+fi
+if [[ "$WEBSERVER" == "nginx" ]] ; then
+  echo "Restarting nginx..."
+  sudo systemctl restart nginx
+  sudo systemctl reload nginx
 fi
 
 echo ""
