@@ -33,7 +33,18 @@ CORES=$(lscpu | grep "Thread(s) per core"|awk  '{print $4}')
 sudo dmidecode -t memory | grep "Maximum Capacity"
 MEMS=$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
 
-
+#set to H/W memory size
+MEMSNOW=$(($MEMS*40))
+MEMSSET=$(grep "pm.max_children =" /etc/php/8.1/fpm/pool.d/domjudge.conf | awk '{print $3}')
+if [[ $MEMSSET -ne $MEMSNOW ]] ; then
+  echo "H/W memory size changed!!"
+  echo ""
+  MEMSTRING=$(grep "pm.max_children =" /etc/php/8.1/fpm/pool.d/domjudge.conf)
+  NEWSTRING="pm.max_children = ${MEMSNOW}      ; ~40 per gig of memory(16gb system -> 500)"
+  sudo sed -i "s:${MEMSTRING}:${NEWSTRING}:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+  echo "pm.max_children value changed to ${MEMSNOW}"
+  echo ""
+fi
 
 echo ""
 echo "Starting create cgroups..."
@@ -42,6 +53,10 @@ echo "create cgroups started!"
 
 echo ""
 echo "Starting judgedaemon..."
+#kill current judgedaemons
+ps -ef | grep "judgedaemon" | awk '{print $2}' | xargs kill -9
+
+#start new judgedaemons
 #default judgedaemon
 sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
 echo "judgedaemon-run started!"
