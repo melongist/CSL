@@ -21,6 +21,7 @@ sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
 echo "DOMjudge webserver cache cleared!"
 
 echo ""
+echo "CPU information"
 #check the number of CPU(s)
 lscpu | grep "^CPU(s)"
 CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
@@ -29,14 +30,19 @@ CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 lscpu | grep "Thread(s) per core"
 CORES=$(lscpu | grep "Thread(s) per core"|awk  '{print $4}')
 
+echo ""
+echo "H/W memory information"
 #check the H/W memory size GiB
 sudo dmidecode -t memory | grep "Maximum Capacity"
 MEMS=$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
+echo ""
 
 #set to H/W memory size
 MEMSNOW=$(($MEMS*40))
 MEMSSET=$(grep "pm.max_children =" /etc/php/8.1/fpm/pool.d/domjudge.conf | awk '{print $3}')
+
 if [[ $MEMSSET -ne $MEMSNOW ]] ; then
+  echo ""
   echo "H/W memory size changed!!"
   echo ""
   MEMSTRING=$(grep "pm.max_children =" /etc/php/8.1/fpm/pool.d/domjudge.conf)
@@ -46,12 +52,14 @@ if [[ $MEMSSET -ne $MEMSNOW ]] ; then
   echo ""
 fi
 
+echo ""
 echo "Restarting php..."
 sudo service php8.1-fpm restart
 sudo service php8.1-fpm reload
+echo ""
 echo "Restarting mariadb..."
 sudo systemctl restart mariadb
-
+echo ""
 WEBSERVER=$(curl -i localhost | grep "Server" | awk '{sub(/\/*/, ""); print $2}')
 if [[ "$WEBSERVER" == "Apache*" ]] ; then
   echo "Restarting apache2..."
@@ -87,10 +95,5 @@ do
 done
 
 echo ""
-echo ""
-
-echo "CPU information"
-lscpu | grep "^CPU(s)"
-lscpu | grep "Thread(s) per core"
 echo "$CPUS judgedamons started!"
 echo ""
