@@ -80,7 +80,8 @@ echo "create cgroups started!"
 echo ""
 echo "Starting judgedaemon..."
 #kill current judgedaemons
-ps -ef | grep "judgedaemon" | awk '{print $2}' | xargs kill -9
+#ps -ef | grep "judgedaemon" | awk '{print $2}' | xargs kill -9
+kill -9 `pgrep -f judgedaemon`
 
 #start new judgedaemons
 #default judgedaemon
