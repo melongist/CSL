@@ -74,6 +74,7 @@ sudo apt -y install software-properties-common dirmngr apt-transport-https
 sudo apt -y install acl
 sudo apt -y install zip unzip
 sudo apt -y install mariadb-server mariadb-client
+sudo apt -y install curl
 
 #You must input mariaDB's root account password! #1
 sudo mysql_secure_installation
