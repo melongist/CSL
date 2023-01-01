@@ -33,8 +33,11 @@ CORES=$(lscpu | grep "Thread(s) per core"|awk  '{print $4}')
 echo ""
 echo "H/W memory information"
 #check the H/W memory size GiB
-sudo dmidecode -t memory | grep "Maximum Capacity"
-MEMS=$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
+#sudo dmidecode -t memory | grep "Maximum Capacity"
+#MEMS=$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
+echo "Memory size(GiB)"
+MEMS=$(free --giga | grep "Mem:" | awk  '{print $2}')
+echo "${MEMS} GiB"
 echo ""
 
 #set to H/W memory size
