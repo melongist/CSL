@@ -6,7 +6,7 @@
 
 #DOMjudge server installation script
 #DOMjudge8.1.3 stable + Ubuntu 22.04 LTS
-#2022.12.08 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
+#2023.01.07 Made by melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 #terminal commands to install DOMjudge judgehosts
 #------
@@ -58,6 +58,21 @@ sudo apt -y remove apport
 #sudo apt -y install npm
 #R
 #sudo apt -y install r-base
+
+
+#Register DOMjudge memory autoscaling for php(fpm)
+sudo rm /etc/rc.local
+sudo touch /etc/rc.local
+sudo chmod 777 /etc/rc.local
+if grep "/home/ubuntu/dj813mas.sh" /etc/rc.local ; then
+  echo "DOMjudge memory autoscaling for php(fpm) registered!"
+else
+  sudo sed -i "s/exit 0//g" /etc/rc.local
+  sudo echo "#! /bin/sh" >> /etc/rc.local
+  sudo echo "bash /home/ubuntu/dj813mas.sh" >> /etc/rc.local
+  sudo echo "exit 0" >> /etc/rc.local
+fi
+sudo chmod 755 /etc/rc.local
 
 
 #DOMjudge 8.1.3 stable

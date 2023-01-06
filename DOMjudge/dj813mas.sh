@@ -1,35 +1,17 @@
 #!/bin/bash
 
-#DOMjudge judgehost starting script
+#DOMjudge php memory autoscaling script
 #DOMjudge8.1.3 stable + Ubuntu 22.04 LTS
 #Made by 
 #2023.01.07 melongist(melongist@gmail.com, what_is_computer@msn.com) for CS teachers
 
 
 if [[ $SUDO_USER ]] ; then
-  echo "Just use 'bash dj813start.sh'"
+  echo "Just use 'bash dj813mas.sh'"
   exit 1
 fi
 
-echo ""
-#DOMjudge cache clear
-sudo /opt/domjudge/domserver/webapp/bin/console cache:clear
-echo "DOMjudge cache cleared!"
-
-#DOMjudge webserver cache clear
-sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
-echo "DOMjudge webserver cache cleared!"
-
-echo ""
-echo "CPU information"
-#check the number of CPU(s)
-lscpu | grep "^CPU(s)"
-CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
-
-#Thread(s) per core
-lscpu | grep "Thread(s) per core"
-CORES=$(lscpu | grep "Thread(s) per core"|awk  '{print $4}')
-
+echo "DOMjudge memory autoscaling for php(fpm) started..."
 echo ""
 echo "H/W memory information"
 #check the H/W memory size GiB
@@ -76,28 +58,5 @@ if [[ "$WEBSERVER" == "nginx" ]] ; then
 fi
 
 echo ""
-echo "Starting create cgroups..."
-sudo /opt/domjudge/judgehost/bin/create_cgroups
-echo "create cgroups started!"
-
-echo ""
-echo "Starting judgedaemon..."
-#kill current judgedaemons
-#ps -ef | grep "judgedaemon" | awk '{print $2}' | xargs kill -9
-kill -9 `pgrep -f judgedaemon`
-
-#start new judgedaemons
-#default judgedaemon
-sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
-echo "judgedaemon-run started!"
-#multi judgedaemons, limited to the number of cores, max 128
-for ((i=1; i<${CPUS}; i++));
-do
-  echo "start judgedaemon-run-$i..."
-  sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n $i &
-  echo "judgedaemon-run-$i started!"
-done
-
-echo ""
-echo "$CPUS judgedamons started!"
+echo "DOMjudge memory autoscaling for php(fpm) accomplished!"
 echo ""
