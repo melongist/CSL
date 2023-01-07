@@ -36,7 +36,7 @@ echo "H/W memory information"
 #sudo dmidecode -t memory | grep "Maximum Capacity"
 #MEMS=$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
 echo "Memory size(GiB)"
-MEMS=$(free --giga | grep "Mem:" | awk  '{print $2}')
+MEMS=$(free --gibi | grep "Mem:" | awk  '{print $2}')
 echo "${MEMS} GiB"
 echo ""
 
