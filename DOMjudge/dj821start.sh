@@ -40,8 +40,8 @@ echo "${MEMS} GiB"
 echo ""
 
 #set to H/W memory size
-if ${MEMS}<1 ; then
-  ${MEMS} = 1
+if $MEMS<1 ; then
+  MEMS=1
 fi
 
 MEMSNOW=$(($MEMS*40))

@@ -20,8 +20,8 @@ MEMS=$(free --gibi | grep "Mem:" | awk  '{print $2}')
 echo "${MEMS} GiB"
 echo ""
 
-if ${MEMS}<1 ; then
-  ${MEMS} = 1
+if $MEMS<1 ; then
+  MEMS=1
 fi
 
 #set to H/W memory size

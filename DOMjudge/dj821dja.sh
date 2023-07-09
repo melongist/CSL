@@ -186,8 +186,8 @@ echo "Memory size(GiB)"
 MEMS=$(free --gibi | grep "Mem:" | awk  '{print $2}')
 echo "${MEMS} GiB"
 
-if ${MEMS}<1 ; then
-  ${MEMS} = 1
+if $MEMS<1 ; then
+  MEMS=1
 fi
 
 if [[ $SUDO_USER ]] ; then
