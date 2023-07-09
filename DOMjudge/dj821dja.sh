@@ -190,11 +190,6 @@ if $MEMS<1 ; then
   MEMS=1
 fi
 
-if [[ $SUDO_USER ]] ; then
-  echo "Just use 'bash dj821dja.sh'"
-  exit 1
-fi
-
 MEMS=$(($MEMS*40))
 #40 per GiB of memory ... 4GiB -> 160
 sudo sed -i "s:pm.max_children = 40:pm.max_children = ${MEMS}:g" /etc/php/8.2/fpm/pool.d/domjudge.conf
