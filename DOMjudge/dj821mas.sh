@@ -20,6 +20,10 @@ MEMS=$(free --gibi | grep "Mem:" | awk  '{print $2}')
 echo "${MEMS} GiB"
 echo ""
 
+if ${MEMS}<1 ; then
+  ${MEMS} = 1
+fi
+
 #set to H/W memory size
 MEMSNOW=$(($MEMS*40))
 MEMSSET=$(grep "pm.max_children =" /etc/php/8.2/fpm/pool.d/domjudge.conf | awk '{print $3}')
