@@ -62,7 +62,7 @@ sudo sed -i "s/\#max_connections        = 100/max_connections        = 16384/" /
 
 
 #apache2
-sudo add-apt-repository ppa:ondrej/apache2  #added
+#sudo add-apt-repository ppa:ondrej/apache2  #added
 sudo apt install -y apache2
 
 #nginx
@@ -116,7 +116,7 @@ sudo apt install -y libjsoncpp-dev
 
 
 
-#여기부터 해야함.
+
 #DOMjudge 8.2.1 stable
 #wget https://www.domjudge.org/releases/domjudge-8.2.1.tar.gz
 #tar xvf domjudge-8.2.1.tar.gz
