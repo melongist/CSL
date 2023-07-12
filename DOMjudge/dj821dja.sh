@@ -57,7 +57,7 @@ sudo mysql_secure_installation
 #For DOMjudge configuration check
 #MariaDB Max connections to 16384
 sudo sed -i "s/\#max_connections        = 100/max_connections        = 16384/" /etc/mysql/mariadb.conf.d/50-server.cnf
-
+sudo sed -i "s/\[mysqld\]/\[mysqld\]\ninnodb_log_file_size=512M\nmax_allowed_packet=512M/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 
 
@@ -254,8 +254,6 @@ echo "admin ID : admin" | tee -a ~/domjudge.txt
 echo "admin PW : $PASSWORD" | tee -a ~/domjudge.txt
 echo ""
 
-
-#여기까지 테스트 및 확인함.
 
 #sudo apt autoremove -y
 

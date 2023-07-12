@@ -40,7 +40,7 @@ echo "${MEMS} GiB"
 echo ""
 
 #set to H/W memory size
-if $MEMS<1 ; then
+if [ ${MEMS} -lt 1 ] ; then
   MEMS=1
 fi
 

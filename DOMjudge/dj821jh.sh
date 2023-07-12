@@ -47,17 +47,17 @@ sudo apt -y remove apport
 #pypy3
 #sudo apt -y install pypy3
 #java
-#sudo apt -y install default-jre-headless
-#sudo apt -y install default-jdk-headless
+sudo apt -y install default-jre-headless
+sudo apt -y install default-jdk-headless
 #haskell
 #sudo apt -y install ghc
 #pascal
 #sudo apt -y install fp-compiler
 #JavaScript
-#sudo apt -y install nodejs
-#sudo apt -y install npm
+sudo apt -y install nodejs
+sudo apt -y install npm
 #R
-#sudo apt -y install r-base
+sudo apt -y install r-base
 
 
 #Register DOMjudge memory autoscaling for php(fpm)
