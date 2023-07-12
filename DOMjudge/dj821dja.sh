@@ -10,7 +10,7 @@
 
 #terminal commands to install DOMjudge server
 #------
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj813dja.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj821dja.sh
 #bash dj821dja.sh
 
 
@@ -62,7 +62,7 @@ sudo sed -i "s/\#max_connections        = 100/max_connections        = 16384/" /
 
 
 #apache2
-#sudo add-apt-repository ppa:ondrej/apache2  #added
+sudo add-apt-repository ppa:ondrej/apache2  #added
 sudo apt install -y apache2
 
 #nginx
@@ -186,7 +186,7 @@ echo "Memory size(GiB)"
 MEMS=$(free --gibi | grep "Mem:" | awk  '{print $2}')
 echo "${MEMS} GiB"
 
-if $MEMS<1 ; then
+if [ ${MEMS} -lt 1 ] ; then
   MEMS=1
 fi
 
@@ -253,6 +253,9 @@ echo "http://localhost/domjudge/" | tee -a ~/domjudge.txt
 echo "admin ID : admin" | tee -a ~/domjudge.txt
 echo "admin PW : $PASSWORD" | tee -a ~/domjudge.txt
 echo ""
+
+
+#여기까지 테스트 및 확인함.
 
 #sudo apt autoremove -y
 
