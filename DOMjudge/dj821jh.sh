@@ -60,6 +60,8 @@ sudo apt -y remove apport
 #sudo apt -y install r-base
 
 
+
+
 #Register DOMjudge memory autoscaling for php(fpm)
 sudo rm /etc/rc.local
 sudo touch /etc/rc.local
@@ -75,40 +77,65 @@ fi
 sudo chmod 755 /etc/rc.local
 
 
-#DOMjudge 8.2.1 stable
+
+
+#Building and installing
 cd domjudge-8.2.1
 ./configure --prefix=/opt/domjudge --with-baseurl=BASEURL
-
-#make judgehost
 make judgehost
 sudo make install-judgehost
-
 echo ""
-#check the number of CPU(s)
+
+
+
+
+#Judgehosts group and user
+#multiple judgedaemons per machine
+#checking the number of CPU(s)
 lscpu | grep "^CPU(s)"
 CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
-
-#judgehosts
+#make judgedaemo group
+sudo groupadd domjudge-run
 #default judgedaemon
-sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run
+sudo useradd -d /nonexistent -g domjudge-run -M -s /bin/false domjudge-run
 #multi judgedaemons, max 127
 for ((i=1; i<=127; i++));
 do
-  sudo useradd -d /nonexistent -U -M -s /bin/false domjudge-run-$i
+  sudo useradd -d /nonexistent -g domjudge-run -M -s /bin/false domjudge-run-$i
 done
 
+
+
+
+#Sudo permissions
 sudo cp /opt/domjudge/judgehost/etc/sudoers-domjudge /etc/sudoers.d/
 sudo chmod 0440 /etc/sudoers.d/sudoers-domjudge
 
-#try #1 for Ubuntu 22.04 LTS Desktop
+
+
+
+#Creating a chroot environment
+#make chroot
+#add nodejs, r-base
+sudo sed -i "s#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 locales\"#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 nodejs r-base locales\"#" /opt/domjudge/judgehost/bin/dj_make_chroot
+#default
+sudo /opt/domjudge/judgehost/bin/dj_make_chroot
+
+
+
+
+#Linux Control Groups
+#try #1 for Ubuntu 22.04 LTS
 sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash\"#GRUB_CMDLINE_LINUX_DEFAULT=\"quiet cgroup_enable=memory swapaccount=1 isolcpus=2 systemd.unified_cgroup_hierarchy=0\"#" /etc/default/grub
-#try #2 for Ubuntu 22.04 LTS Server
-sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash\"#GRUB_CMDLINE_LINUX_DEFAULT=\"quiet cgroup_enable=memory swapaccount=1 isolcpus=2 systemd.unified_cgroup_hierarchy=0\"#" /etc/default/grub
-#try #3 AWS Ubuntu 22.04 LTS Server
+#try #2 AWS Ubuntu 22.04 LTS Server
 if [ -f /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
 	echo "Editing /etc/default/grub.d/50-cloudimg-settings.cfg for AWS"
   sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295\"#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295 quiet cgroup_enable=memory swapaccount=1 isolcpus=2 systemd.unified_cgroup_hierarchy=0\"#" /etc/default/grub.d/50-cloudimg-settings.cfg
 fi
+sudo update-grub
+#sudo systemctl enable create-cgroups --now
+
+
 
 
 #make docs
@@ -126,13 +153,6 @@ make docs
 
 sudo make install-docs
 
-sudo update-grub
-
-#make chroot
-#add nodejs, r-base
-sudo sed -i "s#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 locales\"#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 nodejs r-base locales\"#" /opt/domjudge/judgehost/bin/dj_make_chroot
-#default
-sudo /opt/domjudge/judgehost/bin/dj_make_chroot
 
 
 #swift not working... temporary removed. 2022.11.17

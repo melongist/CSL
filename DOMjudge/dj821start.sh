@@ -32,8 +32,6 @@ CORES=$(lscpu | grep "Thread(s) per core"|awk  '{print $4}')
 echo ""
 echo "H/W memory information"
 #check the H/W memory size GiB
-#sudo dmidecode -t memory | grep "Maximum Capacity"
-#MEMS=$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
 echo "Memory size(GiB)"
 MEMS=$(free --gibi | grep "Mem:" | awk  '{print $2}')
 echo "${MEMS} GiB"
@@ -86,7 +84,6 @@ echo "create cgroups started!"
 echo ""
 echo "Starting judgedaemon..."
 #kill current judgedaemons
-#ps -ef | grep "judgedaemon" | awk '{print $2}' | xargs kill -9
 kill -9 `pgrep -f judgedaemon`
 
 #start new judgedaemons

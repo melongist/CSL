@@ -13,8 +13,6 @@ echo "DOMjudge memory autoscaling for php(fpm) started..."
 echo ""
 echo "H/W memory information"
 #check the H/W memory size GiB
-#sudo dmidecode -t memory | grep "Maximum Capacity"
-#MEMS=$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
 echo "Memory size(GiB)"
 MEMS=$(free --gibi | grep "Mem:" | awk  '{print $2}')
 echo "${MEMS} GiB"
