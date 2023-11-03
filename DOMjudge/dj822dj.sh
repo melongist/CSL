@@ -28,7 +28,7 @@ if [ ${OSVER:0:5} != "22.04" ] ; then
 fi
 
 
-WEBSERVER=""
+WEBSERVER="no"
 while [ ${WEBSERVER} != "apache2" ] && [ ${WEBSERVER} != "nginx" ]; do
   echo    "Select Web-server for DOMjudge!"
   echo -n "apache2 or nginx? [apache2/nginx]: "
