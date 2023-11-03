@@ -5,7 +5,7 @@
 #https://github.com/DOMjudge/domjudge
 
 #DOMjudge server installation script
-#DOMjudge8.2.2 stable + Ubuntu 22.04.3 LTS + apache2 2.4.52
+#DOMjudge8.2.2 stable + Ubuntu 22.04.3 LTS + apache2/nginx
 #2023.11 Made by melongist(melongist@gmail.com) for CS teachers
 
 #terminal commands to install DOMjudge judgehosts

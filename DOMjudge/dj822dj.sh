@@ -6,7 +6,7 @@
 
 #DOMjudge server installation script
 #2023.11 Made by melongist(melongist@gmail.com) for CS teachers
-#DOMjudge8.2.2 stable + Ubuntu 22.04.3 LTS
+#DOMjudge8.2.2 stable + Ubuntu 22.04.3 LTS + apache2/nginx
 
 #terminal commands to install DOMjudge server
 #------
@@ -30,6 +30,8 @@ fi
 
 WEBSERVER="no"
 while [ ${WEBSERVER} != "apache2" ] && [ ${WEBSERVER} != "nginx" ]; do
+  clear
+  echo    ""
   echo    "Select Web-server for DOMjudge!"
   echo -n "apache2 or nginx? [apache2/nginx]: "
   read WEBSERVER
