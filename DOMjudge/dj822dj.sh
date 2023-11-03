@@ -36,7 +36,7 @@ while [ ${WEBSERVER} != "apache2" ] && [ ${WEBSERVER} != "nginx" ]; do
 done
 
 
-case WEBSERVER in
+case ${WEBSERVER} in
   "apache2")
     ;;
   "nginx")
@@ -93,7 +93,7 @@ sudo sed -i "s/\#max_connections        = 100/max_connections        = 16384/" /
 sudo sed -i "s/\[mysqld\]/\[mysqld\]\ninnodb_log_file_size=512M\nmax_allowed_packet=512M/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 
-case WEBSERVER in
+case ${WEBSERVER} in
   "apache2")
     sudo add-apt-repository ppa:ondrej/apache2  #added
     sudo apt install -y apache2
@@ -122,7 +122,7 @@ sudo apt install -y php8.2-xml
 sudo apt install -y php8.2-zip
 
 
-case WEBSERVER in
+case ${WEBSERVER} in
   "apache2")
     sudo systemctl restart apache2
     ;;
@@ -162,7 +162,7 @@ cd /opt/domjudge/domserver/bin
 sudo ./dj_setup_database -u root -r install
 
 
-case WEBSERVER in
+case ${WEBSERVER} in
   "apache2")
     sudo ln -s -f /opt/domjudge/domserver/etc/apache.conf /etc/apache2/conf-available/domjudge.conf
     sudo a2enmod proxy_fcgi setenvif rewrite
@@ -238,7 +238,7 @@ sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.2/fpm/po
 cd
 
 
-case WEBSERVER in
+case ${WEBSERVER} in
   "apache2")
     echo "" | tee -a ~/domjudge.txt
     echo "DOMjugde(+apache2) installed!!" | tee -a ~/domjudge.txt
@@ -290,7 +290,7 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj822mas.sh
 bash dj822jh.sh
 
 
-case WEBSERVER in
+case ${WEBSERVER} in
   "apache2")
     ;;
   "nginx")
