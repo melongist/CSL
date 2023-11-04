@@ -15,6 +15,7 @@
 
 
 if [[ $SUDO_USER ]] ; then
+  echo ""
   echo "Just use 'bash dj822dj.sh'"
   exit 1
 fi
@@ -44,6 +45,7 @@ case ${WEBSERVER} in
   "nginx")
     INPUTS="x"
     while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
+      echo    ""
       echo    "DOMjudge(+nginx) must have domain name!"
       echo -n "Do you have domain name? [y/n]: "
       read INPUTS
@@ -54,6 +56,7 @@ case ${WEBSERVER} in
       DOMAINNAME="o"
       INPUTS="x"
       while [ ${DOMAINNAME} != ${INPUTS} ]; do
+        echo    ""
         echo -n "Enter  domain name : "
         read DOMAINNAME
         echo -n "Repeat domain name : "
@@ -68,6 +71,11 @@ case ${WEBSERVER} in
     echo ${DOMAINNAME} > domainname.txt
     ;;
 esac
+
+
+#needrestart auto check for Ubuntu 22.04
+#/etc/needrestart/needrestart.conf
+sudo sed -i "s:#\$nrconf{restart} = 'i':\$nrconf{restart} = 'a':" /etc/needrestart/needrestart.conf
 
 
 cd
@@ -329,9 +337,9 @@ chmod 660 ~/domjudge.txt
 echo "Saved as domjudge.txt"
 
 
-echo ''
-echo 'System will be rebooted in 20 seconds!'
-echo ''
+echo ""
+echo "System will be rebooted in 20 seconds!"
+echo ""
 COUNT=20
 while [ $COUNT -ge 0 ]
 do
@@ -339,6 +347,6 @@ do
   ((COUNT--))
   sleep 1
 done
-echo 'rebooted!' | tee -a ~/domjudge.txt
+echo "rebooted!" | tee -a ~/domjudge.txt
 sleep 5
 sudo reboot
