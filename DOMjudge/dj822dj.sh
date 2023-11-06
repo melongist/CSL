@@ -75,8 +75,10 @@ esac
 
 #needrestart auto check for Ubuntu 22.04
 #/etc/needrestart/needrestart.conf
-sudo sed -i "s:#\$nrconf{restart} = 'i':\$nrconf{restart} = 'a':" /etc/needrestart/needrestart.conf
-sudo sed -i "s:#\$nrconf{kernelhints} = -1:\$nrconf{kernelhints} = 0:" /etc/needrestart/needrestart.conf
+if [ -e /etc/needrestart/needrestart.conf ] ; then
+  sudo sed -i "s:#\$nrconf{restart} = 'i':\$nrconf{restart} = 'a':" /etc/needrestart/needrestart.conf
+  sudo sed -i "s:#\$nrconf{kernelhints} = -1:\$nrconf{kernelhints} = 0:" /etc/needrestart/needrestart.conf
+fi
 
 
 cd
