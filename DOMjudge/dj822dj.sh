@@ -268,7 +268,8 @@ case ${WEBSERVER} in
     echo "${DOMAINNAME} must be binded with IP address!!" | tee -a ~/domjudge.txt
     echo "" | tee -a ~/domjudge.txt
     sudo rm -f /usr/share/nginx/html/index.html
-    echo "<script>document.location=\"http://${DOMAINNAME}/domjudge/\";</script>" > index.html
+    #echo "<script>document.location=\"http://${DOMAINNAME}/domjudge/\";</script>" > index.html
+    echo "<script>document.location=\"./domjudge/\";</script>" > index.html
     sudo chmod 644 index.html
     sudo chown root:root index.html
     sudo mv index.html /usr/share/nginx/html/
