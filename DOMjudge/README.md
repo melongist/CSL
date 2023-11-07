@@ -10,9 +10,11 @@
 #Auto installation commands and steps...
 <pre><code>
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj813dj.sh
+</code></pre>
+<pre><code>
 bash dj813dj.sh
 </code></pre>
-   
+
 <pre><code>
 ...   
 Enter current password for root (enter for none) :    // <- enter   
