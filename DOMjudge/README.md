@@ -1,4 +1,4 @@
-#22.10.02   
+#23.11.07   
 
 ---
 #DOMjudge 8.1.3 stable auto installation   
@@ -46,9 +46,7 @@ Sytem will be rebooted in 20 seconds!
 ---    
 #After rebooted, judgehosts must be started for judging!    
 #To start judgehosts...
-<pre><code>
-bash dj813start.sh    
-</code></pre>
+<pre><code>bash dj813start.sh</code></pre>
 A number of judgehosts will be automatically started by CPU cores...    
     
 <pre><code>
@@ -82,9 +80,7 @@ Thread(s) per core:              ?
 #To login DOMjudge as admin, admin password needed.
 #DOMjudge admin password saved in domjudge.txt    
 #To check DOMjudge admin password...    
-<pre><code>
-cat domjudge.txt    
-</code></pre>
+<pre><code>cat domjudge.txt</code></pre>
 
 <pre><code>
 ...    
@@ -97,9 +93,7 @@ admin PW : ????????????????
 ---
 #To use korean interface for korean middle & high students participants    
 #To replace participants interface, english to korean...    
-<pre><code>
-bash dj813kr.sh
-</code></pre>
+<pre><code>bash dj813kr.sh</code></pre>
     
 <pre><code>
 ...
@@ -120,9 +114,7 @@ http://localhost/domjudge/
     
 ---
 #To domserver http web cache clearing    
-<pre><code>
-bash dj813clear.sh
-</code></pre>
+<pre><code>bash dj813clear.sh</code></pre>
     
 <pre><code>
  // Clearing the cache for the prod environment with debug false    
@@ -135,21 +127,15 @@ DOMjudge webserver cache cleared!
     
 ---
 #To kill some judgedaemon processe    
-<pre><code>
-ps -ef, and find pid# of judgedaemon, run : kill -9 pid#    
-</code></pre>
+<pre><code>ps -ef, and find pid# of judgedaemon, run : kill -9 pid#</code></pre>
     
     
 ---
 #To clear domserver web cache    
-<pre><code>
-sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
-</code></pre>
+<pre><code>sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*</code></pre>
     
 #To clear DOMjudge cache    
-<pre><code>
-sudo /opt/domjudge/domserver/webapp/bin/console cache:clear    
-</code></pre>
+<pre><code>sudo /opt/domjudge/domserver/webapp/bin/console cache:clear</code></pre>
     
     
 ---
@@ -161,10 +147,8 @@ sudo /opt/domjudge/domserver/webapp/bin/console cache:clear
 
 #Installation commands to install spotboard for DOMjudge   
 
-<pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/sb070.sh
-bash sb070.sh
-</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/sb070.sh</code></pre>
+<pre><code>bash sb070.sh</code></pre>
     
     
 #After judgehosts installed.
@@ -196,10 +180,8 @@ Next step : install spotboard-converter
 
 #Installation commands to install spotboard-converter for domjudge   
 
-<pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/sbc070.sh
-bash sbc070.sh
-</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/sbc070.sh</code></pre>
+<pre><code>bash sbc070.sh</code></pre>
 
 #After spotboard-converter installed.
 <pre><code>
