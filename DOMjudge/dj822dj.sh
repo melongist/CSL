@@ -83,9 +83,16 @@ fi
 
 cd
 
-#change to your timezone
-#for South Korea's timezone
-sudo timedatectl set-timezone 'Asia/Seoul'
+#time synchronization
+echo ""
+sudo timedatectl
+echo ""
+
+#set timezone
+NEWTIMEZONE=$(tzselect)
+sudo timedatectl set-timezone ${NEWTIMEZONE}
+echo ""
+
 
 sudo apt update
 sudo apt -y upgrade
