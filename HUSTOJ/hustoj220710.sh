@@ -64,6 +64,14 @@ echo ""
 sleep 3
 
 
+#for South Korea's timezone
+timedatectl set-timezone 'Asia/Seoul'
+
+apt update
+apt -y upgrade
+apt -y autoremove
+
+
 #needrestart auto check for Ubuntu 22.04
 #/etc/needrestart/needrestart.conf
 if [ -e /etc/needrestart/needrestart.conf ] ; then
@@ -71,13 +79,6 @@ if [ -e /etc/needrestart/needrestart.conf ] ; then
   sudo sed -i "s:#\$nrconf{kernelhints} = -1:\$nrconf{kernelhints} = 0:" /etc/needrestart/needrestart.conf
 fi
 
-
-#for South Korea's timezone
-timedatectl set-timezone 'Asia/Seoul'
-
-apt update
-apt -y upgrade
-apt -y autoremove
 
 apt install -y software-properties-common
 add-apt-repository -y universe
