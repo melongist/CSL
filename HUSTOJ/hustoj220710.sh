@@ -36,15 +36,41 @@ fi
 cd
 
 #for OJ NAME
-clear
-OJNAME="o"
 INPUTS="x"
-while [ ${OJNAME} != ${INPUTS} ]; do
-  echo -n "Enter  OJ NAME : "
-  read OJNAME
-  echo -n "Repeat OJ NAME : "
+
+while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
+  echo -n "Rename HUSTOJ logo name? [y/n]: "
   read INPUTS
 done
+
+echo ""
+if [ ${INPUTS} == "y" ] ; then
+  OJNAME="o"
+  INPUTS="x"
+  while [ ${OJNAME} != ${INPUTS} ]; do
+    echo -n "Enter  NAME : "
+    read OJNAME
+    echo -n "Repeat NAME : "
+    read INPUTS
+  done
+else
+  OJNAME="HUSTOJ"
+fi
+
+
+echo ""
+echo "Waiting 3 seconds..."
+echo ""
+sleep 3
+
+
+#needrestart auto check for Ubuntu 22.04
+#/etc/needrestart/needrestart.conf
+if [ -e /etc/needrestart/needrestart.conf ] ; then
+  sudo sed -i "s:#\$nrconf{restart} = 'i':\$nrconf{restart} = 'a':" /etc/needrestart/needrestart.conf
+  sudo sed -i "s:#\$nrconf{kernelhints} = -1:\$nrconf{kernelhints} = 0:" /etc/needrestart/needrestart.conf
+fi
+
 
 #for South Korea's timezone
 timedatectl set-timezone 'Asia/Seoul'

@@ -1,5 +1,5 @@
 ## Ver   
-#### - 최종 갱신일 : 22.07.10   
+#### - 최종 갱신일 : 23.11.25   
 #### - 버전: 22.07.10   
 
 ***   
@@ -38,7 +38,8 @@
 
 <pre><code>
 wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220710.sh
-
+</code></pre>
+<pre><code>
 sudo bash hustoj220710.sh
 </code></pre>
   
@@ -101,7 +102,8 @@ sudo bash hustoj220710.sh
    
 <pre><code>
 wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj220710.sh
-   
+</code></pre>
+<pre><code>
 sudo bash csloj220710.sh
 </code></pre>
    
