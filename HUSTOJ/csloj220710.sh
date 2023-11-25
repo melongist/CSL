@@ -1,8 +1,8 @@
 #!/bin/bash
 #CSL HUSTOJ
-#Made by melongist(melongist@gmail.com, what_is_computer@msn.com)
+#Made by melongist(melongist@gmail.com)
 #for CSL Computer Science teachers
-#Last edits 22.08.10
+#Last edits 23.11.25
 
 clear
 
@@ -94,6 +94,14 @@ echo ""
 echo "Waiting 3 seconds..."
 echo ""
 sleep 3
+
+
+#needrestart auto check for Ubuntu 22.04
+#/etc/needrestart/needrestart.conf
+if [ -e /etc/needrestart/needrestart.conf ] ; then
+  sudo sed -i "s:#\$nrconf{restart} = 'i':\$nrconf{restart} = 'a':" /etc/needrestart/needrestart.conf
+  sudo sed -i "s:#\$nrconf{kernelhints} = -1:\$nrconf{kernelhints} = 0:" /etc/needrestart/needrestart.conf
+fi
 
 
 #for South Korea's timezone
@@ -559,6 +567,11 @@ rm -f temp
 #temporary fix until next release
 #...
 sed -i "s/if(count(\$used_in_contests)>0){/if(\$cid==0 \&\& count(\$used_in_contests)>0){/g" /home/judge/src/web/template/bs3/problem.php
+#pdf file upload error fix
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/upload_json.php
+mv -f ./upload_json.php /home/judge/src/web/kindeditor/php/upload_json.php
+chown www-data:root /home/judge/src/web/kindeditor/php/upload_json.php
+chmod 664 /home/judge/src/web/kindeditor/php/upload_json.php
 
 
 #for backup
