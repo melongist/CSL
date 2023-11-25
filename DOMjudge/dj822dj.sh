@@ -73,14 +73,6 @@ case ${WEBSERVER} in
 esac
 
 
-#needrestart auto check for Ubuntu 22.04
-#/etc/needrestart/needrestart.conf
-if [ -e /etc/needrestart/needrestart.conf ] ; then
-  sudo sed -i "s:#\$nrconf{restart} = 'i':\$nrconf{restart} = 'a':" /etc/needrestart/needrestart.conf
-  sudo sed -i "s:#\$nrconf{kernelhints} = -1:\$nrconf{kernelhints} = 0:" /etc/needrestart/needrestart.conf
-fi
-
-
 cd
 
 #time synchronization
@@ -96,6 +88,15 @@ echo ""
 
 sudo apt update
 sudo apt -y upgrade
+
+
+#needrestart auto check for Ubuntu 22.04
+#/etc/needrestart/needrestart.conf
+if [ -e /etc/needrestart/needrestart.conf ] ; then
+  sudo sed -i "s:#\$nrconf{restart} = 'i':\$nrconf{restart} = 'a':" /etc/needrestart/needrestart.conf
+  sudo sed -i "s:#\$nrconf{kernelhints} = -1:\$nrconf{kernelhints} = 0:" /etc/needrestart/needrestart.conf
+fi
+
 
 sudo apt -y install software-properties-common dirmngr apt-transport-https
 sudo apt -y install acl
