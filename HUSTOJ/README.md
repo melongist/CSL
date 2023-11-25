@@ -36,12 +36,8 @@
 
 #아래 명령을 실행하면, 한글 환경과 한국 시간으로 맞추어 HUSTOJ 를 설치합니다.   
 
-<pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220710.sh
-</code></pre>
-<pre><code>
-sudo bash hustoj220710.sh
-</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220710.sh</code></pre>
+<pre><code>sudo bash hustoj220710.sh</code></pre>
   
 ***   
 | 위는 일반 HUSTOJ의 한국 시간 및 한글 환경 설정 설치 스크립트입니다.   
@@ -100,10 +96,6 @@ sudo bash hustoj220710.sh
 
 #아래 명령을 실행하면, 한글 환경과 한국 시간으로 맞추어 CSL HUSTOJ 를 설치합니다.   
    
-<pre><code>
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj220710.sh
-</code></pre>
-<pre><code>
-sudo bash csloj220710.sh
-</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj220710.sh</code></pre>
+<pre><code>sudo bash csloj220710.sh</code></pre>
    
