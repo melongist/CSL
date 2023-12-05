@@ -17,7 +17,7 @@ fi
 
 OSVER=$(grep "Ubuntu" /etc/issue|head -1|awk  '{print $2}')
 
-if [ ${OSVER} != "22.04" ] ; then
+if [ ${OSVER:0:5} != "22.04" ] ; then
   echo ""
   echo "This is not Ubuntu 22.04 LTS!!"
   echo ""
