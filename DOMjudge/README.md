@@ -102,28 +102,6 @@ admin PW : ????????????????
 </code></pre>    
     
 ---
-#To use korean interface for korean middle & high students participants    
-#To replace participants interface, english to korean...    
-<pre><code>bash dj822kr.sh</code></pre>
-    
-<pre><code>
-...
-Rename DOMjudge logo name? [y/n]:      // <- y/n    //If you want to change DOMjudge name, enter y.
-...
-Enter  DOMjudge NAME : ????            // <- ????   //Enter  new contest short name!!
-Repeat DOMjudge NAME : ????            // <-        //Repeat
-...
-DOMjudge 8.2.2 stable 23.10.20
-DOMjudge participants' korean interface installed!
-For korean middle & high school students.
-
-Check DOMserver's web interface!
-------
-http://localhost/domjudge/
-</code></pre>
-    
-    
----
 #To domserver http web cache clearing    
 <pre><code>bash dj822clear.sh</code></pre>
     
@@ -148,7 +126,28 @@ DOMjudge webserver cache cleared!
 #To clear DOMjudge cache    
 <pre><code>sudo /opt/domjudge/domserver/webapp/bin/console cache:clear</code></pre>
     
+---
+#To use korean interface for korean middle & high students participants    
+#To replace participants interface, english to korean...    
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj822kr.sh</code></pre>
+<pre><code>bash dj822kr.sh</code></pre>
     
+<pre><code>
+...
+Rename DOMjudge logo name? [y/n]:      // <- y/n    //If you want to change DOMjudge name, enter y.
+...
+Enter  DOMjudge NAME : ????            // <- ????   //Enter  new contest short name!!
+Repeat DOMjudge NAME : ????            // <-        //Repeat
+...
+DOMjudge 8.2.2 stable 23.10.20
+DOMjudge participants' korean interface installed!
+For korean middle & high school students.
+
+Check DOMserver's web interface!
+------
+http://localhost/domjudge/
+</code></pre>
+        
 ---
 #spotboard for DOMjudge   
 <https://github.com/spotboard/spotboard>

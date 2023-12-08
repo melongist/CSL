@@ -305,7 +305,7 @@ sudo apt autoremove -y
 
 #scripts set download
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj822jh.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj822kr.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj822kr.sh
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj822start.sh
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj822clear.sh
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj822mas.sh
