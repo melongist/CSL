@@ -196,6 +196,7 @@ case ${WEBSERVER} in
     ;;
   "nginx")
     sudo apt -y install apache2-utils
+    sudo systemctl disable apache2    ###disable apache2
     sudo ln -s -f /opt/domjudge/domserver/etc/nginx-conf /etc/nginx/sites-enabled/domjudge
     sudo sed -i "s:# server_names_hash_bucket_size 64;:server_names_hash_bucket_size 64;:g" /etc/nginx/nginx.conf
     sudo sed -i "s:_default_:${DOMAINNAME}:g" /opt/domjudge/domserver/etc/nginx-conf-inner
