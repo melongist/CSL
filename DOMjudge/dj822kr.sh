@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #DOMjudge server Korean language patch script
-#2023.11 Made by melongist(melongist@gmail.com) for CS teachers
+#2024.01 Made by melongist(melongist@gmail.com) for CS teachers
 #DOMjudge8.2.2 stable + Ubuntu 22.04.3 LTS + apache2/nginx
 
 #terminal commands to install Korean patch 
@@ -82,11 +82,11 @@ sudo sed -i "s/are not shown/보이지 않습니다./" /opt/domjudge/domserver/w
 
 #scoreboard summary
 sudo sed -i "s/>Summary/>통계/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_summary.html.twig
-sudo sed -i "s/total solved/맞은 개수/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_summary.html.twig
-sudo sed -i "s/number of accepted submissions/맞음/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_summary.html.twig
+sudo sed -i "s/total solved/맞춘 개수/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_summary.html.twig
+sudo sed -i "s/number of accepted submissions/맞춤/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_summary.html.twig
 sudo sed -i "s/number of rejected submissions/틀림/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_summary.html.twig
-sudo sed -i "s/number of pending submissions/제출됨/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_summary.html.twig
-sudo sed -i "s/first solved/처음 맞은 시간/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_summary.html.twig
+sudo sed -i "s/number of pending submissions/제출함/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_summary.html.twig
+sudo sed -i "s/first solved/처음 맞춘 시간/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_summary.html.twig
 sudo sed -i "s/min/분/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_summary.html.twig
 
 #scoreboard table
@@ -94,12 +94,12 @@ sudo sed -i "s/\"rank/\"순위/" /opt/domjudge/domserver/webapp/templates/partia
 sudo sed -i "s/>rank/>순위/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/\"team name/\"팀 이름/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/>team/>팀 이름/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
-sudo sed -i "s/solved \/ penalty time/맞음 \/ 시간 패널티/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
+sudo sed -i "s/solved \/ penalty time/맞춤 \/ 시간 패널티/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/>score/>점수/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
-sudo sed -i "s/Solved first/가장 먼저 맞음/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
-sudo sed -i "s/Solved/맞음/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
+sudo sed -i "s/Solved first/가장 먼저 맞춤/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
+sudo sed -i "s/Solved/맞춤/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/Tried, incorrect/틀림/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
-sudo sed -i "s/Tried, pending/채점 제출됨/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
+sudo sed -i "s/Tried, pending/채점 제출함/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/Untried/미제출/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/Cell colours/색상별 의미/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/>Categories/>구분/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
