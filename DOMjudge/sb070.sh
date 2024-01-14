@@ -4,7 +4,7 @@
 #https://github.com/spotboard
 #https://github.com/spotboard/spotboard
 
-#DOMjudge judgehost starting script
+#DOMjudge spotboard install script
 #2024.01 Made by melongist(melongist@gmail.com) for CS teachers
 #DOMjudge8.2.2 stable + Ubuntu 22.04.3 LTS + apache2/nginx
 
