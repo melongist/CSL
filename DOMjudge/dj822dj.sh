@@ -216,6 +216,8 @@ sudo sed -i "s/max_file_uploads = 20/max_file_uploads = 512/" /etc/php/8.2/fpm/p
 sudo sed -i "s/post_max_size = 8M/post_max_size = 256M/" /etc/php/8.2/fpm/php.ini
 #PHP memory_limit to 2048M
 sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.2/fpm/php.ini
+#PHP timezone set
+sudo sed -i "s:;date.timezone = :date.timezone = ${NEWTIMEZONE}:g" /etc/php/8.2/fpm/php.ini
 #php reload
 sudo service php8.2-fpm reload
 
