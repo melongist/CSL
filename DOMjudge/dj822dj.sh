@@ -260,6 +260,11 @@ sudo sed -i "s:pm.max_spare_servers = 3:pm.max_spare_servers = 128:g" /etc/php/8
 sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.2/fpm/pool.d/www.conf
 
 
+
+#For Judging consistency
+sudo sed -i "s:#kernel.sysrq=438:#kernel.sysrq=438\n\nkernel.randomize_va_space=0:g" /etc/sysctl.conf
+
+
 cd
 
 
