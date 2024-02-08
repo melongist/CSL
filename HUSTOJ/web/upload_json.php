@@ -23,14 +23,14 @@ $php_path = dirname(__FILE__) . '/';
 //文件保存目录路径
 $save_path = $php_path . '../../upload/';
 //文件保存目录URL
-$save_url = $php_url . '../../upload/';  //CSL
-//$save_url = dirname(dirname(dirname($_SERVER['PHP_SELF']) )) . '/upload/';  //CSL
+$save_url = $php_url . '../../upload/';  //+ by CSL
+//$save_url = dirname(dirname(dirname($_SERVER['PHP_SELF']) )) . '/upload/';  //- by CSL
 //定义允许上传的文件扩展名
 $ext_arr = array(
   'image' => array('gif', 'jpg', 'jpeg', 'png', 'bmp'),
   'flash' => array('swf', 'flv'),
   'media' => array('swf', 'flv', 'mp3', 'wav', 'wma', 'wmv', 'mid', 'avi', 'mpg', 'asf', 'rm', 'rmvb'),
-  'file' => array('pdf','doc', 'docx', 'xls', 'xlsx', 'ppt', 'htm', 'html', 'txt', 'zip', 'rar', 'gz', 'bz2'),
+  'file' => array('pdf','doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'htm', 'html', 'txt', 'zip', 'rar', 'gz', 'bz2', 'hwp', 'hwpx'), //* by CSL
 );
 //最大文件大小
 $max_size = 400*1024*1024;
