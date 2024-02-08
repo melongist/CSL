@@ -3,9 +3,9 @@
 #Made by melongist(what_is_computer@msn.com)
 #for CSL Computer Science teacher
 
-VER_DATE="2021.01.09"
+VER_DATE="24.02.08"
 
-THISFILE="phadmin00.sh"
+THISFILE="phpmyadmin01.sh"
 
 clear
 
@@ -60,7 +60,7 @@ else
   fi
 fi
 
-#Identifing AWS Ubuntu 20.04 LTS
+#Identifing AWS Ubuntu 22.04 LTS
 if [ -f /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
   SERVERTYPES="AWS SERVER"
   IPADDRESS=($(sudo curl http://checkip.amazonaws.com))
