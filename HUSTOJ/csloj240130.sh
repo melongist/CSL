@@ -379,22 +379,22 @@ DBUSER=$(grep user /etc/mysql/debian.cnf|head -1|awk  '{print $3}')
 PASSWORD=$(grep password /etc/mysql/debian.cnf|head -1|awk  '{print $3}')
 
 
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/sql/${SQLFILE}
-mysql -u ${DBUSER} -p${PASSWORD} jol < ${SQLFILE}
-rm ${SQLFILE}
+#-temp wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/sql/${SQLFILE}
+#-temp mysql -u ${DBUSER} -p${PASSWORD} jol < ${SQLFILE}
+#-temp rm ${SQLFILE}
 #add source_browser privilege to admin
-echo "insert into jol.privilege values('admin','source_browser','true','N');"|mysql -h localhost -u"$USER" -p"$PASSWORD"
+#echo "insert into jol.privilege values('admin','source_browser','true','N');"|mysql -h localhost -u"$USER" -p"$PASSWORD"
 
 
 #Coping all upload files to server
 #how to backup upload files from CSL HUSTOJ
 #directory : /home/judge/src/wb/upload/
 #command   : sudo tar -czvpf /home/${SUDO_USER}/olduploads.tar.gz /home/judge/src/web/upload
-rm -rf /home/judge/src/web/upload/*
+#-temp rm -rf /home/judge/src/web/upload/*
 #overwriting
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/upload/${UPLOADFILE}
-tar -xzvpf ./${UPLOADFILE} -C /
-rm ./${UPLOADFILE}
+#-temp wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/upload/${UPLOADFILE}
+#-temp tar -xzvpf ./${UPLOADFILE} -C /
+#-temp rm ./${UPLOADFILE}
 
 
 chown www-data:www-data -R /home/judge/src/web/upload/*
@@ -409,11 +409,11 @@ chmod 664 /home/judge/src/web/upload/index.html
 #how to backup test in/out files from CSL HUSTOJ
 #directory : /home/judge/
 #command   : sudo tar -czvpf /home/${SUDO_USER}/olddata.tar.gz /home/judge/data
-rm -rf /home/judge/data
+#-temp rm -rf /home/judge/data
 #overwriting
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/data/${DATAFILE}
-tar -xzvpf ./${DATAFILE} -C /
-rm ./${DATAFILE}
+#-temp wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/data/${DATAFILE}
+#-temp tar -xzvpf ./${DATAFILE} -C /
+#-temp rm ./${DATAFILE}
 
 chmod 644 -R /home/judge/data
 chown www-data:www-data -R /home/judge/data
