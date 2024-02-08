@@ -94,9 +94,11 @@ include_once("kindeditor.php") ;
         <?php echo "<h4>".$MSG_SOURCE."</h4>"?>
         <textarea name=source style="width:100%;" rows=1><?php echo htmlentities($row['source'],ENT_QUOTES,"UTF-8")?></textarea><br>
 
+      <!-- - by CSL
         <?php echo "<h4>".$MSG_REMOTE_OJ."</h4>"?>
         <input name=remote_oj value='<?php echo htmlentities($row['remote_oj'],ENT_QUOTES,"UTF-8")?>' >
         <input name=remote_id value='<?php echo htmlentities($row['remote_id'],ENT_QUOTES,"UTF-8")?>' ><br>
+      -->
       </p>
 
 
