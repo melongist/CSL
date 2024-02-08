@@ -12,9 +12,9 @@ THISFILE="csloj240130.sh"
 SRCZIP="hustoj240130.zip"
 DOCKERFILE="Dockerfile240130"
 
-SQLFILE="csl220625jol.sql"
-UPLOADFILE="csl220223uploads.tar.gz"
-DATAFILE="csl220223data.tar.gz"
+SQLFILE="csl240130jol.sql"
+UPLOADFILE="csl240130uploads.tar.gz"
+DATAFILE="csl240130data.tar.gz"
 
 MAINTENANCEFILE="cslojmaintenance.sh"
 BACKUPFILE="cslojbackup.sh"
@@ -365,23 +365,23 @@ chmod 644 /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
 sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
 
 #phpmyadmin install script
-#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/phmyadmin01.sh
-#mv -f ./phpmyadmin01.sh /home/${SUDO_USER}/
-#chown ${SUDO_USER}:${SUDO_USER} /home/${SUDO_USER}/phpmyadmin01.sh
-#chmod 664 /home/${SUDO_USER}/phpmyadmin01.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/phmyadmin02.sh
+#mv -f ./phpmyadmin02.sh /home/${SUDO_USER}/
+#chown ${SUDO_USER}:${SUDO_USER} /home/${SUDO_USER}/phpmyadmin02.sh
+#chmod 664 /home/${SUDO_USER}/phpmyadmin02.sh
 
 #jol database overwriting
 #current mysql backup
-#how to backup from HUSTOJ for CSL :> mysqldump -u debian-sys-maint -p jol > jol.sql
-#command   : mysqldump -u debian-sys-maint -p jol > /home/${SUDO_USER}/oldjol.sql
+#how to backup from HUSTOJ for CSL :> mysqldump -u hustoj -p jol > jol.sql
+#command   : sudo mysqldump -u hustoj -p jol > /home/${SUDO_USER}/oldjol.sql
 #overwriting
-DBUSER=$(grep user /etc/mysql/debian.cnf|head -1|awk  '{print $3}')
-PASSWORD=$(grep password /etc/mysql/debian.cnf|head -1|awk  '{print $3}')
+DBUSER=$(grep '$DB_USER' /home/judge/src/web/include/db_info.inc.php|head -1|awk  '{print $2}'|cut -d "\"" -f2)
+PASSWORD=$(grep '$DB_PASS' /home/judge/src/web/include/db_info.inc.php|head -1|awk  '{print $2}'|cut -d "\"" -f2)
 
 
-#-temp wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/sql/${SQLFILE}
-#-temp mysql -u ${DBUSER} -p${PASSWORD} jol < ${SQLFILE}
-#-temp rm ${SQLFILE}
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/sql/${SQLFILE}
+mysql -u ${DBUSER} -p${PASSWORD} jol < ${SQLFILE}
+rm ${SQLFILE}
 #add source_browser privilege to admin
 #echo "insert into jol.privilege values('admin','source_browser','true','N');"|mysql -h localhost -u"$USER" -p"$PASSWORD"
 
@@ -390,11 +390,11 @@ PASSWORD=$(grep password /etc/mysql/debian.cnf|head -1|awk  '{print $3}')
 #how to backup upload files from CSL HUSTOJ
 #directory : /home/judge/src/wb/upload/
 #command   : sudo tar -czvpf /home/${SUDO_USER}/olduploads.tar.gz /home/judge/src/web/upload
-#-temp rm -rf /home/judge/src/web/upload/*
+rm -rf /home/judge/src/web/upload/*
 #overwriting
-#-temp wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/upload/${UPLOADFILE}
-#-temp tar -xzvpf ./${UPLOADFILE} -C /
-#-temp rm ./${UPLOADFILE}
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/upload/${UPLOADFILE}
+tar -xzvpf ./${UPLOADFILE} -C /
+rm ./${UPLOADFILE}
 
 
 chown www-data:www-data -R /home/judge/src/web/upload/*
@@ -409,11 +409,11 @@ chmod 664 /home/judge/src/web/upload/index.html
 #how to backup test in/out files from CSL HUSTOJ
 #directory : /home/judge/
 #command   : sudo tar -czvpf /home/${SUDO_USER}/olddata.tar.gz /home/judge/data
-#-temp rm -rf /home/judge/data
+rm -rf /home/judge/data
 #overwriting
-#-temp wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/data/${DATAFILE}
-#-temp tar -xzvpf ./${DATAFILE} -C /
-#-temp rm ./${DATAFILE}
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/data/${DATAFILE}
+tar -xzvpf ./${DATAFILE} -C /
+rm ./${DATAFILE}
 
 chmod 644 -R /home/judge/data
 chown www-data:www-data -R /home/judge/data
