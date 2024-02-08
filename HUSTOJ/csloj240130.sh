@@ -372,8 +372,8 @@ sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg/$
 
 #jol database overwriting
 #current mysql backup
-#how to backup from HUSTOJ for CSL :> mysqldump -u hustoj -p jol > jol.sql
-#command   : sudo mysqldump -u hustoj -p jol > /home/${SUDO_USER}/oldjol.sql
+#how to backup from HUSTOJ for CSL :> mysqldump -u hustoj -p --add-drop-table --create-options jol > jol.sql
+#command   : sudo mysqldump -u hustoj -p --add-drop-table jol > /home/${SUDO_USER}/oldjol.sql
 #overwriting
 DBUSER=$(grep '$DB_USER' /home/judge/src/web/include/db_info.inc.php|head -1|awk  '{print $2}'|cut -d "\"" -f2)
 PASSWORD=$(grep '$DB_PASS' /home/judge/src/web/include/db_info.inc.php|head -1|awk  '{print $2}'|cut -d "\"" -f2)
