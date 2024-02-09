@@ -66,6 +66,10 @@
     <?php if ($show_form) { ?>
     <!-- * by CSL -->
     - CSL HUSTOJ 문제 XML 업로드<br><br>
+    - CSL HUSTOJ의 문제 XML은 상위 버전의 CSL HUSTOJ에도 업로드가 됩니다.<br>
+    - 직접 만들거나 더 좋게 개선한 문제들을 다른 정보선생님들에게 나눔할 수 있습니다.<br><br>
+    - 업로드 버튼을 누른 후 완료 메시지가 나올 때까지 기다려주세요. 문제 및 채점데이터가 많은 경우 업로드가 오래 걸립니다.<br><br>
+
     <form class='form-inline' action='problem_import_xml.php' method=post enctype="multipart/form-data">
       <div class='form-group'>
         <input class='form-control' type=file name=fps>
@@ -117,16 +121,6 @@
     </form>
     <?php } ?>
     -->
-
-    <br><br>
-
-    <!-- * by CSL -->
-    <?php if ($OJ_LANG == "ko") { ?>
-    - 업로드 버튼을 누른 후 완료 메시지가 나올 때까지 기다려주세요. 문제 및 채점데이터가 많은 경우 업로드가 오래 걸립니다.<br><br>
-
-    - CSL HUSTOJ의 문제 XML은 상위 버전의 CSL HUSTOJ에도 업로드가 됩니다.<br>
-    - 직접 만들거나 더 좋게 개선한 문제들을 다른 정보선생님들에게 나눔할 수 있습니다.<br>
-    <?php } ?>
 
     <br><br>
 
