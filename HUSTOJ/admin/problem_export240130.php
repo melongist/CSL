@@ -24,10 +24,12 @@
 <body leftmargin="30" >
   <div class="container">
     <br><br>
-    - Export Problem XML<br><br>
+    <!-- * by CSL-->
+    - CSL HUSTOJ 문제 XML 다운로드<br><br>
     <form class="form-inline" action="problem_export_xml.php" method=post>
       <div class="form-group">
-        <label>1) Continuous Problem IDs:</label>
+        <!-- * by CSL-->
+        <label>1) 연속번호 다운로드:</label>
         <input class="form-control" name="start" type="text" placeholder="1001">
       </div>
       <div class="form-group">
@@ -36,7 +38,8 @@
       </div>
       <br><br>
       <div class="form-group">
-        <label>2) Separate&nbsp;&nbsp;&nbsp;&nbsp; Problem IDs:</label>
+        <!-- * by CSL-->
+        <label>2) 개별번호 다운로드:</label>
         <input class="form-control" name="in" type="text" placeholder="1001,1003,1005, ... ">
       </div>
       <br><br>
@@ -47,7 +50,7 @@
         <!-- <input type="submit" name="submit" value="Export to XML Script"> -->
 
         <!-- * by CSL -->
-        <button class='btn btn-default btn-sm' type=submit>Download problems only to XML File</button>
+        <button class='btn btn-default btn-sm' type=submit>다운로드</button>
       </div>
       </center>
 
@@ -60,8 +63,11 @@
     * if using IN,from-to will not working.<br>
     * IN can go with "," seperated problem_ids like [1000,1020]
     -->
-    - Continuous Problem IDs fields will be applied when Seperate Problem IDs fields was empty.<br>
-    - Seperate Problem IDs fields will be applied when Continuous Problem IDs fields was empty.
+    <!-- * by CSL -->
+    - 연속번호 또는 개별번호 중 한가지 방법으로만 다운로드하세요.<br><br>
+
+    - CSL HUSTOJ의 문제 XML은 상위 버전에도 정상적으로 업로드가 됩니다.<br>
+    - 정보선생님들이 직접 만들거나, 수정한 문제를 다른 정보선생님들과 나눔할 수 있습니다.<br>
   </div>
 
 </body>
