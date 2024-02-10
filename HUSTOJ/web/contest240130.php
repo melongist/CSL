@@ -169,7 +169,7 @@ if (isset($_GET['cid'])) {
 			if($now < $end_time) { //during contest/exam time
 				$view_problemset[$cnt][1] = "<a href='problem.php?cid=$cid&pid=$cnt'>".$PID[$cnt]."</a>";
 				$view_problemset[$cnt][2] = "<a href='problem.php?cid=$cid&pid=$cnt'>".$row['title']."</a>"; 
-				$view_problemset[$cnt][3] = $row['source'];
+				//$view_problemset[$cnt][3] = $row['source'];
 				if (!$noip)
 					$view_problemset[$cnt][4] = $row['accepted'];
 				else
@@ -180,7 +180,7 @@ if (isset($_GET['cid'])) {
 		  {
 				$view_problemset[$cnt][1] = $PID[$cnt]; //after contest
 				$view_problemset[$cnt][2] = '----';
-				$view_problemset[$cnt][3] = '----';
+				//$view_problemset[$cnt][3] = '----';
 				$view_problemset[$cnt][4] = '-';
 		    $view_problemset[$cnt][5] = '-';
 		  }
@@ -190,7 +190,7 @@ if (isset($_GET['cid'])) {
 			if($now < $end_time) { //during contest/exam time
 				$view_problemset[$cnt][1] = "<a href='problem.php?cid=$cid&pid=$cnt'>".$PID[$cnt]."</a>";
 				$view_problemset[$cnt][2] = "<a href='problem.php?cid=$cid&pid=$cnt'>".$row['title']."</a>"; 
-				$view_problemset[$cnt][3] = $row['source'];
+				//$view_problemset[$cnt][3] = $row['source'];
 				if (!$noip)
 					$view_problemset[$cnt][4] = $row['accepted'];
 				else
@@ -201,7 +201,7 @@ if (isset($_GET['cid'])) {
 			{
 				$view_problemset[$cnt][1] = "<a href='problem.php?id=".$row['problem_id']."'>".$PID[$cnt]."</a>";
 				$view_problemset[$cnt][2] = "<a href='problem.php?id=".$row['problem_id']."'>".$row['title']."</a>";
-				$view_problemset[$cnt][3] = $row['source'];
+				//$view_problemset[$cnt][3] = $row['source'];
 				if (!$noip)
 					$view_problemset[$cnt][4] = $row['accepted'];
 				else
