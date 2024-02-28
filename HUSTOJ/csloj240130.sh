@@ -2,7 +2,7 @@
 #CSL HUSTOJ
 #Made by melongist(melongist@gmail.com)
 #for CSL Computer Science teachers
-#Last edits 24.02.08
+#Last edits 24.02.29
 
 clear
 
@@ -597,6 +597,48 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/upload_js
 mv -f ./upload_json.php /home/judge/src/web/kindeditor/php/upload_json.php
 chown www-data:root /home/judge/src/web/kindeditor/php/upload_json.php
 chmod 664 /home/judge/src/web/kindeditor/php/upload_json.php
+
+
+
+
+#discuss upgrade for 24.01.30
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/lang/ko.php
+mv -f ./ko.php /home/judge/src/web/lang/ko.php
+chown www-data:www-data /home/judge/src/web/lang/ko.php
+
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bbs.php
+mv -f ./bbs.php /home/judge/src/web/bbs.php
+chown www-data:www-data /home/judge/src/web/bbs.php
+
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/nav.php
+mv -f ./nav.php /home/judge/src/web/template/bs3/nav.php
+chown www-data:www-data /home/judge/src/web/template/bs3/nav.php
+
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/discuss.php
+mv -f ./discuss.php /home/judge/src/web/discuss.php
+chown www-data:www-data /home/judge/src/web/discuss.php
+
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/discuss.php
+mv -f ./discuss.php /home/judge/src/web/template/bs3/discuss.php
+chown www-data:www-data /home/judge/src/web/template/bs3/discuss.php
+
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/post.php
+mv -f ./post.php /home/judge/src/web/post.php
+chown www-data:www-data /home/judge/src/web/post.php
+
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/thread.php
+mv -f ./thread.php /home/judge/src/web/thread.php
+chown www-data:www-data /home/judge/src/web/thread.php
+
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/threadadmin.php
+mv -f ./threadadmin.php /home/judge/src/web/threadadmin.php
+chown www-data:www-data /home/judge/src/web/threadadmin.php
+
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/newpost.php
+mv -f ./newpost.php /home/judge/src/web/newpost.php
+chown www-data:www-data /home/judge/src/web/newpost.php
+
+
 
 
 #for backup
