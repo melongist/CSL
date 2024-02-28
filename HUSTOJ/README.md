@@ -1,6 +1,6 @@
 ## Ver   
-#### - 최종 갱신일 : 23.11.25   
-#### - 버전: 22.07.10   
+#### - 최종 갱신일 : 24.02.29   
+#### - 버전: 24.01.30   
 
 ***   
    
@@ -36,8 +36,8 @@
 
 #아래 명령을 실행하면, 한글 환경과 한국 시간으로 맞추어 HUSTOJ 를 설치합니다.   
 
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj220710.sh</code></pre>
-<pre><code>sudo bash hustoj220710.sh</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj240130.sh</code></pre>
+<pre><code>sudo bash hustoj240130.sh</code></pre>
   
 ***   
 | 위는 일반 HUSTOJ의 한국 시간 및 한글 환경 설정 설치 스크립트입니다.   
@@ -74,7 +74,7 @@
 #### - 주의1! 중고등학교 정보(컴퓨터) 선생님들은 정보 교과 관련 수업을 위해 설치 스크립트와 문제들을 자유롭게 사용이 가능합니다.   
 #### - 주의2! 기본 HUSTOJ 데이터베이스 구조와 운영 스크립트가 다르기 때문에 서로 호환되지 않습니다.   
     
-#기초100제 시리즈의 모든 글과 내용들은 10 여년 동안 중고등학교 정보(컴퓨터) 선생님들의 노력과 협력으로 만들어지고 개선되어왔습니다.   
+#기초100제 시리즈의 모든 글과 내용들은 10여년 이상 동안 중고등학교 정보(컴퓨터) 선생님들의 노력과 협력으로 만들어지고 개선되어왔습니다.   
 #중고등학교 정보 선생님들은 정규수업/방과후수업/특별활동/동아리활동 등 학교 내외의 교수학습활동 등을 위해 자유롭게 사용이 가능합니다!      
 #타교과 교사의 수업, 각종 사교육, 협의되지 않은 영리 추구 목적의 사용 등은 원하지 않습니다.    
    
@@ -92,10 +92,10 @@
 #### - 다음 설치 스크립트를 사용해서 CSL 버전의 HUSTOJ 와 기초100제 시리즈 문제 일체와 수업용 기능들을 한 번에 모두 설치할 수 있습니다.   
 
 #우분투 22.04LTS 에서 터미널을 실행한 후, 아래 설치 스크립트 명령을 순서대로 입력하고 실행하면 됩니다.   
-#csloj220710.sh 파일이 있는 경우, 먼저 삭제(rm csloj220710.sh) 후 다음 명령어를 실행해주세요.     
+#csloj240130.sh 파일이 있는 경우, 먼저 삭제(rm csloj240130.sh) 후 다음 명령어를 실행해주세요.     
 
 #아래 명령을 실행하면, 한글 환경과 한국 시간으로 맞추어 CSL HUSTOJ 를 설치합니다.   
    
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj220710.sh</code></pre>
-<pre><code>sudo bash csloj220710.sh</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj240130.sh</code></pre>
+<pre><code>sudo bash csloj240130.sh</code></pre>
    
