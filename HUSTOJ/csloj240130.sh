@@ -511,7 +511,10 @@ sed -i "s/OJ_REGISTER=true/OJ_REGISTER=false/" /home/judge/src/web/include/db_in
 #set OJ_VCODE=true : set vcode
 sed -i "s/OJ_VCODE=false/OJ_VCODE=true/" /home/judge/src/web/include/db_info.inc.php
 #set OJ_LANGMASK to  C++ & python only...
-sed -i "s/$OJ_LANGMASK=4194224/$OJ_LANGMASK=4128693/" /home/judge/src/web/include/db_info.inc.php
+sed -i "s/OJ_LANGMASK=4194224/OJ_LANGMASK=4128693/" /home/judge/src/web/include/db_info.inc.php
+#set BBS discuss3
+sed -i "s/OJ_BBS=false/OJ_BBS=\"discuss3\"/" /home/judge/src/web/include/db_info.inc.php
+
 
 
 #php.ini edit
