@@ -21,9 +21,9 @@ CSLOJVER=$(sudo grep "release" /home/judge/src/web/template/bs3/js.php|awk '{pri
 
 if [ ${CSLOJVER:0:8} != "24.01.30" ] ; then
   echo ""
-  echo "This is not CSL HUSTOJ 24.01.30 !!"
+  echo "This is not the CSL HUSTOJ 24.01.30 !!"
   echo ""
-  echo "This patch is for CSL HUSTOJ 24.01.30 only!!'"
+  echo "This patch is for the CSL HUSTOJ 24.01.30 only!!'"
   echo ""
   exit 1
 fi
