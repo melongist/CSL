@@ -76,9 +76,16 @@ if [[ "$WEBSERVER" == "nginx" ]] ; then
   sudo systemctl reload nginx
 fi
 
+
+#Disk space and cleanup
+#https://www.domjudge.org/docs/manual/8.2/judging.html
+#Judgehost crashes cleanup
+sudo /opt/domjudge/judgehost/bin/dj_judgehost_cleanup all
+
+
 echo ""
+sudo systemctl enable create-cgroups --now
 echo "Starting create cgroups..."
-#???? #sudo systemctl enable create-cgroups --now
 sudo /opt/domjudge/judgehost/bin/create_cgroups
 echo "create cgroups started!"
 

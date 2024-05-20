@@ -65,7 +65,10 @@ sudo apt -y install rustc
 
 
 #Register DOMjudge memory autoscaling for php(fpm)
-sudo rm /etc/rc.local
+if [ -e /etc/rc.local ] ; then
+  sudo rm /etc/rc.local
+fi
+
 sudo touch /etc/rc.local
 sudo chmod 777 /etc/rc.local
 if grep "/home/ubuntu/dj823mas.sh" /etc/rc.local ; then
@@ -130,15 +133,14 @@ sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base,rustc
 #try #1 for Ubuntu 22.04 LTS
 sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash\"#GRUB_CMDLINE_LINUX_DEFAULT=\"quiet cgroup_enable=memory swapaccount=1 isolcpus=2 systemd.unified_cgroup_hierarchy=0\"#" /etc/default/grub
 #try #2 AWS Ubuntu 22.04 LTS Server
-if [ -f /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
+if [ -e /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
 	echo "Editing /etc/default/grub.d/50-cloudimg-settings.cfg for AWS"
   sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295\"#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295 quiet cgroup_enable=memory swapaccount=1 isolcpus=2 systemd.unified_cgroup_hierarchy=0\"#" /etc/default/grub.d/50-cloudimg-settings.cfg
 fi
 sudo update-grub
 
+#after reboot
 #sudo systemctl enable create-cgroups --now
-
-
 
 
 #make docs
@@ -152,7 +154,7 @@ sudo mkdir /opt/domjudge/doc/logos
 
 cd ~/domjudge-8.2.3/doc/
 
-make docsß
+make docs
 
 sudo make install-docs
 

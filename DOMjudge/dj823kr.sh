@@ -48,7 +48,7 @@ sudo sed -i "s/Team/팀/" /opt/domjudge/domserver/webapp/templates/public/menu.h
 sudo sed -i "s/Jury/대회운영/" /opt/domjudge/domserver/webapp/templates/public/menu.html.twig
 
 #login
-sudo sed -i "s/Please sign in/로그인하세요./" /opt/domjudge/domserver/webapp/templates/security/login.html.twig
+sudo sed -i "s/Please sign in/로그인하세요/" /opt/domjudge/domserver/webapp/templates/security/login.html.twig
 sudo sed -i "s/\"submit\">Sign in/\"submit\">로그인/" /opt/domjudge/domserver/webapp/templates/security/login.html.twig
 
 #login/logout button
@@ -94,7 +94,7 @@ sudo sed -i "s/\"rank/\"순위/" /opt/domjudge/domserver/webapp/templates/partia
 sudo sed -i "s/>rank/>순위/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/\"team name/\"팀 이름/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/>team/>팀 이름/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
-sudo sed -i "s/solved \/ penalty time/맞춤 \/ 시간 패널티/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
+sudo sed -i "s/solved \/ penalty time/맞춤 \/ 패널티 시간/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/>score/>점수/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/Solved first/가장 먼저 맞춤/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/Solved/맞춤/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig

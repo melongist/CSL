@@ -240,17 +240,17 @@ MEMS=$(($MEMS*40))
 #40 per GiB of memory ... 4GiB -> 160
 sudo sed -i "s:pm.max_children = 40:pm.max_children = ${MEMS}:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 #number of requests before respawning
-#sudo sed -i "s:pm.max_requests = 5000:pm.max_requests = 4096:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+sudo sed -i "s:pm.max_requests = 5000:pm.max_requests = 4096:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 #memory_limit
 sudo sed -i "s:php_admin_value\[memory_limit\] = 512M:php_admin_value\[memory_limit\] = 2048M:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 #upload_max_filesize
-#sudo sed -i "s:php_admin_value\[upload_max_filesize\] = 256M:php_admin_value\[upload_max_filesize\] = 512M:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+sudo sed -i "s:php_admin_value\[upload_max_filesize\] = 256M:php_admin_value\[upload_max_filesize\] = 512M:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 #post_max_size
-#sudo sed -i "s:php_admin_value\[post_max_size\] = 256M:php_admin_value\[post_max_size\] = 512M:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+sudo sed -i "s:php_admin_value\[post_max_size\] = 256M:php_admin_value\[post_max_size\] = 512M:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 #max_file_uploads
 sudo sed -i "s:php_admin_value\[max_file_uploads\] = 101:php_admin_value\[max_file_uploads\] = 512:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
-#timezone Asia/Seoul
-sudo sed -i "s:;php_admin_value\[date.timezone\] = America/Denver:php_admin_value\[date.timezone\] = Asia/Seoul:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+#timezone set
+sudo sed -i "s:;php_admin_value\[date.timezone\] = America/Denver:php_admin_value\[date.timezone\] = ${NEWTIMEZONE}:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
 
 
 sudo sed -i "s:pm.max_children = 5:pm.max_children = 128:g" /etc/php/8.1/fpm/pool.d/www.conf
@@ -337,16 +337,17 @@ case ${WEBSERVER} in
     ;;
 esac
 
+ch
 
 echo "" | tee -a ~/domjudge.txt
 echo "judgehosts installed!!" | tee -a ~/domjudge.txt
 echo "" | tee -a ~/domjudge.txt
 echo "" | tee -a ~/domjudge.txt
 echo "------ Run judgehosts script after every reboot ------" | tee -a ~/domjudge.txt
-echo "bash dj822start.sh" | tee -a ~/domjudge.txt
+echo "bash dj823start.sh" | tee -a ~/domjudge.txt
 echo "" | tee -a ~/domjudge.txt
 echo "------ Run DOMjudge cache clearing script when needed ------" | tee -a ~/domjudge.txt
-echo "bash dj822clear.sh" | tee -a ~/domjudge.txt
+echo "bash dj823clear.sh" | tee -a ~/domjudge.txt
 echo "" | tee -a ~/domjudge.txt
 echo "------ etc ------" | tee -a ~/domjudge.txt
 echo "How to kill some judgedaemon processe?" | tee -a ~/domjudge.txt

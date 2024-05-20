@@ -18,11 +18,4 @@ echo "DOMjudge cache cleared!"
 sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
 echo "DOMjudge webserver cache cleared!"
 
-#Disk space and cleanup
-#https://www.domjudge.org/docs/manual/8.2/judging.html
-#Disk space cleanup
-sudo /opt/domjudge/domserver/bin/dj_judgehost_cleanup
-#Judgehost crashes cleanup
-sudo /opt/domjudge/domserver/bin/dj_judgehost_cleanup mounts
-
 echo ""
