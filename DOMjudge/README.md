@@ -1,15 +1,15 @@
-#23.11.22   
+#24.05.21   
 
 ---
-#DOMjudge 8.2.2 stable auto installation   
+#DOMjudge 8.2.3 stable auto installation   
 <https://www.domjudge.org/>   
 
 #Prerequisite
 - Ubuntu 22.04 LTS Server/Desktop installed (AWS OK)   
 
 #Auto installation commands and steps...
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj822dj.sh</code></pre>
-<pre><code>bash dj822dj.sh</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj823dj.sh</code></pre>
+<pre><code>bash dj823dj.sh</code></pre>
 
 <pre><code>
 Select Web-server for DOMjudge!   
@@ -22,7 +22,7 @@ Enter current password for root (enter for none) :    // <- enter
 Switch to unix_socket autentication [Y/n] :           // <- n   
 ...   
 Change the root password? [Y/n] :                     // <- y      //You must! change mariaDB's root password!    
-New password:                                         // <- ????   //Enter your password!!    <- #1    
+New password:                                         // <- ????   //Enter  your password!!    <- #1    
 RE-enter new password:                                // <-        //Repeat your password!!    
 ...   
 Remove anonymous user? [Y/n] :                        // <- y   
@@ -32,10 +32,6 @@ Disallow root login remotely? [Y/n] :                 // <- y
 Remove test database and access to it? [Y/n] :        // <- y   
 ...   
 Reload privilege tables now? [Y/n] :                  // <- y   
-...   
-Press [ENTER] to continue or Ctrl-c to cancel.        // <- enter   
-...   
-Press [ENTER] to continue or Ctrl-c to cancel.        // <- enter   
 ...   
 Database credentials read from '/opt/domjudge/domserver/etc/dbpasswords.secret'.   
 Enter password:                                       // <- ????   //Enter your (#1) password!!    
@@ -51,6 +47,8 @@ Sytem will be rebooted in 20 seconds!
 3    
 2    
 1   
+0   
+rebooted!   
 </code></pre>
     
     
@@ -58,7 +56,7 @@ Sytem will be rebooted in 20 seconds!
 ---    
 #After rebooted, judgehosts must be started by manually!   
 #To start judgehosts...
-<pre><code>bash dj822start.sh</code></pre>
+<pre><code>bash dj823start.sh</code></pre>
 Judgehosts will be automatically started depending on the number of CPU cores...   
 <pre><code>
 
@@ -103,7 +101,7 @@ admin PW : ????????????????
     
 ---
 #To domserver http web cache clearing    
-<pre><code>bash dj822clear.sh</code></pre>
+<pre><code>bash dj823clear.sh</code></pre>
     
 <pre><code>
  // Clearing the cache for the prod environment with debug false    
@@ -130,7 +128,7 @@ DOMjudge webserver cache cleared!
 #To use korean interface for korean middle & high students participants    
 #To replace participants interface, english to korean...    
 <pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj822kr.sh</code></pre>
-<pre><code>bash dj822kr.sh</code></pre>
+<pre><code>bash dj823kr.sh</code></pre>
     
 <pre><code>
 ...
@@ -139,7 +137,7 @@ Rename DOMjudge logo name? [y/n]:      // <- y/n    //If you want to change DOMj
 Enter  DOMjudge NAME : ????            // <- ????   //Enter  new contest short name!!
 Repeat DOMjudge NAME : ????            // <-        //Repeat
 ...
-DOMjudge 8.2.2 stable 23.10.20
+DOMjudge 8.2.3 stable 24.02.28
 DOMjudge participants' korean interface installed!
 For korean middle & high school students.
 
