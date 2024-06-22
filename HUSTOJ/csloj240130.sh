@@ -514,7 +514,8 @@ sed -i "s/OJ_VCODE=false/OJ_VCODE=true/" /home/judge/src/web/include/db_info.inc
 sed -i "s/OJ_LANGMASK=4194224/OJ_LANGMASK=4128693/" /home/judge/src/web/include/db_info.inc.php
 #set BBS discuss3
 sed -i "s/OJ_BBS=false/OJ_BBS=\"discuss3\"/" /home/judge/src/web/include/db_info.inc.php
-
+#set OJ_POISON_BOT_COUNT=100;
+sed -i "s/OJ_POISON_BOT_COUNT=10/OJ_POISON_BOT_COUNT=100/" /home/judge/src/web/include/db_info.inc.php
 
 
 #php.ini edit
