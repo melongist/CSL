@@ -1,14 +1,18 @@
 #!/bin/bash
 
-#DOMjudge judgehost starting script
-#2024.5 Made by melongist(melongist@gmail.com) for CS teachers
-#DOMjudge8.3.0 stable + Ubuntu 22.04.4 LTS + apache2/nginx
+#2024.7 Made by melongist(melongist@gmail.com) for CS teachers
+
+#DOMjudge judgehosts starting script
+#DOMjudge8.3.0 stable(2024.05.31) + Ubuntu 22.04.4 LTS + apache2/nginx
 
 
 if [[ $SUDO_USER ]] ; then
   echo "Just use 'bash dj830start.sh'"
   exit 1
 fi
+
+echo "DOMjudge judgehosts starting started..."
+echo ""
 
 echo ""
 #DOMjudge cache clear
@@ -78,7 +82,7 @@ fi
 
 
 #Disk space and cleanup
-#https://www.domjudge.org/docs/manual/8.2/judging.html
+#https://www.domjudge.org/docs/manual/8.3/judging.html
 #Judgehost crashes cleanup
 sudo /opt/domjudge/judgehost/bin/dj_judgehost_cleanup all
 
@@ -91,7 +95,7 @@ echo "create cgroups started!"
 
 echo ""
 echo "Starting judgedaemon..."
-#kill current judgedaemons
+#kill current all judgedaemons
 kill -9 `pgrep -f judgedaemon`
 
 #start new judgedaemons
@@ -108,4 +112,8 @@ done
 
 echo ""
 echo "$CPUS judgedamons started!"
+echo ""
+
+
+echo "DOMjudge judgehosts starting completed..."
 echo ""

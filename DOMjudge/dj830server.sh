@@ -1,29 +1,36 @@
 #!/bin/bash
 
+#2024.7 Made by melongist(melongist@gmail.com) for CS teachers
+
 #origin
 #https://www.domjudge.org/
 #https://github.com/DOMjudge/domjudge
 
 #DOMjudge server installation script
-#2024.7 Made by melongist(melongist@gmail.com) for CS teachers
 #DOMjudge8.3.0 stable(2024.05.31) + Ubuntu 22.04.4 LTS + apache2/nginx
 
-#terminal commands to install DOMjudge server
+#This installation script only works on Ubuntu 22.04 LTS!!
+#terminal commands to install dedicated DOMjudge server
 #------
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830dj.sh
-#bash dj830dj.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830server.sh
+#bash dj830server.sh
+
+DJVER="8.3.0 stable (2024.05.31)"
+DOMVER="domjudge-8.3.0"
+THIS="dj830server.sh"
+README="dj830server.txt"
 
 
 if [[ $SUDO_USER ]] ; then
   echo ""
-  echo "Just use 'bash dj830dj.sh'"
+  echo "Just use 'bash ${THIS}'"
   exit 1
 fi
 
 OSVER=$(grep "Ubuntu" /etc/issue|head -1|awk  '{print $2}')
 if [ ${OSVER:0:5} != "22.04" ] ; then
   echo ""
-  echo "Ubuntu 22.04 LTS needed!!'"
+  echo "This installation script only works on Ubuntu 22.04 LTS!!"
   echo ""
   exit 1
 fi
@@ -75,6 +82,7 @@ esac
 
 cd
 
+
 #time synchronization
 echo ""
 sudo timedatectl
@@ -103,25 +111,35 @@ sudo apt install -y make
 sudo apt install -y acl
 sudo apt install -y zip unzip
 sudo apt install -y pv
+#sudo apt install -y software-properties-common
+#sudo apt install -y dirmngr
+#sudo apt install -y apt-transport-https
+sudo apt install -y composer
+sudo apt install -y ntp
+sudo apt install -y curl
+sudo apt install -y python3-yaml
+sudo apt install -y build-essential
+sudo apt install -y pkg-config
+#sudo apt install -y libcurl4-openssl-dev
+#sudo apt install -y libcurl4-gnutls-dev
+#sudo apt install -y libjsoncpp-dev
+
+
+
+
+#DBMS
 sudo apt install -y mariadb-server
-#sudo apt -y install software-properties-common
-#sudo apt -y install dirmngr
-#sudo apt -y install apt-transport-https
-#sudo apt -y install composer
-#sudo apt -y install ntp
-#sudo apt -y install curl
-
-
-#You must input mariaDB's root account password! #1
+#You must input mariaDB's root account password! <---- #1
 sudo mysql_secure_installation
-
-
 #For DOMjudge configuration check
 #MariaDB Max connections to 16384
 sudo sed -i "s/\#max_connections        = 100/max_connections        = 16384/" /etc/mysql/mariadb.conf.d/50-server.cnf
 sudo sed -i "s/\[mysqld\]/\[mysqld\]\ninnodb_log_file_size=512M\nmax_allowed_packet=512M/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 
+
+
+#Webserver
 case ${WEBSERVER} in
   "apache2")
     sudo apt install -y apache2
@@ -134,6 +152,8 @@ case ${WEBSERVER} in
 esac
 
 
+
+
 #php 8.1
 sudo apt install -y php8.1
 sudo apt install -y php8.1-fpm
@@ -143,16 +163,9 @@ sudo apt install -y php8.1-intl
 sudo apt install -y php8.1-mbstring
 sudo apt install -y php8.1-mysql
 sudo apt install -y php8.1-curl
-sudo apt install -y php8.1-json
+#sudo apt install -y php8.1-json
 sudo apt install -y php8.1-xml
 sudo apt install -y php8.1-zip
-
-
-sudo apt install -y composer
-sudo apt install -y ntp
-sudo apt install -y python3-yaml
-
-
 case ${WEBSERVER} in
   "apache2")
     sudo systemctl restart apache2
@@ -163,32 +176,30 @@ case ${WEBSERVER} in
 esac
 
 
-# + others
-#sudo apt install -y build-essential
-#sudo apt install -y libcurl4-openssl-dev
-#sudo apt install -y libcurl4-gnutls-dev
-#sudo apt install -y libjsoncpp-dev
 
 
-#DOMjudge 8.3.0 stable
-#wget https://www.domjudge.org/releases/domjudge-8.3.0.tar.gz
-#tar xvf domjudge-8.3.0.tar.gz
-#cd domjudge-8.3.0
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/domjudge-8.3.0.tar.gz
-tar xvf domjudge-8.3.0.tar.gz
-rm domjudge-8.3.0.tar.gz
-cd domjudge-8.3.0
+#DOMjudge X.X.X stable
+#wget https://www.domjudge.org/releases/domjudge-X.X.X.tar.gz
+#tar xvf domjudge-X.X.X.tar.gz
+#cd domjudge-X.X.X
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/${DOMVER}.tar.gz
+tar xvf ${DOMVER}.tar.gz
+rm ${DOMVER}.tar.gz
 
+
+
+
+#Building and installing
+cd ${DOMVER}
 ./configure --with-baseurl=BASEURL
 make domserver
 sudo make install-domserver
 
 cd /opt/domjudge/domserver/bin
-#./dj_setup_database genpass # it's not required..
+#./dj_setup_database genpass #it's not required..
 
 #Use mariaDB's root password above #1
 sudo ./dj_setup_database -u root -r install
-
 
 case ${WEBSERVER} in
   "apache2")
@@ -215,6 +226,11 @@ case ${WEBSERVER} in
 esac
 
 
+cd
+
+
+
+
 #For DOMjudge configuration check
 #PHP upload_max_filesize to 256M
 sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 256M/" /etc/php/8.1/fpm/php.ini
@@ -230,10 +246,10 @@ sudo sed -i "s:;date.timezone = :date.timezone = ${NEWTIMEZONE}:g" /etc/php/8.1/
 sudo service php8.1-fpm reload
 
 
-#Customizing needed for actual DOMjudge H/W!!
+
+
+#Customizing for DOMjudge H/W!!
 #check the H/W memory size GiB
-#sudo dmidecode -t memory | grep "Maximum Capacity"
-#MEMS=$(sudo dmidecode -t memory | grep "Maximum Capacity" | awk  '{print $3}')
 echo "Memory size(GiB)"
 MEMS=$(free --gibi | grep "Mem:" | awk  '{print $2}')
 echo "${MEMS} GiB"
@@ -265,24 +281,14 @@ sudo sed -i "s:pm.max_spare_servers = 3:pm.max_spare_servers = 128:g" /etc/php/8
 sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.1/fpm/pool.d/www.conf
 
 
-
-#https://www.domjudge.org/docs/manual/8.3/judging.html
-#For Judging consistency
-#sudo sed -i "s:#kernel.sysrq=438:#kernel.sysrq=438\n\nkernel.randomize_va_space=0:g" /etc/sysctl.conf
-#+For lazy judging to increase capacity
-#In order to increase capacity, you can set the DOMjudge configuration option lazy_eval_results.
-#When enabled, judging of a submission will stop when a highest priority result has been found for any testcase.
-#You can find these priorities under the results_prio setting.
-
-
 cd
 
 
 case ${WEBSERVER} in
   "apache2")
-    echo "" | tee -a ~/domjudge.txt
-    echo "DOMjugde(+apache2) installed!!" | tee -a ~/domjudge.txt
-    echo "" | tee -a ~/domjudge.txt
+    echo "" | tee -a ~/${README}
+    echo "DOMjudge ${DJVER} + apache2 installed!!" | tee -a ~/${README}
+    echo "" | tee -a ~/${README}
     sudo rm -f /var/www/html/index.html
     echo "<script>document.location=\"./domjudge/\";</script>" > index.html
     sudo chmod 644 index.html
@@ -290,10 +296,10 @@ case ${WEBSERVER} in
     sudo mv index.html /var/www/html/
     ;;
   "nginx")
-    echo "" | tee -a ~/domjudge.txt
-    echo "DOMjugde(+nginx) installed!!" | tee -a ~/domjudge.txt
-    echo "${DOMAINNAME} must be binded with IP address!!" | tee -a ~/domjudge.txt
-    echo "" | tee -a ~/domjudge.txt
+    echo "" | tee -a ~/${README}
+    echo "DOMjugde ${DJVER} + nginx installed!!" | tee -a ~/${README}
+    echo "${DOMAINNAME} must be linked to IP address!!" | tee -a ~/${README}
+    echo "" | tee -a ~/${README}
     sudo rm -f /usr/share/nginx/html/index.html
     #echo "<script>document.location=\"http://${DOMAINNAME}/domjudge/\";</script>" > index.html
     echo "<script>document.location=\"./domjudge/\";</script>" > index.html
@@ -306,44 +312,30 @@ esac
 
 PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
 
-echo "" | tee -a ~/domjudge.txt
-echo "DOMjudge 8.3.0 stable 24.05.31" | tee -a ~/domjudge.txt
-echo "" | tee -a ~/domjudge.txt
-echo "DOMserver installed!!" | tee -a ~/domjudge.txt
-echo "" | tee -a ~/domjudge.txt
-echo "Check below to access DOMserver's web interface!" | tee -a ~/domjudge.txt
-echo "------" | tee -a ~/domjudge.txt
-echo "http://localhost/domjudge/" | tee -a ~/domjudge.txt
-echo "admin ID : admin" | tee -a ~/domjudge.txt
-echo "admin PW : $PASSWORD" | tee -a ~/domjudge.txt
+echo "" | tee -a ~/${README}
+echo "DOMserver installed!!" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
+echo "Check this server's web page" | tee -a ~/${README}
+echo "------" | tee -a ~/${README}
+echo "http://localhost/domjudge/" | tee -a ~/${README}
+echo "admin ID : admin" | tee -a ~/${README}
+echo "admin PW : ${PASSWORD}" | tee -a ~/${README}
+echo ""| tee -a ~/${README}
+
+echo "Use this ID & PW at dedicated remote judgehosts server" | tee -a ~/${README}
+echo "------" | tee -a ~/${README}
+echo "Edit judgehosts server's /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
+JUDGEHOSTID=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | awk  '{print $3}')
+echo "judgehost ID : ${JUDGEHOSTID}" | tee -a ~/${README}
+JUDGEHOSTPW=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | awk  '{print $4}')
+echo "judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
 echo ""
 
 
-sudo apt autoremove -y
-
-#scripts set download
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830jh.sh
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830kr.sh
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830start.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830clear.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830mas.sh
-
-#bash dj830jh.sh
-
-
-case ${WEBSERVER} in
-  "apache2")
-    ;;
-  "nginx")
-    if [ -e domainname.txt ] ; then
-      DOMAINNAME=$(<domainname.txt)
-      sudo sed -i "s:localhost:${DOMAINNAME}:g" /opt/domjudge/domserver/etc/restapi.secret
-      sudo sed -i "s:localhost:${DOMAINNAME}:g" /opt/domjudge/judgehost/etc/restapi.secret
-    fi
-    ;;
-esac
-
 cd
+
+
+
 
 #make docs
 sudo apt install -y python3-sphinx python3-sphinx-rtd-theme rst2pdf fontconfig python3-yaml texlive-latex-extra latexmk
@@ -352,46 +344,66 @@ sudo mkdir /opt/domjudge/doc/manual
 sudo mkdir /opt/domjudge/doc/manual/html
 sudo mkdir /opt/domjudge/doc/examples
 sudo mkdir /opt/domjudge/doc/logos
-cd ~/domjudge-8.3.0/doc/
+cd ~/${DOMVER}/doc/
 make docs
 sudo make install-docs
 
+
+sudo apt autoremove -y
+
+
 cd
 
-echo "" | tee -a ~/domjudge.txt
-echo "judgehosts installed!!" | tee -a ~/domjudge.txt
-echo "" | tee -a ~/domjudge.txt
-#echo "" | tee -a ~/domjudge.txt
-#echo "------ Run judgehosts script after every reboot ------" | tee -a ~/domjudge.txt
-#echo "bash dj830start.sh" | tee -a ~/domjudge.txt
-#echo "" | tee -a ~/domjudge.txt
-echo "------ Run DOMjudge cache clearing script when needed ------" | tee -a ~/domjudge.txt
-echo "bash dj830clear.sh" | tee -a ~/domjudge.txt
-echo "" | tee -a ~/domjudge.txt
-#echo "------ etc ------" | tee -a ~/domjudge.txt
-#echo "How to kill some judgedaemon processe?" | tee -a ~/domjudge.txt
-#echo "ps -ef, and find PID# of judgedaemon, run : sudo kill -9 PID#" | tee -a ~/domjudge.txt
-#echo "" | tee -a ~/domjudge.txt
-echo "How to clear domserver web cache?" | tee -a domjudge.txt
-echo "sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*" | tee -a ~/domjudge.txt
-echo "" | tee -a ~/domjudge.txt
-echo "How to clear DOMjudge cache??" | tee -a ~/domjudge.txt
-echo "sudo /opt/domjudge/domserver/webapp/bin/console cache:clear" | tee -a ~/domjudge.txt
-echo "" | tee -a ~/domjudge.txt
-chmod 660 ~/domjudge.txt
-echo "Saved as domjudge.txt"
+
+
+
+#scripts set download
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830clear.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830mas.sh
+
+
+
+
+#DOMjudge memory autoscaling for php(fpm)
+if [ -e /etc/rc.local ] ; then
+  sudo rm /etc/rc.local
+fi
+
+sudo touch /etc/rc.local
+sudo chmod 777 /etc/rc.local
+if grep "/home/ubuntu/dj830mas.sh" /etc/rc.local ; then
+  echo "DOMjudge memory autoscaling for php(fpm) registered!"
+else
+  sudo sed -i "s/exit 0//g" /etc/rc.local
+  sudo echo "#! /bin/sh" >> /etc/rc.local
+  sudo echo "bash /home/ubuntu/dj830mas.sh" >> /etc/rc.local
+  sudo echo "exit 0" >> /etc/rc.local
+fi
+sudo chmod 755 /etc/rc.local
+
+
+
+
+echo "------ DOMjudge server cache clearing script ------" | tee -a ~/${README}
+echo "bash dj830clear.sh" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
+echo "------ DOMjudge server web cache clearing script ------" | tee -a ~/${README}
+echo "sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
+chmod 660 ~/${README}
+echo "Saved as ${README}"
 
 
 echo ""
-echo "System will be rebooted in 20 seconds!"
+echo "System will be rebooted in 10 seconds!"
 echo ""
-COUNT=20
+COUNT=10
 while [ $COUNT -ge 0 ]
 do
   echo $COUNT
   ((COUNT--))
   sleep 1
 done
-echo "rebooted!" | tee -a ~/domjudge.txt
+echo "rebooted!" | tee -a ~/${README}
 sleep 5
 sudo reboot

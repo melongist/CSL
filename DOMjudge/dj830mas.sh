@@ -1,15 +1,17 @@
 #!/bin/bash
 
-#DOMjudge php memory autoscaling script
-#DOMjudge8.3.0 stable + Ubuntu 22.04.4 LTS + apache2/nginx
 #2024.7 Made by melongist(melongist@gmail.com) for CS teachers
+
+#php(fpm) autoscaling script for DOMjudge server
+#DOMjudge8.3.0 stable(2024.05.31) + Ubuntu 22.04.4 LTS + apache2/nginx
+
 
 if [[ $SUDO_USER ]] ; then
   echo "Just use 'bash dj830mas.sh'"
   exit 1
 fi
 
-echo "DOMjudge memory autoscaling for php(fpm) started..."
+echo "php(fpm) autoscaling for DOMjudge server started..."
 echo ""
 echo "H/W memory information"
 #check the H/W memory size GiB
@@ -58,5 +60,6 @@ if [[ "$WEBSERVER" == "nginx" ]] ; then
 fi
 
 echo ""
-echo "DOMjudge memory autoscaling for php(fpm) finished!"
+echo "php(fpm) autoscaling for DOMjudge server completed!"
 echo ""
+
