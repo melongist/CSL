@@ -330,7 +330,7 @@ JUDGEHOSTID=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | 
 echo "judgehost ID : ${JUDGEHOSTID}" | tee -a ~/${README}
 JUDGEHOSTPW=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | awk  '{print $4}')
 echo "judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
-echo ""
+echo "" | tee -a ~/${README}
 
 
 cd
@@ -384,7 +384,7 @@ sudo chmod 755 /etc/rc.local
 
 
 
-
+echo "" | tee -a ~/${README}
 echo "------ DOMjudge server cache clearing script ------" | tee -a ~/${README}
 echo "bash dj830clear.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
