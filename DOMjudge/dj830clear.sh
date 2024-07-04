@@ -20,11 +20,11 @@ echo "DOMjudge server cache & webserver cache clearing started..."
 echo ""
 
 #DOMjudge cache clear
-sudo /opt/domjudge/domserver/webapp/bin/console cache:clear
+/opt/domjudge/domserver/webapp/bin/console cache:clear
 echo "DOMjudge cache cleared!"
 
 #DOMjudge webserver cache clear
-sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
+rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
 echo "DOMjudge webserver cache cleared!"
 
 echo "DOMjudge server cache & webserver cache clearing completed..."

@@ -238,7 +238,7 @@ while [ ${IPADDRESS} != ${INPUTS} ]; do
   echo -n "Repeat IP address or hostname : "
   read INPUTS
 done
-sudo sed -i "s:http\:\/\/localhost:${IPADDRESS}:g" /opt/domjudge/judgehost/etc/restapi.secret
+sudo sed -i "s#http://localhost#${IPADDRESS}#g" /opt/domjudge/judgehost/etc/restapi.secret
 
 
 echo "Input DOMjudge server's judgehost ID & PW"
@@ -267,12 +267,15 @@ sudo sed -i "s:${JUDGEHOSTOLDPW}:${JUDGEHOSTPW}:g" /opt/domjudge/judgehost/etc/r
 
 echo "judgehost ID & PW set completed!"
 
+echo "" | tee -a ~/${README}
 echo "To change judgehost IPADDRESS/HOSTNAME, ID or PW" | tee -a ~/${README}
 echo "Edit /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
 echo "------ Run judgehosts start script after every reboot ------" | tee -a ~/${README}
 echo "bash dj830start.sh" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
 echo "------ To kill some judgedaemon processe ------" | tee -a ~/${README}

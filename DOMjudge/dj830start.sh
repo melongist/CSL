@@ -16,12 +16,12 @@ echo ""
 
 echo ""
 #DOMjudge cache clear
-sudo /opt/domjudge/domserver/webapp/bin/console cache:clear
-echo "DOMjudge cache cleared!"
+#sudo /opt/domjudge/domserver/webapp/bin/console cache:clear
+#echo "DOMjudge cache cleared!"
 
 #DOMjudge webserver cache clear
-sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
-echo "DOMjudge webserver cache cleared!"
+#sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
+#echo "DOMjudge webserver cache cleared!"
 
 echo ""
 echo "CPU information"
