@@ -114,7 +114,6 @@ sudo apt install -y pv
 #sudo apt install -y software-properties-common
 #sudo apt install -y dirmngr
 #sudo apt install -y apt-transport-https
-sudo apt install -y composer
 sudo apt install -y ntp
 sudo apt install -y curl
 sudo apt install -y python3-yaml
@@ -166,6 +165,8 @@ sudo apt install -y php8.1-curl
 #sudo apt install -y php8.1-json
 sudo apt install -y php8.1-xml
 sudo apt install -y php8.1-zip
+sudo apt install -y composer
+
 case ${WEBSERVER} in
   "apache2")
     sudo systemctl restart apache2
