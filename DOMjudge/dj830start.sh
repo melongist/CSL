@@ -2,8 +2,12 @@
 
 #2024.7 Made by melongist(melongist@gmail.com) for CS teachers
 
+
 #DOMjudge judgehosts starting script
-#DOMjudge8.3.0 stable(2024.05.31) + Ubuntu 22.04.4 LTS + apache2/nginx
+#terminal commands to start judgehosts
+#------
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830start.sh
+#bash dj830start.sh
 
 
 if [[ $SUDO_USER ]] ; then
@@ -13,16 +17,6 @@ fi
 
 echo "DOMjudge judgehosts starting started..."
 echo ""
-
-echo ""
-#DOMjudge cache clear
-#sudo /opt/domjudge/domserver/webapp/bin/console cache:clear
-#echo "DOMjudge cache cleared!"
-
-#DOMjudge webserver cache clear
-#sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
-#echo "DOMjudge webserver cache cleared!"
-
 echo ""
 echo "CPU information"
 #check the number of CPU(s)
@@ -100,10 +94,10 @@ kill -9 `pgrep -f judgedaemon`
 
 #start new judgedaemons
 #default judgedaemon
-sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
-echo "judgedaemon-run started!"
+#sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
+#echo "judgedaemon-run started!"
 #multi judgedaemons, limited to the number of cores, max 128
-for ((i=1; i<${CPUS}; i++));
+for ((i=1; i<=${CPUS}; i++));
 do
   echo "start judgedaemon-run-$i..."
   sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n $i &

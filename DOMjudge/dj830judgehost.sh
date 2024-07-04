@@ -6,10 +6,22 @@
 #https://www.domjudge.org/
 #https://github.com/DOMjudge/domjudge
 
-#DOMjudge server installation script
-#DOMjudge8.3.0 stable(2024.05.31) + Ubuntu 22.04.4 LTS + apache2/nginx
+
+#It is recommended to separate main server and dedicated judge server.
+#https://www.domjudge.org/docs/manual/8.3/overview.html#features
+#Each judgehost should be a dedicated (virtual) machine that performs no other tasks.
+#For example, although running a judgehost on the same machine as the domserver is possible,
+#it’s not recommended except for testing purposes. 
+#Judgehosts should also not double as local workstations for jury members.
+#Having all judgehosts be of uniform hardware configuration helps in creating a fair, reproducible setup; 
+#in the ideal case they are run on the same type of machines that the teams use.
+
 
 #This installation script only works on Ubuntu 22.04 LTS!!
+
+#DOMjudge8.3.0 stable(2024.05.31) + Ubuntu 22.04.4 LTS + apache2/nginx
+
+#DOMjudge judgehost installation script
 #terminal commands to install dedicated remote DOMjudge judgehost server
 #------
 #wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830judgehost.sh
@@ -197,7 +209,6 @@ sudo apt autoremove -y
 
 #scripts set download
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830start.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830mas.sh
 
 
 
@@ -209,12 +220,12 @@ fi
 
 sudo touch /etc/rc.local
 sudo chmod 777 /etc/rc.local
-if grep "/home/ubuntu/dj830mas.sh" /etc/rc.local ; then
-  echo "DOMjudge memory autoscaling for php(fpm) registered!"
+if grep "/home/ubuntu/dj830start.sh" /etc/rc.local ; then
+  echo "DOMjudge judgehost auto start registered!"
 else
   sudo sed -i "s/exit 0//g" /etc/rc.local
   sudo echo "#! /bin/sh" >> /etc/rc.local
-  sudo echo "bash /home/ubuntu/dj830mas.sh" >> /etc/rc.local
+  sudo echo "bash /home/ubuntu/dj830start.sh" >> /etc/rc.local
   sudo echo "exit 0" >> /etc/rc.local
 fi
 sudo chmod 755 /etc/rc.local
@@ -239,19 +250,7 @@ while [ ${IPADDRESS} != ${INPUTS} ]; do
   read INPUTS
 done
 sudo sed -i "s#http://localhost#${IPADDRESS}#g" /opt/domjudge/judgehost/etc/restapi.secret
-
-
-echo "Input DOMjudge server's judgehost ID & PW"
-JUDGEHOSTID="o"
-INPUTS="x"
-while [ ${JUDGEHOSTID} != ${INPUTS} ]; do
-  echo    ""
-  echo -n "Enter  judgehost ID : "
-  read JUDGEHOSTID
-  echo -n "Repeat judgehost ID : "
-  read INPUTS
-done
-sudo sed -i "s:judgehost:${JUDGEHOSTID}:g" /opt/domjudge/judgehost/etc/restapi.secret
+echo "server IP address or hostname setting completed!"
 
 JUDGEHOSTOLDPW=$(cat /opt/domjudge/judgehost/etc/restapi.secret | grep "default" | awk  '{print $4}')
 JUDGEHOSTPW="o"
@@ -264,8 +263,7 @@ while [ ${JUDGEHOSTPW} != ${INPUTS} ]; do
   read INPUTS
 done
 sudo sed -i "s:${JUDGEHOSTOLDPW}:${JUDGEHOSTPW}:g" /opt/domjudge/judgehost/etc/restapi.secret
-
-echo "judgehost ID & PW set completed!"
+echo "judgehost PW set completed!"
 
 echo "" | tee -a ~/${README}
 echo "To change judgehost IPADDRESS/HOSTNAME, ID or PW" | tee -a ~/${README}

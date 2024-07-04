@@ -6,8 +6,9 @@
 #https://www.domjudge.org/
 #https://github.com/DOMjudge/domjudge
 
-#DOMjudge server cache & webserver cache clearing script
 #DOMjudge8.3.0 stable(2024.05.31) + Ubuntu 22.04.4 LTS + apache2/nginx
+
+#DOMjudge server cache & webserver cache clearing script
 
 
 if [[ $SUDO_USER ]] ; then

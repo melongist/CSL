@@ -6,10 +6,22 @@
 #https://www.domjudge.org/
 #https://github.com/DOMjudge/domjudge
 
-#DOMjudge server installation script
-#DOMjudge8.3.0 stable(2024.05.31) + Ubuntu 22.04.4 LTS + apache2/nginx
+
+#It is recommended to separate main server and dedicated judge server.
+#https://www.domjudge.org/docs/manual/8.3/overview.html#features
+#Each judgehost should be a dedicated (virtual) machine that performs no other tasks.
+#For example, although running a judgehost on the same machine as the domserver is possible,
+#it’s not recommended except for testing purposes. 
+#Judgehosts should also not double as local workstations for jury members.
+#Having all judgehosts be of uniform hardware configuration helps in creating a fair, reproducible setup; 
+#in the ideal case they are run on the same type of machines that the teams use.
+
 
 #This installation script only works on Ubuntu 22.04 LTS!!
+
+#DOMjudge8.3.0 stable(2024.05.31) + Ubuntu 22.04.4 LTS + apache2/nginx
+
+#DOMjudge server installation script
 #terminal commands to install dedicated DOMjudge server
 #------
 #wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830server.sh
