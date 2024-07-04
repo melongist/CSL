@@ -24,55 +24,8 @@ lscpu | grep "^CPU(s)"
 CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 
 #Thread(s) per core
-lscpu | grep "Thread(s) per core"
-CORES=$(lscpu | grep "Thread(s) per core"|awk  '{print $4}')
-
-echo ""
-echo "H/W memory information"
-#check the H/W memory size GiB
-echo "Memory size(GiB)"
-MEMS=$(free --gibi | grep "Mem:" | awk  '{print $2}')
-echo "${MEMS} GiB"
-echo ""
-
-#set to H/W memory size
-if [ ${MEMS} -lt 1 ] ; then
-  MEMS=1
-fi
-
-MEMSNOW=$(($MEMS*40))
-MEMSSET=$(grep "pm.max_children =" /etc/php/8.1/fpm/pool.d/domjudge.conf | awk '{print $3}')
-
-if [[ $MEMSSET -ne $MEMSNOW ]] ; then
-  echo ""
-  echo "H/W memory size changed!!"
-  echo ""
-  MEMSTRING=$(grep "pm.max_children =" /etc/php/8.1/fpm/pool.d/domjudge.conf)
-  NEWSTRING="pm.max_children = ${MEMSNOW}      ; ~40 per gig of memory(16gb system -> 500)"
-  sudo sed -i "s:${MEMSTRING}:${NEWSTRING}:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
-  echo "pm.max_children value changed to ${MEMSNOW}"
-  echo ""
-fi
-
-echo ""
-echo "Restarting php..."
-sudo service php8.1-fpm restart
-sudo service php8.1-fpm reload
-echo ""
-echo "Restarting mariadb..."
-sudo systemctl restart mariadb
-echo ""
-WEBSERVER=$(curl -is localhost | grep "Server" | awk '{sub(/\/*/, ""); print $2}')
-if [[ "$WEBSERVER" == "Apache*" ]] ; then
-  echo "Restarting apache2..."
-  sudo systemctl restart apache2
-  sudo systemctl reload apache2
-fi
-if [[ "$WEBSERVER" == "nginx" ]] ; then
-  echo "Restarting nginx..."
-  sudo systemctl restart nginx
-  sudo systemctl reload nginx
-fi
+#lscpu | grep "Thread(s) per core"
+#CORES=$(lscpu | grep "Thread(s) per core"|awk  '{print $4}')
 
 
 #Disk space and cleanup

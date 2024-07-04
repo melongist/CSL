@@ -211,28 +211,6 @@ sudo apt autoremove -y
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830start.sh
 
 
-
-
-#DOMjudge memory autoscaling for php(fpm)
-if [ -e /etc/rc.local ] ; then
-  sudo rm /etc/rc.local
-fi
-
-sudo touch /etc/rc.local
-sudo chmod 777 /etc/rc.local
-if grep "/home/ubuntu/dj830start.sh" /etc/rc.local ; then
-  echo "DOMjudge judgehost auto start registered!"
-else
-  sudo sed -i "s/exit 0//g" /etc/rc.local
-  sudo echo "#! /bin/sh" >> /etc/rc.local
-  sudo echo "bash /home/ubuntu/dj830start.sh" >> /etc/rc.local
-  sudo echo "exit 0" >> /etc/rc.local
-fi
-sudo chmod 755 /etc/rc.local
-
-
-
-
 echo "" | tee -a ~/${README}
 echo "DOMjudgehosts installed!!" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
