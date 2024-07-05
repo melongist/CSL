@@ -300,7 +300,7 @@ cd
 case ${WEBSERVER} in
   "apache2")
     echo "" | tee -a ~/${README}
-    echo "DOMjudge ${DJVER} + apache2 installed!!" | tee -a ~/${README}
+    echo "DOMjudge server ${DJVER} + apache2 installed!!" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
     sudo rm -f /var/www/html/index.html
     echo "<script>document.location=\"./domjudge/\";</script>" > index.html
@@ -310,7 +310,7 @@ case ${WEBSERVER} in
     ;;
   "nginx")
     echo "" | tee -a ~/${README}
-    echo "DOMjugde ${DJVER} + nginx installed!!" | tee -a ~/${README}
+    echo "DOMjugde server ${DJVER} + nginx installed!!" | tee -a ~/${README}
     echo "${DOMAINNAME} must be linked to IP address!!" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
     sudo rm -f /usr/share/nginx/html/index.html
@@ -323,31 +323,7 @@ case ${WEBSERVER} in
 esac
 
 
-PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
-
-echo "" | tee -a ~/${README}
-echo "DOMserver installed!!" | tee -a ~/${README}
-echo "" | tee -a ~/${README}
-echo "Check this server's web page" | tee -a ~/${README}
-echo "------" | tee -a ~/${README}
-echo "http://localhost/domjudge/" | tee -a ~/${README}
-echo "admin ID : admin" | tee -a ~/${README}
-echo "admin PW : ${PASSWORD}" | tee -a ~/${README}
-echo ""| tee -a ~/${README}
-
-echo "Use this ID & PW at dedicated remote judgehosts server" | tee -a ~/${README}
-echo "------" | tee -a ~/${README}
-echo "Edit judgehosts server's /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
-JUDGEHOSTID=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | awk  '{print $3}')
-echo "judgehost ID : ${JUDGEHOSTID}" | tee -a ~/${README}
-JUDGEHOSTPW=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | awk  '{print $4}')
-echo "judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
-echo "" | tee -a ~/${README}
-
-
 cd
-
-
 
 
 #make docs
@@ -368,44 +344,119 @@ sudo apt autoremove -y
 cd
 
 
-
-
 #scripts set download
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830clear.sh
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830mas.sh
 
 
+#php(fpm) autoscaling for DOMjudge server
+echo "php(fpm) autoscaling for DOMjudge server started..."
+echo ""
+echo "H/W memory information"
+#check the H/W memory size GiB
+echo "Memory size(GiB)"
+MEMS=$(free --gibi | grep "Mem:" | awk  '{print $2}')
+echo "${MEMS} GiB"
+echo ""
 
-
-#DOMjudge memory autoscaling for php(fpm)
-if [ -e /etc/rc.local ] ; then
-  sudo rm /etc/rc.local
+if [ ${MEMS} -lt 1 ] ; then
+  MEMS=1
 fi
 
-sudo touch /etc/rc.local
-sudo chmod 777 /etc/rc.local
-if grep "/home/ubuntu/dj830mas.sh" /etc/rc.local ; then
-  echo "DOMjudge memory autoscaling for php(fpm) registered!"
-else
-  sudo sed -i "s/exit 0//g" /etc/rc.local
-  sudo echo "#! /bin/sh" >> /etc/rc.local
-  sudo echo "bash /home/ubuntu/dj830mas.sh" >> /etc/rc.local
-  sudo echo "exit 0" >> /etc/rc.local
-fi
-sudo chmod 755 /etc/rc.local
+#set to H/W memory size
+MEMSNOW=$(($MEMS*40))
+MEMSSET=$(grep "pm.max_children =" /etc/php/8.1/fpm/pool.d/domjudge.conf | awk '{print $3}')
 
+if [[ $MEMSSET -ne $MEMSNOW ]] ; then
+  echo ""
+  echo "H/W memory size changed!!"
+  echo ""
+  MEMSTRING=$(grep "pm.max_children =" /etc/php/8.1/fpm/pool.d/domjudge.conf)
+  NEWSTRING="pm.max_children = ${MEMSNOW}      ; ~40 per gig of memory(16gb system -> 500)"
+  sudo sed -i "s:${MEMSTRING}:${NEWSTRING}:g" /etc/php/8.1/fpm/pool.d/domjudge.conf
+  echo "pm.max_children value changed to ${MEMSNOW}"
+  echo ""
+fi
+
+echo ""
+echo "Restarting php..."
+sudo service php8.1-fpm restart
+sudo service php8.1-fpm reload
+echo ""
+echo "Restarting mariadb..."
+sudo systemctl restart mariadb
+echo ""
+WEBSERVER=$(curl -is localhost | grep "Server" | awk '{sub(/\/*/, ""); print $2}')
+if [[ "$WEBSERVER" == "Apache*" ]] ; then
+  echo "Restarting apache2..."
+  sudo systemctl restart apache2
+  sudo systemctl reload apache2
+fi
+if [[ "$WEBSERVER" == "nginx" ]] ; then
+  echo "Restarting nginx..."
+  sudo systemctl restart nginx
+  sudo systemctl reload nginx
+fi
+
+echo ""
+echo "php(fpm) autoscaling for DOMjudge server completed!"
+echo ""
+
+
+PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
+
+echo "" | tee -a ~/${README}
+case ${WEBSERVER} in
+  "apache2")
+    echo "DOMjudge server ${DJVER} + apache2 installation completed!!" | tee -a ~/${README}
+    ;;
+  "nginx")
+    echo "DOMjugde server ${DJVER} + nginx installation completed!!" | tee -a ~/${README}
+    ;;
+esac
+echo "" | tee -a ~/${README}
+echo "Check this server's web page" | tee -a ~/${README}
+echo "------" | tee -a ~/${README}
+echo "http://localhost/domjudge/" | tee -a ~/${README}
+echo "admin ID : admin" | tee -a ~/${README}
+echo "admin PW : ${PASSWORD}" | tee -a ~/${README}
+echo ""| tee -a ~/${README}
+
+echo "Use this ID & PW at dedicated remote judgehosts server" | tee -a ~/${README}
+echo "------" | tee -a ~/${README}
+echo "Edit judgehosts server's /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
+JUDGEHOSTID=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | awk  '{print $3}')
+echo "judgehost ID : ${JUDGEHOSTID}" | tee -a ~/${README}
+JUDGEHOSTPW=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | awk  '{print $4}')
+echo "judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
+
+
+echo "------ When server's H/W memory changed... ------" | tee -a ~/${README}
+echo "Run memory autoscaling script below to optimize pm.max_children for php(fpm)!" | tee -a ~/${README}
+echo "bash dj830mas.sh" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
 
 
 echo "" | tee -a ~/${README}
-echo "------ DOMjudge server cache clearing script ------" | tee -a ~/${README}
+echo "------ To DOMjudge server cache clear... ------" | tee -a ~/${README}
 echo "bash dj830clear.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
-echo "------ DOMjudge server web cache clearing script ------" | tee -a ~/${README}
+echo "------ To DOMjudge server web cache clear... ------" | tee -a ~/${README}
 echo "sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 chmod 660 ~/${README}
 echo "Saved as ${README}"
 
+echo ""
+case ${WEBSERVER} in
+  "apache2")
+    echo "DOMjudge server ${DJVER} + apache2 installation completed!!"
+    ;;
+  "nginx")
+    echo "DOMjugde server ${DJVER} + nginx installation completed!!"
+    ;;
+esac
 
 echo ""
 echo "System will be rebooted in 10 seconds!"
