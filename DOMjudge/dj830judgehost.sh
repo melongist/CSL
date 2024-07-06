@@ -154,7 +154,7 @@ done
 
 
 
-#Sudo permissions
+#Adding sudo permissions
 sudo cp /opt/domjudge/judgehost/etc/sudoers-domjudge /etc/sudoers.d/
 sudo chmod 0440 /etc/sudoers.d/sudoers-domjudge
 
@@ -211,8 +211,7 @@ sudo apt autoremove -y
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830start.sh
 
 
-echo "" | tee -a ~/${README}
-echo "DOMjudgehosts installed!!" | tee -a ~/${README}
+echo "DOMjudge judgehosts installed!!" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "Input DOMjudge server's IP address or hostname"
 echo "Examples:"
@@ -230,6 +229,9 @@ done
 sudo sed -i "s#http://localhost#${IPADDRESS}#g" /opt/domjudge/judgehost/etc/restapi.secret
 echo "server IP address or hostname setting completed!"
 
+
+echo "Input DOMjudge server's judgehost PW"
+echo "Check DOMjudge server's /opt/domjudge/domserver/etc/restapi.secret"
 JUDGEHOSTOLDPW=$(cat /opt/domjudge/judgehost/etc/restapi.secret | grep "default" | awk  '{print $4}')
 JUDGEHOSTPW="o"
 INPUTS="x"
@@ -244,20 +246,22 @@ sudo sed -i "s:${JUDGEHOSTOLDPW}:${JUDGEHOSTPW}:g" /opt/domjudge/judgehost/etc/r
 echo "judgehost PW set completed!"
 
 echo "" | tee -a ~/${README}
-echo "To change judgehost IPADDRESS/HOSTNAME, ID or PW" | tee -a ~/${README}
-echo "Edit /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
-echo "" | tee -a ~/${README}
+echo "To change judgehost IPADDRESS/HOSTNAME, ID or PW?" | tee -a ~/${README}
+echo "------" | tee -a ~/${README}
+echo "sudo nano /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-echo "------ Run judgehosts start script after every reboot ------" | tee -a ~/${README}
+echo "To start judgehosts after every reboot?" | tee -a ~/${README}
+echo "------" | tee -a ~/${README}
 echo "bash dj830start.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
-echo "" | tee -a ~/${README}
 
-echo "------ To kill some judgedaemon processe ------" | tee -a ~/${README}
-echo "ps -ef, and find PID# of judgedaemon, run : sudo kill -9 PID#" | tee -a ~/${README}
+echo "To kill some judgedaemon process?" | tee -a ~/${README}
+echo "------" | tee -a ~/${README}
+echo "Find the PID # of judgedaemon and kill the PID #" | tee -a ~/${README}
+echo "sudo ps -ef" | tee -a ~/${README}
+echo "sudo kill -9 #" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
-
 
 echo ""
 echo "System will be rebooted in 10 seconds!"

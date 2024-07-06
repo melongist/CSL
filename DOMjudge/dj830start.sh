@@ -2,9 +2,10 @@
 
 #2024.7 Made by melongist(melongist@gmail.com) for CS teachers
 
+#judgehosts starting script for DOMjudge judgehost
 
 #DOMjudge judgehosts starting script
-#terminal commands to start judgehosts
+#Terminal commands to start judgehosts
 #------
 #wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830start.sh
 #bash dj830start.sh
@@ -58,7 +59,7 @@ do
 done
 
 echo ""
-echo "$CPUS judgedamons started!"
+echo "${CPUS} judgedamons started!"
 echo ""
 
 

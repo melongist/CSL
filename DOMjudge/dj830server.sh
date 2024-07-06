@@ -178,8 +178,6 @@ sudo apt install -y php8.1-curl
 sudo apt install -y php8.1-xml
 sudo apt install -y php8.1-zip
 sudo apt install -y composer
-#composer : running commands as root/super user
-export COMPOSER_ALLOW_SUPERUSER=1
 
 
 case ${WEBSERVER} in
@@ -353,7 +351,6 @@ bash dj830mas.sh
 
 PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
 
-echo "" | tee -a ~/${README}
 echo "Check this DOMjudge server's web page" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "http://localhost/domjudge/" | tee -a ~/${README}
