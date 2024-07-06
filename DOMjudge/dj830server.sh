@@ -178,6 +178,9 @@ sudo apt install -y php8.1-curl
 sudo apt install -y php8.1-xml
 sudo apt install -y php8.1-zip
 sudo apt install -y composer
+#composer : running commands as root/super user
+export COMPOSER_ALLOW_SUPERUSER=1
+
 
 case ${WEBSERVER} in
   "apache2")
