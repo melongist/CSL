@@ -3,8 +3,12 @@
 #2024.7 Made by melongist(melongist@gmail.com) for CS teachers
 
 #php(fpm) autoscaling script for DOMjudge server
-#DOMjudge8.3.0 stable(2024.05.31) + Ubuntu 22.04.4 LTS + apache2/nginx
 
+#Memory autoscaling for php(fpm)
+#Terminal commands to autoscaling DOMjudge server
+#------
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830mas.sh
+#bash dj830mas.sh
 
 if [[ $SUDO_USER ]] ; then
   echo "Just use 'bash dj830mas.sh'"
