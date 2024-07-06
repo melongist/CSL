@@ -350,14 +350,6 @@ bash dj830mas.sh
 
 PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
 
-case ${WEBSERVER} in
-  "apache2")
-    echo "DOMjudge server ${DJVER} + apache2 installation completed!!" | tee -a ~/${README}
-    ;;
-  "nginx")
-    echo "DOMjugde server ${DJVER} + nginx installation completed!!" | tee -a ~/${README}
-    ;;
-esac
 echo "" | tee -a ~/${README}
 echo "Check this DOMjudge server's web page" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
@@ -374,15 +366,13 @@ JUDGEHOSTPW=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | 
 echo "judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-echo "When DOMjudge server's H/W memory size changed?" | tee -a ~/${README}
+echo "When DOMjudge server H/W memory size changed?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "Run memory autoscaling script below to optimize pm.max_children for php(fpm)!" | tee -a ~/${README}
 echo "bash dj830mas.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
 
-echo "To clear DOMjudge server cache & webserver cache?" | tee -a ~/${README}
-echo "" | tee -a ~/${README}
+echo "To clear DOMjudge server/webserver cache?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "bash dj830clear.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
