@@ -75,7 +75,8 @@ case ${WEBSERVER} in
       DOMAINNAME="o"
       INPUTS="x"
       while [ ${DOMAINNAME} != ${INPUTS} ]; do
-        echo    ""
+        echo "Examples:"
+        echo "contest.domjudge.org"
         echo -n "Enter  domain name : "
         read DOMAINNAME
         echo -n "Repeat domain name : "
@@ -308,7 +309,8 @@ case ${WEBSERVER} in
     ;;
   "nginx")
     echo "DOMjugde server ${DJVER} + nginx installed!!" | tee -a ~/${README}
-    echo "${DOMAINNAME} must be linked to IP address!!" | tee -a ~/${README}
+    echo "" | tee -a ~/${README}
+    echo "${DOMAINNAME} must be linked to this server's IP address!!" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
     sudo rm -f /usr/share/nginx/html/index.html
     #echo "<script>document.location=\"http://${DOMAINNAME}/domjudge/\";</script>" > index.html
@@ -353,7 +355,16 @@ PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
 
 echo "Check this(DOMjudge) server's web page" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-THISADDRESS=$(curl checkip.amazonaws.com)
+
+case ${WEBSERVER} in
+  "apache2")
+    THISADDRESS=$(curl checkip.amazonaws.com)
+    ;;
+  "nginx")
+    THISADDRESS=${DOMAINNAME}
+    ;;
+esac
+
 echo "http://${THISADDRESS}" | tee -a ~/${README}
 echo "admin ID : admin" | tee -a ~/${README}
 echo "admin PW : ${PASSWORD}" | tee -a ~/${README}
@@ -361,10 +372,9 @@ echo ""| tee -a ~/${README}
 
 echo "Use DOMjudge server URL & judgehost ID/PW with below at judgehosts server" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "DOMjudge server URL : http://${THISADDRESS}" | tee -a ~/${README}
-echo "judgehost ID : judgehost" | tee -a ~/${README}
+echo "DOMjudge server URL          : http://${THISADDRESS}" | tee -a ~/${README}
 JUDGEHOSTPW=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | awk  '{print $4}')
-echo "judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
+echo "DOMjudge server judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
 echo "When DOMjudge server H/W memory size changed?" | tee -a ~/${README}

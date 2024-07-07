@@ -214,6 +214,7 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830start.
 echo "Input DOMjudge server URL"
 echo "Examples:"
 echo "http://123.123.123.123"
+echo "http://contest.domjudge.org"
 echo "https://contest.domjudge.org"
 SERVERURL="o"
 INPUTS="x"
@@ -235,9 +236,9 @@ JUDGEHOSTPW="o"
 INPUTS="x"
 while [ ${JUDGEHOSTPW} != ${INPUTS} ]; do
   echo    ""
-  echo -n "Enter  judgehost PW : "
+  echo -n "Enter  DOMjudge server judgehost PW : "
   read JUDGEHOSTPW
-  echo -n "Repeat judgehost PW : "
+  echo -n "Repeat DOMjudge server judgehost PW : "
   read INPUTS
 done
 sudo sed -i "s:${JUDGEHOSTOLDPW}:${JUDGEHOSTPW}:g" /opt/domjudge/judgehost/etc/restapi.secret
