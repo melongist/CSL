@@ -30,7 +30,7 @@
 DJVER="8.3.0 stable (2024.05.31)"
 DOMVER="domjudge-8.3.0"
 THIS="dj830judgehost.sh"
-README="dj830judgehost.txt"
+README="readme.txt"
 
 
 if [[ $SUDO_USER ]] ; then
@@ -211,27 +211,25 @@ sudo apt autoremove -y
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830start.sh
 
 
-echo "DOMjudge judgehosts installed!!" | tee -a ~/${README}
-echo "" | tee -a ~/${README}
-echo "Input DOMjudge server's IP address or hostname"
+echo "Input DOMjudge server URL"
 echo "Examples:"
 echo "http://123.123.123.123"
 echo "https://contest.domjudge.org"
-IPADDRESS="o"
+SERVERURL="o"
 INPUTS="x"
-while [ ${IPADDRESS} != ${INPUTS} ]; do
+while [ ${SERVERURL} != ${INPUTS} ]; do
   echo    ""
-  echo -n "Enter  IP address or hostname : "
-  read IPADDRESS
-  echo -n "Repeat IP address or hostname : "
+  echo -n "Enter  DOMjudge server URL : "
+  read SERVERURL
+  echo -n "Repeat DOMjudge server URL : "
   read INPUTS
 done
-sudo sed -i "s#http://localhost#${IPADDRESS}#g" /opt/domjudge/judgehost/etc/restapi.secret
-echo "server IP address or hostname setting completed!"
+sudo sed -i "s#http://localhost#${SERVERURL}#g" /opt/domjudge/judgehost/etc/restapi.secret
+echo "DOMjudge server URL set completed!"
 
 
 echo "Input DOMjudge server's judgehost PW"
-echo "Check DOMjudge server's /opt/domjudge/domserver/etc/restapi.secret"
+echo "You can find judgehost PW at DOMjudge server's /opt/domjudge/domserver/etc/restapi.secret"
 JUDGEHOSTOLDPW=$(cat /opt/domjudge/judgehost/etc/restapi.secret | grep "default" | awk  '{print $4}')
 JUDGEHOSTPW="o"
 INPUTS="x"
@@ -245,7 +243,9 @@ done
 sudo sed -i "s:${JUDGEHOSTOLDPW}:${JUDGEHOSTPW}:g" /opt/domjudge/judgehost/etc/restapi.secret
 echo "judgehost PW set completed!"
 
+echo "DOMjudge judgehosts installed!!" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
+
 echo "To change judgehost IPADDRESS/HOSTNAME, ID or PW?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "sudo nano /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
@@ -262,6 +262,11 @@ echo "Find the PID # of judgedaemon and kill the PID #" | tee -a ~/${README}
 echo "sudo ps -ef" | tee -a ~/${README}
 echo "sudo kill -9 #" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
+
+
+chmod 660 ~/${README}
+echo "Saved as ${README}"
+
 
 echo ""
 echo "System will be rebooted in 10 seconds!"

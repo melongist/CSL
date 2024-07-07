@@ -30,7 +30,7 @@
 DJVER="8.3.0 stable (2024.05.31)"
 DOMVER="domjudge-8.3.0"
 THIS="dj830server.sh"
-README="dj830server.txt"
+README="readme.txt"
 
 
 if [[ $SUDO_USER ]] ; then
@@ -351,16 +351,17 @@ bash dj830mas.sh
 
 PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
 
-echo "Check this DOMjudge server's web page" | tee -a ~/${README}
+echo "Check this(DOMjudge) server's web page" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "http://localhost/domjudge/" | tee -a ~/${README}
+THISADDRESS=$(curl checkip.amazonaws.com)
+echo "http://${THISADDRESS}" | tee -a ~/${README}
 echo "admin ID : admin" | tee -a ~/${README}
 echo "admin PW : ${PASSWORD}" | tee -a ~/${README}
 echo ""| tee -a ~/${README}
 
-echo "Use this judgehost PW at dedicated remote judgehosts server" | tee -a ~/${README}
+echo "At judgehosts server, use DOMjudge server URL & judgehost ID/PW with below" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "Edit judgehosts server's /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
+echo "DOMjudge server URL : http://${THISADDRESS}" | tee -a ~/${README}
 echo "judgehost ID : judgehost" | tee -a ~/${README}
 JUDGEHOSTPW=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | awk  '{print $4}')
 echo "judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
