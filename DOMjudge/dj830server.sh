@@ -359,7 +359,7 @@ echo "admin ID : admin" | tee -a ~/${README}
 echo "admin PW : ${PASSWORD}" | tee -a ~/${README}
 echo ""| tee -a ~/${README}
 
-echo "At judgehosts server, use DOMjudge server URL & judgehost ID/PW with below" | tee -a ~/${README}
+echo "Use DOMjudge server URL & judgehost ID/PW with below at judgehosts server" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "DOMjudge server URL : http://${THISADDRESS}" | tee -a ~/${README}
 echo "judgehost ID : judgehost" | tee -a ~/${README}
@@ -403,5 +403,6 @@ do
   sleep 1
 done
 echo "rebooted!" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
 sleep 5
 sudo reboot
