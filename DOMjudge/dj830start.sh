@@ -2,6 +2,10 @@
 
 #2024.7 Made by melongist(melongist@gmail.com) for CS teachers
 
+#origin
+#https://www.domjudge.org/
+#https://github.com/DOMjudge/domjudge
+
 #judgehosts starting script for DOMjudge judgehost
 
 #DOMjudge judgehosts starting script

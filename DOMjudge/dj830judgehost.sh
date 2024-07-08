@@ -227,6 +227,8 @@ while [ ${SERVERURL} != ${INPUTS} ]; do
 done
 sudo sed -i "s#http://localhost#${SERVERURL}#g" /opt/domjudge/judgehost/etc/restapi.secret
 echo "DOMjudge server URL set completed!"
+echo ""
+echo ""
 
 
 echo "Input DOMjudge server's judgehost PW"
@@ -243,6 +245,7 @@ while [ ${JUDGEHOSTPW} != ${INPUTS} ]; do
 done
 sudo sed -i "s:${JUDGEHOSTOLDPW}:${JUDGEHOSTPW}:g" /opt/domjudge/judgehost/etc/restapi.secret
 echo "judgehost PW set completed!"
+echo ""
 
 echo "DOMjudge judgehosts installed!!" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
