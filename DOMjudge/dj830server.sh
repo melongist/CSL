@@ -301,6 +301,9 @@ case ${WEBSERVER} in
   "apache2")
     echo "DOMjudge server ${DJVER} + apache2 installed!!" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
+    THISADDRESS=$(curl checkip.amazonaws.com)
+    echo "This server's IP address ${THISADDRESS}" | tee -a ~/${README}
+    echo "" | tee -a ~/${README}
     sudo rm -f /var/www/html/index.html
     echo "<script>document.location=\"./domjudge/\";</script>" > index.html
     sudo chmod 644 index.html
@@ -310,7 +313,8 @@ case ${WEBSERVER} in
   "nginx")
     echo "DOMjugde server ${DJVER} + nginx installed!!" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
-    echo "${DOMAINNAME} must be linked to this server's IP address!!" | tee -a ~/${README}
+    THISADDRESS=$(curl checkip.amazonaws.com)
+    echo "This server's IP address ${THISADDRESS} must be connected with ${DOMAINNAME} at DNS!!" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
     sudo rm -f /usr/share/nginx/html/index.html
     #echo "<script>document.location=\"http://${DOMAINNAME}/domjudge/\";</script>" > index.html
