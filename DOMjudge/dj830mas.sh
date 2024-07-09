@@ -51,7 +51,7 @@ echo ""
 echo "Restarting mariadb..."
 sudo systemctl restart mariadb
 echo ""
-WEBSERVER=$(curl -is localhost | grep "Server" | awk '{sub(/\/*/, ""); print $2}')
+WEBSERVER=$(curl -is localhost | grep "Server" | awk '{print $2}')
 if [[ ${WEBSERVER} == Apache* ]] ; then
   echo "Restarting apache2..."
   sudo systemctl restart apache2
