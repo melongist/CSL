@@ -57,7 +57,7 @@ if [[ ${WEBSERVER} == Apache* ]] ; then
   sudo systemctl restart apache2
   sudo systemctl reload apache2
 fi
-if [[ ${WEBSERVER} == nginx ]] ; then
+if [[ ${WEBSERVER} == nginx* ]] ; then
   echo "Restarting nginx..."
   sudo systemctl restart nginx
   sudo systemctl reload nginx
