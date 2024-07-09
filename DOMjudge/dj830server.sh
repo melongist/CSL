@@ -65,8 +65,8 @@ case ${WEBSERVER} in
     INPUTS="x"
     while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
       echo    ""
-      echo    "DOMjudge(+nginx) must have domain name!"
-      echo -n "Do you have domain name? [y/n]: "
+      echo    "DOMjudge(+nginx) must use domain name!"
+      echo -n "Do you have the domain name? [y/n]: "
       read INPUTS
     done
 
