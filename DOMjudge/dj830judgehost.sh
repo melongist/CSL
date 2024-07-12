@@ -191,8 +191,8 @@ if [ -e /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
   sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295\"#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295 quiet cgroup_enable=memory swapaccount=1 isolcpus=2 systemd.unified_cgroup_hierarchy=0\"#" /etc/default/grub.d/50-cloudimg-settings.cfg
 fi
 sudo update-grub
-#after reboot
-#sudo systemctl enable create-cgroups --now
+#after reboot?
+sudo systemctl enable create-cgroups
 
 
 #https://www.domjudge.org/docs/manual/8.3/judging.html
