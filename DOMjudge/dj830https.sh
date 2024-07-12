@@ -12,7 +12,7 @@
 
 DJVER="8.3.0 stable (2024.05.31)"
 DOMVER="domjudge-8.3.0"
-THIS="dj830serverhttps.sh"
+THIS="dj830https.sh"
 README="readme.txt"
 
 
