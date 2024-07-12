@@ -48,6 +48,24 @@ if [ ${OSVER:0:5} != "22.04" ] ; then
 fi
 
 
+echo ""
+echo "Before DOMjudge ${DJVER} judgehost installation!!!"
+echo ""  
+echo "DOMjudge server must be installed at the other system!!"
+echo ""
+INPUTS="x"
+while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
+  echo -n "Did you make Domjudge server? [y/n]: "
+  read INPUTS
+  if [ ${INPUTS} == "n" ] ; then
+    echo ""
+    echo "Make Domjudge server first!!"
+    echo ""
+    exit 1
+  fi
+done
+
+
 cd
 
 
