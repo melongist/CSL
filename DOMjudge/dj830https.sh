@@ -56,6 +56,7 @@ while [ ${DOMAINNAME} != ${INPUTS} ]; do
   echo "Input the domain name."
   echo "Examples:"
   echo "contest.domjudge.org"
+  echo ""
   echo -n "Input  domain name : "
   read DOMAINNAME
   echo -n "Repeat domain name : "
