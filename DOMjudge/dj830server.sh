@@ -88,7 +88,6 @@ case ${WEBSERVER} in
     fi
 
     echo ""
-    echo ${DOMAINNAME} > domainname.txt
     ;;
 esac
 
@@ -299,10 +298,12 @@ sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.1/fpm/po
 
 case ${WEBSERVER} in
   "apache2")
+    echo "" | tee -a ~/${README}
     echo "DOMjudge server ${DJVER} + apache2 installed!!" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
     THISADDRESS=$(curl checkip.amazonaws.com)
     echo "This server's IP address ${THISADDRESS}" | tee -a ~/${README}
+    echo "" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
     sudo rm -f /var/www/html/index.html
     echo "<script>document.location=\"./domjudge/\";</script>" > index.html
@@ -311,10 +312,12 @@ case ${WEBSERVER} in
     sudo mv index.html /var/www/html/
     ;;
   "nginx")
+    echo "" | tee -a ~/${README}
     echo "DOMjugde server ${DJVER} + nginx installed!!" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
     THISADDRESS=$(curl checkip.amazonaws.com)
     echo "This server's IP address ${THISADDRESS} must be connected with ${DOMAINNAME} at DNS!!" | tee -a ~/${README}
+    echo "" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
     sudo rm -f /usr/share/nginx/html/index.html
     #echo "<script>document.location=\"http://${DOMAINNAME}/domjudge/\";</script>" > index.html
@@ -372,7 +375,8 @@ esac
 echo "http://${THISADDRESS}" | tee -a ~/${README}
 echo "admin ID : admin" | tee -a ~/${README}
 echo "admin PW : ${PASSWORD}" | tee -a ~/${README}
-echo ""| tee -a ~/${README}
+echo "" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
 
 echo "Use DOMjudge server URL & judgehost ID/PW with below at judgehosts server" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
@@ -380,16 +384,18 @@ echo "DOMjudge server URL          : http://${THISADDRESS}" | tee -a ~/${README}
 JUDGEHOSTPW=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | awk  '{print $4}')
 echo "DOMjudge server judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
 
 echo "When DOMjudge server H/W memory size changed?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "bash dj830mas.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
-
+echo "" | tee -a ~/${README}
 
 echo "To clear DOMjudge server/webserver cache?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "bash dj830clear.sh" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
 
@@ -418,5 +424,7 @@ do
 done
 echo "rebooted!" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
+
 sleep 5
 sudo reboot

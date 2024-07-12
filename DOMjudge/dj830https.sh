@@ -30,53 +30,41 @@ if [ ${OSVER:0:5} != "22.04" ] ; then
   exit 1
 fi
 
-INPUTS="x"
-while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
+
   echo ""
   echo "Before HTTPS installation!!!"
+  echo ""  
   echo "DOMjudge server's IP address must be connected to a domain name with A record at DNS!!"
   echo ""
+INPUTS="x"
+while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
   echo -n "Did you connect IP address to a domain name with A record at DNS? [y/n]: "
   read INPUTS
   if [ ${INPUTS} == "n" ] ; then
     echo ""
-    echo "Connect IP address with domain name at DNS first!!"
+    echo "Connect IP address with a domain name with A record at DNS first!!"
     echo ""
     exit 1
   fi
 done
 
 
+DOMAINNAME="o"
 INPUTS="x"
-while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
-  echo    ""
-  echo    "HTTPS server must use domain name!"
-  echo -n "Do you have the domain name? [y/n]: "
+while [ ${DOMAINNAME} != ${INPUTS} ]; do
+  echo ""
+  echo "Input the domain name."
+  echo "Examples:"
+  echo "contest.domjudge.org"
+  echo -n "Input  domain name : "
+  read DOMAINNAME
+  echo -n "Repeat domain name : "
   read INPUTS
 done
-
 echo ""
-if [ ${INPUTS} == "y" ] ; then
-  DOMAINNAME="o"
-  INPUTS="x"
-  while [ ${DOMAINNAME} != ${INPUTS} ]; do
-    echo "Examples:"
-    echo "contest.domjudge.org"
-    echo -n "Enter  domain name : "
-    read DOMAINNAME
-    echo -n "Repeat domain name : "
-    read INPUTS
-  done
-else
-  echo "Use DOMjudge(+apache2)"
-  exit 1
-fi
-
-echo ""
-echo ${DOMAINNAME} > domainname.txt
 
 
-#Check web server : Apache or nginx
+#Web server(Apache/nginx) identifing
 WEBSERVER=$(curl -is localhost | grep "Server" | awk '{print $2}')
 if [[ ${WEBSERVER} == Apache* ]] ; then
   WEBSERVER="apache2"
@@ -86,8 +74,6 @@ else
   echo "apache or nginx webserver not exist!!!"
   exit 1
 fi
-
-echo "${WEBSERVER} webserver is installed..."
 
 
 case ${WEBSERVER} in
@@ -116,16 +102,27 @@ case ${WEBSERVER} in
     sudo apt install -y certbot python3-certbot-apache
     sudo certbot --apache -d ${DOMAINNAME}
 
-    sudo systemctl status certbot.timer
-    sudo certbot renew --dry-run
-
     sudo cp /var/www/html/index.html /var/www/${DOMAINNAME}/index.html
     ;;
   "nginx")
+    sudo ufw allow 'Nginx Full'
+    sudo ufw allow 'Nginx HTTP'
+    sudo ufw allow 'Nginx HTTPS'
+    sudo ufw allow 'OpenSSH'
+    sudo ufw enable
+    
+    sudo ufw status
+
+    sudo apt install -y certbot python3-certbot-nginx
+    sudo certbot --nginx -d ${DOMAINNAME}
     ;;
 esac
+sudo systemctl status certbot.timer
+sudo certbot renew --dry-run
+
 
 echo ""
+echo "" | tee -a ~/${README}
 case ${WEBSERVER} in
   "apache2")
     echo "DOMjudge server ${DJVER} + apache2 + HTTPS installation completed!!" | tee -a ~/${README}
@@ -135,8 +132,9 @@ case ${WEBSERVER} in
     ;;
 esac
 
-echo ""| tee -a ~/${README}
+echo "" | tee -a ~/${README}
 echo "Check this(DOMjudge) server's web page" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "https://${DOMAINNAME}" | tee -a ~/${README}
-echo ""| tee -a ~/${README}
+echo "" | tee -a ~/${README}
+echo "" | tee -a ~/${README}

@@ -144,9 +144,9 @@ CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 #make judgedaemo group
 sudo groupadd domjudge-run
 #default judgedaemon
-sudo useradd -d /nonexistent -g domjudge-run -M -s /bin/false domjudge-run
-#multi judgedaemons, max 127
-for ((i=1; i<=127; i++));
+#sudo useradd -d /nonexistent -g domjudge-run -M -s /bin/false domjudge-run
+#multi judgedaemons, max 128
+for ((i=1; i<=128; i++));
 do
   sudo useradd -d /nonexistent -g domjudge-run -M -s /bin/false domjudge-run-$i
 done
@@ -220,7 +220,7 @@ SERVERURL="o"
 INPUTS="x"
 while [ ${SERVERURL} != ${INPUTS} ]; do
   echo    ""
-  echo -n "Enter  DOMjudge server URL : "
+  echo -n "Input  DOMjudge server URL : "
   read SERVERURL
   echo -n "Repeat DOMjudge server URL : "
   read INPUTS
@@ -247,6 +247,7 @@ sudo sed -i "s:${JUDGEHOSTOLDPW}:${JUDGEHOSTPW}:g" /opt/domjudge/judgehost/etc/r
 echo "judgehost PW set completed!"
 echo ""
 
+echo "" | tee -a ~/${README}
 echo "DOMjudge judgehosts installed!!" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
@@ -254,10 +255,12 @@ echo "To change judgehost IPADDRESS/HOSTNAME, ID or PW?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "sudo nano /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
 
 echo "To start judgehosts after every reboot?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "bash dj830start.sh" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
 echo "To kill some judgedaemon process?" | tee -a ~/${README}
@@ -266,7 +269,7 @@ echo "Find the PID # of judgedaemon and kill the PID #" | tee -a ~/${README}
 echo "sudo ps -ef" | tee -a ~/${README}
 echo "sudo kill -9 #" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
-
+echo "" | tee -a ~/${README}
 
 chmod 660 ~/${README}
 echo "Saved as ${README}"
@@ -283,6 +286,9 @@ do
   sleep 1
 done
 echo "rebooted!" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
+
 sleep 5
 sudo reboot
 
