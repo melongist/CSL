@@ -162,7 +162,7 @@ CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 #make judgedaemo group
 sudo groupadd domjudge-run
 #default judgedaemon
-#sudo useradd -d /nonexistent -g domjudge-run -M -s /bin/false domjudge-run
+sudo useradd -d /nonexistent -g domjudge-run -M -s /bin/false domjudge-run
 #multi judgedaemons, max 128
 for ((i=1; i<=128; i++));
 do
@@ -269,7 +269,12 @@ echo "" | tee -a ~/${README}
 echo "DOMjudge judgehosts installed!!" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-echo "To change judgehost IPADDRESS/HOSTNAME, ID or PW?" | tee -a ~/${README}
+echo "To change judgehost IPADDRESS, HOSTNAME, ID or PW for DOMjudge server?" | tee -a ~/${README}
+echo "Find & check /opt/domjudge/domserver/etc/restapi.secret at DOMjudge server" | tee -a ~/${README}
+echo "------" | tee -a ~/${README}
+echo "sudo nano /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
+echo "" | tee -a ~/${README}
+echo "Check & edit /opt/domjudge/judgehost/etc/restapi.secret at this DOMjudge judgehost" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "sudo nano /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
 echo "" | tee -a ~/${README}

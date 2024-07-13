@@ -77,6 +77,7 @@ case ${WEBSERVER} in
       while [ ${DOMAINNAME} != ${INPUTS} ]; do
         echo "Examples:"
         echo "contest.domjudge.org"
+        echo ""
         echo -n "Enter  domain name : "
         read DOMAINNAME
         echo -n "Repeat domain name : "
@@ -350,7 +351,7 @@ sudo apt autoremove -y
 #Other script set download
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830clear.sh
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830mas.sh
-
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830https.sh
 
 
 
