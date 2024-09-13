@@ -26,8 +26,8 @@ https://www.domjudge.org/
 #Auto installation commands and steps...    
 At console terminal    
 </pre>
-<code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830server.sh</code>
-<code>bash dj830server.sh</code>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830server.sh</code></pre>
+<pre><code>bash dj830server.sh</code></pre>
 <pre>    
    
 Select Web-server for DOMjudge!   
