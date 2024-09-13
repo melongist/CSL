@@ -344,6 +344,14 @@ sudo make install-docs
 
 cd
 
+#Temporary DOMjudge 8.3.0 clarification error fix for https://github.com/DOMjudge/domjudge/pull/2607
+sudo sed -i "s#->leftJoin('p.contest_problems', 'cp')#//->leftJoin('p.contest_problems', 'cp')#g" /opt/domjudge/domserver/webapp/src/Controller/Team/MiscController.php
+sudo sed -i "s#->andWhere('cp.contest = :contest')#//->andWhere('cp.contest = :contest')#g" /opt/domjudge/domserver/webapp/src/Controller/Team/MiscController.php
+sudo sed -i "s#->select('c', 'cp', 'p')#->select('c', 'p')#g" /opt/domjudge/domserver/webapp/src/Controller/Team/MiscController.php
+
+
+
+
 
 sudo apt autoremove -y
 

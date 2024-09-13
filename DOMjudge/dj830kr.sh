@@ -206,13 +206,6 @@ sudo sed -i "s/'class' => Problem::class,/'class' => Problem::class,'label' => '
 sudo sed -i "s/'class' => Language::class,/'class' => Language::class,'label' => '프로그래밍 언어',/" /opt/domjudge/domserver/webapp/src/Form/Type/SubmitProblemType.php
 
 
-//여기부터. 확인.. 
-
-
-
-
-작성하세요.
-
 #etc scripts
 sudo sed -i "s/Submission done\! Watch for the verdict in the list below./채점이 제출되었습니다\! 페이지 새로고침을 눌러 채점 결과를 확인해주세요./" /opt/domjudge/domserver/webapp/src/Controller/Team/SubmissionController.php
 
