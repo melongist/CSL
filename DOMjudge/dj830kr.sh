@@ -40,6 +40,10 @@ fi
 
 echo ""
 
+
+#partials modal.html.twig
+sudo sed -i "s/}Close/}닫기/" /opt/domjudge/domserver/webapp/templates/partials/modal.html.twig
+
 #menu
 sudo sed -i "s/DOMjudge/${OJNAME}/" /opt/domjudge/domserver/webapp/templates/public/menu.html.twig
 sudo sed -i "s/Scoreboard/점수/" /opt/domjudge/domserver/webapp/templates/public/menu.html.twig
@@ -50,6 +54,8 @@ sudo sed -i "s/Jury/대회운영/" /opt/domjudge/domserver/webapp/templates/publ
 #login
 sudo sed -i "s/Please sign in/로그인하세요/" /opt/domjudge/domserver/webapp/templates/security/login.html.twig
 sudo sed -i "s/\"submit\">Sign in/\"submit\">로그인/" /opt/domjudge/domserver/webapp/templates/security/login.html.twig
+sudo sed -i "s/\<Username\>/팀별ID/g" /opt/domjudge/domserver/webapp/templates/security/login.html.twig
+sudo sed -i "s/\<Password\>/비밀번호/g" /opt/domjudge/domserver/webapp/templates/security/login.html.twig
 
 #login/logout button
 sudo sed -i "s/i> Logout/i> 로그아웃/" /opt/domjudge/domserver/webapp/templates/partials/menu_login_logout_button.html.twig
@@ -64,6 +70,13 @@ sudo sed -i "s/no contest/대회 없음/" /opt/domjudge/domserver/webapp/templat
 
 #problem list
 sudo sed -i "s/}} problems/}} 문제/" /opt/domjudge/domserver/webapp/templates/partials/problem_list.html.twig
+sudo sed -i "s/Limits:/실행 제한:/" /opt/domjudge/domserver/webapp/templates/partials/problem_list.html.twig
+sudo sed -i "s/\<second\>/초/" /opt/domjudge/domserver/webapp/templates/partials/problem_list.html.twig
+sudo sed -i "s/1 %}s{% endif/1 %}{% endif/" /opt/domjudge/domserver/webapp/templates/partials/problem_list.html.twig
+sudo sed -i "s/\<statement\>/문제/" /opt/domjudge/domserver/webapp/templates/partials/problem_list.html.twig
+sudo sed -i "s/> samples/> 예시 데이터/" /opt/domjudge/domserver/webapp/templates/partials/problem_list.html.twig
+sudo sed -i "s/> Submit/> 채점 제출/" /opt/domjudge/domserver/webapp/templates/partials/problem_list.html.twig
+
 
 #scoreboard
 sudo sed -i "s/No active contest/진행중인 대회 없음/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard.html.twig
@@ -96,6 +109,8 @@ sudo sed -i "s/\"team name/\"팀 이름/" /opt/domjudge/domserver/webapp/templat
 sudo sed -i "s/>team/>팀 이름/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/solved \/ penalty time/맞춤 \/ 패널티 시간/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/>score/>점수/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
+sudo sed -i "s/1 try/1번 시도/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
+sudo sed -i "s/ tries/번 시도/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/Solved, fastest/가장 빨리 맞춤/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/Solved first/가장 먼저 맞춤/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/Solved/맞춤/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
@@ -119,12 +134,17 @@ sudo sed -i "s/> Print/> 인쇄/" /opt/domjudge/domserver/webapp/templates/team/
 sudo sed -i "s/> Scoreboard/> 순위/" /opt/domjudge/domserver/webapp/templates/team/menu.html.twig
 sudo sed -i "s/> Jury/> 대회운영/" /opt/domjudge/domserver/webapp/templates/team/menu.html.twig
 sudo sed -i "s/> Submit/> 채점 제출/g" /opt/domjudge/domserver/webapp/templates/team/menu.html.twig
+sudo sed -i "s/Enable Notifications/알림 활성화/" /opt/domjudge/domserver/webapp/templates/team/menu.html.twig
+sudo sed -i "s/Disable Notifications/알림 비활성화/" /opt/domjudge/domserver/webapp/templates/team/menu.html.twig
+
 
 #team submit modal
+sudo sed -i "s/Submit {% if problem is not null %}problem/채점 제출 {% if problem is not null %}문제/" /opt/domjudge/domserver/webapp/templates/team/submit_modal.html.twig
 sudo sed -i "s/> Submit/> 채점 제출/" /opt/domjudge/domserver/webapp/templates/team/submit_modal.html.twig
 sudo sed -i "s/Contest has not yet started - cannot submit./대회가 아직 시작되지 않았습니다. - 제출할 수 없습니다./" /opt/domjudge/domserver/webapp/templates/team/submit_modal.html.twig
 sudo sed -i "s/>Close/>닫기/" /opt/domjudge/domserver/webapp/templates/team/submit_modal.html.twig
 sudo sed -i "s/>Cancel/>취소/" /opt/domjudge/domserver/webapp/templates/team/submit_modal.html.twig
+
 
 #team clarification add modal
 sudo sed -i "s/Send clarification request/명확한 설명 요청하기/" /opt/domjudge/domserver/webapp/templates/team/clarification_add_modal.html.twig
@@ -151,13 +171,26 @@ sudo sed -i "s/>problem/>문제/" /opt/domjudge/domserver/webapp/templates/team/
 sudo sed -i "s/>lang/>제출 언어/" /opt/domjudge/domserver/webapp/templates/team/partials/submission_list.html.twig
 sudo sed -i "s/>result/>채점 결과/" /opt/domjudge/domserver/webapp/templates/team/partials/submission_list.html.twig
 sudo sed -i "s/>runtime/>실행 시간/" /opt/domjudge/domserver/webapp/templates/team/partials/submission_list.html.twig
+sudo sed -i "s/Download submission ZIP/제출 파일 다운로드/" /opt/domjudge/domserver/webapp/templates/team/partials/submission_list.html.twig
+
+#team submission_modal
+sudo sed -i "s/Submission details/채점 상세 정보/" /opt/domjudge/domserver/webapp/templates/team/submission_modal.html.twig
+
+#team partials submission.html.twig
+sudo sed -i "s/Problem:/문제:/" /opt/domjudge/domserver/webapp/templates/team/partials/submission.html.twig
+sudo sed -i "s/Submitted:/제출 시간:/" /opt/domjudge/domserver/webapp/templates/team/partials/submission.html.twig
+sudo sed -i "s/Language:/프로그래밍 언어:/" /opt/domjudge/domserver/webapp/templates/team/partials/submission.html.twig
+sudo sed -i "s/Result:/채점 결과:/" /opt/domjudge/domserver/webapp/templates/team/partials/submission.html.twig
+sudo sed -i "s/Download submission ZIP/제출 파일 다운로드/" /opt/domjudge/domserver/webapp/templates/team/partials/submission.html.twig
+
 
 #team clarification list
 sudo sed -i "s/>time/>시간/" /opt/domjudge/domserver/webapp/templates/team/partials/clarification_list.html.twig
-sudo sed -i "s/>from/>보낸 사람/" /opt/domjudge/domserver/webapp/templates/team/partials/clarification_list.html.twig
-sudo sed -i "s/>to/>받는 사람/" /opt/domjudge/domserver/webapp/templates/team/partials/clarification_list.html.twig
+sudo sed -i "s/>from/>발신/" /opt/domjudge/domserver/webapp/templates/team/partials/clarification_list.html.twig
+sudo sed -i "s/>to/>수신/" /opt/domjudge/domserver/webapp/templates/team/partials/clarification_list.html.twig
 sudo sed -i "s/>subject/>제목/" /opt/domjudge/domserver/webapp/templates/team/partials/clarification_list.html.twig
 sudo sed -i "s/>text/>내용/" /opt/domjudge/domserver/webapp/templates/team/partials/clarification_list.html.twig
+
 
 #team submit scripts
 sudo sed -i "s/Main source file:/소스 파일:/" /opt/domjudge/domserver/webapp/templates/team/partials/submit_scripts.html.twig
@@ -167,7 +200,18 @@ sudo sed -i "s/Make submission\?/제출하시겠습니까\?/" /opt/domjudge/doms
 
 #source file submit scripts
 sudo sed -i "s/Select a problem/문제 선택/" /opt/domjudge/domserver/webapp/src/Form/Type/SubmitProblemType.php
-sudo sed -i "s/Select a language/프로그래밍언어 선택/" /opt/domjudge/domserver/webapp/src/Form/Type/SubmitProblemType.php
+sudo sed -i "s/Select a language/프로그래밍 언어 선택/" /opt/domjudge/domserver/webapp/src/Form/Type/SubmitProblemType.php
+sudo sed -i "s/=> 'Source file' . (\$allowMultipleFiles ? 's' : ''),/=> '소스 파일',/" /opt/domjudge/domserver/webapp/src/Form/Type/SubmitProblemType.php
+sudo sed -i "s/'class' => Problem::class,/'class' => Problem::class,'label' => '문제',/" /opt/domjudge/domserver/webapp/src/Form/Type/SubmitProblemType.php
+sudo sed -i "s/'class' => Language::class,/'class' => Language::class,'label' => '프로그래밍 언어',/" /opt/domjudge/domserver/webapp/src/Form/Type/SubmitProblemType.php
+
+
+//여기부터. 확인.. 
+
+
+
+
+작성하세요.
 
 #etc scripts
 sudo sed -i "s/Submission done\! Watch for the verdict in the list below./채점이 제출되었습니다\! 페이지 새로고침을 눌러 채점 결과를 확인해주세요./" /opt/domjudge/domserver/webapp/src/Controller/Team/SubmissionController.php
@@ -177,8 +221,17 @@ sudo sed -i "s/start delayed/시작 지연됨/" /opt/domjudge/domserver/webapp/p
 sudo sed -i "s/no contest/대회 없음/" /opt/domjudge/domserver/webapp/public/js/domjudge.js
 sudo sed -i "s/time to start/시작 시간/" /opt/domjudge/domserver/webapp/public/js/domjudge.js
 sudo sed -i "s/contest over/대회 종료/" /opt/domjudge/domserver/webapp/public/js/domjudge.js
+sudo sed -i "s/Your browser does not support desktop notifications./웹브라우저가 알림 기능을 지원하지 않습니다./" /opt/domjudge/domserver/webapp/public/js/domjudge.js
+sudo sed -i "s/Your browser does not support local storage;/웹브라우저가 저장 장치를 사용할 수 없습니다.;/" /opt/domjudge/domserver/webapp/public/js/domjudge.js
+sudo sed -i "s/this is required to keep track of sent notifications./전송된 알림을 기록하는데 필요합니다./" /opt/domjudge/domserver/webapp/public/js/domjudge.js
+sudo sed -i "s/Browser denied permission to send desktop notifications./웹브라우저에 알림 전송 권한이 없습니다./" /opt/domjudge/domserver/webapp/public/js/domjudge.js
+sudo sed -i "s/Re-enable notification permission in the browser and retry./웹브라우저의 알림 전송 권한을 허용한 후 시도해보세요./" /opt/domjudge/domserver/webapp/public/js/domjudge.js
+sudo sed -i "s/Really log out?/로그아웃 하시겠습니까?/" /opt/domjudge/domserver/webapp/public/js/domjudge.js
 
 
+
+#DOMjudge cache clear
+/opt/domjudge/domserver/webapp/bin/console cache:clear
 
 #clearing DOMjudge webserver cache
 sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*

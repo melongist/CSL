@@ -11,7 +11,7 @@
 #https://www.domjudge.org/docs/manual/8.3/overview.html#features
 #Each judgehost should be a dedicated (virtual) machine that performs no other tasks.
 #For example, although running a judgehost on the same machine as the domserver is possible,
-#it’s not recommended except for testing purposes. 
+#it’s not recommended except for testing purposes.
 #Judgehosts should also not double as local workstations for jury members.
 #Having all judgehosts be of uniform hardware configuration helps in creating a fair, reproducible setup; 
 #in the ideal case they are run on the same type of machines that the teams use.

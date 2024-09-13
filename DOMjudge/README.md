@@ -1,29 +1,54 @@
-#24.05.21   
+#24.09.10   
+    
+---    
+#It is recommended to separate main server and dedicated judgehost server.    
+#https://www.domjudge.org/docs/manual/8.3/overview.html#features    
+#Each judgehost should be a dedicated (virtual) machine that performs no other tasks.    
+#For example, although running a judgehost on the same machine as the domserver is possible,    
+#it’s not recommended except for testing purposes.    
+#Judgehosts should also not double as local workstations for jury members.    
+#Having all judgehosts be of uniform hardware configuration helps in creating a fair, reproducible setup;    
+#in the ideal case they are run on the same type of machines that the teams use.    
+    
+    
+--- For DOMjudge server ---    
 
----
-#DOMjudge 8.2.3 stable auto installation   
+#DOMjudge 8.3.0 stable    
 <https://www.domjudge.org/>   
-
-#Prerequisite
-- Ubuntu 22.04 LTS Server/Desktop installed (AWS OK)   
-
-#Auto installation commands and steps...
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj823dj.sh</code></pre>
-<pre><code>bash dj823dj.sh</code></pre>
-
-<pre><code>
+    
+   
+#DOMjudge server auto installation   
+   
+#Prerequisite    
+- Ubuntu 22.04 LTS installed server or desktop (AWS OK)   
+    
+#Auto installation commands and steps...    
+At console terminal    
+    
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830server.sh</code></pre>
+<pre><code>bash dj830server.sh</code></pre>
+    
+   
 Select Web-server for DOMjudge!   
-apache2 or nginx? [apache2/nginx]:                    // <- apache2 or nginx   
+apache2 or nginx? [apache2/nginx]:                    // <- apache2 //apache2 or nginx    
 ...   
-...                                                   // select timezone   
+[sudo] password for ubuntu:                           // <- input user password    
 ...   
-Enter current password for root (enter for none) :    // <- enter   
+Please select a continent, ocean, "coord", or "TZ".    
+ 1) Africa    
+ ...    
+ 9) Pacific Ocean    
+10) coord - I want to use geographical coordinates.    
+11) TZ - I want to specify the timezone using the Posix TZ format.    
+#?                                                    // <- select your timezone   
+...   
+Enter current password for root (enter for none) :    // <- just enter   
 ...   
 Switch to unix_socket autentication [Y/n] :           // <- n   
 ...   
 Change the root password? [Y/n] :                     // <- y      //You must! change mariaDB's root password!    
-New password:                                         // <- ????   //Enter  your password!!    <- #1    
-RE-enter new password:                                // <-        //Repeat your password!!    
+New password:                                         // <- ????   //Enter  your own password!! <- Take note PW #1    
+Re-enter new password:                                // <-        //Repeat ...    
 ...   
 Remove anonymous user? [Y/n] :                        // <- y   
 ...   
@@ -33,14 +58,19 @@ Remove test database and access to it? [Y/n] :        // <- y
 ...   
 Reload privilege tables now? [Y/n] :                  // <- y   
 ...   
+Continue as root/super user [yes]?                    // <- yes   
+...    
+[sudo] password for ubuntu:                           // <- input user password   
 Database credentials read from '/opt/domjudge/domserver/etc/dbpasswords.secret'.   
-Enter password:                                       // <- ????   //Enter your (#1) password!!    
+Enter password:                                       // <- ????   //Use your own PW #1    
 DOMjudge database and user(s) created.   
-Enter password:                                       // <- ????   //Enter your (#1) password!!    
+Enter password:                                       // <- ????   //Use your own PW #1    
 ...   
-Sytem will be rebooted in 20 seconds!    
-20    
-19   
+Saved as readme.txt
+...    
+System will be rebooted in 10 seconds!
+
+10    
 .     
 .    
 .    
@@ -49,102 +79,111 @@ Sytem will be rebooted in 20 seconds!
 1   
 0   
 rebooted!   
-</code></pre>
     
     
     
 ---    
-#After rebooted, judgehosts must be started by manually!   
-#To start judgehosts...
-<pre><code>bash dj823start.sh</code></pre>
-Judgehosts will be automatically started depending on the number of CPU cores...   
-<pre><code>
-
- // Clearing the cache for the prod environment with debug false                     
-                                                                                
- [OK] Cache for the "prod" environment (debug=false) was successfully cleared.  
-                                                                                
-DOMjudge cache cleared!
-DOMjudge webserver cache cleared!
-
-CPU(s):                          ?
-Thread(s) per core:              ?
-
-Starting create cgroups...
-create cgroups started!
-
-Starting judgedaemon...
-start judgedaemon-run-0...
-judgedaemon-run-0 started!
+#After rebooted, check DOMjudge server first!    
     
+#To login DOMjudge as admin, admin password needed.    
+#DOMjudge admin password saved in readme.txt    
+At console terminal    
     
-CPU information
-CPU(s):                          ?
-Thread(s) per core:              ?
-? judgedamons started!
+<pre><code>cat readme.txt</code></pre>
     
-</code></pre>
-
----
-#To login DOMjudge as admin, admin password needed.
-#DOMjudge admin password saved in domjudge.txt    
-#To check DOMjudge admin password...    
-<pre><code>cat domjudge.txt</code></pre>
-
-<pre><code>
 ...    
-http://localhost/domjudge/    
+Check this(DOMjudge) server's web page   
+http://...    
 admin ID : admin    
-admin PW : ????????????????    
-...    
-</code></pre>    
+admin PW : ????????????????                       // Take note this PW #2    
     
----
-#To domserver http web cache clearing    
-<pre><code>bash dj823clear.sh</code></pre>
+Use DOMjudge server URL & judgehost ID/PW with below at judgehosts server    
+---    
+DOMjudge server URL          : http://...         // Take note this URL(private/public IP address) #1
+DOMjudge server judgehost PW : ????????????????   // Take note this PW #3   
     
-<pre><code>
- // Clearing the cache for the prod environment with debug false    
-                                                                                
- [OK] Cache for the "prod" environment (debug=false) was successfully cleared.  
-    
-DOMjudge cache cleared!
-DOMjudge webserver cache cleared!
-</code></pre>
-    
----
-#To kill some judgedaemon processe    
-<pre><code>ps -ef, and find pid# of judgedaemon, run : kill -9 pid#</code></pre>
+---    
     
     
----
-#To clear domserver web cache    
-<pre><code>sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*</code></pre>
+--- For DOMjudge judgehosts ---    
+   
+#DOMjudge judgehosts auto installation    
     
-#To clear DOMjudge cache    
-<pre><code>sudo /opt/domjudge/domserver/webapp/bin/console cache:clear</code></pre>
+#Prerequisite    
+- Ubuntu 22.04 LTS installed server or desktop (AWS OK)    
     
----
-#To use korean interface for korean middle & high students participants    
-#To replace participants interface, english to korean...    
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj822kr.sh</code></pre>
-<pre><code>bash dj823kr.sh</code></pre>
+#Auto installation commands and steps...    
+At console terminal    
     
-<pre><code>
-...
-Rename DOMjudge logo name? [y/n]:      // <- y/n    //If you want to change DOMjudge name, enter y.
-...
-Enter  DOMjudge NAME : ????            // <- ????   //Enter  new contest short name!!
-Repeat DOMjudge NAME : ????            // <-        //Repeat
-...
-DOMjudge 8.2.3 stable 24.02.28
-DOMjudge participants' korean interface installed!
-For korean middle & high school students.
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830judgehost.sh</code></pre>
+<pre><code>bash dj830judgehost.sh</code></pre>
+    
+...   
+DOMjudge server must be installed at the other system!!    
 
-Check DOMserver's web interface!
-------
-http://localhost/domjudge/
-</code></pre>
+Did you make Domjudge server? [y/n]:                  // <- y    
+
+[sudo] password for ubuntu:                           // <- input user password     
+...    
+Please select a continent, ocean, "coord", or "TZ".    
+ 1) Africa    
+ ...    
+ 9) Pacific Ocean    
+10) coord - I want to use geographical coordinates.    
+11) TZ - I want to specify the timezone using the Posix TZ format.    
+#?                                                    // <- select your timezone   
+...   
+Input DOMjudge server URL
+Examples:
+http://123.123.123.123
+http://contest.domjudge.org
+https://contest.domjudge.org
+    
+Input   DOMjudge server URL : http://??????           // <- use DOMjudge server's IP address or Domain name #1   
+Repeat  DOMjudge server URL : http://??????           // repeat...  
+DOMjudge server URL set completed!    
+    
+    
+Input DOMjudge server's judgehost PW    
+You can find judgehost PW at DOMjudge server's /opt/domjudge/domserver/etc/restapi.secret    
+    
+Enter  DOMjudge server judgehost PW :                 // <- ????   //Use PW #3 
+Repeat DOMjudge server judgehost PW :                 // repeat...
+...    
+Saved as readme.txt    
+...    
+Sytem will be rebooted in 10 seconds!    
+
+10    
+.     
+.    
+.    
+3    
+2    
+1   
+0   
+rebooted!   
+    
+    
+#After every DOMjudge judgehosts server rebooted, judgehost process must be started by manually!   
+    
+#To start judgehosts...
+At console terminal    
+    
+<pre><code>bash dj830start.sh</code></pre>
+    
+DOMjudge judgehosts starting started...
+    
+    
+CPU information    
+CPU(s):                               ?
+[sudo] password for ubuntu:                           // <- input user password     
+   
+...    
+? judgedamons started!    
+    
+DOMjudge judgehosts starting completed...    
+    
         
 ---
 #spotboard for DOMjudge   
