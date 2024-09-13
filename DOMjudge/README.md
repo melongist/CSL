@@ -25,10 +25,10 @@ https://www.domjudge.org/
     
 #Auto installation commands and steps...    
 At console terminal    
-    
+</pre>
 <code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830server.sh</code>
 <code>bash dj830server.sh</code>
-    
+<pre>    
    
 Select Web-server for DOMjudge!   
 apache2 or nginx? [apache2/nginx]:                    // <- apache2 //apache2 or nginx    
