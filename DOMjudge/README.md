@@ -12,7 +12,7 @@
     
     
 --- For DOMjudge server ---    
-
+    
 #DOMjudge 8.3.0 stable    
 <https://www.domjudge.org/>   
     
@@ -60,16 +60,16 @@ Reload privilege tables now? [Y/n] :                  // <- y
 ...   
 Continue as root/super user [yes]?                    // <- yes   
 ...    
-[sudo] password for ubuntu:                           // <- input user password   
-Database credentials read from '/opt/domjudge/domserver/etc/dbpasswords.secret'.   
+[sudo] password for ubuntu:                           // <- input user password    
+Database credentials read from '/opt/domjudge/domserver/etc/dbpasswords.secret'.    
 Enter password:                                       // <- ????   //Use your own PW #1    
 DOMjudge database and user(s) created.   
 Enter password:                                       // <- ????   //Use your own PW #1    
 ...   
-Saved as readme.txt
+Saved as readme.txt    
 ...    
-System will be rebooted in 10 seconds!
-
+System will be rebooted in 10 seconds!    
+    
 10    
 .     
 .    
@@ -92,15 +92,15 @@ At console terminal
 <pre><code>cat readme.txt</code></pre>
     
 ...    
-Check this(DOMjudge) server's web page   
+Check this(DOMjudge) server's web page    
 http://...    
 admin ID : admin    
 admin PW : ????????????????                       // Take note this PW #2    
     
 Use DOMjudge server URL & judgehost ID/PW with below at judgehosts server    
 ---    
-DOMjudge server URL          : http://...         // Take note this URL(private/public IP address) #1
-DOMjudge server judgehost PW : ????????????????   // Take note this PW #3   
+DOMjudge server URL          : http://...         // Take note this URL(private/public IP address) #1    
+DOMjudge server judgehost PW : ????????????????   // Take note this PW #3    
     
 ---    
     
@@ -118,11 +118,11 @@ At console terminal
 <pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830judgehost.sh</code></pre>
 <pre><code>bash dj830judgehost.sh</code></pre>
     
-...   
+...    
 DOMjudge server must be installed at the other system!!    
-
+    
 Did you make Domjudge server? [y/n]:                  // <- y    
-
+    
 [sudo] password for ubuntu:                           // <- input user password     
 ...    
 Please select a continent, ocean, "coord", or "TZ".    
@@ -131,52 +131,52 @@ Please select a continent, ocean, "coord", or "TZ".
  9) Pacific Ocean    
 10) coord - I want to use geographical coordinates.    
 11) TZ - I want to specify the timezone using the Posix TZ format.    
-#?                                                    // <- select your timezone   
+#?                                                    // <- select your timezone    
 ...   
-Input DOMjudge server URL
-Examples:
-http://123.123.123.123
-http://contest.domjudge.org
-https://contest.domjudge.org
+Input DOMjudge server URL    
+Examples:    
+http://123.123.123.123    
+http://contest.domjudge.org    
+https://contest.domjudge.org    
     
-Input   DOMjudge server URL : http://??????           // <- use DOMjudge server's IP address or Domain name #1   
-Repeat  DOMjudge server URL : http://??????           // repeat...  
+Input   DOMjudge server URL : http://??????           // <- use DOMjudge server's IP address or Domain name #1    
+Repeat  DOMjudge server URL : http://??????           // repeat...    
 DOMjudge server URL set completed!    
     
     
 Input DOMjudge server's judgehost PW    
 You can find judgehost PW at DOMjudge server's /opt/domjudge/domserver/etc/restapi.secret    
     
-Enter  DOMjudge server judgehost PW :                 // <- ????   //Use PW #3 
-Repeat DOMjudge server judgehost PW :                 // repeat...
+Enter  DOMjudge server judgehost PW :                 // <- ????   //Use PW #3    
+Repeat DOMjudge server judgehost PW :                 // repeat...    
 ...    
 Saved as readme.txt    
 ...    
 Sytem will be rebooted in 10 seconds!    
-
+    
 10    
 .     
 .    
 .    
 3    
 2    
-1   
+1    
 0   
-rebooted!   
+rebooted!    
     
     
-#After every DOMjudge judgehosts server rebooted, judgehost process must be started by manually!   
+#After every DOMjudge judgehosts server rebooted, judgehost process must be started by manually!    
     
-#To start judgehosts...
+#To start judgehosts...    
 At console terminal    
     
 <pre><code>bash dj830start.sh</code></pre>
     
-DOMjudge judgehosts starting started...
+DOMjudge judgehosts starting started...    
     
     
 CPU information    
-CPU(s):                               ?
+CPU(s):                               ?    
 [sudo] password for ubuntu:                           // <- input user password     
    
 ...    
@@ -185,22 +185,22 @@ CPU(s):                               ?
 DOMjudge judgehosts starting completed...    
     
         
----
+---    
 #spotboard for DOMjudge   
-<https://github.com/spotboard/spotboard>
-
-#Prerequisite   
-- DOMjudge(server + judgehost) installed   
-
-#Installation commands to install spotboard for DOMjudge   
-
+<https://github.com/spotboard/spotboard>    
+    
+#Prerequisite    
+- DOMjudge(server + judgehost) installed    
+    
+#Installation commands to install spotboard for DOMjudge    
+    
 <pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/sb070.sh</code></pre>
 <pre><code>bash sb070.sh</code></pre>
     
     
-#After judgehosts installed.
+#After judgehosts installed.    
 <pre><code>
-Check spotboard!
+Check spotboard!    
 ------
 http://localhost/spotboard/dist/
 
