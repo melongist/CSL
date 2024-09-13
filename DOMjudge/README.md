@@ -82,16 +82,18 @@ System will be rebooted in 10 seconds!
 rebooted!   
     
     
-    
+</pre>    
 ---    
+<pre>
 #After rebooted, check DOMjudge server first!    
     
 #To login DOMjudge as admin, admin password needed.    
 #DOMjudge admin password saved in readme.txt    
 At console terminal    
-    
-<code>cat readme.txt</code>
-    
+</pre>
+<pre><code>cat readme.txt</code></pre>
+<pre>
+
 ...    
 Check this(DOMjudge) server's web page    
 http://...    
@@ -116,10 +118,10 @@ DOMjudge server judgehost PW : ????????????????   // Take note this PW #3
     
 #Auto installation commands and steps...    
 At console terminal    
-    
-<code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830judgehost.sh</code>
-<code>bash dj830judgehost.sh</code>
-    
+</pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830judgehost.sh</code></pre>
+<pre><code>bash dj830judgehost.sh</code></pre>
+<pre>    
 ...    
 DOMjudge server must be installed at the other system!!    
     
@@ -167,12 +169,15 @@ Sytem will be rebooted in 10 seconds!
 rebooted!    
     
     
+</pre>
+<pre>
 #After every DOMjudge judgehosts server rebooted, judgehost process must be started by manually!    
     
 #To start judgehosts...    
 At console terminal    
-    
-<code>bash dj830start.sh</code>
+</pre>
+<pre><code>bash dj830start.sh</code></pre>
+<pre>
     
 DOMjudge judgehosts starting started...    
     
