@@ -15,7 +15,7 @@
 --- For DOMjudge server ---    
     
 #DOMjudge 8.3.0 stable    
-<https://www.domjudge.org/>   
+https://www.domjudge.org/ 
     
    
 #DOMjudge server auto installation   
