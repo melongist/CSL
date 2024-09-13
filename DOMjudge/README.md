@@ -1,6 +1,7 @@
 #24.09.10   
     
 ---    
+    
 #It is recommended to separate main server and dedicated judgehost server.    
 #https://www.domjudge.org/docs/manual/8.3/overview.html#features    
 #Each judgehost should be a dedicated (virtual) machine that performs no other tasks.    
@@ -10,7 +11,7 @@
 #Having all judgehosts be of uniform hardware configuration helps in creating a fair, reproducible setup;    
 #in the ideal case they are run on the same type of machines that the teams use.    
     
-    
+<pre>    
 --- For DOMjudge server ---    
     
 #DOMjudge 8.3.0 stable    
@@ -25,8 +26,8 @@
 #Auto installation commands and steps...    
 At console terminal    
     
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830server.sh</code></pre>
-<pre><code>bash dj830server.sh</code></pre>
+<code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830server.sh</code>
+<code>bash dj830server.sh</code>
     
    
 Select Web-server for DOMjudge!   
@@ -34,7 +35,6 @@ apache2 or nginx? [apache2/nginx]:                    // <- apache2 //apache2 or
 ...   
 [sudo] password for ubuntu:                           // <- input user password    
 ...   
-<pre>
 Please select a continent, ocean, "coord", or "TZ".    
  1) Africa    
  ...    
@@ -42,7 +42,6 @@ Please select a continent, ocean, "coord", or "TZ".
 10) coord - I want to use geographical coordinates.    
 11) TZ - I want to specify the timezone using the Posix TZ format.    
 #?                                                    // <- select your timezone   
-</pre>
 ...   
 Enter current password for root (enter for none) :    // <- just enter   
 ...   
@@ -91,7 +90,7 @@ rebooted!
 #DOMjudge admin password saved in readme.txt    
 At console terminal    
     
-<pre><code>cat readme.txt</code></pre>
+<code>cat readme.txt</code>
     
 ...    
 Check this(DOMjudge) server's web page    
@@ -106,7 +105,8 @@ DOMjudge server judgehost PW : ????????????????   // Take note this PW #3
     
 ---    
     
-    
+</pre>    
+<pre>
 --- For DOMjudge judgehosts ---    
    
 #DOMjudge judgehosts auto installation    
@@ -117,8 +117,8 @@ DOMjudge server judgehost PW : ????????????????   // Take note this PW #3
 #Auto installation commands and steps...    
 At console terminal    
     
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830judgehost.sh</code></pre>
-<pre><code>bash dj830judgehost.sh</code></pre>
+<code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830judgehost.sh</code>
+<code>bash dj830judgehost.sh</code>
     
 ...    
 DOMjudge server must be installed at the other system!!    
@@ -127,7 +127,6 @@ Did you make Domjudge server? [y/n]:                  // <- y
     
 [sudo] password for ubuntu:                           // <- input user password     
 ...    
-<pre>
 Please select a continent, ocean, "coord", or "TZ".    
  1) Africa    
  ...    
@@ -135,7 +134,6 @@ Please select a continent, ocean, "coord", or "TZ".
 10) coord - I want to use geographical coordinates.    
 11) TZ - I want to specify the timezone using the Posix TZ format.    
 #?                                                    // <- select your timezone    
-</pre>
 ...   
 Input DOMjudge server URL    
 Examples:    
@@ -174,7 +172,7 @@ rebooted!
 #To start judgehosts...    
 At console terminal    
     
-<pre><code>bash dj830start.sh</code></pre>
+<code>bash dj830start.sh</code>
     
 DOMjudge judgehosts starting started...    
     
@@ -189,6 +187,7 @@ CPU(s):                               ?
 DOMjudge judgehosts starting completed...    
     
         
+</pre>
 ---    
 #spotboard for DOMjudge   
 <https://github.com/spotboard/spotboard>    
