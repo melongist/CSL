@@ -34,6 +34,7 @@ apache2 or nginx? [apache2/nginx]:                    // <- apache2 //apache2 or
 ...   
 [sudo] password for ubuntu:                           // <- input user password    
 ...   
+<pre>
 Please select a continent, ocean, "coord", or "TZ".    
  1) Africa    
  ...    
@@ -41,6 +42,7 @@ Please select a continent, ocean, "coord", or "TZ".
 10) coord - I want to use geographical coordinates.    
 11) TZ - I want to specify the timezone using the Posix TZ format.    
 #?                                                    // <- select your timezone   
+</pre>
 ...   
 Enter current password for root (enter for none) :    // <- just enter   
 ...   
@@ -125,6 +127,7 @@ Did you make Domjudge server? [y/n]:                  // <- y
     
 [sudo] password for ubuntu:                           // <- input user password     
 ...    
+<pre>
 Please select a continent, ocean, "coord", or "TZ".    
  1) Africa    
  ...    
@@ -132,6 +135,7 @@ Please select a continent, ocean, "coord", or "TZ".
 10) coord - I want to use geographical coordinates.    
 11) TZ - I want to specify the timezone using the Posix TZ format.    
 #?                                                    // <- select your timezone    
+</pre>
 ...   
 Input DOMjudge server URL    
 Examples:    
