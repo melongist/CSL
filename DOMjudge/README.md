@@ -1,4 +1,4 @@
-#24.09.10   
+#24.09.15   
     
 ---    
     
@@ -14,7 +14,7 @@
 <pre>    
 --- For DOMjudge server ---    
     
-#DOMjudge 8.3.0 stable    
+#DOMjudge 8.3.1 stable    
 https://www.domjudge.org/ 
     
    
@@ -26,8 +26,8 @@ https://www.domjudge.org/
 #Auto installation commands and steps...    
 At console terminal    
 </pre>
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830server.sh</code></pre>
-<pre><code>bash dj830server.sh</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831server.sh</code></pre>
+<pre><code>bash dj831server.sh</code></pre>
 <pre>    
    
 Select Web-server for DOMjudge!   
@@ -119,8 +119,8 @@ DOMjudge server judgehost PW : ????????????????   // Take note this PW #3
 #Auto installation commands and steps...    
 At console terminal    
 </pre>
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj830judgehost.sh</code></pre>
-<pre><code>bash dj830judgehost.sh</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831judgehost.sh</code></pre>
+<pre><code>bash dj831judgehost.sh</code></pre>
 <pre>    
 ...    
 DOMjudge server must be installed at the other system!!    
@@ -176,7 +176,7 @@ rebooted!
 #To start judgehosts...    
 At console terminal    
 </pre>
-<pre><code>bash dj830start.sh</code></pre>
+<pre><code>bash dj831start.sh</code></pre>
 <pre>
     
 DOMjudge judgehosts starting started...    
