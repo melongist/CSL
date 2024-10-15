@@ -71,6 +71,12 @@ sudo sed -i "s/'data' => 'Jury',/'data' => '심사위원단', 'label' => '수신
 sudo sed -i "s/'choices' => \$subjects,/'choices' => \$subjects, 'label' => '제목',/" /opt/domjudge/domserver/webapp/src/Form/Type/TeamClarificationType.php
 sudo sed -i "s/'attr' =>/'label' => '내용', 'attr' =>/" /opt/domjudge/domserver/webapp/src/Form/Type/TeamClarificationType.php
 
+#webapp/src/Twig/TwigExtension.php
+sudo sed -i "s/scheduled to start /시작 예정 /" /opt/domjudge/domserver/webapp/src/Twig/TwigExtension.php
+sudo sed -i "s/start delayed, was scheduled /시작 지연됨 /" /opt/domjudge/domserver/webapp/src/Twig/TwigExtension.php
+sudo sed -i "s/\"at \"/\"시간 \"/" /opt/domjudge/domserver/webapp/src/Twig/TwigExtension.php
+sudo sed -i "s/\"on \"/\"날짜 및 시간 \"/" /opt/domjudge/domserver/webapp/src/Twig/TwigExtension.php
+
 #webapp/templates/partials/menu_change_contest.html
 sudo sed -i "s/>Change Contest/>대회 변경/" /opt/domjudge/domserver/webapp/templates/partials/menu_change_contest.html.twig
 sudo sed -i "s/>no contest/>대회 없음/" /opt/domjudge/domserver/webapp/templates/partials/menu_change_contest.html.twig
