@@ -60,10 +60,10 @@ sudo apt install unzip -y
 
 case ${WEBSERVER} in
   "apache2")
-    sudo apt install -y apache2
+    sudo apt install apache2 -y
     ;;
   "nginx")
-    sudo apt install -y nginx
+    sudo apt install nginx -y
     sudo systemctl enable nginx
     sudo service nginx start
     ;;
@@ -98,15 +98,15 @@ case ${WEBSERVER} in
 esac
 
 
-sudo apt install -y curl
+sudo apt install curl -y
 
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt-get install nodejs -y
 
 
 
 #sudo apt -y install nodejs
-sudo apt -y install npm
+sudo apt install npm -y
 
 #nodejs stable update
 sudo npm cache clean -f
@@ -114,7 +114,7 @@ sudo npm install -g n
 sudo n stable
 node -v
 
-
+sudo npm install -g npm@latest
 sudo npm install -g npm
 sudo npm install -g grunt-cli
 
