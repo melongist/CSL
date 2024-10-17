@@ -16,16 +16,24 @@
 #Having all judgehosts be of uniform hardware configuration helps in creating a fair, reproducible setup; 
 #in the ideal case they are run on the same type of machines that the teams use.
 
-
 #This installation script only works on Ubuntu 22.04 LTS!!
 
 #DOMjudge8.3.1 stable(2024.09.13) + Ubuntu 22.04.4 LTS + apache2/nginx
 
+
+
+
 #DOMjudge server installation script
+
+
+
+
 #terminal commands to install dedicated DOMjudge server
-#------
 #wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831server.sh
 #bash dj831server.sh
+
+
+#------
 
 DJVER="8.3.1 stable (2024.09.13)"
 DOMVER="domjudge-8.3.1"
@@ -349,9 +357,9 @@ sudo apt autoremove -y
 
 
 #Other script set download
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831clear.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831mas.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831https.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831serverclear.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831servermas.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831serverhttps.sh
 
 
 
@@ -389,13 +397,13 @@ echo "" | tee -a ~/${README}
 
 echo "When DOMjudge server H/W memory size changed?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "bash dj831mas.sh" | tee -a ~/${README}
+echo "bash dj831servermas.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
 echo "To clear DOMjudge server/webserver cache?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "bash dj831clear.sh" | tee -a ~/${README}
+echo "bash dj831serverclear.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 

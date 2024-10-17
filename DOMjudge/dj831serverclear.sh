@@ -1,18 +1,27 @@
 #!/bin/bash
 
-#2024.9 Made by melongist(melongist@gmail.com) for CS teachers
+#2024.10 Made by melongist(melongist@gmail.com) for CS teachers
 
 #origin
 #https://www.domjudge.org/
 #https://github.com/DOMjudge/domjudge
 
-#DOMjudge8.3.1 stable(2024.05.31) + Ubuntu 22.04.4 LTS + apache2/nginx
+
+
 
 #DOMjudge server cache & webserver cache clearing script
 
 
+
+
+#Terminal commands to clear server cache & webserver cache
+#bash dj831serverclear.sh
+
+
+#------
+
 if [[ $SUDO_USER ]] ; then
-  echo "Just use 'bash dj831clear.sh'"
+  echo "Just use 'bash dj831serverclear.sh'"
   exit 1
 fi
 

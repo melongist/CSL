@@ -16,16 +16,24 @@
 #Having all judgehosts be of uniform hardware configuration helps in creating a fair, reproducible setup; 
 #in the ideal case they are run on the same type of machines that the teams use.
 
-
 #This installation script only works on Ubuntu 22.04 LTS!!
 
 #DOMjudge8.3.1 stable(2024.09.13) + Ubuntu 22.04.4 LTS + apache2/nginx
 
+
+
+
 #DOMjudge judgehost installation script
+
+
+
+
 #terminal commands to install dedicated remote DOMjudge judgehost server
-#------
 #wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831judgehost.sh
 #bash dj831judgehost.sh
+
+
+#------
 
 DJVER="8.3.1 stable (2024.09.13)"
 DOMVER="domjudge-8.3.1"
@@ -226,7 +234,7 @@ sudo sed -i "s:#kernel.sysrq=438:#kernel.sysrq=438\n\nkernel.randomize_va_space=
 sudo apt autoremove -y
 
 #scripts set download
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831jhs.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831judgehoststart.sh
 
 
 echo "Input DOMjudge server URL"
@@ -282,7 +290,7 @@ echo "" | tee -a ~/${README}
 
 echo "To start judgehosts after every reboot?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "bash dj831jhs.sh" | tee -a ~/${README}
+echo "bash dj831judgehoststart.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 

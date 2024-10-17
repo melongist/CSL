@@ -1,18 +1,26 @@
 #!/bin/bash
 
-#2024.9 Made by melongist(melongist@gmail.com) for CS teachers
+#2024.10 Made by melongist(melongist@gmail.com) for CS teachers
 
 #DOMjudge8.3.1 stable(2024.09.13) + Ubuntu 22.04.4 LTS + apache2/nginx
 
+
+
+
 #DOMjudge server Secure HTTPS install script
+
+
+
+
 #terminal commands to install dedicated DOMjudge server
-#------
 #wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831serverhttps.sh
 #bash dj831serverhttps.sh
 
+
+#------
 DJVER="8.3.1 stable (2024.09.13)"
 DOMVER="domjudge-8.3.1"
-THIS="dj831https.sh"
+THIS="dj831serverhttps.sh"
 README="readme.txt"
 
 

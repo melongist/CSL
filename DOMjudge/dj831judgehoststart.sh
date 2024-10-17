@@ -6,21 +6,26 @@
 #https://www.domjudge.org/
 #https://github.com/DOMjudge/domjudge
 
-#judgehosts starting script for DOMjudge judgehost
 
-#DOMjudge judgehosts starting script
+
+
+#DOMjudge judgehost judgehosts starting script
+
+
+
+
 #Terminal commands to start judgehosts
-#------
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831jhs.sh
-#bash dj831jhs.sh
+#bash dj831judgehoststart.sh
 
+
+#------
 
 if [[ $SUDO_USER ]] ; then
-  echo "Just use 'bash dj831jhs.sh'"
+  echo "Just use 'bash dj831judgehoststart.sh'"
   exit 1
 fi
 
-echo "DOMjudge judgehosts starting started..."
+echo "DOMjudge judgehosts starting ..."
 echo ""
 echo ""
 echo "CPU information"

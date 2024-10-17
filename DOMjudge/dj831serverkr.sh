@@ -1,17 +1,26 @@
 #!/bin/bash
 
 #DOMjudge server Korean language patch script
-#2024.9 Made by melongist(melongist@gmail.com) for CS teachers
+#2024.10 Made by melongist(melongist@gmail.com) for CS teachers
 #DOMjudge8.3.1 stable + Ubuntu 22.04.4 LTS + apache2/nginx
 
-#terminal commands to install Korean patch 
-#------
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831kr.sh
-#bash dj831kr.sh
 
+
+
+#DOMjudge korean interface installation script for middle/high school student.
+
+
+
+
+#terminal commands to install Korean patch 
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831serverkr.sh
+#bash dj831serverkr.sh
+
+
+#------
 
 if [[ $SUDO_USER ]] ; then
-  echo "Just use 'bash dj831kr.sh'"
+  echo "Just use 'bash dj831serverkr.sh'"
   exit 1
 fi
 
