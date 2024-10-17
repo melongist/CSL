@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2024.9 Made by melongist(melongist@gmail.com) for CS teachers
+#2024.10 Made by melongist(melongist@gmail.com) for CS teachers
 
 #origin
 #https://www.domjudge.org/
@@ -11,12 +11,12 @@
 #DOMjudge judgehosts starting script
 #Terminal commands to start judgehosts
 #------
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831start.sh
-#bash dj831start.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831jhs.sh
+#bash dj831jhs.sh
 
 
 if [[ $SUDO_USER ]] ; then
-  echo "Just use 'bash dj831start.sh'"
+  echo "Just use 'bash dj831jhs.sh'"
   exit 1
 fi
 

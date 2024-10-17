@@ -176,7 +176,7 @@ rebooted!
 #To start judgehosts...    
 At console terminal    
 </pre>
-<pre><code>bash dj831start.sh</code></pre>
+<pre><code>bash dj831jhs.sh</code></pre>
 <pre>
     
 DOMjudge judgehosts starting started...    

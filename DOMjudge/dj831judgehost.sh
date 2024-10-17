@@ -226,7 +226,7 @@ sudo sed -i "s:#kernel.sysrq=438:#kernel.sysrq=438\n\nkernel.randomize_va_space=
 sudo apt autoremove -y
 
 #scripts set download
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831start.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831jhs.sh
 
 
 echo "Input DOMjudge server URL"
@@ -282,7 +282,7 @@ echo "" | tee -a ~/${README}
 
 echo "To start judgehosts after every reboot?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "bash dj830start.sh" | tee -a ~/${README}
+echo "bash dj831jhs.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
