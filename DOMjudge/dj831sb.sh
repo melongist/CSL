@@ -33,41 +33,6 @@ while [ ${WEBSERVER} != "apache2" ] && [ ${WEBSERVER} != "nginx" ]; do
   read WEBSERVER
 done
 
-case ${WEBSERVER} in
-  "apache2")
-    ;;
-  "nginx")
-    INPUTS="x"
-    while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
-      echo    ""
-      echo    "DOMjudge(+nginx) must have domain name!"
-      echo -n "Do you have domain name? [y/n]: "
-      read INPUTS
-    done
-
-    echo ""
-    if [ ${INPUTS} == "y" ] ; then
-      DOMAINNAME="o"
-      INPUTS="x"
-      while [ ${DOMAINNAME} != ${INPUTS} ]; do
-        echo    ""
-        echo -n "Enter  domain name : "
-        read DOMAINNAME
-        echo -n "Repeat domain name : "
-        read INPUTS
-      done
-    else
-      echo "Use DOMjudge(+apache2)"
-      exit 1
-    fi
-
-    echo ""
-    echo ${DOMAINNAME} > domainname.txt
-    ;;
-esac
-
-cd
-
 #time synchronization
 echo ""
 sudo timedatectl
@@ -88,8 +53,9 @@ sudo sed -i "s:#\$nrconf{kernelhints} = -1:\$nrconf{kernelhints} = 0:" /etc/need
 
 
 sudo apt update
-sudo apt -y upgrade
-sudo apt intall unzip -y
+sudo apt upgrade -y
+
+sudo apt install unzip -y
 
 
 case ${WEBSERVER} in
@@ -272,8 +238,6 @@ sed -i "s#cid: 1#cid: $CID#" ./config.js
 
 
 npm install
-
-clear
 
 cd
 
