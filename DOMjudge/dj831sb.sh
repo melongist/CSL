@@ -214,6 +214,8 @@ while [ ${INPUTS} = "n" ]; do
   read INPUTS
 done
 
+echo ""
+
 INPUTS="n"
 SBACCOUNTPW=""
 while [ ${INPUTS} = "n" ]; do
@@ -222,6 +224,8 @@ while [ ${INPUTS} = "n" ]; do
   echo -n "spotboard jury account password  : $SBACCOUNTPW     OK?[y/n] "
   read INPUTS
 done
+
+echo ""
 
 INPUTS="n"
 CID=""
@@ -236,6 +240,7 @@ sed -i "s#username: 'username'#username: '$SBACCOUNT'#" ./config.js
 sed -i "s#password: 'password'#password: '$SBACCOUNTPW'#" ./config.js
 sed -i "s#cid: 1#cid: $CID#" ./config.js
 
+echo ""
 
 npm install
 
