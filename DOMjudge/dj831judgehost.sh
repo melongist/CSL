@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2024.9 Made by melongist(melongist@gmail.com) for CS teachers
+#2024.10 Made by melongist(melongist@gmail.com) for CS teachers
 
 #origin
 #https://www.domjudge.org/
@@ -218,7 +218,7 @@ if [ -e /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
 fi
 sudo update-grub
 #after reboot?
-sudo systemctl enable create-cgroups
+sudo systemctl enable create-cgroups --now
 
 
 #https://www.domjudge.org/docs/manual/8.3/judging.html
