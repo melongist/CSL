@@ -364,7 +364,7 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831server
 
 
 #Memory autoscaling for php(fpm)
-bash dj831mas.sh
+bash dj831servermas.sh
 
 
 PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
