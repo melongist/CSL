@@ -234,16 +234,16 @@ case ${WEBSERVER} in
     sudo ln -s -f /opt/domjudge/domserver/etc/domjudge-fpm.conf /etc/php/8.3/fpm/pool.d/domjudge.conf
     sudo a2enmod proxy_fcgi setenvif rewrite
     sudo systemctl restart apache2
-    sudo a2enconf php8.1-fpm domjudge
+    sudo a2enconf php8.3-fpm domjudge
     sudo systemctl reload apache2
-    sudo service php8.1-fpm reload
+    sudo service php8.3-fpm reload
     sudo service apache2 reload
     ;;
   "nginx")
     sudo apt install -y apache2-utils
     sudo systemctl disable apache2    ###disable apache2
     sudo ln -s -f /opt/domjudge/domserver/etc/nginx-conf /etc/nginx/sites-enabled/domjudge
-    sudo ln -s -f /opt/domjudge/domserver/etc/domjudge-fpm.conf /etc/php/8.1/fpm/pool.d/domjudge.conf
+    sudo ln -s -f /opt/domjudge/domserver/etc/domjudge-fpm.conf /etc/php/8.3/fpm/pool.d/domjudge.conf
     sudo sed -i "s:# server_names_hash_bucket_size 64;:server_names_hash_bucket_size 64;:g" /etc/nginx/nginx.conf
     sudo sed -i "s:_default_:${DOMAINNAME}:g" /opt/domjudge/domserver/etc/nginx-conf-inner
     sudo nginx -t
