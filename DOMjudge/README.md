@@ -3,6 +3,7 @@
 ---    
 DOMjudge 8.3.1 + apache2(with IP address for small contest) + Ubuntu 24.04 testing in progress.   
 DOMjudge 8.3.1 + nginx(with domain name for big contest) + Ubuntu 24.04 testing scheduled.   
+Making english PDF manual is scheduled.
     
     
 #24.09.15   
