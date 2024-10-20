@@ -218,7 +218,7 @@ if [ -e /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
 fi
 sudo update-grub
 #after reboot?
-sudo systemctl enable create-cgroups --now
+sudo systemctl enable create-cgroups
 
 
 #https://www.domjudge.org/docs/manual/8.3/judging.html
