@@ -178,13 +178,12 @@ do
 done
 
 
+cd
 
 
 #Adding sudo permissions
 sudo cp /opt/domjudge/judgehost/etc/sudoers-domjudge /etc/sudoers.d/
 sudo chmod 0440 /etc/sudoers.d/sudoers-domjudge
-
-
 
 
 #scripts set download
@@ -260,7 +259,7 @@ chmod 660 ~/${README}
 echo "Saved as ${README}"
 
 
-
+cd
 
 
 #Creating a chroot environment
