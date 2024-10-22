@@ -32,7 +32,6 @@
 #wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831server24.sh
 #bash dj831server24.sh
 
-
 #------
 
 DJVER="8.3.1 stable (2024.09.13)"

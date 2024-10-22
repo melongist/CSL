@@ -97,35 +97,6 @@ sudo sed -i "s:#\$nrconf{restart} = 'i':\$nrconf{restart} = 'a':" /etc/needresta
 sudo sed -i "s:#\$nrconf{kernelhints} = -1:\$nrconf{kernelhints} = 0:" /etc/needrestart/needrestart.conf
 
 
-INPUTS="x"
-while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
-  echo "You may reduce installation time with Ubuntu archive change (recommanded)."
-  echo "Find the archive mirror nearest to you from https://launchpad.net/ubuntu/+archivemirrors"
-  echo -n "Use Ubuntu mirror archive to reduce installation time? [y/n]: "
-  read INPUTS
-done
-
-echo ""
-if [ ${INPUTX} == "y" ] ; then
-  UBUNTUMIRROR="o"
-  INPUTS="x"
-  while [ ${UBUNTUMIRROR} != ${INPUTS} ]; do
-    echo "Examples:"
-    echo "http://us.archive.ubuntu.com/ubuntu/"
-    echo "https://ftp.kaist.ac.kr/ubuntu/"
-    echo ""
-    echo -n "Enter  Ubuntu archive mirror URL : "
-    read UBUNTUMIRROR
-    echo -n "Repeat Ubuntu archive mirror URL : "
-    read INPUTS
-  done
-else
-  UBUNTUMIRROR="http://us.archive.ubuntu.com/ubuntu"
-fi
-
-sudo sed "s#http://us.archive.ubuntu.com/ubuntu/#${UBUNTUMIRROR}/#" /etc/apt/sources.list.d/ubuntu.sources
-
-
 sudo apt update
 sudo apt upgrade -y
 
@@ -178,11 +149,9 @@ tar xvf ${DOMVER}.tar.gz
 rm ${DOMVER}.tar.gz
 
 
-sudo sed "s#http://us.archive.ubuntu.com/ubuntu/#https://ftp.kaist.ac.kr/ubuntu/#" ~/${DOMVER}/misc-tools/dj_make_chroot.in
-
-
-
-
+#for faster installation
+UBUNTUMIRROR=$(grep "^URIs:" /etc/apt/sources.list.d/ubuntu.sources|awk 'NR==1 {print $2}')
+sudo sed -i "s#http://us.archive.ubuntu.com/ubuntu/#${UBUNTUMIRROR}#" ~/${DOMVER}/misc-tools/dj_make_chroot.in
 
 
 #Building and installing
