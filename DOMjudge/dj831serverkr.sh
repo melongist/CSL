@@ -62,6 +62,9 @@ sudo sed -i "s/Browser denied permission to send desktop notifications./웹브�
 sudo sed -i "s/Re-enable notification permission in the browser and retry./웹브라우저의 알림 전송 권한을 허용한 후 시도해보세요./" /opt/domjudge/domserver/webapp/public/js/domjudge.js
 sudo sed -i "s/Really log out?/로그아웃 하시겠습니까?/" /opt/domjudge/domserver/webapp/public/js/domjudge.js
 
+#webapp/src/Controller/SecurityController.php
+sudo sed -i "s/'Account registered successfully. Please log in.'/'팀별ID가 등록되었습니다. 로그인하세요.'/" /opt/domjudge/domserver/webapp/src/Controller/SecurityController.php
+
 #webapp/src/Controller/Team/SubmissionController.php
 sudo sed -i "s/Submission done\! Watch for the verdict in the list below./채점이 제출되었습니다\! 페이지 새로고침을 눌러 채점 결과를 확인해주세요./" /opt/domjudge/domserver/webapp/src/Controller/Team/SubmissionController.php
 
@@ -96,6 +99,7 @@ sudo sed -i "s/no contest/대회 없음/" /opt/domjudge/domserver/webapp/templat
 #webapp/templates/partials/menu_login_logout_button.html.twig
 sudo sed -i "s/i> Logout/i> 로그아웃/" /opt/domjudge/domserver/webapp/templates/partials/menu_login_logout_button.html.twig
 sudo sed -i "s/i> Login/i> 로그인/" /opt/domjudge/domserver/webapp/templates/partials/menu_login_logout_button.html.twig
+sudo sed -i "s/i> Register/i> 참가등록/" /opt/domjudge/domserver/webapp/templates/partials/menu_login_logout_button.html.twig
 
 #webapp/templates/partials/modal.html.twig
 sudo sed -i "s/}Close/}닫기/" /opt/domjudge/domserver/webapp/templates/partials/modal.html.twig
@@ -163,6 +167,41 @@ sudo sed -i "s/Scoreboard/점수/" /opt/domjudge/domserver/webapp/templates/publ
 sudo sed -i "s/Problemset/문제/g" /opt/domjudge/domserver/webapp/templates/public/menu.html.twig
 sudo sed -i "s/Team/팀/" /opt/domjudge/domserver/webapp/templates/public/menu.html.twig
 sudo sed -i "s/Jury/대회운영/" /opt/domjudge/domserver/webapp/templates/public/menu.html.twig
+
+#webapp/templates/security/login.html.twig
+sudo sed -i "s/Don't have an account?/팀별ID가 없나요?/" /opt/domjudge/domserver/webapp/templates/security/login.html.twig
+sudo sed -i "s/>Register now/>팀별ID 만들기/" /opt/domjudge/domserver/webapp/templates/security/login.html.twig
+
+#webapp/templates/security/register.html.twig
+sudo sed -i "s/>Register Account/>팀별ID 등록/" /opt/domjudge/domserver/webapp/templates/security/register.html.twig
+sudo sed -i "s/Enter the following information to register your account with DOMjudge./>팀별ID 등록을 위해 아래 정보를 작성해주세요./" /opt/domjudge/domserver/webapp/templates/security/register.html.twig
+sudo sed -i "s/Already have an account?/이미 팀별ID가 있나요?/" /opt/domjudge/domserver/webapp/templates/security/register.html.twig
+sudo sed -i "s/>Login/>로그인하기/" /opt/domjudge/domserver/webapp/templates/security/register.html.twig
+
+#webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Username'/'팀별ID'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Full name (optional)'/'등록자 이름 (옵션)'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Email address (optional)'/'등록자 이메일 주소 (옵션)'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Team name'/'팀 이름'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'This team name is already in use.'/'팀 이름을 이미 사용중입니다.'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Use existing affiliation'/'등록된 조직에서 선택'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Add new affiliation'/'새 조직 추가'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'No affiliation'/'조직 없음'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Affiliation name'/'조직 이름'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Affiliation shortname'/'조직 이름 약자'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'No country'/'국가 선택 (옵션)'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'-- Select category --'/'-- 종류 선택 --'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Category'/'종류'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'-- Select affiliation --'/'-- 조직 선택 --'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Affiliation'/'조직'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'The password fields must match.'/'비밀번호가 일치하지 않습니다.'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Password'/'비밀번호'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Repeat Password'/'비밀번호 재입력'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Register'/'등록'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'This value should not be blank.'/'입력하세요.'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'This affiliation '/'이 '/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/' is already in use.'/' 이름은 이미 사용중입니다.'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'This value should not be blank.'/'입력하세요.'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 
 #webapp/templates/security/login.html.twig
 sudo sed -i "s/Please sign in/로그인하세요/" /opt/domjudge/domserver/webapp/templates/security/login.html.twig

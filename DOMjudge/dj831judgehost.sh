@@ -178,6 +178,7 @@ do
 done
 
 
+cd
 
 
 #Adding sudo permissions
@@ -185,55 +186,7 @@ sudo cp /opt/domjudge/judgehost/etc/sudoers-domjudge /etc/sudoers.d/
 sudo chmod 0440 /etc/sudoers.d/sudoers-domjudge
 
 
-
-
-#Creating a chroot environment
-#make chroot
-#add nodejs, r-base
-#sudo sed -i "s#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 locales\"#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 nodejs r-base locales\"#" /opt/domjudge/judgehost/bin/dj_make_chroot
-#default
-sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base,rustc
-
-
-cd
-
-#swift not working... temporary removed. 2022.11.17
-#sudo apt -y install clang libicu-dev
-#sudo wget https://download.swift.org/swift-5.7.1-release/ubuntu2204/swift-5.7.1-RELEASE/swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
-#sudo tar -zxvf swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
-#sudo rm swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
-#sudo mv ~/swift-5.7.1-RELEASE-ubuntu22.04 ~/swift
-
-#sudo ln -s -f ~/swift/usr/bin/swiftc /usr/bin/swiftc
-
-
-
-#Linux Control Groups
-#try #1 for Ubuntu 22.04 LTS
-sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash\"#GRUB_CMDLINE_LINUX_DEFAULT=\"quiet cgroup_enable=memory swapaccount=1 isolcpus=2 systemd.unified_cgroup_hierarchy=0\"#" /etc/default/grub
-#try #2 AWS Ubuntu 22.04 LTS Server
-if [ -e /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
-	echo "Editing /etc/default/grub.d/50-cloudimg-settings.cfg for AWS"
-  sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295\"#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295 quiet cgroup_enable=memory swapaccount=1 isolcpus=2 systemd.unified_cgroup_hierarchy=0\"#" /etc/default/grub.d/50-cloudimg-settings.cfg
-fi
-sudo update-grub
-#after reboot?
-sudo systemctl enable create-cgroups
-
-
-#https://www.domjudge.org/docs/manual/8.3/judging.html
-#For Judging consistency
-sudo sed -i "s:#kernel.sysrq=438:#kernel.sysrq=438\n\nkernel.randomize_va_space=0:g" /etc/sysctl.conf
-#+For lazy judging to increase capacity
-#In order to increase capacity, you can set the DOMjudge configuration option lazy_eval_results.
-#When enabled, judging of a submission will stop when a highest priority result has been found for any testcase.
-#You can find these priorities under the results_prio setting.
-
-
-
-sudo apt autoremove -y
-
-#scripts set download
+#judgehosts starting script download
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831judgehoststart.sh
 
 
@@ -304,6 +257,57 @@ echo "" | tee -a ~/${README}
 
 chmod 660 ~/${README}
 echo "Saved as ${README}"
+
+
+cd
+
+
+#Creating a chroot environment
+#make chroot
+#add nodejs, r-base
+#sudo sed -i "s#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 locales\"#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 nodejs r-base locales\"#" /opt/domjudge/judgehost/bin/dj_make_chroot
+#default
+sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base,rustc
+
+
+cd
+
+#swift not working... temporary removed. 2022.11.17
+#sudo apt -y install clang libicu-dev
+#sudo wget https://download.swift.org/swift-5.7.1-release/ubuntu2204/swift-5.7.1-RELEASE/swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
+#sudo tar -zxvf swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
+#sudo rm swift-5.7.1-RELEASE-ubuntu22.04.tar.gz
+#sudo mv ~/swift-5.7.1-RELEASE-ubuntu22.04 ~/swift
+
+#sudo ln -s -f ~/swift/usr/bin/swiftc /usr/bin/swiftc
+
+
+
+#Linux Control Groups
+#try #1 for Ubuntu 22.04 LTS
+sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash\"#GRUB_CMDLINE_LINUX_DEFAULT=\"quiet cgroup_enable=memory swapaccount=1 isolcpus=2 systemd.unified_cgroup_hierarchy=0\"#" /etc/default/grub
+#try #2 AWS Ubuntu 22.04 LTS Server
+if [ -e /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
+	echo "Editing /etc/default/grub.d/50-cloudimg-settings.cfg for AWS"
+  sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295\"#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295 quiet cgroup_enable=memory swapaccount=1 isolcpus=2 systemd.unified_cgroup_hierarchy=0\"#" /etc/default/grub.d/50-cloudimg-settings.cfg
+fi
+sudo update-grub
+#after reboot?
+sudo systemctl enable create-cgroups
+
+
+#https://www.domjudge.org/docs/manual/8.3/judging.html
+#For Judging consistency
+sudo sed -i "s:#kernel.sysrq=438:#kernel.sysrq=438\n\nkernel.randomize_va_space=0:g" /etc/sysctl.conf
+#+For lazy judging to increase capacity
+#In order to increase capacity, you can set the DOMjudge configuration option lazy_eval_results.
+#When enabled, judging of a submission will stop when a highest priority result has been found for any testcase.
+#You can find these priorities under the results_prio setting.
+
+
+
+sudo apt autoremove -y
+
 
 
 echo ""
