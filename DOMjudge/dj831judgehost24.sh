@@ -191,37 +191,36 @@ sudo chmod 0440 /etc/sudoers.d/sudoers-domjudge
 #judgehosts starting script download
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831judgehoststart24.sh
 
-
-echo "Input DOMjudge server URL"
-echo "Examples:"
-echo "http://123.123.123.123"
-echo "http://contest.domjudge.org"
-echo "https://contest.domjudge.org"
 SERVERURL="o"
 INPUTS="x"
 while [ ${SERVERURL} != ${INPUTS} ]; do
-  echo    ""
-  echo -n "Input  DOMjudge server URL : "
+  echo ""
+  echo "Input DOMjudge server's URL"
+  echo "Examples:"
+  echo "http://123.123.123.123"
+  echo "http://contest.domjudge.org"
+  echo "https://contest.domjudge.org"
+  echo ""
+  echo -n "Input  server's URL: "
   read SERVERURL
-  echo -n "Repeat DOMjudge server URL : "
+  echo -n "Repeat server's URL: "
   read INPUTS
 done
 sudo sed -i "s#http://localhost#${SERVERURL}#g" /opt/domjudge/judgehost/etc/restapi.secret
-echo "DOMjudge server URL set completed!"
-echo ""
+echo "DOMjudge server's URL setting is completed!"
 echo ""
 
-
-echo "Input DOMjudge server's judgehost PW"
-echo "You can find judgehost PW at DOMjudge server's /opt/domjudge/domserver/etc/restapi.secret"
 JUDGEHOSTOLDPW=$(cat /opt/domjudge/judgehost/etc/restapi.secret | grep "default" | awk  '{print $4}')
 JUDGEHOSTPW="o"
 INPUTS="x"
 while [ ${JUDGEHOSTPW} != ${INPUTS} ]; do
   echo    ""
-  echo -n "Enter  DOMjudge server judgehost PW : "
+  echo "Input DOMjudge server's judgehost PW"
+  echo "You can find judgehost PW at DOMjudge server's /opt/domjudge/domserver/etc/restapi.secret"
+  echo ""
+  echo -n "Input  judgehost PW : "
   read JUDGEHOSTPW
-  echo -n "Repeat DOMjudge server judgehost PW : "
+  echo -n "Repeat judgehost PW : "
   read INPUTS
 done
 sudo sed -i "s:${JUDGEHOSTOLDPW}:${JUDGEHOSTPW}:g" /opt/domjudge/judgehost/etc/restapi.secret
@@ -229,15 +228,15 @@ echo "judgehost PW set completed!"
 echo ""
 
 echo "" | tee -a ~/${README}
-echo "DOMjudge judgehosts installed!!" | tee -a ~/${README}
+echo "DOMjudge judgehost installed!!" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
 echo "To change judgehost IPADDRESS, HOSTNAME, ID or PW for DOMjudge server?" | tee -a ~/${README}
-echo "Find & check /opt/domjudge/domserver/etc/restapi.secret at DOMjudge server" | tee -a ~/${README}
+echo "First, check /opt/domjudge/domserver/etc/restapi.secret at DOMjudge server" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "sudo nano /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
+echo "sudo nano /opt/domjudge/domserver/etc/restapi.secret" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
-echo "Check & edit /opt/domjudge/judgehost/etc/restapi.secret at this DOMjudge judgehost" | tee -a ~/${README}
+echo "Second, edit /opt/domjudge/judgehost/etc/restapi.secret at this DOMjudge judgehost" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "sudo nano /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
@@ -245,7 +244,7 @@ echo "" | tee -a ~/${README}
 
 echo "To start judgehosts after every reboot?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "bash dj831judgehoststart.sh" | tee -a ~/${README}
+echo "bash dj831judgehoststart24.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
@@ -257,9 +256,6 @@ echo "sudo kill -9 #" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-chmod 660 ~/${README}
-echo "Saved as ${README}"
-echo ""
 
 cd
 
@@ -273,6 +269,7 @@ sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base,rustc
 
 
 cd
+
 
 #swift not working... temporary removed. 2022.11.17
 #sudo apt -y install clang libicu-dev
@@ -313,7 +310,7 @@ sudo apt autoremove -y
 
 
 echo ""
-echo "System will be rebooted in 10 seconds!"
+echo "System will be reboot in 10 seconds!"
 echo ""
 COUNT=10
 while [ $COUNT -ge 0 ]
@@ -322,10 +319,15 @@ do
   ((COUNT--))
   sleep 1
 done
-echo "rebooted!" | tee -a ~/${README}
+echo "Rebooted!" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-sleep 5
+
+chmod 660 ~/${README}
+echo "Saved as ${README}"
+
+
+sleep 3
 sudo reboot
 
