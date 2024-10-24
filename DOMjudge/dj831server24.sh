@@ -17,6 +17,7 @@
 #in the ideal case they are run on the same type of machines that the teams use.
 
 #This installation script only works on Ubuntu 24.04 LTS!!
+#2024.10.24 This scripts works for PC, AWS(Amazon Web Server), GCE(Google Cloud Engine)
 
 #DOMjudge8.3.1 stable(2024.09.13) + Ubuntu 24.04.4 LTS + apache2/nginx
 
@@ -426,14 +427,8 @@ echo "" | tee -a ~/${README}
 
 
 echo ""
-case ${WEBSERVER} in
-  "apache2")
-    echo "DOMjudge server(apache2) ${DJVER} installation completed!!"
-    ;;
-  "nginx")
-    echo "DOMjugde server(nginx) ${DJVER}   installation completed!!"
-    ;;
-esac
+echo "DOMjudge server(${WEBSERVER}) ${DJVER} installation completed!!"
+
 
 echo ""
 echo "System will reboot in 10 seconds!"
