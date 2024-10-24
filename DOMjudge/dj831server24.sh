@@ -18,7 +18,7 @@
 
 #This installation script only works on Ubuntu 24.04 LTS!!
 
-#DOMjudge8.3.1 stable(2024.09.13) + Ubuntu 22.04.4 LTS + apache2/nginx
+#DOMjudge8.3.1 stable(2024.09.13) + Ubuntu 24.04.4 LTS + apache2/nginx
 
 
 
@@ -59,7 +59,7 @@ WEBSERVER="no"
 while [ ${WEBSERVER} != "apache2" ] && [ ${WEBSERVER} != "nginx" ]; do
   clear
   echo    ""
-  echo    "Select Web-server for DOMjudge!"
+  echo    "Select web-server for DOMjudge!"
   echo -n "apache2 or nginx? [apache2/nginx]: "
   read WEBSERVER
 done
@@ -72,7 +72,7 @@ case ${WEBSERVER} in
     INPUTS="x"
     while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
       echo    ""
-      echo    "DOMjudge(+nginx) must use domain name!"
+      echo    "DOMjudge(nginx) must use domain name!"
       echo -n "Do you have the domain name? [y/n]: "
       read INPUTS
     done
@@ -161,10 +161,10 @@ sudo sed -i "s/\[mysqld\]/\[mysqld\]\ninnodb_log_file_size=512M\nmax_allowed_pac
 #Webserver
 case ${WEBSERVER} in
   "apache2")
-    sudo apt install -y apache2
+    sudo apt install apache2 -y
     ;;
   "nginx")
-    sudo apt install -y nginx
+    sudo apt install nginx -y
     sudo systemctl enable nginx
     sudo service nginx start
     ;;
@@ -174,18 +174,18 @@ esac
 
 
 #php 8.3
-sudo apt install -y php8.3
-sudo apt install -y php8.3-fpm
-sudo apt install -y php8.3-gd
-sudo apt install -y php8.3-cli
-sudo apt install -y php8.3-intl
-sudo apt install -y php8.3-mbstring
-sudo apt install -y php8.3-mysql
-sudo apt install -y php8.3-curl
-#sudo apt install -y php8.3-json
-sudo apt install -y php8.3-xml
-sudo apt install -y php8.3-zip
-sudo apt install -y composer
+sudo apt install php8.3 -y
+sudo apt install php8.3-fpm -y
+sudo apt install php8.3-gd -y
+sudo apt install php8.3-cli -y
+sudo apt install php8.3-intl -y
+sudo apt install php8.3-mbstring -y
+sudo apt install php8.3-mysql -y
+sudo apt install php8.3-curl -y
+#sudo apt install php8.3-json -y
+sudo apt install php8.3-xml -y
+sudo apt install php8.3-zip -y
+sudo apt install composer -y
 
 
 case ${WEBSERVER} in
@@ -309,10 +309,6 @@ case ${WEBSERVER} in
     echo "" | tee -a ~/${README}
     echo "DOMjudge server ${DJVER} + apache2 installed!!" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
-    THISADDRESS=$(curl checkip.amazonaws.com)
-    echo "This server's IP address ${THISADDRESS}" | tee -a ~/${README}
-    echo "" | tee -a ~/${README}
-    echo "" | tee -a ~/${README}
     sudo rm -f /var/www/html/index.html
     echo "<script>document.location=\"./domjudge/\";</script>" > index.html
     sudo chmod 644 index.html
@@ -324,7 +320,8 @@ case ${WEBSERVER} in
     echo "DOMjugde server ${DJVER} + nginx installed!!" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
     THISADDRESS=$(curl checkip.amazonaws.com)
-    echo "This server's IP address ${THISADDRESS} must be connected with ${DOMAINNAME} at DNS!!" | tee -a ~/${README}
+    echo "" | tee -a ~/${README}
+    echo "This server's public  IP address ${THISADDRESS} must be binded with ${DOMAINNAME} at DNS!!(A record)" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
     sudo rm -f /usr/share/nginx/html/index.html
@@ -366,62 +363,74 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831server
 bash dj831servermas24.sh
 
 
+PRIVADDRESS=$(hostname -i)
+THISADDRESS=$(curl checkip.amazonaws.com)
 PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
 
-echo "Check this(DOMjudge) server's web page" | tee -a ~/${README}
+echo "Check DOMjudge server's web page" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-
 case ${WEBSERVER} in
   "apache2")
-    THISADDRESS=$(curl checkip.amazonaws.com)
     ;;
   "nginx")
     THISADDRESS=${DOMAINNAME}
     ;;
 esac
-
-echo "http://${THISADDRESS}" | tee -a ~/${README}
-echo "admin ID : admin" | tee -a ~/${README}
-echo "admin PW : ${PASSWORD}" | tee -a ~/${README}
+case ${WEBSERVER} in
+  "apache2")
+    echo "private IP URL: http://${PRIVADDRESS}" | tee -a ~/${README}
+    echo "public  IP URL: http://${THISADDRESS}" | tee -a ~/${README}
+    ;;
+  "nginx")
+    echo "Domain name URL: http://${THISADDRESS}" | tee -a ~/${README}
+    ;;
+esac
+echo "ID : admin" | tee -a ~/${README}
+echo "PW : ${PASSWORD}" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-echo "Use DOMjudge server URL & judgehost ID/PW with below at judgehosts server" | tee -a ~/${README}
+echo "Use this URL & PW at DOMjudge judgehosts server" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "DOMjudge server URL          : http://${THISADDRESS}" | tee -a ~/${README}
+case ${WEBSERVER} in
+  "apache2")
+    echo "DOMjudge server private IP URL: http://${PRIVADDRESS}" | tee -a ~/${README}
+    echo "DOMjudge server public  IP URL: http://${THISADDRESS}" | tee -a ~/${README}
+    ;;
+  "nginx")
+    echo "DOMjudge server Domain name URL: http://${THISADDRESS}" | tee -a ~/${README}
+    ;;
+esac
 JUDGEHOSTPW=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | awk  '{print $4}')
-echo "DOMjudge server judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
+echo "judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-echo "When DOMjudge server H/W memory size changed?" | tee -a ~/${README}
+echo "When DOMjudge server H/W memory size changed? Run below:" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "bash dj831servermas.sh" | tee -a ~/${README}
+echo "bash dj831servermas24.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-echo "To clear DOMjudge server/webserver cache?" | tee -a ~/${README}
+echo "To clear DOMjudge server/webserver cache? Run below:" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "bash dj831serverclear.sh" | tee -a ~/${README}
+echo "bash dj831serverclear24.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-
-chmod 660 ~/${README}
-echo "Saved as ${README}"
 
 echo ""
 case ${WEBSERVER} in
   "apache2")
-    echo "DOMjudge server ${DJVER} + apache2 installation completed!!"
+    echo "DOMjudge server(apache2) ${DJVER} installation completed!!"
     ;;
   "nginx")
-    echo "DOMjugde server ${DJVER} + nginx installation completed!!"
+    echo "DOMjugde server(nginx) ${DJVER}   installation completed!!"
     ;;
 esac
 
 echo ""
-echo "System will be rebooted in 10 seconds!"
+echo "System will reboot in 10 seconds!"
 echo ""
 COUNT=10
 while [ $COUNT -ge 0 ]
@@ -430,9 +439,14 @@ do
   ((COUNT--))
   sleep 1
 done
-echo "rebooted!" | tee -a ~/${README}
+echo "Rebooting!" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-sleep 5
+
+chmod 660 ~/${README}
+echo "Saved as ${README}"
+
+
+sleep 3
 sudo reboot
