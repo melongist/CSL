@@ -42,15 +42,15 @@ fi
   echo ""
   echo "Before HTTPS installation!!!"
   echo ""  
-  echo "DOMjudge server's IP address must be connected to a domain name with A record at DNS!!"
+  echo "DOMjudge server's public IP address must be associated with a domain name at DNS's A record."
   echo ""
 INPUTS="x"
 while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
-  echo -n "Did you connect IP address to a domain name with A record at DNS? [y/n]: "
+  echo -n "Did you associate the DOMjudge server's public IP address to a domain name at DNS's A record? [y/n]: "
   read INPUTS
   if [ ${INPUTS} == "n" ] ; then
     echo ""
-    echo "Connect IP address with a domain name with A record at DNS first!!"
+    echo "Associate the DOMjudge server's public IP address with a domain name at DNS's A record!!"
     echo ""
     exit 1
   fi
@@ -61,7 +61,7 @@ DOMAINNAME="o"
 INPUTS="x"
 while [ ${DOMAINNAME} != ${INPUTS} ]; do
   echo ""
-  echo "Input the domain name."
+  echo "Input the server's domain name."
   echo "Examples:"
   echo "contest.domjudge.org"
   echo ""
@@ -80,7 +80,7 @@ if [[ ${WEBSERVER} == Apache* ]] ; then
 elif [[ ${WEBSERVER} == nginx* ]] ; then
   WEBSERVER="nginx"
 else
-  echo "apache or nginx webserver not exist!!!"
+  echo "Apache2 or nginx webserver is not installed!!!"
   exit 1
 fi
 
@@ -134,15 +134,15 @@ echo ""
 echo "" | tee -a ~/${README}
 case ${WEBSERVER} in
   "apache2")
-    echo "DOMjudge server ${DJVER} + apache2 + HTTPS installation completed!!" | tee -a ~/${README}
+    echo "Apache2 + HTTPS installation completed!!" | tee -a ~/${README}
     ;;
   "nginx")
-    echo "DOMjugde server ${DJVER} + HTTPS nginx installation completed!!" | tee -a ~/${README}
+    echo "Nginx + HTTPS installation completed!!" | tee -a ~/${README}
     ;;
 esac
 
 echo "" | tee -a ~/${README}
-echo "Check this(DOMjudge) server's web page" | tee -a ~/${README}
+echo "Check DOMjudge server's web page" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "https://${DOMAINNAME}" | tee -a ~/${README}
 echo "" | tee -a ~/${README}

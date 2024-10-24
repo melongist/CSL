@@ -59,7 +59,10 @@ WEBSERVER="no"
 while [ ${WEBSERVER} != "apache2" ] && [ ${WEBSERVER} != "nginx" ]; do
   clear
   echo    ""
-  echo    "Select web-server for DOMjudge!"
+  echo    "Select webserver for DOMjudge!"
+  echo    "apache2 : testing, small contest"
+  echo    "nginx   : big contest"
+  echo    ""
   echo -n "apache2 or nginx? [apache2/nginx]: "
   read WEBSERVER
 done
@@ -72,8 +75,9 @@ case ${WEBSERVER} in
     INPUTS="x"
     while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
       echo    ""
-      echo    "DOMjudge server(nginx) must use domain name!"
-      echo -n "Do you have the domain name? [y/n]: "
+      echo    "DOMjudge server(nginx) need a domain name!"
+      echo    "Server's public IP address must be associated with a domain name at DNS's A record!"
+      echo -n "Server's public IP address associated with the domain name? [y/n]: "
       read INPUTS
     done
 
@@ -82,10 +86,12 @@ case ${WEBSERVER} in
       DOMAINNAME="o"
       INPUTS="x"
       while [ ${DOMAINNAME} != ${INPUTS} ]; do
+        echo ""
+        echo "Input the server's domain name."
         echo "Examples:"
         echo "contest.domjudge.org"
         echo ""
-        echo -n "Enter  domain name : "
+        echo -n "Input  domain name : "
         read DOMAINNAME
         echo -n "Repeat domain name : "
         read INPUTS
@@ -319,11 +325,6 @@ case ${WEBSERVER} in
     echo "" | tee -a ~/${README}
     echo "DOMjugde server(nginx) ${DJVER} installed!!" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
-    THISADDRESS=$(curl checkip.amazonaws.com)
-    echo "" | tee -a ~/${README}
-    echo "This server's public  IP address ${THISADDRESS} must be binded with ${DOMAINNAME} at DNS!!(A record)" | tee -a ~/${README}
-    echo "" | tee -a ~/${README}
-    echo "" | tee -a ~/${README}
     sudo rm -f /usr/share/nginx/html/index.html
     #echo "<script>document.location=\"http://${DOMAINNAME}/domjudge/\";</script>" > index.html
     echo "<script>document.location=\"./domjudge/\";</script>" > index.html
@@ -367,7 +368,7 @@ PRIVADDRESS=$(hostname -i)
 THISADDRESS=$(curl checkip.amazonaws.com)
 PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
 
-echo "Check this DOMjudge server's web page" | tee -a ~/${README}
+echo "Check DOMjudge server's web page" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 case ${WEBSERVER} in
   "apache2")
@@ -379,8 +380,8 @@ esac
 case ${WEBSERVER} in
   "apache2")
     echo "*Use appopriate URL, according to the server's network connection." | tee -a ~/${README}
-    echo "private IP URL: http://${PRIVADDRESS}" | tee -a ~/${README}
-    echo "public  IP URL: http://${THISADDRESS}" | tee -a ~/${README}
+    echo "Private IP URL: http://${PRIVADDRESS}" | tee -a ~/${README}
+    echo "Public  IP URL: http://${THISADDRESS}" | tee -a ~/${README}
     ;;
   "nginx")
     echo "Domain name URL: http://${THISADDRESS}" | tee -a ~/${README}
@@ -391,16 +392,16 @@ echo "PW : ${PASSWORD}" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-echo "Use this URL & PW at the other DOMjudge judgehost server" | tee -a ~/${README}
+echo "Use this URL & PW at the other DOMjudge judgehost" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 case ${WEBSERVER} in
   "apache2")
     echo "*Use appopriate URL, according to the server's network connection." | tee -a ~/${README}
-    echo "DOMjudge server private IP URL: http://${PRIVADDRESS}" | tee -a ~/${README}
-    echo "DOMjudge server public  IP URL: http://${THISADDRESS}" | tee -a ~/${README}
+    echo "Private IP URL: http://${PRIVADDRESS}" | tee -a ~/${README}
+    echo "Public  IP URL: http://${THISADDRESS}" | tee -a ~/${README}
     ;;
   "nginx")
-    echo "DOMjudge server Domain name URL: http://${THISADDRESS}" | tee -a ~/${README}
+    echo "Domain name URL: http://${THISADDRESS}" | tee -a ~/${README}
     ;;
 esac
 JUDGEHOSTPW=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | awk  '{print $4}')
@@ -443,7 +444,7 @@ do
   ((COUNT--))
   sleep 1
 done
-echo "Rebooting!" | tee -a ~/${README}
+echo "Rebooted!" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
