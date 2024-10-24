@@ -378,7 +378,7 @@ case ${WEBSERVER} in
 esac
 case ${WEBSERVER} in
   "apache2")
-    echo "Use appopriate URL, according to the server's network connection."
+    echo "*Use appopriate URL, according to the server's network connection." | tee -a ~/${README}
     echo "private IP URL: http://${PRIVADDRESS}" | tee -a ~/${README}
     echo "public  IP URL: http://${THISADDRESS}" | tee -a ~/${README}
     ;;
@@ -395,7 +395,7 @@ echo "Use this URL & PW at the other DOMjudge judgehost server" | tee -a ~/${REA
 echo "------" | tee -a ~/${README}
 case ${WEBSERVER} in
   "apache2")
-    echo "Use appopriate URL, according to the server's network connection."
+    echo "*Use appopriate URL, according to the server's network connection." | tee -a ~/${README}
     echo "DOMjudge server private IP URL: http://${PRIVADDRESS}" | tee -a ~/${README}
     echo "DOMjudge server public  IP URL: http://${THISADDRESS}" | tee -a ~/${README}
     ;;
@@ -408,12 +408,14 @@ echo "judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-echo "When DOMjudge server H/W memory size changed, run below:" | tee -a ~/${README}
+echo "Autoscaling for php(fpm)" | tee -a ~/${README}
+echo "When DOMjudge server's H/W memory size changed, run below:" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "bash dj831servermas24.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
+echo "Server cache clearing" | tee -a ~/${README}
 echo "To clear DOMjudge server/webserver cache, run below:" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "bash dj831serverclear24.sh" | tee -a ~/${README}
