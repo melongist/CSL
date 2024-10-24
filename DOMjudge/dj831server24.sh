@@ -77,6 +77,7 @@ case ${WEBSERVER} in
       echo    ""
       echo    "DOMjudge server(nginx) need a domain name!"
       echo    "Server's public IP address must be associated with a domain name at DNS's A record!"
+      echo    ""
       echo -n "Server's public IP address associated with the domain name? [y/n]: "
       read INPUTS
     done
