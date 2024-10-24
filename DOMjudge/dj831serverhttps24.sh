@@ -142,7 +142,7 @@ case ${WEBSERVER} in
 esac
 
 echo "" | tee -a ~/${README}
-echo "Check DOMjudge server's web page" | tee -a ~/${README}
+echo "Check DOMjudge(${WEBSERVER}) server's web page" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "https://${DOMAINNAME}" | tee -a ~/${README}
 echo "" | tee -a ~/${README}

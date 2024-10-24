@@ -1,11 +1,44 @@
-#24.10.20   
+#24.10.24   
     
 ---    
-DOMjudge 8.3.1 + apache2(with IP address for small contest) + Ubuntu 24.04 testing in progress.   
-DOMjudge 8.3.1 + nginx(with domain name for big contest) + Ubuntu 24.04 testing scheduled.   
+DOMjudge 8.3.1 + apache2(with IP address for small contest) + Ubuntu 24.04 <== OK   
+DOMjudge 8.3.1 + nginx(with domain name for big contest) + Ubuntu 24.04    <== OK
+
+This scripts works only Ubuntu 24.04 now.
+
+But, this works for PC, AWS EC2, GCE(Google Compute Engine).
+
 Making english PDF manual is scheduled.
     
     
+    
+File Descripstion    
+- dj831server24.sh    : DOMjudge server installation script    
+- dj831judgehost24.sh : DOMjudge judgehost installation script    
+    
+- dj831servermas24.sh   : auto-scaling for more php(fpm) according to H/W memory size    
+- dj831serverclear24.sh : DOMjudge server/webserver cache clearing    
+- dj831serverhttps.sh   : for secured HTTPS    
+    
+- dj831judgehoststart24.sh : judgehost starting script (auto scaling the number of judgehosts)    
+    
+... etc ...    
+    
+    
+    
+    
+    
+    
+Out dated below...  but please refer to below until I make PDF manual.    
+    
+With changing ...    
+dj831server.sh    to dj831server24.sh    
+dj831judgehost.sh to dj831judgehost24.sh    
+dj831judgehoststart.sh to dj831judgehoststart24.sh    
+would be OK.    
+    
+    
+
 #24.09.15   
     
 ---    
