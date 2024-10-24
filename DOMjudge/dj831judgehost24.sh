@@ -17,6 +17,7 @@
 #in the ideal case they are run on the same type of machines that the teams use.
 
 #This installation script only works on Ubuntu 24.04 LTS!!
+#2024.10.24 This scripts works for PC, AWS(Amazon Web Server), GCE(Google Cloud Engine)
 
 #DOMjudge8.3.1 stable(2024.09.13) + Ubuntu 24.04 LTS + apache2/nginx
 
@@ -289,6 +290,11 @@ sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash\"#GRUB_CMDLINE_LINUX_DE
 if [ -e /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
 	echo "Editing /etc/default/grub.d/50-cloudimg-settings.cfg for AWS"
   sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295\"#GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0 nvme_core.io_timeout=4294967295 quiet cgroup_enable=memory swapaccount=1 isolcpus=2 systemd.unified_cgroup_hierarchy=0\"#" /etc/default/grub.d/50-cloudimg-settings.cfg
+fi
+#try #3 GCE Ubuntu 24.04 LTS Server
+if [ -e /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
+  echo "Editing /etc/default/grub.d/50-cloudimg-settings.cfg for GCE"
+  sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"console=ttyS0,115200\"#GRUB_CMDLINE_LINUX_DEFAULT=\"console=ttyS0,115200 quiet cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0\"#" /etc/default/grub.d/50-cloudimg-settings.cfg
 fi
 sudo update-grub
 #after reboot?
