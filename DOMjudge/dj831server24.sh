@@ -72,7 +72,7 @@ case ${WEBSERVER} in
     INPUTS="x"
     while [ ${INPUTS} != "y" ] && [ ${INPUTS} != "n" ]; do
       echo    ""
-      echo    "DOMjudge(nginx) must use domain name!"
+      echo    "DOMjudge server(nginx) must use domain name!"
       echo -n "Do you have the domain name? [y/n]: "
       read INPUTS
     done
@@ -91,7 +91,7 @@ case ${WEBSERVER} in
         read INPUTS
       done
     else
-      echo "Use DOMjudge(+apache2)"
+      echo "Use DOMjudge server(apache2)"
       exit 1
     fi
 
@@ -307,7 +307,7 @@ sudo sed -i "s:pm.start_servers = 2:pm.start_servers = 64:g" /etc/php/8.3/fpm/po
 case ${WEBSERVER} in
   "apache2")
     echo "" | tee -a ~/${README}
-    echo "DOMjudge server ${DJVER} + apache2 installed!!" | tee -a ~/${README}
+    echo "DOMjudge server(apache2) ${DJVER} installed!!" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
     sudo rm -f /var/www/html/index.html
     echo "<script>document.location=\"./domjudge/\";</script>" > index.html
@@ -317,7 +317,7 @@ case ${WEBSERVER} in
     ;;
   "nginx")
     echo "" | tee -a ~/${README}
-    echo "DOMjugde server ${DJVER} + nginx installed!!" | tee -a ~/${README}
+    echo "DOMjugde server(nginx) ${DJVER} installed!!" | tee -a ~/${README}
     echo "" | tee -a ~/${README}
     THISADDRESS=$(curl checkip.amazonaws.com)
     echo "" | tee -a ~/${README}
@@ -367,7 +367,7 @@ PRIVADDRESS=$(hostname -i)
 THISADDRESS=$(curl checkip.amazonaws.com)
 PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
 
-echo "Check DOMjudge server's web page" | tee -a ~/${README}
+echo "Check this DOMjudge server's web page" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 case ${WEBSERVER} in
   "apache2")
@@ -378,6 +378,7 @@ case ${WEBSERVER} in
 esac
 case ${WEBSERVER} in
   "apache2")
+    echo "Use appopriate URL, according to the server's network connection."
     echo "private IP URL: http://${PRIVADDRESS}" | tee -a ~/${README}
     echo "public  IP URL: http://${THISADDRESS}" | tee -a ~/${README}
     ;;
@@ -390,10 +391,11 @@ echo "PW : ${PASSWORD}" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-echo "Use this URL & PW at DOMjudge judgehosts server" | tee -a ~/${README}
+echo "Use this URL & PW at the other DOMjudge judgehost server" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 case ${WEBSERVER} in
   "apache2")
+    echo "Use appopriate URL, according to the server's network connection."
     echo "DOMjudge server private IP URL: http://${PRIVADDRESS}" | tee -a ~/${README}
     echo "DOMjudge server public  IP URL: http://${THISADDRESS}" | tee -a ~/${README}
     ;;
@@ -406,13 +408,13 @@ echo "judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-echo "When DOMjudge server H/W memory size changed? Run below:" | tee -a ~/${README}
+echo "When DOMjudge server H/W memory size changed, run below:" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "bash dj831servermas24.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-echo "To clear DOMjudge server/webserver cache? Run below:" | tee -a ~/${README}
+echo "To clear DOMjudge server/webserver cache, run below:" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
 echo "bash dj831serverclear24.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
