@@ -1,6 +1,7 @@
 #24.10.24   
     
 ---    
+<pre> 
 DOMjudge 8.3.1 + apache2(with IP address for small contest) + Ubuntu 24.04 <== OK   
 DOMjudge 8.3.1 + nginx(with domain name for big contest) + Ubuntu 24.04    <== OK
 
@@ -36,13 +37,13 @@ dj831server.sh    to dj831server24.sh
 dj831judgehost.sh to dj831judgehost24.sh    
 dj831judgehoststart.sh to dj831judgehoststart24.sh    
 would be OK.    
-    
+</pre>    
     
 
 #24.10.25   
     
 ---    
-    
+<pre>     
 #It is recommended to separate main server and dedicated judgehost server.    
 #https://www.domjudge.org/docs/manual/8.3/overview.html#features    
 #Each judgehost should be a dedicated (virtual) machine that performs no other tasks.    
@@ -51,8 +52,7 @@ would be OK.
 #Judgehosts should also not double as local workstations for jury members.    
 #Having all judgehosts be of uniform hardware configuration helps in creating a fair, reproducible setup;    
 #in the ideal case they are run on the same type of machines that the teams use.    
-    
-<pre>    
+       
 --- For DOMjudge server ---    
     
 #DOMjudge 8.3.1 stable    
@@ -243,7 +243,7 @@ Saved as readme.txt
 #Check saved readme.txt    
 </pre>
 <pre><code>cat readme.txt</code></pre>
-    
+<pre>    
 #To start judgehosts...    
 At console terminal    
 </pre>
