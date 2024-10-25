@@ -1,4 +1,4 @@
-#24.10.24   
+#24.10.26   
     
 ---    
 <pre> 
@@ -24,19 +24,7 @@ File Descripstion
 - dj831start24.sh       : judgehost starting script (auto scaling the number of judgehosts)    
     
 ... etc ...    
-    
-    
-    
-    
-    
-    
-Out dated below...  but please refer to below until I make PDF manual.    
-    
-With changing ...    
-dj831server.sh    to dj831server24.sh    
-dj831judgehost.sh to dj831judgehost24.sh    
-dj831judgehoststart.sh to dj831judgehoststart24.sh    
-would be OK.    
+        
 </pre>    
     
 
@@ -259,18 +247,21 @@ DOMjudge judgehosts starting completed...
     
             
 </pre>
-    
+<pre>    
     
     
     2024.10.26. Out dated below: 
+    
+    
 ---    
 #spotboard for DOMjudge   
-<https://github.com/spotboard/spotboard>    
+https://github.com/spotboard/spotboard    
     
 #Prerequisite    
 - DOMjudge(server + judgehost) installed    
     
 #Installation commands to install spotboard for DOMjudge    
+</pre>
     
 <pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/sb070.sh</code></pre>
 <pre><code>bash sb070.sh</code></pre>
