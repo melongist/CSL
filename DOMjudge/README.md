@@ -51,6 +51,7 @@ https://www.domjudge.org/
    
 #Prerequisite    
 - Ubuntu 24.04 LTS PC/AWS EC2/GCE   
+- Open 80(http), 443(https) + ect  ports at firewall      
     
 #Auto installation commands and steps...    
 At console terminal    
