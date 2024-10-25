@@ -272,7 +272,7 @@ sudo sed -i "s/post_max_size = 8M/post_max_size = 256M/" /etc/php/8.3/fpm/php.in
 #PHP memory_limit to 2048M
 sudo sed -i "s/memory_limit = 128M/memory_limit = 2048M/" /etc/php/8.3/fpm/php.ini
 #PHP timezone set
-sudo sed -i "s:;date.timezone = :date.timezone = ${NEWTIMEZONE}:g" /etc/php/8.3/fpm/php.ini
+sudo sed -i "s:;date.timezone =:date.timezone = ${NEWTIMEZONE}:g" /etc/php/8.3/fpm/php.ini
 #php reload
 sudo service php8.3-fpm reload
 

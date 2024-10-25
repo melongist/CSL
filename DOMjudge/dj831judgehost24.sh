@@ -190,7 +190,7 @@ sudo chmod 0440 /etc/sudoers.d/sudoers-domjudge
 
 
 #judgehosts starting script download
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831judgehoststart24.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831start24.sh
 
 SERVERURL="o"
 INPUTS="x"
@@ -245,7 +245,7 @@ echo "" | tee -a ~/${README}
 
 echo "To start judgehosts after every reboot?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "bash dj831judgehoststart24.sh" | tee -a ~/${README}
+echo "bash dj831start24.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 

@@ -13,14 +13,14 @@ Making english PDF manual is scheduled.
     
     
 File Descripstion    
-- dj831server24.sh    : DOMjudge server installation script    
-- dj831judgehost24.sh : DOMjudge judgehost installation script    
+- dj831server24.sh      : DOMjudge server installation script    
+- dj831judgehost24.sh   : DOMjudge judgehost installation script    
     
-- dj831servermas24.sh   : auto-scaling for more php(fpm) according to H/W memory size    
+- dj831servermas24.sh   : auto-scaling php(fpm) processes according to H/W memory size    
 - dj831serverclear24.sh : DOMjudge server/webserver cache clearing    
-- dj831serverhttps.sh   : for secured HTTPS    
+- dj831serverhttps.sh   : DOMJudge server Secured HTTPS installation script    
     
-- dj831judgehoststart24.sh : judgehost starting script (auto scaling the number of judgehosts)    
+- dj831start24.sh       : judgehost starting script (auto scaling the number of judgehosts)    
     
 ... etc ...    
     
@@ -39,7 +39,7 @@ would be OK.
     
     
 
-#24.09.15   
+#24.10.25   
     
 ---    
     
@@ -62,143 +62,62 @@ https://www.domjudge.org/
 #DOMjudge server auto installation   
    
 #Prerequisite    
-- Ubuntu 22.04 LTS installed server or desktop (AWS OK)   
+- Ubuntu 24.04 LTS PC/AWS EC2/GCE   
     
 #Auto installation commands and steps...    
 At console terminal    
 </pre>
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831server.sh</code></pre>
-<pre><code>bash dj831server.sh</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831server24.sh</code></pre>
+<pre><code>bash dj831server24.sh</code></pre>
 <pre>    
    
-Select Web-server for DOMjudge!   
+Select webserver for DOMjudge!    
+apache2 : testing, small contest    
+nginx   : big contest    
+    
 apache2 or nginx? [apache2/nginx]:                    // <- apache2 //apache2 or nginx    
+   
 ...   
-[sudo] password for ubuntu:                           // <- input user password    
-...   
+    
 Please select a continent, ocean, "coord", or "TZ".    
  1) Africa    
+    
  ...    
  9) Pacific Ocean    
 10) coord - I want to use geographical coordinates.    
 11) TZ - I want to specify the timezone using the Posix TZ format.    
-#?                                                    // <- select your timezone   
+#?                                                    // Select your timezone   
+    
 ...   
-Enter current password for root (enter for none) :    // <- just enter   
+Enter current password for root (enter for none) :    // Just enter   
+    
 ...   
 Switch to unix_socket autentication [Y/n] :           // <- n   
+    
 ...   
-Change the root password? [Y/n] :                     // <- y      //You must! change mariaDB's root password!    
-New password:                                         // <- ????   //Enter  your own password!! <- Take note PW #1    
+Change the root password? [Y/n] :                     // <- y      //You must! change mariaDB's 
+root password!    
+New password:                                         // <- ????   //Input your own password!! <- Take note PW #1    
 Re-enter new password:                                // <-        //Repeat ...    
+    
 ...   
 Remove anonymous user? [Y/n] :                        // <- y   
+    
 ...   
 Disallow root login remotely? [Y/n] :                 // <- y   
+    
 ...   
 Remove test database and access to it? [Y/n] :        // <- y   
+    
 ...   
 Reload privilege tables now? [Y/n] :                  // <- y   
-...   
-Continue as root/super user [yes]?                    // <- yes   
+    
 ...    
-[sudo] password for ubuntu:                           // <- input user password    
-Database credentials read from '/opt/domjudge/domserver/etc/dbpasswords.secret'.    
 Enter password:                                       // <- ????   //Use your own PW #1    
 DOMjudge database and user(s) created.   
 Enter password:                                       // <- ????   //Use your own PW #1    
-...   
-Saved as readme.txt    
+    
 ...    
-System will be rebooted in 10 seconds!    
-    
-10    
-.     
-.    
-.    
-3    
-2    
-1   
-0   
-rebooted!   
-    
-    
-</pre>    
----    
-<pre>
-#After rebooted, check DOMjudge server first!    
-    
-#To login DOMjudge as admin, admin password needed.    
-#DOMjudge admin password saved in readme.txt    
-At console terminal    
-</pre>
-<pre><code>cat readme.txt</code></pre>
-<pre>
-
-...    
-Check this(DOMjudge) server's web page    
-http://...    
-admin ID : admin    
-admin PW : ????????????????                       // Take note this PW #2    
-    
-Use DOMjudge server URL & judgehost ID/PW with below at judgehosts server    
----    
-DOMjudge server URL          : http://...         // Take note this URL(private/public IP address) #1    
-DOMjudge server judgehost PW : ????????????????   // Take note this PW #3    
-    
----    
-    
-</pre>    
-<pre>
---- For DOMjudge judgehosts ---    
-   
-#DOMjudge judgehosts auto installation    
-    
-#Prerequisite    
-- Ubuntu 22.04 LTS installed server or desktop (AWS OK)    
-    
-#Auto installation commands and steps...    
-At console terminal    
-</pre>
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831judgehost.sh</code></pre>
-<pre><code>bash dj831judgehost.sh</code></pre>
-<pre>    
-...    
-DOMjudge server must be installed at the other system!!    
-    
-Did you make Domjudge server? [y/n]:                  // <- y    
-    
-[sudo] password for ubuntu:                           // <- input user password     
-...    
-Please select a continent, ocean, "coord", or "TZ".    
- 1) Africa    
- ...    
- 9) Pacific Ocean    
-10) coord - I want to use geographical coordinates.    
-11) TZ - I want to specify the timezone using the Posix TZ format.    
-#?                                                    // <- select your timezone    
-...   
-Input DOMjudge server URL    
-Examples:    
-http://123.123.123.123    
-http://contest.domjudge.org    
-https://contest.domjudge.org    
-    
-Input   DOMjudge server URL : http://??????           // <- use DOMjudge server's IP address or Domain name #1    
-Repeat  DOMjudge server URL : http://??????           // repeat...    
-DOMjudge server URL set completed!    
-    
-    
-Input DOMjudge server's judgehost PW    
-You can find judgehost PW at DOMjudge server's /opt/domjudge/domserver/etc/restapi.secret    
-    
-Enter  DOMjudge server judgehost PW :                 // <- ????   //Use PW #3    
-Repeat DOMjudge server judgehost PW :                 // repeat...    
-...    
-Saved as readme.txt    
-...    
-Sytem will be rebooted in 10 seconds!    
-    
 10    
 .     
 .    
@@ -209,31 +128,141 @@ Sytem will be rebooted in 10 seconds!
 0   
 rebooted!    
     
+...    
+Saved as readme.txt       
+      
     
+    
+</pre>    
+---    
+<pre>
+#After rebooted, check DOMjudge server's web page first!    
+    
+#To login DOMjudge as admin, password needed.    
+#DOMjudge admin password saved in readme.txt    
+At console terminal    
+</pre>
+<pre><code>cat readme.txt</code></pre>
+<pre>
+    
+...    
+DOMjudge server(apache2) 8.3.1 stable (2024.09.13) installed!!    
+    
+Check DOMjudge server's web page    
+------    
+*Use appopriate URL, according to the server's network connection.    
+Private IP URL: http://xxx.xxx.xxx.xxx    
+Public  IP URL: http://xxx.xxx.xxx.xxx    
+ID : admin    
+PW : ????????????????                              // Take note this PW #2    
+    
+    
+Use this URL & PW at the other DOMjudge judgehost
+------
+*Use appopriate URL, according to the server's network connection.
+Private IP URL: http://xxx.xxx.xxx.xxx
+Public  IP URL: http://xxx.xxx.xxx.xxx            // Take note this URL(private/public IP  address) URL #1   
+judgehost PW : ????????????????                   // Take note this PW #3    
+    
+---    
+    
+</pre>    
+<pre>
+--- For DOMjudge judgehost ---    
+    
+#DOMjudge 8.3.1 stable    
+https://www.domjudge.org/    
+    
+   
+#DOMjudge judgehost auto installation   
+   
+#Prerequisite    
+- Ubuntu 24.04 LTS PC/AWS EC2/GCE   
+    
+#Auto installation commands and steps...    
+At console terminal    
+</pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831judgehost24.sh</code></pre>
+<pre><code>bash dj831judgehost24.sh</code></pre>
+<pre>    
+Before DOMjudge 8.3.1 stable (2024.09.13) judgehost installation!!!    
+    
+DOMjudge server must be installed at the other system!!    
+    
+Did you make Domjudge server? [y/n]:                  // <- y    
+    
+...       
+Please select a continent, ocean, "coord", or "TZ".    
+ 1) Africa    
+    
+ ...    
+ 9) Pacific Ocean    
+10) coord - I want to use geographical coordinates.    
+11) TZ - I want to specify the timezone using the Posix TZ format.    
+#?                                                    // Select your timezone   
+    
+...    
+Input DOMjudge server's URL
+Examples:
+http://123.123.123.123
+http://contest.domjudge.org
+https://contest.domjudge.org
+
+Input  server's URL: http://xxx.xxx.xxx.xxx          // Use DOMjudge server's URL #1    
+Repeat server's URL: http://xxx.xxx.xxx.xxx          // Repeat...    
+    
+    
+Input DOMjudge server's judgehost PW
+You can find judgehost PW at DOMjudge server's /opt/domjudge/domserver/etc/restapi.secret
+    
+Input  judgehost PW : ????????????????               // Use PW #3    
+Repeat judgehost PW : ????????????????               // Repeat...    
+     
+
+ 
+Sytem will be rebooted in 10 seconds!    
+    
+...    
+10    
+.     
+.    
+.    
+3    
+2    
+1    
+0   
+rebooted!    
+    
+...    
+Saved as readme.txt    
+     
+        
 </pre>
 <pre>
-#After every DOMjudge judgehosts server rebooted, judgehost process must be started by manually!    
+#After every DOMjudge judgehost rebooted, judgehost process must be started by manually!    
+#Check saved readme.txt    
+</pre>
+<pre><code>cat readme.txt</code></pre>
     
 #To start judgehosts...    
 At console terminal    
 </pre>
-<pre><code>bash dj831judgehoststart.sh</code></pre>
+<pre><code>bash dj831start24.sh</code></pre>
 <pre>
     
 DOMjudge judgehosts starting ...    
     
     
-CPU information    
-CPU(s):                               ?    
-[sudo] password for ubuntu:                           // <- input user password     
-   
-...    
-? judgedamons started!    
+X judgedamons started!    
     
 DOMjudge judgehosts starting completed...    
     
-        
+            
 </pre>
+    
+    
+    
+    2024.10.26. Out dated below: 
 ---    
 #spotboard for DOMjudge   
 <https://github.com/spotboard/spotboard>    
