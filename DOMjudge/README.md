@@ -17,7 +17,7 @@ File Descripstion
 - dj831server24.sh      : DOMjudge server installation script    
 - dj831judgehost24.sh   : DOMjudge judgehost installation script    
     
-- dj831servermas24.sh   : auto-scaling php(fpm) processes according to H/W memory size    
+- dj831servermas24.sh   : DOMjudge server auto scaling the number of php(fpm) processes for H/W memory size    
 - dj831serverclear24.sh : DOMjudge server/webserver cache clearing    
 - dj831serverhttps.sh   : DOMJudge server Secured HTTPS installation script    
     
@@ -166,7 +166,8 @@ https://www.domjudge.org/
 #DOMjudge judgehost auto installation   
    
 #Prerequisite    
-- Ubuntu 24.04 LTS PC/AWS EC2/GCE   
+- Already installed Ubuntu server (at other PC/AWS EC2/GCE)
+- The other new Ubuntu 24.04 LTS PC/AWS EC2/GCE   
     
 #Auto installation commands and steps...    
 At console terminal    
