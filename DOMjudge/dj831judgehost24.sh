@@ -313,6 +313,8 @@ sudo sed -i "s:#kernel.sysrq=438:#kernel.sysrq=438\n\nkernel.randomize_va_space=
 
 sudo apt autoremove -y
 
+echo ""
+echo "DOMjudge judgehost installation completed!!"
 
 
 echo ""
