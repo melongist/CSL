@@ -15,13 +15,13 @@
 
 
 #Terminal commands to start judgehosts
-#bash dj831judgehoststart24.sh
+#bash dj831start24.sh
 
 
 #------
 
 if [[ $SUDO_USER ]] ; then
-  echo "Just use 'bash dj831judgehoststart24.sh'"
+  echo "Just use 'bash dj831start24.sh'"
   exit 1
 fi
 
