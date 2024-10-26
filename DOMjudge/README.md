@@ -13,15 +13,15 @@ Making english PDF manual is scheduled.
     
     
     
-File descriptions    
+File Descripstion    
 - dj831server24.sh      : DOMjudge server installation script    
 - dj831judgehost24.sh   : DOMjudge judgehost installation script    
     
 - dj831servermas24.sh   : DOMjudge server auto scaling the number of php(fpm) processes for H/W memory size    
 - dj831serverclear24.sh : DOMjudge server/webserver cache clearing    
-- dj831serverhttps.sh   : DOMjudge server Secured HTTPS installation script    
+- dj831serverhttps.sh   : DOMJudge server Secured HTTPS installation script    
     
-- dj831start24.sh       : DOMjudge judgehost starting script (auto scaling the number of judgehosts)    
+- dj831start24.sh       : judgehost starting script (auto scaling the number of judgehosts)    
     
 ... etc ...    
         
@@ -31,7 +31,6 @@ File descriptions
 #24.10.25   
     
 ---    
-DOMjudge server installation:    
 <pre>     
 #It is recommended to separate main server and dedicated judgehost server.    
 #https://www.domjudge.org/docs/manual/8.3/overview.html#features    
@@ -59,7 +58,8 @@ At console terminal
 </pre>
 <pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831server24.sh</code></pre>
 <pre><code>bash dj831server24.sh</code></pre>
-<pre>
+<pre>    
+   
 Select webserver for DOMjudge!    
 apache2 : testing, small contest    
 nginx   : big contest    
@@ -75,10 +75,10 @@ Please select a continent, ocean, "coord", or "TZ".
  9) Pacific Ocean    
 10) coord - I want to use geographical coordinates.    
 11) TZ - I want to specify the timezone using the Posix TZ format.    
-#?                                                    // <- Select your timezone   
+#?                                                    // Select your timezone   
     
 ...   
-Enter current password for root (enter for none) :    // <- enter   
+Enter current password for root (enter for none) :    // Just enter   
     
 ...   
 Switch to unix_socket autentication [Y/n] :           // <- n   
@@ -87,7 +87,7 @@ Switch to unix_socket autentication [Y/n] :           // <- n
 Change the root password? [Y/n] :                     // <- y      //You must! change mariaDB's 
 root password!    
 New password:                                         // <- ????   //Input your own password!! <- Take note PW #1    
-Re-enter new password:                                // <- ????   //Repeat ...    
+Re-enter new password:                                // <-        //Repeat ...    
     
 ...   
 Remove anonymous user? [Y/n] :                        // <- y   
@@ -104,27 +104,32 @@ Reload privilege tables now? [Y/n] :                  // <- y
 ...    
 Enter password:                                       // <- ????   //Use your own PW #1    
 DOMjudge database and user(s) created.   
-Enter password:                                       // <- ????   //Repeat ...    
+Enter password:                                       // <- ????   //Use your own PW #1    
     
 ...    
+DOMjudge server(nginx) 8.3.1 stable (2024.09.13) installation completed!!    
+    
+System will reboot in 10 seconds!    
+    
 10    
-.     
+9    
+8    
+.    
 .    
 .    
 3    
 2    
 1    
-0   
-rebooted!    
+0    
+Rebooted!    
     
-...    
-Saved as readme.txt       
+    
+Saved as readme.txt    
       
     
     
 </pre>    
 ---    
-DOMjudge server Password & URL check:    
 <pre>
 #After rebooted, check DOMjudge server's web page first!    
     
@@ -157,8 +162,6 @@ judgehost PW : ????????????????                   // Take note this PW #3
 ---    
     
 </pre>    
----    
-DOMjudge judgehost installation:    
 <pre>
 --- For DOMjudge judgehost ---    
     
@@ -192,7 +195,7 @@ Please select a continent, ocean, "coord", or "TZ".
  9) Pacific Ocean    
 10) coord - I want to use geographical coordinates.    
 11) TZ - I want to specify the timezone using the Posix TZ format.    
-#?                                                    // <- Select your timezone   
+#?                                                    // Select your timezone   
     
 ...    
 Input DOMjudge server's URL
@@ -201,45 +204,44 @@ http://123.123.123.123
 http://contest.domjudge.org
 https://contest.domjudge.org
 
-Input  server's URL: http://xxx.xxx.xxx.xxx          // <- ????    //Use DOMjudge server's URL #1    
-Repeat server's URL: http://xxx.xxx.xxx.xxx          // <- ????    //Repeat ...    
+Input  server's URL: http://xxx.xxx.xxx.xxx          // Use DOMjudge server's URL #1    
+Repeat server's URL: http://xxx.xxx.xxx.xxx          // Repeat...    
     
     
 Input DOMjudge server's judgehost PW
 You can find judgehost PW at DOMjudge server's /opt/domjudge/domserver/etc/restapi.secret
     
-Input  judgehost PW : ????????????????               // <- ????    //Use PW #3    
-Repeat judgehost PW : ????????????????               // <- ????    //Repeat ...    
+Input  judgehost PW : ????????????????               // Use PW #3    
+Repeat judgehost PW : ????????????????               // Repeat...    
      
 
- 
-Sytem will be rebooted in 10 seconds!    
-    
 ...    
+DOMjudge judgehost installation completed!!    
+      
+System will reboot in 10 seconds!    
+    
 10    
-.     
+9    
+8    
+.    
 .    
 .    
 3    
 2    
 1    
-0   
-rebooted!    
+0    
+Rebooted!    
     
-...    
+    
 Saved as readme.txt    
      
         
 </pre>
----    
-DOMjudge judgehost check:    
 <pre>
 #After every DOMjudge judgehost rebooted, judgehost process must be started by manually!    
 #Check saved readme.txt    
 </pre>
 <pre><code>cat readme.txt</code></pre>
----    
-DOMjudge judgehost start:    
 <pre>    
 #To start judgehosts...    
 At console terminal    
@@ -256,8 +258,6 @@ DOMjudge judgehosts starting completed...
     
             
 </pre>
----    
----    
 <pre>    
     
     
