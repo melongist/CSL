@@ -13,7 +13,7 @@ Making english PDF manual is scheduled.
     
     
     
-File Descripstion    
+File descriptions    
 - dj831server24.sh      : DOMjudge server installation script    
 - dj831judgehost24.sh   : DOMjudge judgehost installation script    
     
@@ -31,6 +31,7 @@ File Descripstion
 #24.10.25   
     
 ---    
+DOMjudge server installation:    
 <pre>     
 #It is recommended to separate main server and dedicated judgehost server.    
 #https://www.domjudge.org/docs/manual/8.3/overview.html#features    
