@@ -124,6 +124,7 @@ Saved as readme.txt
     
 </pre>    
 ---    
+DOMjudge server Password & URL check:    
 <pre>
 #After rebooted, check DOMjudge server's web page first!    
     
@@ -157,6 +158,7 @@ judgehost PW : ????????????????                   // Take note this PW #3
     
 </pre>    
 ---    
+DOMjudge judgehost installation:    
 <pre>
 --- For DOMjudge judgehost ---    
     
@@ -230,11 +232,14 @@ Saved as readme.txt
         
 </pre>
 ---    
+DOMjudge judgehost check:    
 <pre>
 #After every DOMjudge judgehost rebooted, judgehost process must be started by manually!    
 #Check saved readme.txt    
 </pre>
 <pre><code>cat readme.txt</code></pre>
+---    
+DOMjudge judgehost start:    
 <pre>    
 #To start judgehosts...    
 At console terminal    
