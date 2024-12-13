@@ -174,8 +174,9 @@ CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 sudo groupadd domjudge-run
 #default judgedaemon
 sudo useradd -d /nonexistent -g domjudge-run -M -s /bin/false domjudge-run
-#multi judgedaemons, max 128
-for ((i=1; i<=128; i++));
+#multi judgedaemons, max 64
+#https://www.domjudge.org/docs/manual/8.3/team.html
+for ((i=1; i<=64; i++));
 do
   sudo useradd -d /nonexistent -g domjudge-run -M -s /bin/false domjudge-run-$i
 done

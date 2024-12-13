@@ -33,6 +33,12 @@ echo "CPU information"
 lscpu | grep "^CPU(s)"
 CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 
+#DOMjudge executes submissions in a sandbox where a maximum of 64 processes can be run simultaneously (including processes that started your program).
+#https://www.domjudge.org/docs/manual/8.3/team.html
+if [ ${CPUS} -gt 64 ] ; then
+  CPUS=64
+fi
+
 #Thread(s) per core
 #lscpu | grep "Thread(s) per core"
 #CORES=$(lscpu | grep "Thread(s) per core"|awk  '{print $4}')
@@ -59,7 +65,8 @@ kill -9 `pgrep -f judgedaemon`
 #default judgedaemon
 sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
 #echo "judgedaemon-run started!"
-#multi judgedaemons, limited to the number of cores, max 128
+#multi judgedaemons, limited to the number of cores, max 64
+#https://www.domjudge.org/docs/manual/8.3/team.html
 for ((i=1; i<${CPUS}; i++));
 do
   echo "start judgedaemon-run-$i..."

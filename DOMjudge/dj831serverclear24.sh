@@ -29,7 +29,7 @@ fi
 echo "DOMjudge server cache & webserver cache clearing started..."
 echo ""
 
-#DOMjudge cache clear
+#DOMjudge PHP/Symfony cache clear
 /opt/domjudge/domserver/webapp/bin/console cache:clear
 echo "DOMjudge cache cleared!"
 
