@@ -49,42 +49,16 @@ fi
 sudo sed -i "s:#\$nrconf{restart} = 'i':\$nrconf{restart} = 'a':" /etc/needrestart/needrestart.conf
 sudo sed -i "s:#\$nrconf{kernelhints} = -1:\$nrconf{kernelhints} = 0:" /etc/needrestart/needrestart.conf
 
-sudo apt install -y zip unzip
-
-sudo apt install curl -y
-
-curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
-
-sudo apt install nodejs -y
-sudo apt install npm -y
-
-#nodejs stable update
-sudo npm cache clean -f
-sudo npm install -g n
-sudo n stable
-node -v
-
-
-sudo npm install -g npm
-sudo npm install -g grunt-cli
-
-
-#npm install & update
-npm install
-sudo npm i -g npm
-npm -v
-npm run build
-
-
 
 WEBSERVER="no"
 while [ ${WEBSERVER} != "apache2" ] && [ ${WEBSERVER} != "nginx" ]; do
   clear
   echo    ""
-  echo    "Select Web-server for spotboard!"
+  echo    "Select Web-server for DOMjudge!"
   echo -n "apache2 or nginx? [apache2/nginx]: "
   read WEBSERVER
 done
+
 
 #Webserver
 case ${WEBSERVER} in
@@ -99,7 +73,7 @@ case ${WEBSERVER} in
     ;;
 esac
 
-#spotboard
+
 #https://github.com/spotboard/spotboard
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/spotboard-webapp-0.7.0.tar.gz
 tar -xvf spotboard-webapp-0.7.0.tar.gz
@@ -116,6 +90,31 @@ case ${WEBSERVER} in
     ;;
 esac
 
+
+sudo apt install zip unzip -y
+sudo apt install curl -y
+
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+
+sudo apt install nodejs npm -y
+
+#nodejs stable update
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+node -v
+
+sudo npm install -g npm
+sudo npm install -g grunt-cli
+
+
+#npm install & update
+npm install
+sudo npm i -g npm
+npm -v
+npm run build
+
+
 case ${WEBSERVER} in
   "apache2")
     sed -i "s#feed_server_path = './sample/'#feed_server_path = './'#" /var/www/html/spotboard/dist/config.js
@@ -129,9 +128,9 @@ case ${WEBSERVER} in
     ;;
 esac
 
+
 cd
 
-clear
 
 echo "" | tee -a ~/spotboard.txt
 echo "spotboard for domjudge installed!" | tee -a ~/spotboard.txt
@@ -162,6 +161,7 @@ echo "Next step : install domjudge-converter" | tee -a ~/spotboard.txt
 echo "" | tee -a ~/spotboard.txt
 echo "" | tee -a ~/spotboard.txt
 
+
 cd
 
 #https://github.com/spotboard/domjudge-converter
@@ -169,8 +169,11 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/domjudge-co
 unzip domjudge-converter-master.zip
 mv domjudge-converter-master dcm
 
+cd dcm
+
 echo ""
 
+#config.js
 SERVERURL="o"
 INPUTS="x"
 while [ ${SERVERURL} != ${INPUTS} ]; do
@@ -200,7 +203,6 @@ esac
 echo "DOMjudge server's URL setting is completed!"
 echo ""
 
-#config.js
 INPUTS="n"
 SBACCOUNT=""
 while [ ${INPUTS} = "n" ]; do
@@ -232,7 +234,6 @@ sed -i "s#username: 'username'#username: '$SBACCOUNT'#" ~/dcm/config.js
 sed -i "s#password: 'password'#password: '$SBACCOUNTPW'#" ~/dcm/config.js
 sed -i "s#cid: 1#cid: $CID#" ~/dcm/config.js
 
-cd dcm
 npm install
 
 cd
@@ -249,7 +250,8 @@ echo "run : npm start" | tee -a ~/spotboard.txt
 echo "Check spotboard!" | tee -a ~/spotboard.txt
 echo "" | tee -a ~/spotboard.txt
 echo "------" | tee -a ~/spotboard.txt
-echo "http://localhost/spotboard/dist/" | tee -a ~/spotboard.txt
+echo "Private IP URL: http://${PRIVADDRESS}/spotboard/dist/" | tee -a ~/spotboard.txt
+echo "Public  IP URL: http://${THISADDRESS}/spotboard/dist/" | tee -a ~/spotboard.txt
 echo "" | tee -a ~/spotboard.txt
 echo "configuration for domjudge-converter" | tee -a ~/spotboard.txt
 echo "check and edit ~/dcm/config.js" | tee -a ~/spotboard.txt
