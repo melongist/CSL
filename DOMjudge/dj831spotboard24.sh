@@ -73,6 +73,23 @@ case ${WEBSERVER} in
     ;;
 esac
 
+sudo apt install zip unzip -y
+sudo apt install curl -y
+
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+
+sudo apt install nodejs -y
+sudo apt install npm -y
+
+#nodejs stable update
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+node -v
+
+sudo npm install -g npm
+sudo npm install -g grunt-cli
+
 
 #https://github.com/spotboard/spotboard
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/spotboard-webapp-0.7.0.tar.gz
@@ -90,30 +107,10 @@ case ${WEBSERVER} in
     ;;
 esac
 
-
-sudo apt install zip unzip -y
-sudo apt install curl -y
-
-curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
-
-sudo apt install nodejs npm -y
-
-#nodejs stable update
-sudo npm cache clean -f
-sudo npm install -g n
-sudo n stable
-node -v
-
-sudo npm install -g npm
-sudo npm install -g grunt-cli
-
-
 #npm install & update
 npm install
 sudo npm i -g npm
-npm -v
 npm run build
-
 
 case ${WEBSERVER} in
   "apache2")
@@ -127,7 +124,6 @@ case ${WEBSERVER} in
     sed -i "s#animation          : false#animation          : true#" /var/www/html/spotboard/dist/config.js
     ;;
 esac
-
 
 cd
 
@@ -234,7 +230,10 @@ sed -i "s#username: 'username'#username: '$SBACCOUNT'#" ~/dcm/config.js
 sed -i "s#password: 'password'#password: '$SBACCOUNTPW'#" ~/dcm/config.js
 sed -i "s#cid: 1#cid: $CID#" ~/dcm/config.js
 
+#npm install & update
 npm install
+sudo npm i -g npm
+
 
 cd
 
