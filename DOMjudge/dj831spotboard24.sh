@@ -95,6 +95,7 @@ sudo npm install -g grunt-cli
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/spotboard-webapp-0.7.0.tar.gz
 tar -xvf spotboard-webapp-0.7.0.tar.gz
 mv spotboard-webapp-0.7.0 spotboard
+rm spotboard-webapp-0.7.0.tar.gz
 
 case ${WEBSERVER} in
   "apache2")
@@ -164,6 +165,7 @@ cd
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/domjudge-converter-master.zip
 unzip domjudge-converter-master.zip
 mv domjudge-converter-master dcm
+rm domjudge-converter-master.zip
 
 cd dcm
 
@@ -233,7 +235,7 @@ sed -i "s#cid: 1#cid: $CID#" ~/dcm/config.js
 #npm install & update
 npm install
 sudo npm i -g npm
-
+npm audit fix --force
 
 cd
 
