@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2024.10 Made by melongist(melongist@gmail.com) for CS teachers
+#2025.01 Made by melongist(melongist@gmail.com) for CS teachers
 
 #origin
 #https://www.domjudge.org/
@@ -159,8 +159,9 @@ sudo apt install -y mariadb-server
 #You must input mariaDB's root account password! <---- #1
 sudo mysql_secure_installation
 #For DOMjudge configuration check
-#MariaDB Max connections to 16384
-sudo sed -i "s/\#max_connections        = 100/max_connections        = 16384/" /etc/mysql/mariadb.conf.d/50-server.cnf
+#https://mariadb.com/kb/en/server-system-variables/#max_connections
+#MariaDB Max connections to 4096
+sudo sed -i "s/\#max_connections        = 100/max_connections        = 4096/" /etc/mysql/mariadb.conf.d/50-server.cnf
 sudo sed -i "s/\[mysqld\]/\[mysqld\]\ninnodb_log_file_size=512M\nmax_allowed_packet=512M/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 
@@ -172,6 +173,7 @@ case ${WEBSERVER} in
     sudo apt install apache2 -y
     ;;
   "nginx")
+    sudo add-apt-repository ppa:ondrej/nginx -y
     sudo apt install nginx -y
     sudo systemctl enable nginx
     sudo service nginx start
