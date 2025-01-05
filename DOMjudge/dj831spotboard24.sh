@@ -31,42 +31,29 @@ sudo apt update
 sudo apt upgrade -y
 
 
-WEBSERVER="no"
-while [ ${WEBSERVER} != "apache2" ] && [ ${WEBSERVER} != "nginx" ]; do
-  clear
-  echo    ""
-  echo    "Select Web-server for spotboard!"
-  echo -n "apache2 or nginx? [apache2/nginx]: "
-  read WEBSERVER
-done
+#time synchronization
+echo ""
+sudo timedatectl
+echo ""
 
+#set timezone
+NEWTIMEZONE=$(tzselect)
+sudo timedatectl set-timezone ${NEWTIMEZONE}
+echo ""
 
-#spotboard
-#https://github.com/spotboard/spotboard
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/spotboard-webapp-0.7.0.tar.gz
-tar -xvf spotboard-webapp-0.7.0.tar.gz
-mv spotboard-webapp-0.7.0 spotboard
+#needrestart auto check for Ubuntu 24.04
+#/etc/needrestart/needrestart.conf
+if [ ! -e /etc/needrestart/needrestart.conf ] ; then
+  sudo apt install needrestart -y
+fi
+sudo sed -i "s:#\$nrconf{restart} = 'i':\$nrconf{restart} = 'a':" /etc/needrestart/needrestart.conf
+sudo sed -i "s:#\$nrconf{kernelhints} = -1:\$nrconf{kernelhints} = 0:" /etc/needrestart/needrestart.conf
 
-
-case ${WEBSERVER} in
-  "apache2")
-    sudo mv spotboard /var/www/html/
-    cd /var/www/html/spotboard/
-    ;;
-  "nginx")
-    sudo mv spotboard /var/www/html/
-    cd /var/www/html/spotboard/
-    ;;
-esac
-
+sudo apt install -y zip unzip
 
 sudo apt install curl -y
 
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-
-
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 
 sudo apt install nodejs -y
 sudo apt install npm -y
@@ -89,6 +76,46 @@ npm -v
 npm run build
 
 
+
+WEBSERVER="no"
+while [ ${WEBSERVER} != "apache2" ] && [ ${WEBSERVER} != "nginx" ]; do
+  clear
+  echo    ""
+  echo    "Select Web-server for spotboard!"
+  echo -n "apache2 or nginx? [apache2/nginx]: "
+  read WEBSERVER
+done
+
+#Webserver
+case ${WEBSERVER} in
+  "apache2")
+    sudo apt install apache2 -y
+    ;;
+  "nginx")
+    sudo add-apt-repository ppa:ondrej/nginx -y
+    sudo apt install nginx -y
+    sudo systemctl enable nginx
+    sudo service nginx start
+    ;;
+esac
+
+#spotboard
+#https://github.com/spotboard/spotboard
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/spotboard-webapp-0.7.0.tar.gz
+tar -xvf spotboard-webapp-0.7.0.tar.gz
+mv spotboard-webapp-0.7.0 spotboard
+
+case ${WEBSERVER} in
+  "apache2")
+    sudo mv spotboard /var/www/html/
+    cd /var/www/html/spotboard/
+    ;;
+  "nginx")
+    sudo mv spotboard /var/www/html/
+    cd /var/www/html/spotboard/
+    ;;
+esac
+
 case ${WEBSERVER} in
   "apache2")
     sed -i "s#feed_server_path = './sample/'#feed_server_path = './'#" /var/www/html/spotboard/dist/config.js
@@ -101,7 +128,6 @@ case ${WEBSERVER} in
     sed -i "s#animation          : false#animation          : true#" /var/www/html/spotboard/dist/config.js
     ;;
 esac
-
 
 cd
 
@@ -142,8 +168,36 @@ cd
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/domjudge-converter-master.zip
 unzip domjudge-converter-master.zip
 mv domjudge-converter-master dcm
-cd dcm
 
+echo ""
+
+SERVERURL="o"
+INPUTS="x"
+while [ ${SERVERURL} != ${INPUTS} ]; do
+  echo ""
+  echo "Input DOMjudge server's URL"
+  echo "Examples:"
+  echo "http://123.123.123.123"
+  echo "http://contest.domjudge.org"
+  echo "https://contest.domjudge.org"
+  echo ""
+  echo -n "Input  server's URL: "
+  read SERVERURL
+  echo -n "Repeat server's URL: "
+  read INPUTS
+done
+
+case ${WEBSERVER} in
+  "apache2")
+    sed -i "s#api: 'http://localhost/api'#api: '${SERVERURL}/domjudge/api'#" ~/dcm/config.js
+    sed -i "s#dest: '.'#dest: '/var/www/html/spotboard/dist/'#" ~/dcm/config.js
+    ;;
+  "nginx")
+    sed -i "s#api: 'http://localhost/api'#api: '${SERVERURL}/domjudge/api'#" ~/dcm/config.js
+    sed -i "s#dest: '.'#dest: '/var/www/html/spotboard/dist/'#" ~/dcm/config.js
+    ;;
+esac
+echo "DOMjudge server's URL setting is completed!"
 echo ""
 
 #config.js
@@ -174,24 +228,12 @@ while [ ${INPUTS} = "n" ]; do
   read INPUTS
 done
 
-sed -i "s#username: 'username'#username: '$SBACCOUNT'#" ./config.js
-sed -i "s#password: 'password'#password: '$SBACCOUNTPW'#" ./config.js
-sed -i "s#cid: 1#cid: $CID#" ./config.js
+sed -i "s#username: 'username'#username: '$SBACCOUNT'#" ~/dcm/config.js
+sed -i "s#password: 'password'#password: '$SBACCOUNTPW'#" ~/dcm/config.js
+sed -i "s#cid: 1#cid: $CID#" ~/dcm/config.js
 
-case ${WEBSERVER} in
-  "apache2")
-    sed -i "s#api: 'http://localhost/api'#api: 'http://localhost/domjudge/api'#" ./config.js
-    sed -i "s#dest: '.'#dest: '/var/www/html/spotboard/dist/'#" ./config.js
-    ;;
-  "nginx")
-    sed -i "s#api: 'http://localhost/api'#api: 'http://localhost/domjudge/api'#" ./config.js
-    sed -i "s#dest: '.'#dest: '/var/www/html/spotboard/dist/'#" ./config.js
-    ;;
-esac
-
+cd dcm
 npm install
-
-clear
 
 cd
 
