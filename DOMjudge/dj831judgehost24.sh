@@ -48,6 +48,27 @@ if [[ $SUDO_USER ]] ; then
   exit 1
 fi
 
+
+if [ -d /opt/domjudge/domserver ] ; then
+  echo ""
+  echo "DOMjudge server is already installed at this computer!!"
+  echo ""
+  echo "Use the other computer!!!"
+  echo ""
+  exit 1
+fi
+
+
+if [ -d /opt/domjudge/judgehost ] ; then
+  echo ""
+  echo "DOMjudge judgehost is already installed at this computer!!"
+  echo ""
+  echo "Use the other computer!!!"
+  echo ""
+  exit 1
+fi
+
+
 OSVER=$(grep "Ubuntu" /etc/issue|head -1|awk  '{print $2}')
 if [ ${OSVER:0:5} != "24.04" ] ; then
   echo ""

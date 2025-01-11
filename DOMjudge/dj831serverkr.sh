@@ -24,6 +24,15 @@ if [[ $SUDO_USER ]] ; then
   exit 1
 fi
 
+
+if [ ! -d /opt/domjudge/domserver ] ; then
+  echo ""
+  echo "DOMjudge server is not installed at this computer!!"
+  echo ""
+  exit 1
+fi
+
+
 clear
 
 INPUTS="x"
@@ -180,8 +189,8 @@ sudo sed -i "s/>Login/>로그인하기/" /opt/domjudge/domserver/webapp/template
 
 #webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'Username'/'팀별ID'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
-sudo sed -i "s/'Full name (optional)'/'등록자 이름 (옵션)'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
-sudo sed -i "s/'Email address (optional)'/'등록자 이메일 주소 (옵션)'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Full name (optional)'/'등록자 이름 (선택)'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Email address (optional)'/'등록자 이메일 주소 (선택)'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'Team name'/'팀 이름'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'This team name is already in use.'/'팀 이름을 이미 사용중입니다.'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'Use existing affiliation'/'등록된 조직에서 선택'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
@@ -189,7 +198,7 @@ sudo sed -i "s/'Add new affiliation'/'새 조직 추가'/" /opt/domjudge/domserv
 sudo sed -i "s/'No affiliation'/'조직 없음'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'Affiliation name'/'조직 이름'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'Affiliation shortname'/'조직 이름 약자'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
-sudo sed -i "s/'No country'/'국가 선택 (옵션)'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'No country'/'국가 선택 (선택)'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'-- Select category --'/'-- 종류 선택 --'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'Category'/'종류'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'-- Select affiliation --'/'-- 조직 선택 --'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php

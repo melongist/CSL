@@ -23,6 +23,15 @@ if [[ $SUDO_USER ]] ; then
   exit 1
 fi
 
+
+if [ ! -d /opt/domjudge/domserver ] ; then
+  echo ""
+  echo "DOMjudge server is not installed at this computer!!"
+  echo ""
+  exit 1
+fi
+
+
 echo "php(fpm) autoscaling for DOMjudge server started..."
 echo ""
 echo "H/W memory information"

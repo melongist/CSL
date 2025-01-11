@@ -25,6 +25,15 @@ if [[ $SUDO_USER ]] ; then
   exit 1
 fi
 
+
+if [ ! -d /opt/domjudge/judgehost ] ; then
+  echo ""
+  echo "DOMjudge judgehost is not installed at this computer!!"
+  echo ""
+  exit 1
+fi
+
+
 echo "DOMjudge judgehosts starting ..."
 echo ""
 echo ""

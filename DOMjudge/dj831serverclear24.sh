@@ -26,6 +26,14 @@ if [[ $SUDO_USER ]] ; then
 fi
 
 
+if [ ! -d /opt/domjudge/domserver ] ; then
+  echo ""
+  echo "DOMjudge server is not installed at this computer!!"
+  echo ""
+  exit 1
+fi
+
+
 echo "DOMjudge server cache & webserver cache clearing started..."
 echo ""
 
