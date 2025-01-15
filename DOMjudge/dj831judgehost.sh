@@ -267,7 +267,7 @@ echo "" | tee -a ~/${README}
 
 echo "To start judgehosts after every reboot?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "bash dj831start24.sh" | tee -a ~/${README}
+echo "bash dj831start.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
