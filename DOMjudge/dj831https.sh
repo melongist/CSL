@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2024.10 Made by melongist(melongist@gmail.com) for CS teachers
+#2025.01 Made by melongist(melongist@gmail.com) for CS teachers
 
 #DOMjudge8.3.1 stable(2024.09.13) + Ubuntu 24.04 LTS + apache2/nginx
 
@@ -13,14 +13,14 @@
 
 
 #terminal commands to install dedicated DOMjudge server
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831serverhttps24.sh
-#bash dj831serverhttps24.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831https.sh
+#bash dj831https.sh
 
 
 #------
 DJVER="8.3.1 stable (2024.09.13)"
 DOMVER="domjudge-8.3.1"
-THIS="dj831serverhttps24.sh"
+THIS="dj831https.sh"
 README="readme.txt"
 
 

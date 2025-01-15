@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2024.10 Made by melongist(melongist@gmail.com) for CS teachers
+#2025.01 Made by melongist(melongist@gmail.com) for CS teachers
 
 #origin
 #https://www.domjudge.org/
@@ -15,13 +15,13 @@
 
 
 #Terminal commands to start judgehosts
-#bash dj831start24.sh
+#bash dj831start.sh
 
 
 #------
 
 if [[ $SUDO_USER ]] ; then
-  echo "Just use 'bash dj831start24.sh'"
+  echo "Just use 'bash dj831start.sh'"
   exit 1
 fi
 
@@ -42,7 +42,7 @@ echo "CPU information"
 lscpu | grep "^CPU(s)"
 CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 
-#DOMjudge executes submissions in a sandbox where a maximum of 64 processes can be run simultaneously (including processes that started your program).
+#The maximum number of processes can be run simultaneously is 64(including processes that started your program).
 #https://www.domjudge.org/docs/manual/8.3/team.html
 if [ ${CPUS} -gt 64 ] ; then
   CPUS=64

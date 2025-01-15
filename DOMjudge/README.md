@@ -1,11 +1,11 @@
-#24.10.26   
+#25.01.17   
     
 ---    
 <pre> 
 DOMjudge 8.3.1 + apache2(with IP address for small contest) + Ubuntu 24.04 <== OK   
 DOMjudge 8.3.1 + nginx(with domain name for big contest) + Ubuntu 24.04    <== OK
 
-This scripts works only Ubuntu 24.04 now.
+This scripts works only with Ubuntu 24.04
 
 But, this works for PC, AWS EC2, GCE(Google Compute Engine).
 
@@ -14,21 +14,21 @@ Making english PDF manual is scheduled.
     
     
 File Descripstion    
-- dj831server24.sh      : DOMjudge server installation script    
-- dj831judgehost24.sh   : DOMjudge judgehost installation script    
+- dj831server.sh      : DOMjudge server installation script    
+- dj831judgehost.sh   : DOMjudge judgehost installation script    
     
-- dj831servermas24.sh   : DOMjudge server auto scaling the number of php(fpm) processes for H/W memory size    
-- dj831serverclear24.sh : DOMjudge server/webserver cache clearing    
-- dj831serverhttps.sh   : DOMJudge server Secured HTTPS installation script    
+- dj831mas.sh         : DOMjudge server auto scaling the number of php(fpm) processes for H/W memory changes    
+- dj831clear.sh       : DOMjudge server webserver cache clearing    
+- dj831https.sh       : DOMJudge server Secured HTTPS installation script    
     
-- dj831start24.sh       : judgehost starting script (auto scaling the number of judgehosts)    
+- dj831start.sh       : judgehost starting script (with auto scaling the number of judgehosts)    
     
 ... etc ...    
         
 </pre>    
     
 
-#24.10.25   
+#25.01.15   
     
 ---    
 <pre>     
@@ -56,8 +56,8 @@ https://www.domjudge.org/
 #Auto installation commands and steps...    
 At console terminal    
 </pre>
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831server24.sh</code></pre>
-<pre><code>bash dj831server24.sh</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831server.sh</code></pre>
+<pre><code>bash dj831server.sh</code></pre>
 <pre>    
    
 Select webserver for DOMjudge!    
@@ -178,8 +178,8 @@ https://www.domjudge.org/
 #Auto installation commands and steps...    
 At console terminal    
 </pre>
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831judgehost24.sh</code></pre>
-<pre><code>bash dj831judgehost24.sh</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831judgehost.sh</code></pre>
+<pre><code>bash dj831judgehost.sh</code></pre>
 <pre>    
 Before DOMjudge 8.3.1 stable (2024.09.13) judgehost installation!!!    
     
@@ -260,59 +260,30 @@ DOMjudge judgehosts starting completed...
 </pre>
 ---   
 ---   
-<pre>    
     
+#25.01.15   
     
-    2024.10.26. Out dated below: 
-    
-    
----    
-#spotboard for DOMjudge   
-https://github.com/spotboard/spotboard    
-    
-#Prerequisite    
-- DOMjudge(server + judgehost) installed    
-    
-#Installation commands to install spotboard for DOMjudge    
+---  
+<pre>
+--- For spotboard for DOMjudge ---       
+#spotboard for DOMjudge auto installation   
+       
+#Auto installation commands and steps...    
+At console terminal    
 </pre>
-    
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/sb070.sh</code></pre>
-<pre><code>bash sb070.sh</code></pre>
-    
-    
-#After judgehosts installed.    
-<pre><code>
-Check spotboard!    
-------
-http://localhost/spotboard/dist/
-
-configuration for spotboard
-check & edit /var/www/html/spotboard/dist/config.js
-
-Next step : install spotboard-converter
-
-</code></pre>
-    
-    
----
-#spotboard-converter for spotboard   
-<https://github.com/spotboard/domjudge-converter>
-
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831spotboard.sh</code></pre>
+<pre><code>bash dj831spotboard.sh</code></pre>
+      
+<pre>    
 #Prerequisite   
-- DOMjudge(server + judgehost) installed server   
-- spotboard installed    
+- DOMjudge server installed server   
 - spotboard account with 'Jury User' Roles : added with DOMjudge web interface   
     ex)   
     ID: spotboard   
     PW: spotboard   
     Roles: Jury User    
-
-#Installation commands to install spotboard-converter for domjudge   
-
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/sbc070.sh</code></pre>
-<pre><code>bash sbc070.sh</code></pre>
-
-#After spotboard-converter installed.
+    
+#After spotboard installed.
 <pre><code>
 domjudge-converter for domjudge installed!!
 Ver 2020.10.19

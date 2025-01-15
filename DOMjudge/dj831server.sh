@@ -37,7 +37,7 @@
 
 DJVER="8.3.1 stable (2024.09.13)"
 DOMVER="domjudge-8.3.1"
-THIS="dj831server24.sh"
+THIS="dj831server.sh"
 README="readme.txt"
 
 
@@ -379,14 +379,14 @@ sudo apt autoremove -y
 
 
 #Other script set download
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831serverclear24.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831servermas24.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831serverhttps24.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831clear.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831mas.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831https.sh
 
 
 
 #Memory autoscaling for php(fpm)
-bash dj831servermas24.sh
+bash dj831mas.sh
 
 
 PRIVADDRESS=$(hostname -i)

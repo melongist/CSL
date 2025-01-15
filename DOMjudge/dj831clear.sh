@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2024.10 Made by melongist(melongist@gmail.com) for CS teachers
+#2025.01 Made by melongist(melongist@gmail.com) for CS teachers
 
 #origin
 #https://www.domjudge.org/
@@ -15,13 +15,13 @@
 
 
 #Terminal commands to clear server cache & webserver cache
-#bash dj831serverclear24.sh
+#bash dj831clear.sh
 
 
 #------
 
 if [[ $SUDO_USER ]] ; then
-  echo "Just use 'bash dj831serverclear24.sh'"
+  echo "Just use 'bash dj831clear.sh'"
   exit 1
 fi
 

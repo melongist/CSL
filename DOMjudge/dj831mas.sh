@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2024.10 Made by melongist(melongist@gmail.com) for CS teachers
+#2025.01 Made by melongist(melongist@gmail.com) for CS teachers
 
 
 
@@ -12,14 +12,14 @@
 
 #Memory autoscaling for php(fpm)
 #Terminal commands to autoscaling DOMjudge server
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831servermas24.sh
-#bash dj831servermas24.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831mas.sh
+#bash dj831mas.sh
 
 
 #------
 
 if [[ $SUDO_USER ]] ; then
-  echo "Just use 'bash dj831servermas24.sh'"
+  echo "Just use 'bash dj831mas.sh'"
   exit 1
 fi
 

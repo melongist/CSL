@@ -14,14 +14,14 @@
 
 #terminal commands to install spotboard webapp
 #------
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831spotboard24.sh
-#bash dj831spotboard24.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831spotboard.sh
+#bash dj831spotboard.sh
 
 #------
 #spotboard for domjudge
 
 if [[ $SUDO_USER ]] ; then
-  echo "Just use 'dj831spotboard24.sh'"
+  echo "Just use 'dj831spotboard.sh'"
   exit 1
 fi
 

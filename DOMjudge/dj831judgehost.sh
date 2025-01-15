@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2024.10 Made by melongist(melongist@gmail.com) for CS teachers
+#2025.01 Made by melongist(melongist@gmail.com) for CS teachers
 
 #origin
 #https://www.domjudge.org/
@@ -30,15 +30,15 @@
 
 
 #terminal commands to install dedicated remote DOMjudge judgehost server
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831judgehost24.sh
-#bash dj831judgehost24.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831judgehost.sh
+#bash dj831judgehost.sh
 
 
 #------
 
 DJVER="8.3.1 stable (2024.09.13)"
 DOMVER="domjudge-8.3.1"
-THIS="dj831judgehost24.sh"
+THIS="dj831judgehost.sh"
 README="readme.txt"
 
 
@@ -212,7 +212,7 @@ sudo chmod 0440 /etc/sudoers.d/sudoers-domjudge
 
 
 #judgehosts starting script download
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831start24.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831start.sh
 
 SERVERURL="o"
 INPUTS="x"
