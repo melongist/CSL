@@ -246,7 +246,7 @@ Saved as readme.txt
 #To start judgehosts...    
 At console terminal    
 </pre>
-<pre><code>bash dj831start24.sh</code></pre>
+<pre><code>bash dj831start.sh</code></pre>
 <pre>
     
 DOMjudge judgehosts starting ...    
@@ -280,7 +280,7 @@ At console terminal
 - spotboard account with 'Jury User' Roles : added with DOMjudge web interface   
     ex)   
     ID: spotboard   
-    PW: spotboard   
+    PW: spot2024board   
     Roles: Jury User    
     
 #After spotboard installed.

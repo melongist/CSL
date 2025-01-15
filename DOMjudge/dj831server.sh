@@ -437,14 +437,14 @@ echo "" | tee -a ~/${README}
 echo "Autoscaling for php(fpm)" | tee -a ~/${README}
 echo "When DOMjudge server's H/W memory size changed, run below:" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "bash dj831servermas24.sh" | tee -a ~/${README}
+echo "bash dj831mas.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
 echo "Server cache clearing" | tee -a ~/${README}
 echo "To clear DOMjudge server/webserver cache, run below:" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "bash dj831serverclear24.sh" | tee -a ~/${README}
+echo "bash dj831clear.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 

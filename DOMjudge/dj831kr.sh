@@ -318,11 +318,11 @@ sudo sed -i "s/>Cancel/>취소/" /opt/domjudge/domserver/webapp/templates/team/s
 #clearing DOMjudge webserver cache
 sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
 
-echo "" | tee -a ~/domjudge.txt
-echo "DOMjudge 8.3.1 stable" | tee -a ~/domjudge.txt
-echo "DOMjudge participants' korean interface installed!" | tee -a ~/domjudge.txt
-echo "For korean middle & high school students." | tee -a ~/domjudge.txt
-echo "" | tee -a ~/domjudge.txt
-echo "Check DOMserver's web interface!" | tee -a ~/domjudge.txt
-echo "------" | tee -a ~/domjudge.txt
-echo "http://localhost/domjudge/" | tee -a ~/domjudge.txt
+echo "" | tee -a ~/readme.txt
+echo "DOMjudge 8.3.1 stable" | tee -a ~/readme.txt
+echo "DOMjudge participants' korean interface installed!" | tee -a ~/readme.txt
+echo "For korean middle & high school students." | tee -a ~/readme.txt
+echo "" | tee -a ~/readme.txt
+echo "Check DOMserver's web interface!" | tee -a ~/readme.txt
+echo "------" | tee -a ~/readme.txt
+echo "http://localhost/domjudge/" | tee -a ~/readme.txt
