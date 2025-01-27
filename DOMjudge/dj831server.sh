@@ -30,8 +30,8 @@
 
 
 #terminal commands to install dedicated DOMjudge server
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831server24.sh
-#bash dj831server24.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831server.sh
+#bash dj831server.sh
 
 #------
 
@@ -304,17 +304,21 @@ sudo service php8.3-fpm reload
 
 #Customizing for DOMjudge H/W!!
 #check the H/W memory size GiB
-echo "Memory size(GiB)"
-MEMS=$(free --gibi | grep "Mem:" | awk  '{print $2}')
-echo "${MEMS} GiB"
+#echo "Memory size(GiB)"
+#MEMS=$(free --gibi | grep "Mem:" | awk  '{print $2}')
+#echo "${MEMS} GiB"
 
-if [ ${MEMS} -lt 1 ] ; then
-  MEMS=1
-fi
+#if [ ${MEMS} -lt 1 ] ; then
+#  MEMS=1
+#fi
 
-MEMS=$(($MEMS*40))
+#MEMS=$(($MEMS*40))
 #40 per GiB of memory ... 4GiB -> 160
-sudo sed -i "s:pm.max_children = 40:pm.max_children = ${MEMS}:g" /etc/php/8.3/fpm/pool.d/domjudge.conf
+#sudo sed -i "s:pm.max_children = 40:pm.max_children = ${MEMS}:g" /etc/php/8.3/fpm/pool.d/domjudge.conf
+
+
+
+
 #number of requests before respawning
 sudo sed -i "s:pm.max_requests = 5000:pm.max_requests = 4096:g" /etc/php/8.3/fpm/pool.d/domjudge.conf
 #memory_limit
@@ -382,11 +386,26 @@ sudo apt autoremove -y
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831clear.sh
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831mas.sh
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831https.sh
-
+#Korean translation
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831kr.sh
 
 
 #Memory autoscaling for php(fpm)
-bash dj831mas.sh
+#bash dj831mas.sh
+#Registering php(fpm) autoscaling for memory change to /etc/rc.local
+echo '#!/bin/bash' >> ~/rc.local
+echo "bash /home/${USER}/dj831clear.sh" >> ~/rc.local
+echo "bash /home/${USER}/dj831mas.sh" >> ~/rc.local
+echo "exit 0" >> ~/rc.local
+sudo chown root:root ~/rc.local
+sudo chmod 755 ~/rc.local
+sudo mv -f ~/rc.local /etc/rc.local
+
+sudo sed -i '$s/$/\n/g' /lib/systemd/system/rc-local.service
+sudo sed -i '$s/$/[Install]\n/g' /lib/systemd/system/rc-local.service
+sudo sed -i '$s/$/WantedBy=multi-user.target\n\n/g' /lib/systemd/system/rc-local.service
+sudo systemctl enable rc-local.service
+sudo systemctl start rc-local.service
 
 
 PRIVADDRESS=$(hostname -i)
@@ -395,6 +414,7 @@ PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
 
 echo "Check DOMjudge server's web page" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
+
 case ${WEBSERVER} in
   "apache2")
     ;;
@@ -402,6 +422,7 @@ case ${WEBSERVER} in
     THISADDRESS=${DOMAINNAME}
     ;;
 esac
+
 case ${WEBSERVER} in
   "apache2")
     echo "*Use appopriate URL, according to the server's network connection." | tee -a ~/${README}
@@ -429,17 +450,18 @@ case ${WEBSERVER} in
     echo "Domain name URL: http://${THISADDRESS}" | tee -a ~/${README}
     ;;
 esac
+
 JUDGEHOSTPW=$(cat /opt/domjudge/domserver/etc/restapi.secret | grep "default" | awk  '{print $4}')
 echo "judgehost PW : ${JUDGEHOSTPW}" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-echo "Autoscaling for php(fpm)" | tee -a ~/${README}
-echo "When DOMjudge server's H/W memory size changed, run below:" | tee -a ~/${README}
-echo "------" | tee -a ~/${README}
-echo "bash dj831mas.sh" | tee -a ~/${README}
-echo "" | tee -a ~/${README}
-echo "" | tee -a ~/${README}
+#echo "Autoscaling for php(fpm)" | tee -a ~/${README}
+#echo "When DOMjudge server's H/W memory size changed, run below:" | tee -a ~/${README}
+#echo "------" | tee -a ~/${README}
+#echo "bash dj831mas.sh" | tee -a ~/${README}
+#echo "" | tee -a ~/${README}
+#echo "" | tee -a ~/${README}
 
 echo "Server cache clearing" | tee -a ~/${README}
 echo "To clear DOMjudge server/webserver cache, run below:" | tee -a ~/${README}

@@ -54,7 +54,7 @@ if [[ $MEMSSET -ne $MEMSNOW ]] ; then
   echo "H/W memory size changed!!"
   echo ""
   MEMSTRING=$(grep "pm.max_children =" /etc/php/8.3/fpm/pool.d/domjudge.conf)
-  NEWSTRING="pm.max_children = ${MEMSNOW}      ; ~40 per gig of memory(16gb system -> 500)"
+  NEWSTRING="pm.max_children = ${MEMSNOW}      ; 40 per 1GiB memory(16GiB -> 640)"
   sudo sed -i "s:${MEMSTRING}:${NEWSTRING}:g" /etc/php/8.3/fpm/pool.d/domjudge.conf
   echo "pm.max_children value changed to ${MEMSNOW}"
   echo ""
@@ -84,3 +84,4 @@ echo ""
 echo "php(fpm) autoscaling for DOMjudge server completed!"
 echo ""
 
+exit 0

@@ -214,6 +214,22 @@ sudo chmod 0440 /etc/sudoers.d/sudoers-domjudge
 #judgehosts starting script download
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831start.sh
 
+
+#Number of judgehosts autoscaling for the number of cpu change to /etc/rc.local
+echo '#!/bin/bash' >> ~/rc.local
+echo "bash /home/${USER}/dj831start.sh" >> ~/rc.local
+echo "exit 0" >> ~/rc.local
+sudo chown root:root ~/rc.local
+sudo chmod 755 ~/rc.local
+sudo mv -f ~/rc.local /etc/rc.local
+
+sudo sed -i '$s/$/\n/g' /lib/systemd/system/rc-local.service
+sudo sed -i '$s/$/[Install]\n/g' /lib/systemd/system/rc-local.service
+sudo sed -i '$s/$/WantedBy=multi-user.target\n\n/g' /lib/systemd/system/rc-local.service
+sudo systemctl enable rc-local.service
+sudo systemctl start rc-local.service
+
+
 SERVERURL="o"
 INPUTS="x"
 while [ ${SERVERURL} != ${INPUTS} ]; do
@@ -265,11 +281,11 @@ echo "sudo nano /opt/domjudge/judgehost/etc/restapi.secret" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
-echo "To start judgehosts after every reboot?" | tee -a ~/${README}
-echo "------" | tee -a ~/${README}
-echo "bash dj831start.sh" | tee -a ~/${README}
-echo "" | tee -a ~/${README}
-echo "" | tee -a ~/${README}
+#echo "To start judgehosts after every reboot?" | tee -a ~/${README}
+#echo "------" | tee -a ~/${README}
+#echo "bash dj831start.sh" | tee -a ~/${README}
+#echo "" | tee -a ~/${README}
+#echo "" | tee -a ~/${README}
 
 echo "To kill some judgedaemon process?" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
