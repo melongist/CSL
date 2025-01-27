@@ -213,7 +213,7 @@ sudo chmod 0440 /etc/sudoers.d/sudoers-domjudge
 
 #judgehosts starting script download
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831start.sh
-
+sudo sed -i "s/\$USER/${USER}/g" ~/dj831start.sh
 
 #Number of judgehosts autoscaling for the number of cpu change to /etc/rc.local
 echo '#!/bin/bash' >> ~/rc.local
