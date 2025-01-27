@@ -1,4 +1,4 @@
-#25.01.17   
+#25.01.27   
     
 ---    
 <pre> 
@@ -17,11 +17,9 @@ File Descripstion
 - dj831server.sh      : DOMjudge server installation script    
 - dj831judgehost.sh   : DOMjudge judgehost installation script    
     
-- dj831mas.sh         : DOMjudge server auto scaling the number of php(fpm) processes for H/W memory changes    
 - dj831clear.sh       : DOMjudge server webserver cache clearing    
-- dj831https.sh       : DOMJudge server Secured HTTPS installation script    
-    
-- dj831start.sh       : judgehost starting script (with auto scaling the number of judgehosts)    
+- dj831https.sh       : DOMJudge server secured HTTPS installation script    
+- dj831kr.sh          : DOMjudge server korean interface installation script    
     
 ... etc ...    
         
@@ -238,27 +236,12 @@ Saved as readme.txt
         
 </pre>
 <pre>
-#After every DOMjudge judgehost rebooted, judgehost process must be started by manually!    
-#Check saved readme.txt    
-</pre>
-<pre><code>cat readme.txt</code></pre>
-<pre>    
-#To start judgehosts...    
+#After rebooted, check DOMjudge server's judgehosts    
+#If DOMjudge server's IP address changed? Read readme.txt    
 At console terminal    
 </pre>
-<pre><code>bash dj831start.sh</code></pre>
-<pre>
-    
-DOMjudge judgehosts starting ...    
-    
-    
-X judgedamons started!    
-    
-DOMjudge judgehosts starting completed...    
-    
-            
-</pre>
----   
+<pre><code>cat readme.txt</code></pre>
+---    
 ---   
     
 #25.01.15   
