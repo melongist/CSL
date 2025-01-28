@@ -181,8 +181,8 @@ sudo apt install -y mariadb-server
 sudo mysql_secure_installation
 #For DOMjudge configuration check
 #https://mariadb.com/kb/en/server-system-variables/#max_connections
-#MariaDB Max connections to 4096
-sudo sed -i "s/\#max_connections        = 100/max_connections        = 4096/" /etc/mysql/mariadb.conf.d/50-server.cnf
+#MariaDB Max connections to 8192
+sudo sed -i "s/\#max_connections        = 100/max_connections        = 8192/" /etc/mysql/mariadb.conf.d/50-server.cnf
 sudo sed -i "s/\[mysqld\]/\[mysqld\]\ninnodb_log_file_size=512M\nmax_allowed_packet=512M/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 
