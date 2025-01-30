@@ -381,43 +381,42 @@ sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg/$
 
 
 
-//????
 #discuss upgrade for 24.12.25
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/lang/ko.php
-mv -f ./ko.php /home/judge/src/web/lang/ko.php
-chown www-data:www-data /home/judge/src/web/lang/ko.php
+#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/lang/ko.php
+#mv -f ./ko.php /home/judge/src/web/lang/ko.php
+#chown www-data:www-data /home/judge/src/web/lang/ko.php
 
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bbs.php
-mv -f ./bbs.php /home/judge/src/web/bbs.php
-chown www-data:www-data /home/judge/src/web/bbs.php
+#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bbs.php
+#mv -f ./bbs.php /home/judge/src/web/bbs.php
+#chown www-data:www-data /home/judge/src/web/bbs.php
 
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/nav.php
-mv -f ./nav.php /home/judge/src/web/template/bs3/nav.php
-chown www-data:www-data /home/judge/src/web/template/bs3/nav.php
+#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/nav.php
+#mv -f ./nav.php /home/judge/src/web/template/bs3/nav.php
+#chown www-data:www-data /home/judge/src/web/template/bs3/nav.php
 
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/discuss.php
-mv -f ./discuss.php /home/judge/src/web/discuss.php
-chown www-data:www-data /home/judge/src/web/discuss.php
+#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/discuss.php
+#mv -f ./discuss.php /home/judge/src/web/discuss.php
+#chown www-data:www-data /home/judge/src/web/discuss.php
 
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/discuss.php
-mv -f ./discuss.php /home/judge/src/web/template/bs3/discuss.php
-chown www-data:www-data /home/judge/src/web/template/bs3/discuss.php
+#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/discuss.php
+#mv -f ./discuss.php /home/judge/src/web/template/bs3/discuss.php
+#chown www-data:www-data /home/judge/src/web/template/bs3/discuss.php
 
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/post.php
-mv -f ./post.php /home/judge/src/web/post.php
-chown www-data:www-data /home/judge/src/web/post.php
+#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/post.php
+#mv -f ./post.php /home/judge/src/web/post.php
+#chown www-data:www-data /home/judge/src/web/post.php
 
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/thread.php
-mv -f ./thread.php /home/judge/src/web/thread.php
-chown www-data:www-data /home/judge/src/web/thread.php
+#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/thread.php
+#mv -f ./thread.php /home/judge/src/web/thread.php
+#chown www-data:www-data /home/judge/src/web/thread.php
 
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/threadadmin.php
-mv -f ./threadadmin.php /home/judge/src/web/threadadmin.php
-chown www-data:www-data /home/judge/src/web/threadadmin.php
+#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/threadadmin.php
+#mv -f ./threadadmin.php /home/judge/src/web/threadadmin.php
+#chown www-data:www-data /home/judge/src/web/threadadmin.php
 
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/newpost.php
-mv -f ./newpost.php /home/judge/src/web/newpost.php
-chown www-data:www-data /home/judge/src/web/newpost.php
+#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/newpost.php
+#mv -f ./newpost.php /home/judge/src/web/newpost.php
+#chown www-data:www-data /home/judge/src/web/newpost.php
 
 
 
