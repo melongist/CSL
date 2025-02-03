@@ -1,15 +1,15 @@
 ## Ver   
-#### - 최종 갱신일 : 24.02.29   
-#### - 버전: 24.01.30   
+#### - 최종 갱신일 : 25.02.03   
+#### - 버전: 25.01.31   
 
 ***   
    
 ## Prerequisite   
 #### - 설치 전 필요 조건   
-#Ubuntu 22.04 LTS 운영체제가 AWS 나 PC 에 먼저 설치되어 있어야 합니다.   
+#Ubuntu 24.04 LTS 운영체제가 AWS 나 PC 에 먼저 설치되어 있어야 합니다.   
 
-#Ubuntu 22.04 LTS Server  에서는 english 환경으로 설치해서 그대로 사용!   
-#Ubuntu 22.04 LTS Desktop 에서는 english 환경으로 설치하고 필요한 경우 한글 환경으로 바꾸되, 기본 폴더명(바탕화면 등)들은 영문! 그대로 유지!   
+#Ubuntu 24.04 LTS Server  에서는 english 환경으로 설치해서 그대로 사용!   
+#Ubuntu 24.04 LTS Desktop 에서는 english 환경으로 설치하고 필요한 경우 한글 환경으로 바꾸되, 기본 폴더명(바탕화면 등)들은 영문! 그대로 유지!   
    
 ***   
    
@@ -32,12 +32,12 @@
 #### - 특별한 제약 없이 누구나 사용 가능합니다.   
 #### - 기본 HUSTOJ 한글 환경 및 한국 시간으로 설치   
 
-#우분투 22.04LTS 에서 터미널을 실행한 후, 아래 설치 스크립트 명령을 순서대로 입력하고 실행하면 됩니다.      
+#우분투 24.04LTS 에서 터미널을 실행한 후, 아래 설치 스크립트 명령을 순서대로 입력하고 실행하면 됩니다.      
 
 #아래 명령을 실행하면, 한글 환경과 한국 시간으로 맞추어 HUSTOJ 를 설치합니다.   
 
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj240130.sh</code></pre>
-<pre><code>sudo bash hustoj240130.sh</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj250131.sh</code></pre>
+<pre><code>sudo bash hustoj250131.sh</code></pre>
   
 ***   
 | 위는 일반 HUSTOJ의 한국 시간 및 한글 환경 설정 설치 스크립트입니다.   
@@ -63,7 +63,7 @@
 |   
 |   
 |  아래는 ...  
-|  중고등학교 정보 교과 관련 수업을 위한 CSL HUSTOJ + 기초100제 문제 + 각종 기능 설치를 위한 스크립트입니다.   
+|  중고등학교 정보 교과 관련 수업을 위한 CSL HUSTOJ + 정보 수업용 추가 기능 설치를 위한 스크립트입니다.   
 |  정보 교과 관련 수업을 위한 정보 선생님들의 설치 및 정보 교과 관련 수업 활용은 특별한 제약이 거의 없습니다.   
 |  정보 선생님들의 전국 단위 온라인 커뮤니티인 컴퓨터과학사랑(CSL. since 2008) 카페를 통해 지속적인 지원이 제공됩니다.   
 ***   
