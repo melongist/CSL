@@ -165,7 +165,7 @@ CREATE TABLE `loginlog` (
   PRIMARY KEY (`log_id`),
   KEY `user_log_index` (`user_id`,`time`),
   KEY `user_time_index` (`user_id`,`time`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,7 +178,9 @@ INSERT INTO `loginlog` VALUES
 (1,'admin','no save','10.211.55.2','2025-02-08 07:52:10'),
 (2,'admin','login ok','10.211.55.2','2025-02-08 19:22:14'),
 (3,'admin','login ok','10.211.55.2','2025-02-08 19:55:08'),
-(4,'admin','login ok','10.211.55.2','2025-02-08 20:20:57');
+(4,'admin','login ok','10.211.55.2','2025-02-08 20:20:57'),
+(5,'admin','no save','10.211.55.2','2025-02-09 07:10:58'),
+(6,'admin','login ok','10.211.55.2','2025-02-09 07:11:22');
 /*!40000 ALTER TABLE `loginlog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -483,33 +485,6 @@ LOCK TABLES `sim` WRITE;
 /*!40000 ALTER TABLE `sim` DISABLE KEYS */;
 /*!40000 ALTER TABLE `sim` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger simfilter
-before insert on sim
-for each row
-begin
- declare new_user_id varchar(64);
- declare old_user_id varchar(64);
- select user_id from solution where solution_id=new.s_id into new_user_id;
- select user_id from solution where solution_id=new.sim_s_id into old_user_id;
- if old_user_id=new_user_id then
-	set new.s_id=0;
- end if;
- 
-end */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `solution`
@@ -667,7 +642,7 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES
-('admin','admin@admin.kr',0,0,'N','10.211.55.2','2025-02-08 20:20:57',1,1,'e+4SvEQw9JCJaykCf86BB9r7s/Q5NDVj','2025-02-08 07:52:10','2099-01-01','admin','admin','','',0);
+('admin','admin@admin.kr',0,0,'N','10.211.55.2','2025-02-09 07:11:22',1,1,'/tfWFK511+JGtcVOXByjF8p81Vs2OTE5','2025-02-09 07:10:58','2099-01-01','admin','admin','','',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -680,4 +655,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-08 21:39:14
+-- Dump completed on 2025-02-09  8:13:59
