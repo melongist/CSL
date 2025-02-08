@@ -2,7 +2,7 @@
 #CSL HUSTOJ
 #Made by melongist(melongist@gmail.com)
 #for CSL Computer Science teachers
-#Last edits 25.02.03
+#Last edits 25.02.08
 
 clear
 
@@ -383,7 +383,7 @@ sed -i "s/OJ_NAME=\"HUSTOJ\"/OJ_NAME=\"${OJNAME}\"/" /home/judge/src/web/include
 sed -i "s/OJ_TEMPLATE=\"syzoj\"/OJ_TEMPLATE=\"bs3\"/" /home/judge/src/web/include/db_info.inc.php
 
 #for korean kindeditor
-sed -i "s/OJ_LANG=\"en\"/OJ_LANG=\"ko\"/" /home/judge/src/web/include/db_info.inc.php
+sed -i "s/OJ_LANG=\"cn\"/OJ_LANG=\"ko\"/" /home/judge/src/web/include/db_info.inc.php
 sed -i "s/zh_CN.js/ko.js/" /home/judge/src/web/admin/kindeditor.php
 
 #Removing QR codes + CSL
@@ -431,13 +431,13 @@ sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg/$
 #how to backup from HUSTOJ for CSL :> mysqldump -u hustoj -p --add-drop-table --create-options jol > jol.sql
 #command   : sudo mysqldump -u hustoj -p --add-drop-table jol > /home/${SUDO_USER}/oldjol.sql
 #overwriting
-##DBUSER=$(grep '$DB_USER' /home/judge/src/web/include/db_info.inc.php|head -1|awk  '{print $2}'|cut -d "\"" -f2)
-##PASSWORD=$(grep '$DB_PASS' /home/judge/src/web/include/db_info.inc.php|head -1|awk  '{print $2}'|cut -d "\"" -f2)
+DBUSER=$(grep '$DB_USER' /home/judge/src/web/include/db_info.inc.php|head -1|awk  '{print $2}'|cut -d "\"" -f2)
+PASSWORD=$(grep '$DB_PASS' /home/judge/src/web/include/db_info.inc.php|head -1|awk  '{print $2}'|cut -d "\"" -f2)
 
 
-##wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/sql/${SQLFILE}
-##mysql -u ${DBUSER} -p${PASSWORD} jol < ${SQLFILE}
-##rm ${SQLFILE}
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/sql/${SQLFILE}
+mysql -u ${DBUSER} -p${PASSWORD} jol < ${SQLFILE}
+rm ${SQLFILE}
 #add source_browser privilege to admin
 #echo "insert into jol.privilege values('admin','source_browser','true','N');"|mysql -h localhost -u"$USER" -p"$PASSWORD"
 
@@ -446,36 +446,36 @@ sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg/$
 #how to backup upload files from CSL HUSTOJ
 #directory : /home/judge/src/wb/upload/
 #command   : sudo tar -czvpf /home/${SUDO_USER}/olduploads.tar.gz /home/judge/src/web/upload
-##rm -rf /home/judge/src/web/upload/*
+rm -rf /home/judge/src/web/upload/*
 #overwriting
-##wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/upload/${UPLOADFILE}
-##tar -xzvpf ./${UPLOADFILE} -C /
-##rm ./${UPLOADFILE}
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/upload/${UPLOADFILE}
+tar -xzvpf ./${UPLOADFILE} -C /
+rm ./${UPLOADFILE}
 
 
-##chown www-data:www-data -R /home/judge/src/web/upload/*
-##chmod 755 /home/judge/src/web/upload/*
-##chmod 755 /home/judge/src/web/upload/file
-##chmod 755 /home/judge/src/web/upload/image
-##chown www-data:root -R /home/judge/src/web/upload/index.html
-##chmod 664 /home/judge/src/web/upload/index.html
+chown www-data:www-data -R /home/judge/src/web/upload/*
+chmod 755 /home/judge/src/web/upload/*
+chmod 755 /home/judge/src/web/upload/file
+chmod 755 /home/judge/src/web/upload/image
+chown www-data:root -R /home/judge/src/web/upload/index.html
+chmod 664 /home/judge/src/web/upload/index.html
 
 
 #Coping all problem *.in & *.out data to server
 #how to backup test in/out files from CSL HUSTOJ
 #directory : /home/judge/
 #command   : sudo tar -czvpf /home/${SUDO_USER}/olddata.tar.gz /home/judge/data
-##rm -rf /home/judge/data
+rm -rf /home/judge/data
 #overwriting
-##wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/data/${DATAFILE}
-##tar -xzvpf ./${DATAFILE} -C /
-##rm ./${DATAFILE}
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/data/${DATAFILE}
+tar -xzvpf ./${DATAFILE} -C /
+rm ./${DATAFILE}
 
-##chmod 644 -R /home/judge/data
-##chown www-data:www-data -R /home/judge/data
-##chmod 755 /home/judge/data/*
-##chmod 711 /home/judge/data
-##chown www-data:judge /home/judge/data
+chmod 644 -R /home/judge/data
+chown www-data:www-data -R /home/judge/data
+chmod 755 /home/judge/data/*
+chmod 711 /home/judge/data
+chown www-data:judge /home/judge/data
 
 
 #file upload privelege fix 744 to 644
@@ -651,6 +651,12 @@ rm -f temp
 
 
 #temporary fix until next release
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/admin/problem_list250131.php
+mv -f ./problem_list250131.php /home/judge/src/web/admin/problem_list.php
+chown www-data:root /home/judge/src/web/admin/problem_list.php
+chmod 664 /home/judge/src/web/admin/problem_list.php
+
+
 #...
 sed -i "s/count(\$used_in_contests)>0/count(\$used_in_contests)>0 \&\& cid==0/g" /home/judge/src/web/template/bs3/problem.php
 #pdf file upload error fix
