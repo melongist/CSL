@@ -655,6 +655,11 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/admin/problem
 mv -f ./problem_list250131.php /home/judge/src/web/admin/problem_list.php
 chown www-data:root /home/judge/src/web/admin/problem_list.php
 chmod 664 /home/judge/src/web/admin/problem_list.php
+#for bs3 ranklist
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/ranklist250131.php
+mv -f ./ranklist250131.php /home/judge/src/web/template/bs3/ranklist.php
+chown www-data:www-data /home/judge/src/web/template/bs3/ranklist.php
+chmod 644 /home/judge/src/web/template/bs3/ranklist.php
 
 
 #...
