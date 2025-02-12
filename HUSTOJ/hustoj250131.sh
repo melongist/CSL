@@ -33,6 +33,15 @@ if [ -d /mnt/c ]; then
     exit 1
 fi
 
+
+if [ -d /home/judge ] ; then
+  echo ""
+  echo "HUSTOJ is already installed at this computer!!"
+  echo ""
+  exit 1
+fi
+
+
 cd
 
 
@@ -331,6 +340,10 @@ fi
 
 
 cd
+
+timedatectl set-timezone 'Asia/Seoul'
+#PHP timezone set
+sudo sed -i "s:date.timezone = PRC:date.timezone = Asia/Seoul:g" /etc/php/8.3/fpm/php.ini
 
 #judge.conf edit
 #time result fix ... for use_max_time : to record the max time of all results, not sum of...
