@@ -2,7 +2,7 @@
 #CSL HUSTOJ
 #Made by melongist(melongist@gmail.com)
 #for CSL Computer Science teachers
-#Last edits 25.02.08
+#Last edits 25.02.17
 
 clear
 
@@ -370,6 +370,12 @@ fi
 #------ original intallation scripts end
 
 cd 
+
+timedatectl set-timezone 'Asia/Seoul'
+#PHP timezone set
+sudo sed -i "s:date.timezone = PRC:date.timezone = Asia/Seoul:g" /etc/php/8.3/fpm/php.ini
+sudo sed -i "s:Asia/Shanghai:Asia/Seoul:g" /home/judge/src/web/include/init.php
+sudo sed -i "s:+8\:00:+9\:00:g" /home/judge/src/web/include/init.php
 
 #judge.conf edit
 #time result fix ... for use_max_time : to record the max time of all results, not sum of...
