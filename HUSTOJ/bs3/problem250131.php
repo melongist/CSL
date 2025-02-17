@@ -355,10 +355,12 @@
 			}
 			 
 			if (success) {
-			    alert ("The text is on the clipboard, try to paste it!");
+				//* by CSL
+			    alert ("채점 데이터를 복사했습니다. 테스트 프로그램에 붙여넣으세요.");
 			}
 			else {
-			    alert ("Your browser doesn't allow clipboard access!");
+				//* by CSL
+			    alert ("채점 데이터를 복사할 수 없습니다.");
 			}
 			}
 			 
