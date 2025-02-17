@@ -3,6 +3,8 @@
 #Made by melongist(melongist@gmail.com)
 #for CSL Computer Science teachers
 #Last edits 25.02.17
+#도움 주신 분 : 유현호
+
 
 clear
 
@@ -574,7 +576,7 @@ sed -i "s/OJ_REGISTER=true/OJ_REGISTER=false/" /home/judge/src/web/include/db_in
 #set OJ_VCODE=true : set vcode
 sed -i "s/OJ_VCODE=false/OJ_VCODE=true/" /home/judge/src/web/include/db_info.inc.php
 #set OJ_LANGMASK to  C++ & python only...
-sed -i "s/OJ_LANGMASK=33554356/OJ_LANGMASK=20905917/" /home/judge/src/web/include/db_info.inc.php
+sed -i "s/OJ_LANGMASK=33554356/OJ_LANGMASK=33554364/" /home/judge/src/web/include/db_info.inc.php
 #set BBS discuss3
 sed -i "s/OJ_BBS=false/OJ_BBS=\"discuss3\"/" /home/judge/src/web/include/db_info.inc.php
 #set OJ_POISON_BOT_COUNT=100;
