@@ -165,7 +165,7 @@ CREATE TABLE `loginlog` (
   PRIMARY KEY (`log_id`),
   KEY `user_log_index` (`user_id`,`time`),
   KEY `user_time_index` (`user_id`,`time`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +180,8 @@ INSERT INTO `loginlog` VALUES
 (3,'admin','login ok','10.211.55.2','2025-02-08 19:55:08'),
 (4,'admin','login ok','10.211.55.2','2025-02-08 20:20:57'),
 (5,'admin','no save','10.211.55.2','2025-02-09 07:10:58'),
-(6,'admin','login ok','10.211.55.2','2025-02-09 07:11:22');
+(6,'admin','login ok','10.211.55.2','2025-02-09 07:11:22'),
+(7,'admin','login ok','10.211.55.2','2025-03-02 20:25:00');
 /*!40000 ALTER TABLE `loginlog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +244,7 @@ LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
 INSERT INTO `news` VALUES
 (1000,'admin','공지사항 입력 예시입니다.','<span style=\"text-wrap:wrap;white-space:normal;font-family:&quot;font-size:12px;text-align:center;background-color:#FFE500;\"><span style=\"text-wrap:wrap;white-space:normal;font-family:&quot;font-size:12px;text-align:center;background-color:#FFE500;\"><span style=\"font-size:14px;font-family:Verdana;background-color:#FFE500;\">-- 관리자 페이지의 공지사항-등록에서 글을 등록하면,</span><br />\r\n</span></span><span style=\"text-wrap:wrap;white-space:normal;font-family:Verdana;font-size:14px;\"><span style=\"white-space:normal;font-family:Verdana;font-size:14px;\">이렇게 메인 페이지의 하단에 나타납니다.&nbsp;</span></span><span style=\"text-wrap:wrap;white-space:normal;font-family:&quot;font-size:12px;text-align:center;background-color:#FFE500;\"><br style=\"white-space:normal;font-family:&quot;font-size:12px;\" />\r\n</span><span style=\"text-wrap:wrap;white-space:normal;font-family:&quot;font-size:12px;text-align:center;background-color:#FFE500;\"><br style=\"white-space:normal;font-family:&quot;font-size:12px;\" />\r\n</span><span style=\"text-wrap:wrap;white-space:normal;font-family:&quot;font-size:12px;text-align:center;background-color:#FFE500;\"><span style=\"white-space:normal;font-family:Verdana;font-size:14px;\">-- 기초100제 시리즈 문제들은&nbsp;</span><span style=\"white-space:normal;font-family:&quot;font-size:12px;background-color:#E53333;color:#FFFFFF;\"><span style=\"font-size:14px;font-family:Verdana;background-color:#E53333;color:#FFFFFF;\">중고등학교 정보 선생님들만 정보 교과 관련 공교육 목적으로 자유롭게 사용하실 수 있습니다.</span><br />\r\n</span></span><span style=\"text-wrap:wrap;white-space:normal;font-family:Verdana;font-size:14px;\"><span style=\"white-space:normal;font-family:Verdana;font-size:14px;\">-- 협의되지 않은 사교육, 출판, 인쇄 등 영리 목적으로 임의적 활용시에는 저작권과 관련하여 분쟁이 생길 수 있음을 알려드립니다.</span></span> <br />\r\n<p style=\"text-align:center;\">\r\n	<span style=\"text-wrap:wrap;white-space:normal;font-family:Verdana;font-size:14px;\"><span style=\"white-space:normal;font-family:Verdana;font-size:14px;\"><img src=\"/upload/image/20250208/20250208192636_18972.png\" alt=\"\" /><br />\r\n</span></span>\r\n<br />\r\n<p style=\"text-align:center;\">\r\n	<span style=\"text-wrap:wrap;white-space:normal;font-family:Verdana;font-size:14px;\"><span style=\"white-space:normal;font-family:Verdana;font-size:14px;\"><br />\r\n</span></span>\r\n<br />\r\n<p style=\"text-align:center;\">\r\n	<span style=\"white-space:normal;font-family:&quot;font-size:12px;\"></span> \r\n<br />','2025-02-08 19:27:42',0,0,'N'),
-(1001,'admin','faqs.ko','\r\n	<span style=\"white-space:normal;font-family:&quot;font-size:12px;background-color:#FFE500;\"><span style=\"font-size:14px;font-family:Verdana;background-color:#FFE500;\">관리자 페이지의 공지사항-리스트에서 faqs.ko 를 제목으로 글을 활성화하면,</span><br />\r\n</span><span style=\"white-space:normal;font-family:Verdana;font-size:14px;\">이렇게 자주묻는질문 페이지의 화면으로 나타납니다.</span>\r\n<br />\r\n\r\n	<span style=\"white-space:normal;font-family:Verdana;font-size:14px;\"><br />\r\n</span>\r\n<br />','2025-02-08 19:29:51',0,0,'N'),
+(1001,'admin','faqs.ko','<span style=\"text-wrap:wrap;white-space:normal;font-family:&quot;font-size:12px;\"><span style=\"font-family:Verdana;font-size:14px;\">프로그래밍언어를 배우면서, 코드를 작성하고 실행시켜보기 위해서는?</span><br />\r\n</span><span style=\"text-wrap:wrap;white-space:normal;font-family:&quot;font-size:12px;\"><span style=\"font-family:Verdana;font-size:14px;\">프로그램을 만드는 프로그램으로서 통합개발환경이라고 하는 IDE를 설치해야 합니다.</span><br />\r\n</span><span style=\"text-wrap:wrap;white-space:normal;font-family:Verdana;font-size:14px;\">아래 자료를 꼼꼼히 읽어보면서 따라가면, 누구나 쉽게 무료 IDE를 설치할 수 있습니다.</span> <br />\r\n<span style=\"font-family:Verdana;\"><span style=\"font-size:14px;\"><br style=\"text-wrap:wrap;white-space:normal;\" />\r\n</span></span><strong style=\"text-wrap:wrap;white-space:normal;font-family:&quot;font-size:12px;\"><span style=\"font-size:14px;\"><span style=\"font-family:Verdana;font-size:14px;\">- Python</span></span></strong> <br />\r\n<span style=\"font-family:Verdana;\"><span style=\"font-size:14px;\"><b><a class=\"ke-insertfile\" href=\"/upload/file/20250208/20250208194334_67081.pdf\" target=\"_blank\">windows Python IDLE 설치하기</a></b></span></span><br />\r\n<b style=\"font-size:14px;font-family:Verdana;\"><a class=\"ke-insertfile\" href=\"/upload/file/20250208/20250208194402_66329.pdf\" target=\"_blank\">macOS Python IDLE 설치하기</a></b> <br />\r\n<br />\r\n<strong style=\"text-wrap:wrap;white-space:normal;font-family:&quot;font-size:12px;\"><span style=\"font-size:14px;\"><span style=\"font-family:Verdana;font-size:14px;\">- C/C++</span></span></strong> <br />\r\n<strong style=\"text-wrap-style:auto;\"><span style=\"font-size:14px;\"><span style=\"font-family:Verdana;\"><a class=\"ke-insertfile\" href=\"/upload/file/20250208/20250208194421_73154.pdf\" target=\"_blank\">windows Code::Blocks 설치하기</a></span></span></strong> <br />\r\n<strong style=\"text-wrap-style:auto;\"><span style=\"font-size:14px;\"><span style=\"font-family:Verdana;\"><a class=\"ke-insertfile\" href=\"/upload/file/20250208/20250208194443_63873.pdf\" target=\"_blank\">macOS Xcode 설치하기</a></span></span></strong><br />','2025-03-02 20:27:18',0,0,'N'),
 (1002,'admin','home.ko','<p style=\"text-align:center;\">\r\n	<img src=\"/upload/image/20250208/20250208193122_45639.png\" alt=\"\" />\r\n<br />\r\n\r\n	<p style=\"text-align:center;white-space:normal;font-family:&quot;font-size:12px;\">\r\n		<span style=\"text-wrap:wrap;background-color:#FFE500;font-family:Verdana;font-size:14px;\">관리자 페이지의 공지사항-리스트에서 home.ko를 제목으로 글을 작성하고 활성화하면,</span>\r\n	<br />\r\n	<p style=\"text-align:center;white-space:normal;font-family:&quot;font-size:12px;\">\r\n		<span style=\"font-family:Verdana;font-size:14px;\">이렇게 메인 첫 화면 상단에 배너처럼 나타납니다.</span>\r\n	<br />\r\n	\r\n		<br />\r\n	<br />\r\n<br />','2025-02-08 19:32:15',0,0,'N'),
 (1003,'admin','프로그래밍 IDE 설치 방법','<span style=\"text-wrap:wrap;white-space:normal;font-family:&quot;font-size:12px;\"><span style=\"font-family:Verdana;font-size:14px;\">프로그래밍언어를 배우면서, 코드를 작성하고 실행시켜보기 위해서는?</span><br />\r\n</span><span style=\"text-wrap:wrap;white-space:normal;font-family:&quot;font-size:12px;\"><span style=\"font-family:Verdana;font-size:14px;\">프로그램을 만드는 프로그램으로서 통합개발환경이라고 하는 IDE를 설치해야 합니다.</span><br />\r\n</span><span style=\"text-wrap:wrap;white-space:normal;font-family:Verdana;font-size:14px;\">아래 자료를 꼼꼼히 읽어보면서 따라가면, 누구나 쉽게 무료 IDE를 설치할 수 있습니다.</span> <br />\r\n<span style=\"font-family:Verdana;\"><span style=\"font-size:14px;\"><br style=\"text-wrap:wrap;white-space:normal;\" />\r\n</span></span><strong style=\"text-wrap:wrap;white-space:normal;font-family:&quot;font-size:12px;\"><span style=\"font-size:14px;\"><span style=\"font-family:Verdana;font-size:14px;\">- Python</span></span></strong> <br />\r\n<span style=\"font-family:Verdana;\"><span style=\"font-size:14px;\"><b><a class=\"ke-insertfile\" href=\"/upload/file/20250208/20250208194334_67081.pdf\" target=\"_blank\">windows Python IDLE 설치하기</a></b></span></span><br />\r\n<b style=\"font-size:14px;font-family:Verdana;\"><a class=\"ke-insertfile\" href=\"/upload/file/20250208/20250208194402_66329.pdf\" target=\"_blank\">macOS Python IDLE 설치하기</a></b> <br />\r\n<br />\r\n<strong style=\"text-wrap:wrap;white-space:normal;font-family:&quot;font-size:12px;\"><span style=\"font-size:14px;\"><span style=\"font-family:Verdana;font-size:14px;\">- C/C++</span></span></strong> <br />\r\n<strong style=\"text-wrap-style:auto;\"><span style=\"font-size:14px;\"><span style=\"font-family:Verdana;\"><a class=\"ke-insertfile\" href=\"/upload/file/20250208/20250208194421_73154.pdf\" target=\"_blank\">windows Code::Blocks 설치하기</a></span></span></strong> <br />\r\n<strong style=\"text-wrap-style:auto;\"><span style=\"font-size:14px;\"><span style=\"font-family:Verdana;\"><a class=\"ke-insertfile\" href=\"/upload/file/20250208/20250208194443_63873.pdf\" target=\"_blank\">macOS Xcode 설치하기</a></span></span></strong><br />','2025-02-08 19:45:45',0,0,'N');
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
@@ -275,8 +276,6 @@ CREATE TABLE `online` (
 
 LOCK TABLES `online` WRITE;
 /*!40000 ALTER TABLE `online` DISABLE KEYS */;
-INSERT INTO `online` VALUES
-('764ef9c0c242be5583d42ce5edc6b0a7','10.211.55.2','admin@Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.3 Safari/605.1.15','http://10.211.55.7/admin/menu2.php',1739016795,1739016795,'/online.php');
 /*!40000 ALTER TABLE `online` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -642,7 +641,7 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES
-('admin','admin@admin.kr',0,0,'N','10.211.55.2','2025-02-09 07:11:22',1,1,'/tfWFK511+JGtcVOXByjF8p81Vs2OTE5','2025-02-09 07:10:58','2099-01-01','admin','admin','','',0);
+('admin','admin@admin.kr',0,0,'N','10.211.55.2','2025-03-02 20:25:00',1,1,'/tfWFK511+JGtcVOXByjF8p81Vs2OTE5','2025-02-09 07:10:58','2099-01-01','admin','admin','','',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -655,4 +654,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-09  8:13:59
+-- Dump completed on 2025-03-02 20:49:46
