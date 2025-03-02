@@ -30,7 +30,8 @@
         <p align=left>
   <div class="ui toggle checkbox">
         <input type="checkbox" id="preview-toggle" checked>
-        <label for="preview-toggle">题目预览</label>
+        <!-- * by CSL -->
+        <label for="preview-toggle">미리보기</label>
     </div>
           <?php echo "<h3>".$MSG_TITLE."</h3>"?>
           <input class="input input-large" style="width:100%;" type=text name='title' > <input type=submit value='<?php echo $MSG_SAVE?>' name=submit> 
