@@ -1,5 +1,5 @@
 ## Ver   
-#### - 최종 갱신일 : 25.02.03   
+#### - 최종 갱신일 : 25.03.02   
 #### - 버전: 25.01.31   
 
 ***   
@@ -91,11 +91,11 @@
 #### - 위 내용에 대하여 모두 이해하고 동의하는 경우에만 ...   
 #### - 다음 설치 스크립트를 사용해서 CSL 버전의 HUSTOJ 와 기초100제 시리즈 문제 일체와 수업용 기능들을 한 번에 모두 설치할 수 있습니다.   
 
-#우분투 22.04LTS 에서 터미널을 실행한 후, 아래 설치 스크립트 명령을 순서대로 입력하고 실행하면 됩니다.   
-#csloj240130.sh 파일이 있는 경우, 먼저 삭제(rm csloj240130.sh) 후 다음 명령어를 실행해주세요.     
+#우분투 24.04 LTS 에서 터미널을 실행한 후, 아래 설치 스크립트 명령을 순서대로 입력하고 실행하면 됩니다.   
+#csloj250131.sh 파일이 있는 경우, 먼저 삭제(rm csloj250131.sh) 후 다음 명령어를 실행해주세요.     
 
 #아래 명령을 실행하면, 한글 환경과 한국 시간으로 맞추어 CSL HUSTOJ 를 설치합니다.   
    
-<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj240130.sh</code></pre>
-<pre><code>sudo bash csloj240130.sh</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/csloj250131.sh</code></pre>
+<pre><code>sudo bash csloj250131.sh</code></pre>
    
