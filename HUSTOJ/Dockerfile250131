@@ -43,23 +43,23 @@ RUN     cd /home/judge/src/core/ && bash make.sh
 #RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends clang
 #RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends guile-3.0
 #RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends lua5.3
-RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends nodejs
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends nodejs
 #RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends golang
 #RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends sqlite3
 #RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends gfortran
 #RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends octave
 #RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends gnucobol
-RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends r-base
+#RUN     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends r-base
 #RUN     wget -O /opt/cangjie.tar.gz http://dl3.hustoj.com/docker/Cangjie-STS-linux_x64.tar.gz && cd /opt && tar xzf cangjie.tar.gz && chmod +rx -R cangjie && rm cangjie.tar.gz
 
 
 #  Scratch3 judge need these lines
-RUN wget -c raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/scratch-run_0.1.5_linux_amd64.zip
-RUN apt-get install unzip
-RUN unzip scratch-run_0.1.5_linux_amd64.zip
-RUN mv scratch-run /usr/bin
-RUN chmod +x /usr/bin/scratch-run
-RUN apt-get update
+#RUN wget -c raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/scratch-run_0.1.5_linux_amd64.zip
+#RUN apt-get install unzip
+#RUN unzip scratch-run_0.1.5_linux_amd64.zip
+#RUN mv scratch-run /usr/bin
+#RUN chmod +x /usr/bin/scratch-run
+#RUN apt-get update
 
 
 # install debian package of similarity-tester
