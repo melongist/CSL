@@ -42,6 +42,13 @@ include_once("kindeditor.php") ;
 
       <input type=hidden name=problem_id value='<?php echo $row['problem_id']?>'>
       <p align=left>
+  <!-- + by CSL -->
+  <div class="ui toggle checkbox">
+        <input type="checkbox" id="preview-toggle" checked>
+        <!-- * by CSL -->
+        <label for="preview-toggle">미리보기</label>
+    </div>
+  <!-- + by CSL -->
         <center>
           <h3>
           <?php echo $row['problem_id']?>: <input class="input input-xxlarge" style='width:90%' type=text name=title value='<?php echo htmlentities($row['title'],ENT_QUOTES,"UTF-8")?>'>
@@ -212,7 +219,39 @@ include_once("kindeditor.php") ;
   $(document).ready(function(){
   	 <?php if (!(isset($OJ_OLD_FASHINED) && $OJ_OLD_FASHINED ) ) echo " transform();" ?>
   
-  }); 
+     //+ by CSL
+            // 监听checkbox的点击事件
+            $('#preview-toggle').change(function() {
+                if(this.checked) {
+                    transform();
+                } else {
+                    // 假设这里是关闭预览的函数
+                    untransform();
+                }
+            });    
+     //+ by CSL 
+
+  });   
+
+     //+ by CSL
+  function untransform() {
+    console.log("预览关闭");
+    // 恢复原始的 #main 元素样式
+    let main = $("#main");
+    main.addClass("padding");
+    main.css("width", "");
+    main.css("margin-left", "");
+
+    // 移除预览的 iframe
+    $("#preview").remove();
+
+  
+    // 移除同步事件
+    $("input").off('keyup', sync);
+    $("textarea").off('keyup', sync);
+}
+     //+ by CSL
+
 </script>
     <?php
     }
