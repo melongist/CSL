@@ -29,7 +29,8 @@
       <input type=hidden name=problem_id value="New Problem">
         <p align=left>
   <div class="ui toggle checkbox">
-        <input type="checkbox" id="preview-toggle" checked>
+        <!-- * by CSL -->
+        <input type="checkbox" id="preview-toggle">
         <!-- * by CSL -->
         <label for="preview-toggle">미리보기</label>
     </div>
@@ -208,7 +209,8 @@
  
    $(document).ready(function(){
             // 默认开启预览功能
-           <?php if (!(isset($OJ_OLD_FASHINED) && $OJ_OLD_FASHINED )) echo " transform();" ?>
+          //* by CSL
+          //<?php if (!(isset($OJ_OLD_FASHINED) && $OJ_OLD_FASHINED )) echo " transform();" ?>
             
             // 监听checkbox的点击事件
             $('#preview-toggle').change(function() {
