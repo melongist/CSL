@@ -668,6 +668,9 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/ranklist2
 mv -f ./ranklist250131.php /home/judge/src/web/template/bs3/ranklist.php
 chown www-data:www-data /home/judge/src/web/template/bs3/ranklist.php
 chmod 644 /home/judge/src/web/template/bs3/ranklist.php
+#kindeditor fix
+sed -i "s#echo \"designMode:false,\";#//echo \"designMode:false,\";#g" /home/judge/src/web/admin/kindeditor.php
+
 
 
 #...
