@@ -670,6 +670,8 @@ chown www-data:www-data /home/judge/src/web/template/bs3/ranklist.php
 chmod 644 /home/judge/src/web/template/bs3/ranklist.php
 #kindeditor fix
 sed -i "s#echo \"designMode:false,\";#//echo \"designMode:false,\";#g" /home/judge/src/web/admin/kindeditor.php
+#reinfo.php fix for python error out
+sed -i 's#\"judge/\")!==false\&\&!isset#\"judge/\")!==false\&\&($lang!=6)\&\&!isset#g' /home/judge/src/web/reinfo.php
 
 
 
