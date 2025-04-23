@@ -7,7 +7,7 @@ DOMjudge 8.3.1 + nginx(with domain name for big contest) + Ubuntu 24.04    <== O
 
 This scripts works only with Ubuntu 24.04
 
-But, this works for PC, AWS EC2, GCE(Google Compute Engine).
+But, this works for PC, AWS EC2.
 
 Making english PDF manual is scheduled.
     
@@ -48,7 +48,7 @@ https://www.domjudge.org/
 #DOMjudge server auto installation   
    
 #Prerequisite    
-- Ubuntu 24.04 LTS PC/AWS EC2/GCE   
+- Ubuntu 24.04 LTS PC/AWS EC2    
 - Open 80(http), 443(https) + ETC  ports at firewall      
     
 #Auto installation commands and steps...    
@@ -170,8 +170,8 @@ https://www.domjudge.org/
 #DOMjudge judgehost auto installation   
    
 #Prerequisite    
-- Already installed Ubuntu server (at other PC/AWS EC2/GCE)
-- The other new Ubuntu 24.04 LTS PC/AWS EC2/GCE   
+- Already installed Ubuntu server (at other PC/AWS EC2)
+- The other new Ubuntu 24.04 LTS PC/AWS EC2   
     
 #Auto installation commands and steps...    
 At console terminal    
