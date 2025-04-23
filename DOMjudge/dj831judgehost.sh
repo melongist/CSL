@@ -17,7 +17,7 @@
 #in the ideal case they are run on the same type of machines that the teams use.
 
 #This installation script only works on Ubuntu 24.04 LTS!!
-#2024.10.24 This scripts works for PC, AWS(Amazon Web Server), GCE(Google Cloud Engine)
+#2025.04.23 This scripts works for PC, AWS(Amazon Web Server)
 
 #DOMjudge8.3.1 stable(2024.09.13) + Ubuntu 24.04 LTS + apache2/nginx
 
