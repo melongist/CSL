@@ -30,8 +30,8 @@
 
 
 #terminal commands to install dedicated DOMjudge server
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831server.sh
-#bash dj831server.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj900devserver.sh
+#bash dj900devserver.sh
 
 #------
 
@@ -383,19 +383,19 @@ sudo apt autoremove -y
 
 
 #Other script set download
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831clear.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831mas.sh
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831https.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj900devclear.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj900devmas.sh
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj900devhttps.sh
 #Korean translation
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831kr.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj900devkr.sh
 
 
 #Memory autoscaling for php(fpm)
-#bash dj831mas.sh
+#bash dj900devmas.sh
 #Registering php(fpm) autoscaling for memory change to /etc/rc.local
 echo '#!/bin/bash' >> ~/rc.local
-echo "bash /home/${USER}/dj831clear.sh" >> ~/rc.local
-echo "bash /home/${USER}/dj831mas.sh" >> ~/rc.local
+echo "bash /home/${USER}/dj900devclear.sh" >> ~/rc.local
+echo "bash /home/${USER}/dj900devmas.sh" >> ~/rc.local
 echo "exit 0" >> ~/rc.local
 sudo chown root:root ~/rc.local
 sudo chmod 755 ~/rc.local
@@ -459,14 +459,14 @@ echo "" | tee -a ~/${README}
 #echo "Autoscaling for php(fpm)" | tee -a ~/${README}
 #echo "When DOMjudge server's H/W memory size changed, run below:" | tee -a ~/${README}
 #echo "------" | tee -a ~/${README}
-#echo "bash dj831mas.sh" | tee -a ~/${README}
+#echo "bash dj90devmas.sh" | tee -a ~/${README}
 #echo "" | tee -a ~/${README}
 #echo "" | tee -a ~/${README}
 
 echo "Server cache clearing" | tee -a ~/${README}
 echo "To clear DOMjudge server/webserver cache, run below:" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "bash dj831clear.sh" | tee -a ~/${README}
+echo "bash dj900devclear.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 

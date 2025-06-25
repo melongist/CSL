@@ -30,8 +30,8 @@
 
 
 #terminal commands to install dedicated remote DOMjudge judgehost server
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj831judgehost.sh
-#bash dj831judgehost.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj900devjudgehost.sh
+#bash dj900devjudgehost.sh
 
 
 #------
@@ -221,7 +221,7 @@ sudo sed -i "s/\$USER/${USER}/g" ~/dj900devstart.sh
 
 #Number of judgehosts autoscaling for the number of cpu change to /etc/rc.local
 echo '#!/bin/bash' >> ~/rc.local
-echo "bash /home/${USER}/dj831start.sh" >> ~/rc.local
+echo "bash /home/${USER}/dj900devstart.sh" >> ~/rc.local
 echo "exit 0" >> ~/rc.local
 sudo chown root:root ~/rc.local
 sudo chmod 755 ~/rc.local
@@ -287,7 +287,7 @@ echo "" | tee -a ~/${README}
 
 #echo "To start judgehosts after every reboot?" | tee -a ~/${README}
 #echo "------" | tee -a ~/${README}
-#echo "bash dj831start.sh" | tee -a ~/${README}
+#echo "bash dj900devstart.sh" | tee -a ~/${README}
 #echo "" | tee -a ~/${README}
 #echo "" | tee -a ~/${README}
 
