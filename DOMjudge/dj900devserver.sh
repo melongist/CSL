@@ -17,7 +17,7 @@
 #in the ideal case they are run on the same type of machines that the teams use.
 
 #This installation script only works on Ubuntu 24.04.02 LTS!!
-#2025.06.25 This scripts works for PC, AWS(Amazon Web Server), GCE(Google Computer Engine)
+#2025.06.25 This scripts works for PC, AWS(Amazon Web Server), GCE(Google Compute Engine)
 
 #DOMjudge9.0.0DEV(2025.06.25)(https://www.domjudge.org/snapshot/) + Ubuntu 24.04.02 LTS + apache2/nginx
 
@@ -155,34 +155,34 @@ sudo sed -i "s:#\$nrconf{kernelhints} = -1:\$nrconf{kernelhints} = 0:" /etc/need
 sudo apt update
 sudo apt upgrade -y
 
-sudo apt install -y libcgroup-dev
-sudo apt install -y make
-sudo apt install -y acl
-sudo apt install -y zip unzip
-sudo apt install -y pv
-#sudo apt install -y software-properties-common
-#sudo apt install -y dirmngr
-#sudo apt install -y apt-transport-https
-sudo apt install -y ntp
-sudo apt install -y curl
-sudo apt install -y python3-yaml
-sudo apt install -y build-essential
-sudo apt install -y pkg-config
-#sudo apt install -y libcurl4-openssl-dev
-#sudo apt install -y libcurl4-gnutls-dev
-#sudo apt install -y libjsoncpp-dev
+sudo apt install libcgroup-dev -y
+sudo apt install make -y
+sudo apt install acl -y
+sudo apt install zip unzip -y
+sudo apt install pv -y
+#sudo apt install software-properties-common -y
+#sudo apt install dirmngr -y
+#sudo apt install apt-transport-https -y
+sudo apt install ntp -y
+sudo apt install curl -y
+sudo apt install python3-yaml -y
+sudo apt install build-essential -y
+sudo apt install pkg-config -y
+#sudo apt install libcurl4-openssl-dev -y
+#sudo apt install libcurl4-gnutls-dev -y
+#sudo apt install libjsoncpp-dev -y
 
 
 
 
 #DBMS
-sudo apt install -y mariadb-server
+sudo apt install mariadb-server -y
 #You must input mariaDB's root account password! <---- #1
 sudo mysql_secure_installation
 #For DOMjudge configuration check
 #https://mariadb.com/kb/en/server-system-variables/#max_connections
-#MariaDB Max connections to 8192
-sudo sed -i "s/\#max_connections        = 100/max_connections        = 8192/" /etc/mysql/mariadb.conf.d/50-server.cnf
+#MariaDB Max connections to 16384(Default Value:151, Range:10 to 100000)
+sudo sed -i "s/\#max_connections        = 100/max_connections        = 16384/" /etc/mysql/mariadb.conf.d/50-server.cnf
 sudo sed -i "s/\[mysqld\]/\[mysqld\]\ninnodb_log_file_size=512M\nmax_allowed_packet=512M/" /etc/mysql/mariadb.conf.d/50-server.cnf
 
 
@@ -237,6 +237,8 @@ esac
 #cd domjudge-X.X.X
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/${DOMVER}.tar.gz
 tar xvf ${DOMVER}.tar.gz
+#Temporarily for snapshot tar.gz
+mv domjudge-snapshot-20250625 ${DOMVER}
 rm ${DOMVER}.tar.gz
 
 
@@ -365,7 +367,7 @@ esac
 
 
 #make docs
-sudo apt install -y python3-sphinx python3-sphinx-rtd-theme rst2pdf fontconfig python3-yaml texlive-latex-extra latexmk
+sudo apt install python3-sphinx python3-sphinx-rtd-theme rst2pdf fontconfig python3-yaml texlive-latex-extra latexmk -y
 sudo mkdir /opt/domjudge/doc
 sudo mkdir /opt/domjudge/doc/manual
 sudo mkdir /opt/domjudge/doc/manual/html
@@ -409,7 +411,8 @@ sudo systemctl start rc-local.service
 
 
 PRIVADDRESS=$(hostname -i)
-THISADDRESS=$(curl checkip.amazonaws.com)
+#THISADDRESS=$(curl checkip.amazonaws.com)
+THISADDRESS=$(curl ifconfig.me)
 PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
 
 echo "Check DOMjudge server's web page" | tee -a ~/${README}

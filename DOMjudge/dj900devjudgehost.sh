@@ -168,6 +168,8 @@ sudo apt install -y rustc
 #cd domjudge-X.X.X
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/${DOMVER}.tar.gz
 tar xvf ${DOMVER}.tar.gz
+#Temporarily for snapshot tar.gz
+mv domjudge-snapshot-20250625 ${DOMVER}
 rm ${DOMVER}.tar.gz
 
 
@@ -184,8 +186,8 @@ sudo make install-judgehost
 echo ""
 
 
-cp ./judge/domjudge-judgedaemon@.service /etc/systemd/system/
-cp ./judge/create-cgroups.service /etc/systemd/system/
+sudo cp ./judge/domjudge-judgedaemon@.service /etc/systemd/system/
+sudo cp ./judge/create-cgroups.service /etc/systemd/system/
 
 
 
@@ -219,7 +221,8 @@ sudo chmod 0440 /etc/sudoers.d/sudoers-domjudge
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj900devstart.sh
 sudo sed -i "s/\$USER/${USER}/g" ~/dj900devstart.sh
 
-#Number of judgehosts autoscaling for the number of cpu change to /etc/rc.local
+#Autoscaling number of judgehosts for CPU changes
+#Enabling and add to /etc/rc.local
 echo '#!/bin/bash' >> ~/rc.local
 echo "bash /home/${USER}/dj900devstart.sh" >> ~/rc.local
 echo "exit 0" >> ~/rc.local
@@ -336,7 +339,7 @@ fi
 #try #3 for GCE Ubuntu 24.04 LTS
 if [ -e /etc/default/grub.d/50-cloudimg-settings.cfg ]; then
   echo "Editing /etc/default/grub.d/50-cloudimg-settings.cfg for GCE"
-  sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"console=ttyS0,115200\"#GRUB_CMDLINE_LINUX_DEFAULT=\"console=ttyS0,115200 quiet cgroup_enable=memory swapaccount=1\"#" /etc/default/grub.d/50-cloudimg-settings.cfg
+  sudo sed -i "s#GRUB_CMDLINE_LINUX_DEFAULT=\"console=ttyS0,115200\"#GRUB_CMDLINE_LINUX_DEFAULT=\"console=ttyS0,115200 quiet cgroup_enable=memory swapaccount=1 isolcpus=2\"#" /etc/default/grub.d/50-cloudimg-settings.cfg
 fi
 sudo update-grub
 #after reboot?
