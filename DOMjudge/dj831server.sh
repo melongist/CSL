@@ -409,7 +409,8 @@ sudo systemctl start rc-local.service
 
 
 PRIVADDRESS=$(hostname -i)
-THISADDRESS=$(curl checkip.amazonaws.com)
+#THISADDRESS=$(curl checkip.amazonaws.com)
+THISADDRESS=$(curl ifconfig.me)
 PASSWORD=$(cat /opt/domjudge/domserver/etc/initial_admin_password.secret)
 
 echo "Check DOMjudge server's web page" | tee -a ~/${README}
