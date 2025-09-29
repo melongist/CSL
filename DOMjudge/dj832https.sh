@@ -18,7 +18,7 @@
 
 
 #------
-DJVER="8.3.2 stable (2024.07.09)"
+DJVER="8.3.2 stable (2025.07.09)"
 DOMVER="domjudge-8.3.2"
 THIS="dj832https.sh"
 README="readme.txt"
