@@ -43,7 +43,7 @@ lscpu | grep "^CPU(s)"
 CPUS=$(lscpu | grep "^CPU(s)"|awk  '{print $2}')
 
 #The maximum number of processes can be run simultaneously is 64(including processes that started your program).
-#https://www.domjudge.org/docs/manual/8.3/team.html
+#https://www.domjudge.org/docs/manual/9.0/team.html
 if [ ${CPUS} -gt 64 ] ; then
   CPUS=64
 fi
@@ -75,7 +75,7 @@ kill -9 `pgrep -f judgedaemon`
 sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
 #echo "judgedaemon-run started!"
 #multi judgedaemons, limited to the number of cores, max 64
-#https://www.domjudge.org/docs/manual/8.3/team.html
+#https://www.domjudge.org/docs/manual/9.0/team.html
 for ((i=1; i<${CPUS}; i++));
 do
   echo "start judgedaemon-run-$i..."
