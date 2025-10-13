@@ -60,7 +60,7 @@ sudo /opt/domjudge/judgehost/bin/dj_judgehost_cleanup all
 
 
 echo ""
-#sudo systemctl enable create-cgroups --now
+sudo systemctl enable create-cgroups --now
 echo "Starting create cgroups..."
 sudo /opt/domjudge/judgehost/bin/create_cgroups
 echo "create cgroups started!"

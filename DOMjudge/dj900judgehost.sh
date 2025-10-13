@@ -180,9 +180,8 @@ make judgehost
 sudo make install-judgehost
 echo ""
 
-
 #sudo cp ~/domjudge-9.0.0/judge/domjudge-judgedaemon@.service /etc/systemd/system/
-#sudo cp ~/domjudge-9.0.0/judge/create-cgroups.service /etc/systemd/system/
+sudo cp ~/domjudge-9.0.0/judge/create-cgroups.service /etc/systemd/system/
 
 
 #Judgehosts group and user
