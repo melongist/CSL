@@ -319,32 +319,30 @@ else {
     <front><![CDATA[<?php echo fixcdata($row['front'])?>]]></front>
     <rear><![CDATA[<?php echo fixcdata($row['rear'])?>]]></rear>
     <bann><![CDATA[<?php echo fixcdata($row['bann'])?>]]></bann>
-
-
     <?php
-    $pid = $row['problem_id'];
-    for ($lang=0; $lang<count($language_ext); $lang++) {
-      $solution = getSolution($pid,$lang);
+    if ($row['credits']!="") {
+    ?>
+<credits><![CDATA[<?php echo fixcdata($row['credits'])?>]]></credits>
+    <?php
+    }
+    else {
+    $today = date("Y/m/d");
+    ?>
+<credits><![CDATA[<?php echo fixcdata($OJ_NAME."-".$_SESSION[$OJ_NAME.'_'.'user_id']." ".$today)?>]]></credits>
+    <?php
+    }
+    ?>
 
-      if ($solution->language)
-    {?>
-        <solution language="<?php echo $solution->language?>"><![CDATA[<?php echo fixcdata($solution->source_code)?>]]></solution>
-    <?php 
-    }
-    
-    $pta = array("prepend","template","append");
-    
-    foreach ($pta as $pta_file) {
-      $append_file = "$OJ_DATA/$pid/$pta_file.".$language_ext[$lang];
-      //echo "<filename value=\"$lang  $append_file $language_ext[$lang]\"/>";
-    
-      if (file_exists($append_file)) { ?>
-        <<?php echo $pta_file?> language="<?php echo $language_name[$lang]?>"><![CDATA[<?php echo fixcdata(file_get_contents($append_file))?>]]></<?php echo $pta_file?>>
-        <?php 
-      }
-    }
-  }
-?>
+    <!-- - by CSL -->
+    <?php
+    //$pid = $row['problem_id'];
+    //for ($lang=0; $lang<count($language_ext); $lang++) {
+    //  $solution = getSolution($pid,$lang);
+    //  if ($solution->language)
+    // 이후 부분 모두 삭제
+    // ...
+    ?>
+
 
 <?php
   if ($row['spj'] == 1) {
