@@ -211,7 +211,7 @@ if($bann){
 }
 
 if($front || $rear)
-   $source = $front.$source.$rear; //front코드+제출코드+rear코드 결합
+   $source = $front."\n\n".$source."\n\n".$rear; //front코드+제출코드+rear코드 결합
 //+ by CSL
 //함수 제출형, 코드 제한형 문제 처리 여기까지 코드 삽입
 
