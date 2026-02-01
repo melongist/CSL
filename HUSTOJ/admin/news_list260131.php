@@ -86,9 +86,12 @@ if(isset($_GET['keyword']) && $_GET['keyword']!=""){
 </center>
 - <?php echo $MSG_HELP_ADD_FAQS?>
 
+
 <!-- + by CSL -->
-- <?php echo '\"home.ko\"를 제목으로 공지사항을 등록하면 첫 페이지의 위 쪽에 배너처럼 나타납니다.'?>
+<br>
+- <?php echo '"home.ko"를 제목으로 공지사항을 등록하면 첫 페이지의 위 쪽에 배너처럼 나타납니다.'?>
 <!-- + by CSL -->
+
 
 <?php
 if(!(isset($_GET['keyword']) && $_GET['keyword']!=""))

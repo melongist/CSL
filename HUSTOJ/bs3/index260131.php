@@ -40,7 +40,12 @@
 
 		<div class="jumbotron">
 			<p>
-				<center> Recent submission :
+
+
+				<!-- * by CSL -->
+				<center> 최근 채점기록 :
+
+
 					<?php echo $speed?> .
 					<div id=submission style="width:80%;height:300px"></div>
 				</center>
