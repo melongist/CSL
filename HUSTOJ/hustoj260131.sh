@@ -134,7 +134,6 @@ cd /home/judge/ || exit
 #zip -r hustojYYMMDD.zip ./src
 wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/${SRCZIP}
 unzip ${SRCZIP}
-mv hustoj-$VER_DATE/ src/
 rm ${SRCZIP}
 
 #changing Dockerfile

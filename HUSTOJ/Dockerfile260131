@@ -30,7 +30,6 @@ RUN     cd /home/judge/
 RUN     apt-get -y install zip unzip
 RUN     wget raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/hustoj260131.zip 
 RUN     unzip hustoj260131.zip -d /home/judge/
-RUN     mv hustoj26.01.31/ src/
 RUN     rm hustoj260131.zip
 
 #Github update
