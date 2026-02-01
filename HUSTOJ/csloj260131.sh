@@ -616,7 +616,7 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/index2601
 mv -f ./index260131.php /home/judge/src/web/index.php
 chown www-data:www-data /home/judge/src/web/index.php
 chmod 644 /home/judge/src/web/index.php
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/bs3/index260131.php
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/index260131.php
 mv -f ./index260131.php /home/judge/src/web/template/bs3/index.php
 chown www-data:www-data /home/judge/src/web/template/bs3/index.php
 chmod 644 /home/judge/src/web/template/bs3/index.php
