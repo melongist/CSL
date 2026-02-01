@@ -34,7 +34,12 @@ if (!empty($noip_contests)) {
     $not_in_noip_contests = " and contest_id not in ( $noip_contests )";
 }
 //新闻翻页
+
+
+// * by CSL
 $sql = "SELECT COUNT('news_id') AS ids FROM `news` where `defunct`!='Y' AND `title`!='faqs.$OJ_LANG' ";
+
+
 $result = pdo_query($sql);
 $row = $result[0];
 $ids = intval($row['ids']);
@@ -51,10 +56,15 @@ $sid = ($page-1)*$idsperpage;
 // syzoj/sidebar 有自己的新闻查询逻辑，放在了template里面
 if(!($OJ_TEMPLATE=="syzoj" || $OJ_TEMPLATE=="sidebar")) {
     $view_news = "";
+
+
+    // * by CSL
     $sql = "select * FROM `news` "
-        . "WHERE `defunct`!='Y' AND `title`!='faqs.$OJ_LANG'"
+        . "WHERE `defunct`!='Y' AND (`title`!='faqs.$OJ_LANG' AND `title`!='home.$OJ_LANG')"
         . "ORDER BY `importance` ASC,`time` DESC "
         . "LIMIT 50";
+
+
     $view_news .= "<div class='panel panel-default' style='width:80%;margin:0 auto;'>";
     $view_news .= "<div class='panel-heading'><h3>" . $MSG_NEWS . "<h3></div>";
     $view_news .= "<div class='panel-body'>";
@@ -121,11 +131,10 @@ if (isset($_SESSION[$OJ_NAME . '_' . 'administrator'])) {
 
 
 // + by CSL
-$homebanner="home.ko";
-$sql="select title,content from news where title=? and defunct='N' order by news_id limit 1";
-$result=pdo_query($sql,$homebanner);
-if(count($result)>0) $view_homebanner=$result[0][1];
-else $view_homebanner="";
+$sql="select title, content from news where title='home.ko' and defunct='N' order by news_id limit 1";
+$result=pdo_query($sql);
+if(count($result)>0) $view_homebanner = $result[0][1];
+else $view_homebanner = "";
 // + by CSL
 
 

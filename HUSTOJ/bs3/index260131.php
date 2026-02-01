@@ -26,18 +26,15 @@
 	<div class="container">
 		<?php include("template/$OJ_TEMPLATE/nav.php");?>
 		<!-- Main component for a primary marketing message or call to action -->
-
+        
 
         <!-- + by CSL -->
-        <div> <?php echo \$view_faqs?> </div>
+        <div> <?php echo $view_faqs?> </div>
+        <div><br><br><br>
         <?php 
-        	if($view_homebanner != "")
-        	{
-        		echo "<div><br><br><br>";
-        		echo $view_homebanner;
-        		echo "</div>";
-        	}
+        	if($view_homebanner != "") echo $view_homebanner;
         ?>
+    	</div>
         <!-- + by CSL -->
 
 
