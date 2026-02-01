@@ -125,16 +125,24 @@ function fixurl($img_url) {
   if(substr($img_url,0,4)=="data") return $img_url;
   $img_url = html_entity_decode($img_url,ENT_QUOTES,"UTF-8");
   if (substr($img_url,0,4)!="http") {
-    $img_url=str_replace("../upload/","/upload/",$img_url);
-    if($_SERVER["SERVER_PORT"]==80) $port="";
-    else $port=":".$_SERVER["SERVER_PORT"];
+
+
+    //* by CSL
     if (substr($img_url,0,1)=="/") {
-      $ret = 'http://'.$_SERVER['HTTP_HOST'].$port.$img_url;
+      if($_SERVER['SERVER_PORT'] == 443)
+        $ret = 'https://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$img_url;
+      else
+        $ret = 'http://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$img_url;
     }
     else {
-      $path = dirname(dirname($_SERVER['PHP_SELF']));
-      $ret = 'http://'.$_SERVER['HTTP_HOST'].$port.$path.$img_url;
+      $path = dirname($_SERVER['PHP_SELF']);
+      if($_SERVER['SERVER_PORT'] == 443)
+        $ret = 'https://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$path."/../".$img_url;
+      else
+        $ret = 'http://'.$_SERVER['HTTP_HOST'].':'.$_SERVER["SERVER_PORT"].$path."/../".$img_url;    
     }
+
+
   }
   else {
     $ret = $img_url;
@@ -177,7 +185,7 @@ function fixImageURL(&$html,&$did) {
     //- by CSL
     //if(substr($img,0,4)=="data") continue;                      // skip image from paste clips
     $html = str_replace($img,fixurl($img),$html); 
-  //  print_r($did);
+    //print_r($did);
 
     if (!in_array($img,$did)) {
       $base64 = image_base64_encode($img);
