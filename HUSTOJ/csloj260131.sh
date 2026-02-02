@@ -14,7 +14,7 @@ THISFILE="csloj260131.sh"
 SRCZIP="hustoj260131.zip"
 DOCKERFILE="Dockerfile260131"
 
-SQLFILE="csl250131jol.sql"
+SQLFILE="csl260131jol.sql"
 UPLOADFILE="csl250131uploads.tar.gz"
 DATAFILE="csl250131data.tar.gz"
 
@@ -438,7 +438,7 @@ sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg/$
 
 #jol database overwriting
 #current mysql backup
-#how to backup from HUSTOJ for CSL :> sudo mysqldump -u hustoj -p --add-drop-table --create-options jol > jol.sql
+#how to backup from HUSTOJ for CSL :> sudo mysqldump -u hustoj -p --add-drop-table --create-options jol > /home/ubuntu/csl260131jol.sql
 #command   : sudo mysqldump -u hustoj -p --add-drop-table jol > /home/${SUDO_USER}/oldjol.sql
 #overwriting
 DBUSER=$(grep '$DB_USER' /home/judge/src/web/include/db_info.inc.php|head -1|awk  '{print $2}'|cut -d "\"" -f2)
