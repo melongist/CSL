@@ -611,7 +611,7 @@ chown www-data:${SUDO_USER} /home/judge/src/web/template/bs3/js.php
 chmod 664 /home/judge/src/web/template/bs3/js.php
 sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/template/bs3/js.php
 
-#Add homebanner(home.ko)
+#Add homebanner(home.ko, faqs.ko, privacy.ko)
 wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/index260131.php
 mv -f ./index260131.php /home/judge/src/web/index.php
 chown www-data:www-data /home/judge/src/web/index.php
@@ -620,7 +620,7 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/index2601
 mv -f ./index260131.php /home/judge/src/web/template/bs3/index.php
 chown www-data:www-data /home/judge/src/web/template/bs3/index.php
 chmod 644 /home/judge/src/web/template/bs3/index.php
-wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/admin/news_list260131.php
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/admin/news_list260131.php
 mv -f ./news_list260131.php /home/judge/src/web/admin/news_list.php
 chown www-data:www-data /home/judge/src/web/admin/news_list.php
 chmod 644 /home/judge/src/web/admin/news_list.php
