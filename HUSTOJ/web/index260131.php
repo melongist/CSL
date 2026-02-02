@@ -60,7 +60,7 @@ if(!($OJ_TEMPLATE=="syzoj" || $OJ_TEMPLATE=="sidebar")) {
 
     // * by CSL
     $sql = "select * FROM `news` "
-        . "WHERE `defunct`!='Y' AND (`title`!='faqs.$OJ_LANG' AND `title`!='home.$OJ_LANG')"
+        . "WHERE `defunct`!='Y' AND (`title`!='faqs.$OJ_LANG' AND `title`!='home.$OJ_LANG' AND `title`!='privacy.$OJ_LANG')"
         . "ORDER BY `importance` ASC,`time` DESC "
         . "LIMIT 50";
 

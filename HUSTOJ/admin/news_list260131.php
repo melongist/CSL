@@ -90,6 +90,8 @@ if(isset($_GET['keyword']) && $_GET['keyword']!=""){
 <!-- + by CSL -->
 <br>
 - <?php echo '"home.ko"를 제목으로 공지사항을 등록하면 첫 페이지의 위 쪽에 배너처럼 나타납니다.'?>
+<br>
+- <?php echo '"privacy.ko"를 제목으로 공지사항을 등록하면 첫 페이지의 아래 쪽에 <a href=../privacy.php>개인정보처리방침</a>으로 등록됩니다.'?>
 <!-- + by CSL -->
 
 
