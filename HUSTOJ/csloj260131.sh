@@ -625,6 +625,21 @@ mv -f ./news_list260131.php /home/judge/src/web/admin/news_list.php
 chown www-data:www-data /home/judge/src/web/admin/news_list.php
 chmod 644 /home/judge/src/web/admin/news_list.php
 
+#remove problem category AI+ analysis
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/admin/problem_list260131.php
+mv -f ./problem_list260131.php /home/judge/src/web/admin/problem_list.php
+chown www-data:www-data /home/judge/src/web/admin/problem_list.php
+chmod 644 /home/judge/src/web/admin/problem_list.php
+
+#add privacy
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/privacy.php
+mv -f ./privacy.php /home/judge/src/web/privacy.php
+chown www-data:www-data /home/judge/src/web/privacy.php
+chmod 644 /home/judge/src/web/privacy.php
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/privacy.news.php
+mv -f ./privacy.news.php /home/judge/src/web/template/bs3/privacy.news.php
+chown www-data:www-data /home/judge/src/web/template/bs3/privacy.news.php
+chmod 755 /home/judge/src/web/template/bs3/privacy.news.php
 
 #for contest concerned errors fix
 wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/problem260131.php
