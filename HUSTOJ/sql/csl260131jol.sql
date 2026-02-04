@@ -682,6 +682,8 @@ CREATE TABLE `users` (
   `group_name` varchar(16) NOT NULL DEFAULT '',
   `activecode` varchar(16) NOT NULL DEFAULT '',
   `starred` int(11) NOT NULL DEFAULT 0,
+  `privacy_check` char(1) NOT NULL DEFAULT 'N',
+  `privacy_check_date` datetime DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -693,7 +695,7 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` VALUES
-('admin','admin@admin.kr',0,0,'N','10.211.55.2','2026-02-02 23:22:23',1,1,'/tfWFK511+JGtcVOXByjF8p81Vs2OTE5','2025-02-09 07:10:58','2099-01-01','admin','admin','','',0);
+('admin','admin@admin.kr',0,0,'N','10.211.55.2','2026-02-02 23:22:23',1,1,'/tfWFK511+JGtcVOXByjF8p81Vs2OTE5','2025-02-09 07:10:58','2099-01-01','admin','admin','','',0,'',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -706,4 +708,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-02-03  0:38:49
+-- Dump completed on 2026-02-05  7:33:05

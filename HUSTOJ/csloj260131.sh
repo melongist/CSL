@@ -430,7 +430,7 @@ chmod 644 /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
 sed -i "s/release YY.MM.DD/release ${VER_DATE}/" /home/judge/src/web/admin/msg/${IPADDRESS[0]}.txt
 
 #phpmyadmin install script
-#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/phmyadmin02.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/phpmyadmin02.sh
 #mv -f ./phpmyadmin02.sh /home/${SUDO_USER}/
 #chown ${SUDO_USER}:${SUDO_USER} /home/${SUDO_USER}/phpmyadmin02.sh
 #chmod 664 /home/${SUDO_USER}/phpmyadmin02.sh
