@@ -640,6 +640,19 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/privacy.n
 mv -f ./privacy.news.php /home/judge/src/web/template/bs3/privacy.news.php
 chown www-data:www-data /home/judge/src/web/template/bs3/privacy.news.php
 chmod 755 /home/judge/src/web/template/bs3/privacy.news.php
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/modifypage260131.php
+mv -f ./modifypage260131.php /home/judge/src/web/modifypage.php
+chown www-data:www-data /home/judge/src/web/modifypage.php
+chmod 644 /home/judge/src/web/modifypage.php
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/modify260131.php
+mv -f ./modify260131.php /home/judge/src/web/modify.php
+chown www-data:www-data /home/judge/src/web/modify.php
+chmod 644 /home/judge/src/web/modify.php
+wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/bs3/modifypage260131.php
+mv -f ./modifypage260131.php /home/judge/src/web/template/bs3/modifypage.php
+chown www-data:www-data /home/judge/src/web/template/bs3/modifypage.php
+chmod 644 /home/judge/src/web/template/bs3/modifypage.php
+
 
 #for contest concerned errors fix
 wget https://raw.githubusercontent.com/melongist/CSL/master/HUSTOJ/web/problem260131.php
