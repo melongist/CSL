@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2025.09 Made by melongist(melongist@gmail.com) for CS teachers
+#2026.05 Made by melongist(melongist@gmail.com) for CS teachers
 
 #origin
 #https://www.domjudge.org/
@@ -17,9 +17,9 @@
 #in the ideal case they are run on the same type of machines that the teams use.
 
 #This installation script only works on Ubuntu 24.04 LTS!!
-#2025.09.29 This scripts works for PC, AWS(Amazon Web Server)
+#2026.05.20 This scripts works for PC, AWS(Amazon Web Server)
 
-#DOMjudge8.3.2 stable(2025.07.09) + Ubuntu 24.04 LTS + apache2/nginx
+#DOMjudge8.3.2 stable(2025.07.09) + Ubuntu 24.04.4 LTS + apache2/nginx
 
 
 
@@ -183,6 +183,13 @@ make judgehost
 sudo make install-judgehost
 echo ""
 
+sudo cp judge/domjudge-judgedaemon@.service /etc/systemd/system/
+sudo chmod 777 /etc/systemd/system/domjudge-judgedaemon@.service
+sudo chown root:root /etc/systemd/system/domjudge-judgedaemon@.service
+
+sudo cp judge/create-cgroups.service /etc/systemd/system/
+sudo chmod 777 /etc/systemd/system/create-cgroups.service
+sudo chown root:root /etc/systemd/system/create-cgroups.service
 
 
 
