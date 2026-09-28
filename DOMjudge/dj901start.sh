@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2025.10 Made by melongist(melongist@gmail.com) for CS teachers
+#2026.09 Made by melongist(melongist@gmail.com) for CS teachers
 
 #origin
 #https://www.domjudge.org/
@@ -15,13 +15,13 @@
 
 
 #Terminal commands to start judgehosts
-#bash dj900start.sh
+#bash dj901start.sh
 
 
 #------
 
 if [[ $SUDO_USER ]] ; then
-  echo "Just use 'bash dj900start.sh'"
+  echo "Just use 'bash dj901start.sh'"
   exit 1
 fi
 
@@ -60,7 +60,7 @@ sudo /opt/domjudge/judgehost/bin/dj_judgehost_cleanup all
 
 
 echo ""
-sudo systemctl enable create-cgroups --now
+#sudo systemctl enable create-cgroups --now
 echo "Starting create cgroups..."
 sudo /opt/domjudge/judgehost/bin/create_cgroups
 echo "create cgroups started!"
