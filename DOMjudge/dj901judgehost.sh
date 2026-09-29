@@ -140,6 +140,8 @@ sudo apt remove apport -y
 
 
 #Languages
+#C#
+sudo apt install mono-mcs -y
 #pypy3
 sudo apt install pypy3 -y
 #java
@@ -153,7 +155,7 @@ sudo apt install default-jdk-headless -y
 sudo apt install nodejs -y
 sudo apt install npm -y
 #R
-sudo apt install r-base -y
+sudo apt install r-base-core -y
 #rust
 sudo apt install rustc -y
 
