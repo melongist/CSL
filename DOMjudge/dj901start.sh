@@ -73,6 +73,7 @@ kill -9 `pgrep -f judgedaemon`
 #start new judgedaemons
 #default judgedaemon
 sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon &
+sudo systemctl start domjudge-judgedaemon@0.service
 #echo "judgedaemon-run started!"
 #multi judgedaemons, limited to the number of cores, max 64
 #https://www.domjudge.org/docs/manual/9.0/team.html
@@ -80,6 +81,7 @@ for ((i=1; i<${CPUS}; i++));
 do
   echo "start judgedaemon-run-$i..."
   sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n $i &
+  sudo systemctl start domjudge-judgedaemon@$i.service
   echo "judgedaemon-run-$i started!"
 done
 
