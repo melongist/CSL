@@ -13,7 +13,7 @@
 #Memory autoscaling for php(fpm)
 #Terminal commands to autoscaling DOMjudge server
 #wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj901mas.sh
-#bash dj900mas.sh
+#bash dj901mas.sh
 
 
 #------

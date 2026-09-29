@@ -155,10 +155,10 @@ sudo apt install make -y
 sudo apt install acl -y
 sudo apt install zip unzip -y
 sudo apt install pv -y
-sudo apt reinstall systemd-timesyncd -y #for ubuntu 24.04 ntp
+#sudo apt reinstall systemd-timesyncd -y #for ubuntu 24.04 ntp
 sudo apt install ntp -y
-sudo systemctl restart ntp
-sudo systemctl status ntp
+#sudo systemctl restart ntp
+#sudo systemctl status ntp
 sudo apt install curl -y
 sudo apt install python3-yaml -y
 sudo apt install build-essential -y
@@ -371,7 +371,7 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj901clear.
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj901mas.sh
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj901https.sh
 #Korean translation
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj900kr.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj901kr.sh
 
 
 #Memory autoscaling for php(fpm)

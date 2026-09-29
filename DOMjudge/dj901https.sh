@@ -2,6 +2,8 @@
 
 #2026.09 Made by melongist(melongist@gmail.com) for CS teachers
 
+#DOMjudge9.0.1 stable(2026.06.11) + Ubuntu 24.04 LTS + apache2/nginx
+
 
 
 
