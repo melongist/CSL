@@ -306,8 +306,9 @@ cd
 #make chroot
 #add nodejs, r-base
 #sudo sed -i "s#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 locales\"#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 nodejs r-base locales\"#" /opt/domjudge/judgehost/bin/dj_make_chroot
-#default
-sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i nodejs,r-base,rustc
+#https://www.domjudge.org/docs/manual/9.0/install-language.html
+#adds
+sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i mono-mcs,nodejs,r-base-core,rustc
 
 
 cd
