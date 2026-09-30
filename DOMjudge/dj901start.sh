@@ -70,9 +70,13 @@ echo "Starting judgedaemon..."
 #kill current all judgedaemons
 kill -9 `pgrep -f judgedaemon`
 
+
+#for R Fatal error: cannot create 'R_TempDir'
+DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=true;
+
 #start new judgedaemons
 #default judgedaemon
-sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n 0 &
+#sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n 0 &
 sudo systemctl start domjudge-judgedaemon@0.service
 echo "judgedaemon-run-0 started!"
 #multi judgedaemons, limited to the number of cores, max 64
@@ -80,7 +84,7 @@ echo "judgedaemon-run-0 started!"
 for ((i=1; i<${CPUS}; i++));
 do
   echo "start judgedaemon-run-$i..."
-  sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n $i &
+  #sudo -u $USER DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=1 setsid /opt/domjudge/judgehost/bin/judgedaemon -n $i &
   sudo systemctl start domjudge-judgedaemon@$i.service
   echo "judgedaemon-run-$i started!"
 done

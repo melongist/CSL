@@ -175,6 +175,9 @@ rm ${DOMVER}.tar.gz
 #sudo sed -i "s#http://us.archive.ubuntu.com/ubuntu/#${UBUNTUMIRROR}#" ~/${DOMVER}/misc-tools/dj_make_chroot.in
 
 
+#for R
+DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=true;
+
 #Building and installing
 cd ${DOMVER}
 ./configure --prefix=/opt/domjudge --with-baseurl=BASEURL
