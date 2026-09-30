@@ -355,10 +355,10 @@ cd
 
 
 #AFFILIATIONS, BANNERS, COUNTRIES, TEAMS image upload enable
-#sudo chmod 757 /opt/domjudge/domserver/webapp/public/images/affiliations
-#sudo chmod 757 /opt/domjudge/domserver/webapp/public/images/banners
-#sudo chmod 757 /opt/domjudge/domserver/webapp/public/images/countries
-#sudo chmod 757 /opt/domjudge/domserver/webapp/public/images/teams
+sudo chmod 756 /opt/domjudge/domserver/webapp/public/images/affiliations
+sudo chmod 756 /opt/domjudge/domserver/webapp/public/images/banners
+sudo chmod 756 /opt/domjudge/domserver/webapp/public/images/countries
+sudo chmod 756 /opt/domjudge/domserver/webapp/public/images/teams
 
 
 
