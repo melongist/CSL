@@ -175,9 +175,6 @@ rm ${DOMVER}.tar.gz
 #sudo sed -i "s#http://us.archive.ubuntu.com/ubuntu/#${UBUNTUMIRROR}#" ~/${DOMVER}/misc-tools/dj_make_chroot.in
 
 
-#for R
-DOMJUDGE_CREATE_WRITABLE_TEMP_DIR=true;
-
 #Building and installing
 cd ${DOMVER}
 ./configure --prefix=/opt/domjudge --with-baseurl=BASEURL
@@ -309,11 +306,10 @@ cd
 
 #Creating a chroot environment
 #make chroot
-#add nodejs, r-base
 #sudo sed -i "s#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 locales\"#INSTALLDEBS=\"gcc g++ make default-jdk-headless default-jre-headless pypy3 nodejs r-base locales\"#" /opt/domjudge/judgehost/bin/dj_make_chroot
 #https://www.domjudge.org/docs/manual/9.0/install-language.html
 #adds
-sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i mono-mcs,nodejs,r-base-core,rustc
+sudo /opt/domjudge/judgehost/bin/dj_make_chroot -i mono-mcs,nodejs,rustc
 
 
 cd
