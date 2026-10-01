@@ -204,6 +204,7 @@ sudo sed -i "s/'Affiliation'/'조직'/" /opt/domjudge/domserver/webapp/src/Form/
 sudo sed -i "s/'The password fields must match.'/'비밀번호가 일치하지 않습니다.'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'Password'/'비밀번호'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'Repeat Password'/'비밀번호 재입력'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
+sudo sed -i "s/'Minimum length: \%d characters/'최소 길이: \%d 문자/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'Register'/'등록'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'This value should not be blank.'/'입력하세요.'/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
 sudo sed -i "s/'This affiliation '/'이 '/" /opt/domjudge/domserver/webapp/src/Form/Type/UserRegistrationType.php
