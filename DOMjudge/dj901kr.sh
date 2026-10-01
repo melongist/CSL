@@ -317,7 +317,7 @@ sudo sed -i "s/>Cancel/>취소/" /opt/domjudge/domserver/webapp/templates/team/s
 sudo rm -rf /opt/domjudge/domserver/webapp/var/cache/prod/*
 
 echo "" | tee -a ~/readme.txt
-echo "DOMjudge 8.3.2 stable" | tee -a ~/readme.txt
+echo "DOMjudge 9.0.1 stable" | tee -a ~/readme.txt
 echo "DOMjudge participants' korean interface installed!" | tee -a ~/readme.txt
 echo "For korean middle & high school students." | tee -a ~/readme.txt
 echo "" | tee -a ~/readme.txt
