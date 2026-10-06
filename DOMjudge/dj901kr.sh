@@ -167,6 +167,8 @@ sudo sed -i "s/>Categories/>구분/" /opt/domjudge/domserver/webapp/templates/pa
 sudo sed -i "s/>Medals/>메달/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/(tentative)/(결과 검증전)/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 sudo sed -i "s/ Medal</ 메달</" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
+sudo sed -i "s/1 point/1 점/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
+sudo sed -i "s/ points/ 점/" /opt/domjudge/domserver/webapp/templates/partials/scoreboard_table.html.twig
 
 #webapp/templates/public/menu.html.twig
 sudo sed -i "s/DOMjudge/${OJNAME}/" /opt/domjudge/domserver/webapp/templates/public/menu.html.twig
