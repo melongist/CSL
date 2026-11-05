@@ -229,9 +229,15 @@ esac
 #wget https://www.domjudge.org/releases/domjudge-X.X.X.tar.gz
 #tar xvf domjudge-X.X.X.tar.gz
 #cd domjudge-X.X.X
-wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/${DOMVER}.tar.gz
-tar xvf ${DOMVER}.tar.gz
-rm ${DOMVER}.tar.gz
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/${DOMVER}.tar.gz
+#tar xvf ${DOMVER}.tar.gz
+#rm ${DOMVER}.tar.gz
+
+#DOMjudge X.X.X snapshot
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/${DOMVER}.tar.gzaa
+wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/${DOMVER}.tar.gzab
+cat ${DOMVER}.tar.gz* | tar xzvf -
+rm ${DOMVER}.tar.gz*
 
 
 

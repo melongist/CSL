@@ -19,7 +19,7 @@
 #------
 
 if [[ $SUDO_USER ]] ; then
-  echo "Just use 'bash dj901mas.sh'"
+  echo "Just use 'bash dj1000devmas.sh'"
   exit 1
 fi
 
