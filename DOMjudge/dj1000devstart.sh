@@ -89,7 +89,7 @@ do
 done
 
 echo ""
-echo "${CPUS} judgedamons started!"
+echo "${CPUS} judgedaemons started!"
 echo ""
 
 
