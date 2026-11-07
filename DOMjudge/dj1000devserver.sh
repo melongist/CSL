@@ -244,7 +244,8 @@ rm ${DOMVER}.tar.gz*
 
 #Building and installing
 cd ${DOMVER}
-./configure --with-baseurl=BASEURL
+./configure --prefix=/opt/domjudge
+#./configure --with-baseurl=BASEURL
 make domserver
 sudo make install-domserver
 
@@ -378,11 +379,11 @@ wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj1000devcl
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj1000devmas.sh
 wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj1000devhttps.sh
 #Korean translation
-#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj901kr.sh
+#wget https://raw.githubusercontent.com/melongist/CSL/master/DOMjudge/dj1000devkr.sh
 
 
 #Memory autoscaling for php(fpm)
-#bash dj901mas.sh
+#bash dj1000devmas.sh
 #Registering php(fpm) autoscaling for memory change to /etc/rc.local
 echo '#!/bin/bash' >> ~/rc.local
 echo "bash /home/${USER}/dj1000devclear.sh" >> ~/rc.local
@@ -450,7 +451,7 @@ echo "" | tee -a ~/${README}
 echo "Server cache clearing" | tee -a ~/${README}
 echo "To clear DOMjudge server/webserver cache, run below:" | tee -a ~/${README}
 echo "------" | tee -a ~/${README}
-echo "bash dj901clear.sh" | tee -a ~/${README}
+echo "bash dj1000devclear.sh" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 echo "" | tee -a ~/${README}
 
